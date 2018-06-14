@@ -1,2 +1,3 @@
-# projects
-Lab projects and documentation
+# Project pages
+
+Pages about individual projects
