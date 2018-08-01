@@ -1,6 +1,6 @@
 # LuminAI Overview 
-The project is divided into five separate modules: Core, Visualization/Perception, Segmentation, Movement Logic, and Movement Theory
-## Core (aka Main):
+The project is divided into five separate modules: Core, Visualization-Perception, Gesture Segmentation, Movement Theory, and Decision Making
+## Core:
 - This module is the only one required. 
 - This module is unique as its the only one that includes dependencies on the other modules
 - In other words, this module “knows” about all the other modules
@@ -15,7 +15,7 @@ The project is divided into five separate modules: Core, Visualization/Perceptio
 - Represents the skeleton as a collection of joints (quaternions)
 ### Gesture.cs
 - A collection of many body frames ordered by time
-## Visualization + perception:
+## Visualization + Perception:
 - This double module is responsible for two things:
     1. Taking in input from the user using the Kinect and converting it into Core.BodyFrame form
     2. Updating the virtual avatar to display the movement we desire
@@ -34,7 +34,7 @@ Most of the changes we made are located in AvatarController.cs
     - Public BodyFrame otherSource: will use this body frame instead of the kinect feed to pose the virtual dancer if useOtherSourceForMovement == true
 - NOTE: we are using a dummy camera to align the virtual dancer to where the kinect is in real life
 public Camera posRelativeToCamera
-## Gesture_Segmentation (aka Segmentation)
+## Gesture Segmentation
 - Handles generating gesture object based on a live feed of body frames it receives from mainDriver
 ### SegmentationManager.cs
 - Handles communication with the main driver, as well as the individual GestureSegmenters
@@ -53,14 +53,17 @@ public Camera posRelativeToCamera
 - As long as the rhythm tracker detects changes of direction at repeating periods, it will return to the rhythm segmenter that there is rhythm
 - The rhythm segmenter will collect and generate the gesture as long as there is at least one rhythm tracker that is reporting that there is rhythm  
 - Since the rhythm tracker will continue to report that there is rhythm for a period’s length of time after the user has stopped moving, the rhythm segmenter will cut out the last period’s length worth of body frames from the gesture before returning it to the segmentation manager
-## Movement Logic:
-- Handles transformations of a gesture as its being played.
+## Movement Theory:
+- Handles transformations of a gesture as its being played and handles calculating the predicates for a gesture as its being recorded.
 - Changes individual body frame objects 
 ### Transformations.cs
 - Static class
 - Holds all the math for transforming gestures
-## Movement Theory:
-- Handles calculating the predicates for a gesture as its being recorded
 ### PredicateMath.cs
 - Static class
 - Updates the lists of tempo, energy and size in the gesture object
+## Decision Making:
+- Handles all decision making that the agent does, including choosing between response modes.
+### DecisionManager.cs
+Handles decision making for the agent.
+
