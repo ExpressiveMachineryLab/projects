@@ -1,14 +1,14 @@
 # DecisionManager.cs
 
-###Enum Classes
+### Enum Classes
 
-##NarrativeMode
+## NarrativeMode
 Specifies the different narrative states that VAI can be in. These include: 
 - **DANCING_BY_MYSELF** = VAI is dancing alone and not looking at user input 
 - **DANCING_WITH_PARTNER** = VAI is taking into account the user's dance moves when performing
 - **NOT_DANCING** = VAI is standing still 
 
-##ResponseMode
+## ResponseMode
  When VAI is dancing with a partner, she can choose between a variety of different response modes, including:
  - **Transform** = taking the observed gesture and changing it in some way (e.g. reflecting it)
  - **ViewpointsRecall** = recalling a previously learned gesture with similar movement logic parameters
