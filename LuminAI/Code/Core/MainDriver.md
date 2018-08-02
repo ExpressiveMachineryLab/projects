@@ -2,7 +2,7 @@
 
 ## Variables
 
-###Visualization-Perception Variables
+### Visualization-Perception Variables
 - **vai** = holds the VAI avatar controller (i.e. the class that controls the movement of the virtual dancer's avatar in Unity)
 - **kinectManager** = the class that manages the Kinect interface
 - **userDetected** = boolean that tracks whether or not a user is detected by the Kinect. This is updated in LateUpdate based on the user count in kinectManager
@@ -13,23 +13,23 @@
 - **showTextPrompts** = toggle for showing narrative text prompts (promptText). Can be toggled with a "T" keypress
 - **hasBodyFrameUpdatedSinceLastRead** = boolean that tracks whether or not the user's body frame has changed since it was last read 
 
-###Memory Variables
+### Memory Variables
 - **playingGestureFromMemory** = boolean that tracks whether or not VAI is performing a gesture from memory (as opposed to mimicking the user or transforming a gesture)
 - **memoryEmpty** = boolean that tracks whether or not the database is empty to prevent read errors
 - **writingToFile** = boolean that tracks whether or not we want to write the performed body frames to file
 - **fileWriter** = holds a writer that writes performed body frames to a file
 - **learning** = boolean that determines whether or not the agent saves ("learns") new gestures. Can be toggled with a "L" keypress
 
-###Segmentation Variables
+### Segmentation Variables
 - **segmentationManager** = reference to the segmentation module
 
-###Decision Making Variables
+### Decision Making Variables
 - **decisionManager** = reference to the decision making module
 
-###Movement Theory Variables
+### Movement Theory Variables
 - **currentTransformation** = the current transformation that is being applied by the agent. This is None by default and is updated when transformation is chosen as a response mode
 
-###Other
+### Other
 - **indexToJointType** = a dictionary that maps the joint index to the kinect joint type. This exists so that we could easily swap out the joint types used without having to refactor throughout the project.
 
 ## Methods
