@@ -1,12 +1,12 @@
-#Gesture.cs
+# Gesture.cs
 
-##Variables
+## Variables
 - **bodyFrames** = holds the list of body frames that make up a gesture
 - **file** = ???
 - **objectId** = LiteDb's unique database ID for the gesture. Created when the gesture object is initialized.
 - **predicates** = a list of predicates that describe the gesture
 
-##Methods
+## Methods
 
 ```Gesture```
 - **Parameters:** None
