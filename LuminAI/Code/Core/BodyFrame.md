@@ -1,13 +1,13 @@
-#BodyFrame.cs
+# BodyFrame.cs
 
-##Enums
-###JointType
+## Enums
+### JointType
 This enum contains a list of joint types and their mappng to joint numbers. Joint types are based on the Microsoft Kinect V2. See: https://medium.com/@lisajamhoury/understanding-kinect-v2-joints-and-coordinate-system-4f4b90b9df16 
 
-##Variables
+## Variables
 - **bodyFrame** = A dictionary containing a list of joints and their associated orientations. Orientations are represented as quaternions - (x, y, z, w) vectors. Useful reference: https://developerblog.myo.com/quaternions/
 
-##Methods
+## Methods
 
 ```BodyFrame```
 - **Parameters:** None
