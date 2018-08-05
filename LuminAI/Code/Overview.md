@@ -1,7 +1,7 @@
 # LuminAI Overview 
 The project is divided into five separate modules: Core, Visualization-Perception, Segmentation, Movement Theory, and Decision Making
 
-![LuminAI Module Architecture](./LuminAI Module Architecture.png)
+![LuminAI Module Architecture]("LuminAI Module Architecture.png")
 
 ## Core:
 - This module is the only one required. 
