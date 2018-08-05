@@ -8,6 +8,8 @@ To detect rhythm, movement is reduced to a very simple, one-dimensional form: fo
 Some details need to be noted. First, each tracker is able to detect periodicity only after at least 3 half-periods have passed, so it is the minimal time when the system picks up a rhythm. One half-period also needs to pass before the system can figure out that the expected beat did not happen on time and report that there is no rhythm anymore. Second, periodicity is checked with certain tolerance, which is relative to the period of the movement – so, the higher is the period, the longer deviation is allowed. Third, the value of the period is updated after each half-cycle, so if user starts to gradually move faster or slower, periodic movement is still detected. Fourth, the movement in positive and negative direction is detected only if its amount is greater than a certain threshold, so the system can detect rhythm for the movement
 on the figure 1d, despite that the vertical and horizontal movements may have small deviations. Fifth, small unintentional oscillations of arms and Kinect noise often caused the system to detect false rhythm, so I introduced the minimal distance to which joint must travel within half-cycle in order for particular tracker to detect the rhythm. Unfortunately, it makes the system not sensitive to subtle rhythms, such as rhythmical nods. Further development is necessary to distinguish subtle rhythms from noise.
 
+![](rhythmExamples.png)
+
 ### Definitions
 - **Periodic Motion:** motion repeated in equal intervals of time
 - **Period:** the interval of time it takes to complete a repetition or cycle of the motion
