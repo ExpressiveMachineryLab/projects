@@ -1,5 +1,9 @@
 # DecisionManager.cs
 
+![LuminAI Response Mode State Diagram](LuminAIStateDiagram.png)
+
+To edit state diagram, go ![here](https://www.lucidchart.com/invitations/accept/3bfeab0d-59ca-4b94-a43d-632810e00414).
+
 ### Enum Classes
 
 ## NarrativeMode
