@@ -51,11 +51,16 @@ Specifies the different narrative states that VAI can be in. These include:
 - **Returns:** Gesture
 
 ```PredicateMatchExists```
+- **Parameters:** Gesture, out: Gesture
+- **Notes:** This method determines whether or not there is a gesture in memory that is similar to the observed gesture according to one of the predicates. Currently, it is implemented such that it only searches for one (randomly selected) predicate each time it is called, rather than the whole list. This is to reduce memory retrieval time for efficiency reasons.
+- **Returns:** bool
+
+```PredicateMatchExists```
 - **Parameters:** Gesture
 - **Notes:** This method determines whether or not there is a gesture in memory that is similar to the observed gesture according to one of the predicates. Currently, it is implemented such that it only searches for one (randomly selected) predicate each time it is called, rather than the whole list. This is to reduce memory retrieval time for efficiency reasons.
 - **Returns:** bool
 
-```PatterMatchExists```
+```PatternMatchExists```
 - **Parameters:** Gesture
 - **Notes:** This method (not yet fully implemented) determines whether or not an action-response pattern match exists for the observed gesture.
 - **Returns:** bool
