@@ -5,7 +5,8 @@ The purpose of this research project is to explore how computers interpret and u
 ---
 ## Setup
 install all dependencies from requirements.txt
-`pip install -r requirements.txt`
+
+Run `pip install -r requirements.txt`
 
 ## There are multiple modules of this project for each of the human senses
 - [Vision]()

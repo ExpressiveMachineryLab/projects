@@ -1,0 +1,9 @@
+# environment
+ENV/
+
+# python complie files
+*.pyc
+__pycache__/
+
+# IDE files
+.vscode
