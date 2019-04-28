@@ -5,14 +5,14 @@ This module's purpose is to interpret the experience of 'salty' through images. 
 ---
 
 ## Submodules
-- [Image Scrapers]()
+- Image Scrapers
   > collect image data
 
-- [Data]()
+- [Data](https://github.com/JingboWang1997/projects/tree/master/Qualia/vision/data)
   > image data center
 
-- [Face Detection]()
+- [Face Detection](https://github.com/JingboWang1997/projects/tree/master/Qualia/vision/face_detection)
   > detect if there is a face
 
-- [Food Classification]()
+- Food Classification
   > classify food images into 'salty' or 'not salty'
