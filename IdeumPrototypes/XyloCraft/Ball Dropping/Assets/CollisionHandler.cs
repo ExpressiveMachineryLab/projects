@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CollisionHandler : MonoBehaviour
+{
+
+    BoxCollider2D thisCollider;
+    AudioSource playClip;
+
+    public AudioClip clip1;
+    public AudioClip clip2;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        thisCollider = GetComponent<BoxCollider2D>();
+        playClip = GetComponent<AudioSource>();
+
+       // thisCollider.isTrigger = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        playClip.clip = clip1;
+        playClip.Play();
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+    //   playClip.Stop();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        playClip.clip = clip1;
+        playClip.Play();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+        //playClip.Stop();
+    }
+}
