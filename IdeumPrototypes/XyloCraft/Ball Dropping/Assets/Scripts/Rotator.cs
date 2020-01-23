@@ -20,16 +20,22 @@ public class Rotator : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
+            //Debug.Log(hit.collider.gameObject);
+            if (hit.collider != null)
             {
                 selectedObject = hit.collider.gameObject;
-                Debug.Log(hit.collider.gameObject);
+                Debug.Log(selectedObject);
             }
         }
     }
 
-    public void rotateLeft()
+    public void OnClickLeft()
     {
+        selectedObject.transform.Rotate(Vector3.forward * 5.0f);
+    }
 
+    public void OnClickRight()
+    {
+        selectedObject.transform.Rotate(Vector3.back * 5.0f);
     }
 }
