@@ -8,8 +8,8 @@ public class CollisionHandler : MonoBehaviour
     BoxCollider2D thisCollider;
     AudioSource playClip;
 
-    public AudioClip clip1;
-    public AudioClip clip2;
+    public AudioClip collisionSound;
+    //public AudioClip clip2;
 
 
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class CollisionHandler : MonoBehaviour
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
 
-       // thisCollider.isTrigger = true;
+        // thisCollider.isTrigger = true;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playClip.clip = clip1;
+        playClip.clip = collisionSound;
         playClip.Play();
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -40,7 +40,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        playClip.clip = clip1;
+        playClip.clip = collisionSound;
         playClip.Play();
     }
 
