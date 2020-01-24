@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public GameObject cloneObject;
+    //public Transform selectionBG;
+
     //private GameObject cloneImage = Instantiate(emitter) as GameObject;
     private GameObject dragObject;
 
@@ -15,6 +17,7 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
         mousePos.z = 0;
         if (dragObject == null) {
             dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
+            //selectionBG.gameObject.SetActive(true);
         }
 
         dragObject.transform.position = mousePos;

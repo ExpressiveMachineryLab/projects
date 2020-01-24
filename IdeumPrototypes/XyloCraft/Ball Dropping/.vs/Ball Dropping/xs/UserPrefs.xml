@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{0B591C63-2FB3-23CA-3723-B382B7E023D7}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Rotator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Ball.cs" Line="20" Column="23" />
+      <File FileName="Assets/Scripts/Reset.cs" Line="10" Column="68" />
+      <File FileName="Assets/Scripts/Rotator.cs" Line="21" Column="15" />
+      <File FileName="Assets/Scripts/CollisionHandler.cs" Line="43" Column="1" />
+      <File FileName="Assets/Scripts/MenuDragHandler.cs" Line="9" Column="36" />
+      <File FileName="Assets/Scripts/Emitter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Selection.cs" Line="19" Column="73" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Ball Dropping" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="048e143b-1ffd-49d3-84d6-0eef7f20b237" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

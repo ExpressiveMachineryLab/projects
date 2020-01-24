@@ -14,5 +14,10 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = transform.up * speed;
     }
-    
+
+    void Update()
+    {
+        rb.velocity = (rb.velocity.normalized) * speed;
+    }
+
 }
