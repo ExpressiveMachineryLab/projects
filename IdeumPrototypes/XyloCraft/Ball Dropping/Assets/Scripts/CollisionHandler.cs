@@ -9,6 +9,7 @@ public class CollisionHandler : MonoBehaviour
     AudioSource playClip;
 
     public AudioClip collisionSound;
+
     //public AudioClip clip2;
 
 
@@ -27,21 +28,24 @@ public class CollisionHandler : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        playClip.clip = collisionSound;
-        playClip.Play();
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    playClip.clip = collisionSound;
+    //    playClip.Play();
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
 
-    //   playClip.Stop();
-    }
+    ////   playClip.Stop();
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         playClip.clip = collisionSound;
         playClip.Play();
+        //SpriteRenderer collidedObject = collision.gameObject.transform.GetComponent<SpriteRenderer>();
+        //collidedObject.sprite = (Sprite)Resources.Load<Sprite>(collidedObject.sprite + "_hit");
+        //collision.gameObject.transform.GetComponent<SpriteRenderer>().sprite = collision.gameObject.ToString() + "_hit";
     }
 
     private void OnCollisionExit2D(Collision2D collision)

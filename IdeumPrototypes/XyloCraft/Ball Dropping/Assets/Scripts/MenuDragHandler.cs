@@ -17,7 +17,7 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
         mousePos.z = 0;
         if (dragObject == null) {
             dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
-            //selectionBG.gameObject.SetActive(true);
+            
         }
 
         dragObject.transform.position = mousePos;
