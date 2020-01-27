@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 92337331368953773}
   - component: {fileID: 92337331368953772}
   - component: {fileID: 8585661545046911974}
-  - component: {fileID: 6314141670308070189}
   m_Layer: 10
   m_Name: Line5
   m_TagString: Line
@@ -123,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8ac07cb9d65c341b46c6bd60ab33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStateDropdown: {fileID: 0}
+  collisionSound: {fileID: 8300000, guid: 67d98b450efe4f944b77d0ac0a2a73ab, type: 3}
 --- !u!82 &8585661545046911974
 AudioSource:
   m_ObjectHideFlags: 0
@@ -219,19 +220,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6314141670308070189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92337331368953774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e458722e01d7c41848da8c2c472ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionSound: {fileID: 8300000, guid: 67d98b450efe4f944b77d0ac0a2a73ab, type: 3}
 --- !u!1 &4373759191349184755
 GameObject:
   m_ObjectHideFlags: 0
