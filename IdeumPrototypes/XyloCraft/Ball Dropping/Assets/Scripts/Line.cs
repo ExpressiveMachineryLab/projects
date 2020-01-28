@@ -72,9 +72,7 @@ public class Line : MonoBehaviour
     {
         playClip.clip = collisionSound;
         playClip.Play();
-        //SpriteRenderer collidedObject = collision.gameObject.transform.GetComponent<SpriteRenderer>();
-        //collidedObject.sprite = (Sprite)Resources.Load<Sprite>(collidedObject.sprite + "_hit");
-        //collision.gameObject.transform.GetComponent<SpriteRenderer>().sprite = collision.gameObject.ToString() + "_hit";
+        StartCoroutine(ChangeSprite(0.1f, collision));
 
         //  Destroy
         if (codeStateDropdown.value == 1)
@@ -111,5 +109,15 @@ public class Line : MonoBehaviour
     {
 
         //playClip.Stop();
+    }
+
+    private IEnumerator ChangeSprite(float seconds, Collision2D collision)
+    {
+        Sprite originalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
+        Sprite hitObject = collision.gameObject.GetComponent<Ball>().hitSprite;
+        SpriteRenderer collidedObject = collision.gameObject.GetComponent<SpriteRenderer>();
+        collidedObject.sprite = hitObject;
+        yield return new WaitForSeconds(seconds);
+        collidedObject.sprite = originalObject;
     }
 }

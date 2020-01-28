@@ -31,4 +31,11 @@ public class SelectionManager : MonoBehaviour
             //if (hit.collider.gameObject)
         }
     }
+
+    public void NewSelection(GameObject selectedGameObject) 
+    {
+        selectedObject.transform.GetChild(0).gameObject.SetActive(false);
+        selectedObject = selectedGameObject;
+        selectedObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
 }
