@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5973569479113152227}
   m_Layer: 10
   m_Name: Line4
-  m_TagString: Line
+  m_TagString: Line3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8ac07cb9d65c341b46c6bd60ab33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeStateDropdown: {fileID: 3271091197034462321, guid: 391b68358a7a448aa9098f3194cd5a8f,
-    type: 3}
+  originalSprite: {fileID: 21300000, guid: d543fe99986babc4499d1ff9d07c804d, type: 3}
+  hitSprite: {fileID: 21300000, guid: 4dbd2c0a59863fb49b4e8bb4c9743b4f, type: 3}
   collisionSound: {fileID: 8300000, guid: 4b6c6c9295796784eaef2e0056682fe0, type: 3}
 --- !u!82 &5973569479113152227
 AudioSource:

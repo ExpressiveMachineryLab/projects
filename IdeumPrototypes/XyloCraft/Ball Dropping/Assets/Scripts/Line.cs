@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    public Dropdown codeStateDropdown;
-    public Dropdown ballStateDropdown;
-    public Dropdown lineStateDropdown;
+    public Sprite originalSprite;
+    public Sprite hitSprite;
+
+    private Dropdown codeStateDropdown;
+    private Dropdown ballStateDropdown;
+    private Dropdown lineStateDropdown;
 
     private int codeState;
     private int ballState;
@@ -89,10 +92,7 @@ public class Line : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        playClip.clip = collisionSound;
-        playClip.Play();
         StartCoroutine(ChangeSprite(0.15f, collision));
-
         PerformCodeBehvaior(collision);
     }
 
@@ -104,49 +104,92 @@ public class Line : MonoBehaviour
 
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
     {
-        Sprite originalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
-        Sprite hitObject = collision.gameObject.GetComponent<Ball>().hitSprite;
+        Sprite ballOriginalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
+        Sprite ballHitObject = collision.gameObject.GetComponent<Ball>().hitSprite;
         SpriteRenderer collidedObject = collision.gameObject.GetComponent<SpriteRenderer>();
-        collidedObject.sprite = hitObject;
+        SpriteRenderer thisLineObject = this.gameObject.GetComponent<SpriteRenderer>();
+
+        collidedObject.sprite = ballHitObject;
+        thisLineObject.sprite = hitSprite;
         yield return new WaitForSeconds(seconds);
-        collidedObject.sprite = originalObject;
+        collidedObject.sprite = ballOriginalObject;
+        thisLineObject.sprite = originalSprite;
+    }
+
+    private void MakeSound()
+    {
+        playClip.clip = collisionSound;
+        playClip.Play();
+    }
+
+    private IEnumerator DestroyObject(float seconds)
+    {
+        MakeSound();
+        yield return new WaitForSeconds(seconds);
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator LoopSound(float seconds, int numLoops)
+    {
+        for (int i = 0; i < numLoops; i++)
+        {
+            MakeSound();
+            yield return new WaitForSeconds(seconds);
+        }
+    }
+    private IEnumerator ChangePitch(float seconds, float pitchLevel)
+    {
+        playClip.pitch = pitchLevel;
+        MakeSound();
+        yield return new WaitForSeconds(seconds);
+        playClip.pitch = 1.0f;
     }
 
     private void PerformCodeBehvaior(Collision2D collision) {
-        //  Destroy
-        if (codeStateDropdown.value == 1)
+        // None
+        if (codeStateDropdown.value == 0)
         {
-            //Debug.Log("destroy ready " + this);
-            // if ball is correct ball and hit correct line
-            Destroy(this.gameObject);
+            MakeSound();
         }
 
-        //  Loop
-        if (codeStateDropdown.value == 2)
+        if (CorrectCollision(collision))
         {
-            Debug.Log("loop ready");
-        }
+            //  Destroy
+            if (codeStateDropdown.value == 1)
+            {
+                StartCoroutine(DestroyObject(0.2f));
+            }
 
-        //  Increase Pitch
-        if (codeStateDropdown.value == 3)
-        {
-            Debug.Log("increase pitch ready");
-        }
+            //  Loop
+            if (codeStateDropdown.value == 2)
+            {
+                // pass in how many times to loop
+                StartCoroutine(LoopSound(1f, 5));
+            }
+            //  Increase Pitch
+            if (codeStateDropdown.value == 3)
+            {
+                StartCoroutine(ChangePitch(0.2f, 2.0f));
+            }
 
-        //  Decrease Pitch
-        if (codeStateDropdown.value == 4)
-        {
-            Debug.Log("decrease pitch ready");
-        }
+            //  Decrease Pitch
+            if (codeStateDropdown.value == 4)
+            {
+                StartCoroutine(ChangePitch(0.2f, 0.75f));
+            }
 
-        //  Change Color
-        if (codeStateDropdown.value == 5)
-        {
-            Debug.Log("change color ready");
+            //  Change Color
+            if (codeStateDropdown.value == 5)
+            {
+            }
         }
     }
 
-    void OnBecameInvisible()
+    private bool CorrectCollision(Collision2D collision) {
+        return collision.gameObject.tag == "Ball" + ballState && this.gameObject.tag == "Line" + lineState;
+    }
+
+    private void OnBecameInvisible()
     {
         Destroy(this.gameObject);
     }
