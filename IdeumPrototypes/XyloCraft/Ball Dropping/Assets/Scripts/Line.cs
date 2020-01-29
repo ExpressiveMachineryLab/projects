@@ -80,6 +80,7 @@ public class Line : MonoBehaviour
         if (codeStateDropdown.value == 1)
         {
             Debug.Log("destroy ready");
+            //Destroy(this.gameObject);
         }
 
         //  Loop
