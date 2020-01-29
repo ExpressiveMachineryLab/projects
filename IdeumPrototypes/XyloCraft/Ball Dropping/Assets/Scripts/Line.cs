@@ -6,8 +6,12 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     public Dropdown codeStateDropdown;
+    public Dropdown ballStateDropdown;
+    public Dropdown lineStateDropdown;
 
     private int codeState;
+    private int ballState;
+    private int lineState;
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
@@ -22,7 +26,14 @@ public class Line : MonoBehaviour
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
 
+        codeStateDropdown = GameObject.Find("StateDropdown").GetComponent<Dropdown>();
         codeState = codeStateDropdown.value;
+
+        ballStateDropdown = GameObject.Find("IfDropdown").GetComponent<Dropdown>();
+        ballState = ballStateDropdown.value;
+
+        lineStateDropdown = GameObject.Find("HitsDropdown").GetComponent<Dropdown>();
+        lineState = lineStateDropdown.value;
         // thisCollider.isTrigger = true;
     }
 
@@ -40,8 +51,16 @@ public class Line : MonoBehaviour
         {
             codeState = codeStateDropdown.value;
             Debug.Log(codeStateDropdown.value);
-
-            
+        }
+        if (ballStateDropdown.value != ballState)
+        {
+            ballState = ballStateDropdown.value;
+            Debug.Log(ballStateDropdown.value);
+        }
+        if (lineStateDropdown.value != lineState)
+        {
+            lineState = lineStateDropdown.value;
+            Debug.Log(lineStateDropdown.value);
         }
     }
 
@@ -72,15 +91,34 @@ public class Line : MonoBehaviour
     {
         playClip.clip = collisionSound;
         playClip.Play();
-        //SpriteRenderer collidedObject = collision.gameObject.transform.GetComponent<SpriteRenderer>();
-        //collidedObject.sprite = (Sprite)Resources.Load<Sprite>(collidedObject.sprite + "_hit");
-        //collision.gameObject.transform.GetComponent<SpriteRenderer>().sprite = collision.gameObject.ToString() + "_hit";
+        StartCoroutine(ChangeSprite(0.15f, collision));
 
+        PerformCodeBehvaior(collision);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+        //playClip.Stop();
+    }
+
+    private IEnumerator ChangeSprite(float seconds, Collision2D collision)
+    {
+        Sprite originalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
+        Sprite hitObject = collision.gameObject.GetComponent<Ball>().hitSprite;
+        SpriteRenderer collidedObject = collision.gameObject.GetComponent<SpriteRenderer>();
+        collidedObject.sprite = hitObject;
+        yield return new WaitForSeconds(seconds);
+        collidedObject.sprite = originalObject;
+    }
+
+    private void PerformCodeBehvaior(Collision2D collision) {
         //  Destroy
         if (codeStateDropdown.value == 1)
         {
-            Debug.Log("destroy ready");
-            //Destroy(this.gameObject);
+            //Debug.Log("destroy ready " + this);
+            // if ball is correct ball and hit correct line
+            Destroy(this.gameObject);
         }
 
         //  Loop
@@ -108,9 +146,8 @@ public class Line : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnBecameInvisible()
     {
-
-        //playClip.Stop();
+        Destroy(this.gameObject);
     }
 }

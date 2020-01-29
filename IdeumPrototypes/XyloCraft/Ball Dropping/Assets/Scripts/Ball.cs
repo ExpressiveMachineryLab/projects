@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     Vector2 forceVector;
     public float speed = 20f;
     public Rigidbody2D rb;
+    public Sprite originalSprite;
+    public Sprite hitSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +21,8 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = (rb.velocity.normalized) * speed;
     }
-
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }

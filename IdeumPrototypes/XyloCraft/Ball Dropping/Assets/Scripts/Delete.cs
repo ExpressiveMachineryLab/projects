@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Delete : MonoBehaviour
 {
-    public GameObject selectedObject;
+    public SelectionManager selectedObject;
 
     public void OnClickDelete()
     {
