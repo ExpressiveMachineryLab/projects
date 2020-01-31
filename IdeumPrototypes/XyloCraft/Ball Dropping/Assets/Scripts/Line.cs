@@ -8,13 +8,8 @@ public class Line : MonoBehaviour
     public Sprite originalSprite;
     public Sprite hitSprite;
 
-    private Dropdown codeStateDropdown;
-    private Dropdown ballStateDropdown;
-    private Dropdown lineStateDropdown;
+    public CodeStateInformation codeInfo;
 
-    private int codeState;
-    private int ballState;
-    private int lineState;
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
@@ -28,16 +23,6 @@ public class Line : MonoBehaviour
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
-
-        codeStateDropdown = GameObject.Find("StateDropdown").GetComponent<Dropdown>();
-        codeState = codeStateDropdown.value;
-
-        ballStateDropdown = GameObject.Find("IfDropdown").GetComponent<Dropdown>();
-        ballState = ballStateDropdown.value;
-
-        lineStateDropdown = GameObject.Find("HitsDropdown").GetComponent<Dropdown>();
-        lineState = lineStateDropdown.value;
-        // thisCollider.isTrigger = true;
     }
 
     // Update is called once per frame
@@ -48,22 +33,8 @@ public class Line : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-        }
-        if (codeStateDropdown.value != codeState)
-        {
-            codeState = codeStateDropdown.value;
-            Debug.Log(codeStateDropdown.value);
-        }
-        if (ballStateDropdown.value != ballState)
-        {
-            ballState = ballStateDropdown.value;
-            Debug.Log(ballStateDropdown.value);
-        }
-        if (lineStateDropdown.value != lineState)
-        {
-            lineState = lineStateDropdown.value;
-            Debug.Log(lineStateDropdown.value);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 
+                mousePos.y - startPosY, 0);
         }
     }
 
@@ -92,6 +63,7 @@ public class Line : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(codeInfo.getCodeState());
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
     }
@@ -145,48 +117,51 @@ public class Line : MonoBehaviour
         playClip.pitch = 1.0f;
     }
 
-    private void PerformCodeBehvaior(Collision2D collision) {
+    private void PerformCodeBehvaior(Collision2D collision)
+    {
         // None
-        if (codeStateDropdown.value == 0)
+        if (codeInfo.getCodeState() == 0)
         {
             MakeSound();
         }
 
-        if (CorrectCollision(collision))
+        if (CheckCorrectCollision(collision))
         {
             //  Destroy
-            if (codeStateDropdown.value == 1)
+            if (codeInfo.getCodeState() == 1)
             {
                 StartCoroutine(DestroyObject(0.2f));
             }
 
             //  Loop
-            if (codeStateDropdown.value == 2)
+            if (codeInfo.getCodeState() == 2)
             {
                 // pass in how many times to loop
                 StartCoroutine(LoopSound(1f, 5));
             }
             //  Increase Pitch
-            if (codeStateDropdown.value == 3)
+            if (codeInfo.getCodeState() == 3)
             {
                 StartCoroutine(ChangePitch(0.2f, 2.0f));
             }
 
             //  Decrease Pitch
-            if (codeStateDropdown.value == 4)
+            if (codeInfo.getCodeState() == 4)
             {
                 StartCoroutine(ChangePitch(0.2f, 0.75f));
             }
 
             //  Change Color
-            if (codeStateDropdown.value == 5)
+            if (codeInfo.getCodeState() == 5)
             {
             }
         }
     }
 
-    private bool CorrectCollision(Collision2D collision) {
-        return collision.gameObject.tag == "Ball" + ballState && this.gameObject.tag == "Line" + lineState;
+    private bool CheckCorrectCollision(Collision2D collision)
+    {
+        return collision.gameObject.tag == "Ball" + codeInfo.getBallState()
+            && this.gameObject.tag == "Line" + codeInfo.getLineState();
     }
 
     private void OnBecameInvisible()

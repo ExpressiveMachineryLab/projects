@@ -34,6 +34,8 @@ public class SelectionManager : MonoBehaviour
 
     private void SetSelection(GameObject selectedGameObject)
     {
+        Debug.Log("selected");
+
         selectedObject.transform.GetChild(0).gameObject.SetActive(false);
         selectedObject = selectedGameObject;
         selectedObject.transform.GetChild(0).gameObject.SetActive(true);
