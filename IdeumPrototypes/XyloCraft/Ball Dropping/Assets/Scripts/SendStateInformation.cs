@@ -17,6 +17,14 @@ public class SendStateInformation : MonoBehaviour
         localCodeStateDropdown.onValueChanged.AddListener(delegate {
             CodeStateHandler(localCodeStateDropdown);
         });
+
+        localBallStateDropdown.onValueChanged.AddListener(delegate {
+            BallStateHandler(localBallStateDropdown);
+        });
+
+        localLineStateDropdown.onValueChanged.AddListener(delegate {
+            LineStateHandler(localLineStateDropdown);
+        });
     }
 
     // Update is called once per frame
@@ -26,22 +34,30 @@ public class SendStateInformation : MonoBehaviour
         if (localCodeStateDropdown.value != codeInfo.getCodeState())
         {
             localCodeStateDropdown.value = codeInfo.getCodeState();
-            //codeInfo.ChangeCodeState(localCodeStateDropdown.value);
         }
         if (localBallStateDropdown.value != codeInfo.getBallState())
         {
-            codeInfo.ChangeBallState(localBallStateDropdown.value);
+            localBallStateDropdown.value = codeInfo.getBallState();
         }
         if (localLineStateDropdown.value != codeInfo.getLineState())
         {
-            codeInfo.ChangeLineState(localLineStateDropdown.value);
+            localLineStateDropdown.value = codeInfo.getLineState();
         }
     }
 
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
-        Debug.Log("update info");
         codeInfo.ChangeCodeState(localCodeStateDropdown.value);
+    }
+
+    private void BallStateHandler(Dropdown localBallStateDropdown)
+    {
+        codeInfo.ChangeBallState(localBallStateDropdown.value);
+    }
+
+    private void LineStateHandler(Dropdown localLineStateDropdown)
+    {
+        codeInfo.ChangeLineState(localLineStateDropdown.value);
     }
 }
