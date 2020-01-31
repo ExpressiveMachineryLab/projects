@@ -8,7 +8,7 @@ public class Line : MonoBehaviour
     public Sprite originalSprite;
     public Sprite hitSprite;
 
-    public CodeStateInformation codeInfo;
+    private CodeStateInformation codeInfo;
 
     private float startPosX;
     private float startPosY;
@@ -23,6 +23,8 @@ public class Line : MonoBehaviour
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
+        codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
+
     }
 
     // Update is called once per frame

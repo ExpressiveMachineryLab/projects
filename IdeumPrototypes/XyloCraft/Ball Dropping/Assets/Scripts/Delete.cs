@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Delete : MonoBehaviour
 {
-    public SelectionManager selectedObject;
+    public SelectionManager selectionManager;
 
     public void OnClickDelete()
     {
-        Debug.Log(selectedObject.gameObject);
-        //Destroy(selectedObject);
+        Destroy(selectionManager.selectedObject.gameObject);
+        // null 처리 
     }
 }
