@@ -14,15 +14,19 @@ public class SendStateInformation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        localCodeStateDropdown.onValueChanged.AddListener(delegate {
+            CodeStateHandler(localCodeStateDropdown);
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
+        // if different, changes local info
         if (localCodeStateDropdown.value != codeInfo.getCodeState())
         {
-            codeInfo.ChangeCodeState(localCodeStateDropdown.value);
+            localCodeStateDropdown.value = codeInfo.getCodeState();
+            //codeInfo.ChangeCodeState(localCodeStateDropdown.value);
         }
         if (localBallStateDropdown.value != codeInfo.getBallState())
         {
@@ -34,4 +38,10 @@ public class SendStateInformation : MonoBehaviour
         }
     }
 
+    // if change, sets info hub
+    private void CodeStateHandler(Dropdown localCodeStateDropdown)
+    {
+        Debug.Log("update info");
+        codeInfo.ChangeCodeState(localCodeStateDropdown.value);
+    }
 }
