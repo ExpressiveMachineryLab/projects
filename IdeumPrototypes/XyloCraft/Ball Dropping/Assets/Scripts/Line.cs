@@ -9,6 +9,7 @@ public class Line : MonoBehaviour
     public Sprite hitSprite;
 
     private CodeStateInformation codeInfo;
+    private SoundManager soundMan;
 
     private float startPosX;
     private float startPosY;
@@ -18,13 +19,13 @@ public class Line : MonoBehaviour
     AudioSource playClip;
 
     public AudioClip collisionSound;
-
+    
     void Start()
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
         codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
-
+        soundMan = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -111,9 +112,9 @@ public class Line : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
     }
-    private IEnumerator ChangePitch(float seconds, float pitchLevel)
+    private IEnumerator ChangePitch(float seconds, AudioClip audioClip)
     {
-        playClip.pitch = pitchLevel;
+        playClip.PlayOneShot(audioClip);
         MakeSound();
         yield return new WaitForSeconds(seconds);
         playClip.pitch = 1.0f;
@@ -138,25 +139,33 @@ public class Line : MonoBehaviour
             //  Loop
             if (codeInfo.getCodeState() == 2)
             {
-                // pass in how many times to loop
-                StartCoroutine(LoopSound(1f, 5));
+                Debug.Log(codeInfo.getCodeExtraState());
+                StartCoroutine(LoopSound(1f, codeInfo.getCodeExtraState() + 2));
             }
             //  Increase Pitch
             if (codeInfo.getCodeState() == 3)
             {
-                StartCoroutine(ChangePitch(0.2f, 2.0f));
+                playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState() + 1));
+                //StartCoroutine(ChangePitch(0.2f, 
+                //    soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState())));
             }
 
             //  Decrease Pitch
             if (codeInfo.getCodeState() == 4)
             {
-                StartCoroutine(ChangePitch(0.2f, 0.75f));
+                playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState() + 1));
+                //StartCoroutine(ChangePitch(0.2f,
+                //    soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState())));
             }
 
             //  Change Color
             if (codeInfo.getCodeState() == 5)
             {
             }
+        }
+        else
+        {
+            MakeSound();
         }
     }
 

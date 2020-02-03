@@ -8,7 +8,6 @@ public class Delete : MonoBehaviour
 
     public void OnClickDelete()
     {
-        Destroy(selectionManager.selectedObject.gameObject);
-        // null 처리 
+        selectionManager.DeleteSelection(selectionManager.selectedObject.gameObject);
     }
 }

@@ -8,6 +8,7 @@ public class SendStateInformation : MonoBehaviour
     public Dropdown localCodeStateDropdown;
     public Dropdown localBallStateDropdown;
     public Dropdown localLineStateDropdown;
+    public Dropdown localCodeStateExtraDropdown;
 
     public CodeStateInformation codeInfo;
 
@@ -25,6 +26,10 @@ public class SendStateInformation : MonoBehaviour
         localLineStateDropdown.onValueChanged.AddListener(delegate {
             LineStateHandler(localLineStateDropdown);
         });
+
+        localCodeStateExtraDropdown.onValueChanged.AddListener(delegate {
+            CodeStateExtraHandler(localCodeStateExtraDropdown);
+        });
     }
 
     // Update is called once per frame
@@ -34,6 +39,15 @@ public class SendStateInformation : MonoBehaviour
         if (localCodeStateDropdown.value != codeInfo.getCodeState())
         {
             localCodeStateDropdown.value = codeInfo.getCodeState();
+
+            if (codeInfo.getCodeState() > 1)
+            {
+                localCodeStateExtraDropdown.gameObject.SetActive(true);
+            }
+            else
+            {
+                localCodeStateExtraDropdown.gameObject.SetActive(false);
+            }
         }
         if (localBallStateDropdown.value != codeInfo.getBallState())
         {
@@ -43,12 +57,25 @@ public class SendStateInformation : MonoBehaviour
         {
             localLineStateDropdown.value = codeInfo.getLineState();
         }
+        if (localCodeStateExtraDropdown.value != codeInfo.getCodeExtraState())
+        {
+            localCodeStateExtraDropdown.value = codeInfo.getCodeExtraState();
+        }
     }
 
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
         codeInfo.ChangeCodeState(localCodeStateDropdown.value);
+
+        if (codeInfo.getCodeState() > 1)
+        {
+            localCodeStateExtraDropdown.gameObject.SetActive(true);
+        }
+        else
+        {
+            localCodeStateExtraDropdown.gameObject.SetActive(false);
+        }
     }
 
     private void BallStateHandler(Dropdown localBallStateDropdown)
@@ -59,5 +86,10 @@ public class SendStateInformation : MonoBehaviour
     private void LineStateHandler(Dropdown localLineStateDropdown)
     {
         codeInfo.ChangeLineState(localLineStateDropdown.value);
+    }
+
+    private void CodeStateExtraHandler(Dropdown localCodeStateExtraDropdown)
+    {
+        codeInfo.ChangeCodeExtraState(localCodeStateExtraDropdown.value);
     }
 }

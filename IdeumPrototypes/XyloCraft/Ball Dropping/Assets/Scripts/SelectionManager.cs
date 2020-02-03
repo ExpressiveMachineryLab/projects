@@ -27,17 +27,26 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    public void NewSelection(GameObject selectedGameObject) 
+    private void SetSelection(GameObject selectedGameObject)
+    {
+        Debug.Log("selected");
+        if (selectedObject != null)
+        {
+            selectedObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        
+        selectedObject = selectedGameObject;
+        selectedObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void NewSelection(GameObject selectedGameObject)
     {
         SetSelection(selectedGameObject);
     }
 
-    private void SetSelection(GameObject selectedGameObject)
+    public void DeleteSelection(GameObject selectedGameObject)
     {
-        Debug.Log("selected");
-
-        selectedObject.transform.GetChild(0).gameObject.SetActive(false);
-        selectedObject = selectedGameObject;
-        selectedObject.transform.GetChild(0).gameObject.SetActive(true);
+        selectedObject = null;
+        Destroy(selectedObject.gameObject);
     }
 }

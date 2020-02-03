@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalSprite: {fileID: 21300000, guid: d543fe99986babc4499d1ff9d07c804d, type: 3}
   hitSprite: {fileID: 21300000, guid: 4dbd2c0a59863fb49b4e8bb4c9743b4f, type: 3}
-  collisionSound: {fileID: 8300000, guid: 4b6c6c9295796784eaef2e0056682fe0, type: 3}
+  collisionSound: {fileID: 8300000, guid: 906d8735ac094486b9e438c326397128, type: 3}
 --- !u!82 &5973569479113152227
 AudioSource:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4b6c6c9295796784eaef2e0056682fe0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 906d8735ac094486b9e438c326397128, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
