@@ -10,10 +10,13 @@ public class Line : MonoBehaviour
 
     private CodeStateInformation codeInfo;
     private SoundManager soundMan;
+    private LineArray lineArray;
 
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
+
+    private int pitchLevel = 0;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -26,6 +29,7 @@ public class Line : MonoBehaviour
         playClip = GetComponent<AudioSource>();
         codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
         soundMan = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
     }
 
     // Update is called once per frame
@@ -66,7 +70,7 @@ public class Line : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(codeInfo.getCodeState());
+        //Debug.Log(codeInfo.getCodeState());
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
     }
@@ -91,7 +95,7 @@ public class Line : MonoBehaviour
         thisLineObject.sprite = originalSprite;
     }
 
-    private void MakeSound()
+    public void MakeSound()
     {
         playClip.clip = collisionSound;
         playClip.Play();
@@ -120,6 +124,25 @@ public class Line : MonoBehaviour
         playClip.pitch = 1.0f;
     }
 
+    private IEnumerator ChangeColor(float seconds, GameObject oldColor, GameObject newColor)
+    {
+        //playClip.PlayOneShot(audioClip);
+        //MakeSound();
+
+        //Debug.Log(newColor.GetComponent<Line>());
+        //newColor.GetComponent<Line>().MakeSound();
+        //(Line) newColor.MakeSound();
+        newColor.transform.GetChild(0).gameObject.SetActive(false);
+        //Debug.Log(soundMan.GetAudio(codeInfo.getColorState(), pitchLevel));
+        playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getColorState(), pitchLevel));
+
+
+        yield return new WaitForSeconds(seconds);
+        Destroy(this.gameObject);
+
+        //playClip.pitch = 1.0f;
+    }
+
     private void PerformCodeBehvaior(Collision2D collision)
     {
         // None
@@ -139,28 +162,48 @@ public class Line : MonoBehaviour
             //  Loop
             if (codeInfo.getCodeState() == 2)
             {
-                Debug.Log(codeInfo.getCodeExtraState());
-                StartCoroutine(LoopSound(1f, codeInfo.getCodeExtraState() + 2));
+                StartCoroutine(LoopSound(1f, codeInfo.getLoopState() + 2));
             }
-            //  Increase Pitch
+            //  Increase Pitch + transform width!!
             if (codeInfo.getCodeState() == 3)
             {
-                playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState() + 1));
-                //StartCoroutine(ChangePitch(0.2f, 
-                //    soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState())));
-            }
+                // ++
+                if (codeInfo.getPitchState() == 0)
+                {
+                    if (pitchLevel < 4)
+                    {
+                        pitchLevel++;
+                        this.gameObject.transform.localScale += new Vector3(0, 0.2f, 0);
+                        this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.1f, 0);
+                    }
+                }
 
-            //  Decrease Pitch
-            if (codeInfo.getCodeState() == 4)
-            {
-                playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState() + 1));
-                //StartCoroutine(ChangePitch(0.2f,
-                //    soundMan.GetAudio(codeInfo.getLineState(), codeInfo.getCodeExtraState())));
+                // --
+                else if (codeInfo.getPitchState() == 1)
+                {
+                    if (pitchLevel > 0)
+                    {
+                        pitchLevel--;
+                        this.gameObject.transform.localScale -= new Vector3(0, 0.2f, 0);
+                        this.gameObject.transform.GetChild(0).localScale += new Vector3(0, 0.1f, 0);
+                    }
+                }
+                //Debug.Log(codeInfo.getLineState());
+                playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getLineState(), pitchLevel));
+
             }
 
             //  Change Color
-            if (codeInfo.getCodeState() == 5)
+            if (codeInfo.getCodeState() == 4)
             {
+                // switch gameobject -> destroy + instantiate
+
+
+                //Destroy(this.gameObject);
+                GameObject newColor = Instantiate(lineArray.GetObject(codeInfo.getColorState()),
+                    this.gameObject.transform.position, this.gameObject.transform.rotation);
+                StartCoroutine(ChangeColor(1f, this.gameObject, newColor));
+                //MakeSound();
             }
         }
         else
@@ -179,4 +222,6 @@ public class Line : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    //public AudioClip
 }

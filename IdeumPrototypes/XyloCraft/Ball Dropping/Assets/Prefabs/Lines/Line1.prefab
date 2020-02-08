@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1694848394240150849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.5, y: -2.1, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.15, z: 0}
   m_Children:
   - {fileID: 8662227335200332358}
   m_Father: {fileID: 0}
@@ -137,7 +137,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b669f8fa2e684e2b923d78c8fbe1667, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -287,6 +287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SelectedBG
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655218898352590917, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71dd4abe6daff84ea0d9f57bad11f3f, type: 3}

@@ -6,14 +6,13 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip[] BlueSounds;
     public AudioClip[] GreenSounds;
-    public AudioClip[] PinkSounds;
+    //public AudioClip[] PinkSounds;
     public AudioClip[] RedSounds;
     public AudioClip[] YellowSounds;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(BlueSounds);
     }
 
     // Update is called once per frame
@@ -34,13 +33,9 @@ public class SoundManager : MonoBehaviour
         }
         else if (lineColor == 2)
         {
-            return PinkSounds[pitch];
-        }
-        else if (lineColor == 3)
-        {
             return RedSounds[pitch];
         }
-        else if (lineColor == 4)
+        else if (lineColor == 3)
         {
             return YellowSounds[pitch];
         }

@@ -8,7 +8,9 @@ public class SendStateInformation : MonoBehaviour
     public Dropdown localCodeStateDropdown;
     public Dropdown localBallStateDropdown;
     public Dropdown localLineStateDropdown;
-    public Dropdown localCodeStateExtraDropdown;
+    public Dropdown localLoopDropdown;
+    public Dropdown localPitchDropdown;
+    public Dropdown localColorDropdown;
 
     public CodeStateInformation codeInfo;
 
@@ -27,8 +29,16 @@ public class SendStateInformation : MonoBehaviour
             LineStateHandler(localLineStateDropdown);
         });
 
-        localCodeStateExtraDropdown.onValueChanged.AddListener(delegate {
-            CodeStateExtraHandler(localCodeStateExtraDropdown);
+        localLoopDropdown.onValueChanged.AddListener(delegate {
+            LoopStateHandler(localLoopDropdown);
+        });
+
+        localPitchDropdown.onValueChanged.AddListener(delegate {
+            PitchStateHandler(localPitchDropdown);
+        });
+
+        localColorDropdown.onValueChanged.AddListener(delegate {
+            ColorStateHandler(localColorDropdown);
         });
     }
 
@@ -40,13 +50,29 @@ public class SendStateInformation : MonoBehaviour
         {
             localCodeStateDropdown.value = codeInfo.getCodeState();
 
-            if (codeInfo.getCodeState() > 1)
+            if (codeInfo.getCodeState() == 2)
             {
-                localCodeStateExtraDropdown.gameObject.SetActive(true);
+                localLoopDropdown.gameObject.SetActive(true);
+                localPitchDropdown.gameObject.SetActive(false);
+                localColorDropdown.gameObject.SetActive(false);
+            }
+            else if (codeInfo.getCodeState() == 3)
+            {
+                localLoopDropdown.gameObject.SetActive(false);
+                localPitchDropdown.gameObject.SetActive(true);
+                localColorDropdown.gameObject.SetActive(false);
+            }
+            else if (codeInfo.getCodeState() == 4)
+            {
+                localLoopDropdown.gameObject.SetActive(false);
+                localPitchDropdown.gameObject.SetActive(false);
+                localColorDropdown.gameObject.SetActive(true);
             }
             else
             {
-                localCodeStateExtraDropdown.gameObject.SetActive(false);
+                localLoopDropdown.gameObject.SetActive(false);
+                localPitchDropdown.gameObject.SetActive(false);
+                localColorDropdown.gameObject.SetActive(false);
             }
         }
         if (localBallStateDropdown.value != codeInfo.getBallState())
@@ -57,9 +83,18 @@ public class SendStateInformation : MonoBehaviour
         {
             localLineStateDropdown.value = codeInfo.getLineState();
         }
-        if (localCodeStateExtraDropdown.value != codeInfo.getCodeExtraState())
+
+        if (localLoopDropdown.value != codeInfo.getLoopState())
         {
-            localCodeStateExtraDropdown.value = codeInfo.getCodeExtraState();
+            localLoopDropdown.value = codeInfo.getLoopState();
+        }
+        if (localPitchDropdown.value != codeInfo.getPitchState())
+        {
+            localPitchDropdown.value = codeInfo.getPitchState();
+        }
+        if (localColorDropdown.value != codeInfo.getColorState())
+        {
+            localColorDropdown.value = codeInfo.getColorState();
         }
     }
 
@@ -68,13 +103,29 @@ public class SendStateInformation : MonoBehaviour
     {
         codeInfo.ChangeCodeState(localCodeStateDropdown.value);
 
-        if (codeInfo.getCodeState() > 1)
+        if (codeInfo.getCodeState() == 2)
         {
-            localCodeStateExtraDropdown.gameObject.SetActive(true);
+            localLoopDropdown.gameObject.SetActive(true);
+            localPitchDropdown.gameObject.SetActive(false);
+            localColorDropdown.gameObject.SetActive(false);
+        }
+        else if (codeInfo.getCodeState() == 3)
+        {
+            localLoopDropdown.gameObject.SetActive(false);
+            localPitchDropdown.gameObject.SetActive(true);
+            localColorDropdown.gameObject.SetActive(false);
+        }
+        else if (codeInfo.getCodeState() == 4)
+        {
+            localLoopDropdown.gameObject.SetActive(false);
+            localPitchDropdown.gameObject.SetActive(false);
+            localColorDropdown.gameObject.SetActive(true);
         }
         else
         {
-            localCodeStateExtraDropdown.gameObject.SetActive(false);
+            localLoopDropdown.gameObject.SetActive(false);
+            localPitchDropdown.gameObject.SetActive(false);
+            localColorDropdown.gameObject.SetActive(false);
         }
     }
 
@@ -88,8 +139,18 @@ public class SendStateInformation : MonoBehaviour
         codeInfo.ChangeLineState(localLineStateDropdown.value);
     }
 
-    private void CodeStateExtraHandler(Dropdown localCodeStateExtraDropdown)
+    private void LoopStateHandler(Dropdown localLoopStateDropdown)
     {
-        codeInfo.ChangeCodeExtraState(localCodeStateExtraDropdown.value);
+        codeInfo.ChangeLoopState(localLoopStateDropdown.value);
+    }
+
+    private void PitchStateHandler(Dropdown localPitchStateDropdown)
+    {
+        codeInfo.ChangePitchState(localPitchStateDropdown.value);
+    }
+
+    private void ColorStateHandler(Dropdown localColorStateDropdown)
+    {
+        codeInfo.ChangeColorState(localColorStateDropdown.value);
     }
 }

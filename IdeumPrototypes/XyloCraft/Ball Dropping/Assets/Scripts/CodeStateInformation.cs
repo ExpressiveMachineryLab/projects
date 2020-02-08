@@ -13,7 +13,9 @@ public class CodeStateInformation : MonoBehaviour
     private int codeState;
     private int ballState;
     private int lineState;
-    private int codeStateExtra;
+    private int loopState;
+    private int pitchState;
+    private int colorState;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +36,8 @@ public class CodeStateInformation : MonoBehaviour
     public void ChangeCodeState(int newCodeState)
     {
         codeState = newCodeState;
-        //codeStateExtra = newCodeStateExtra;
-
-
+        Debug.Log("Changed 'if' ball color to: ");
+        //Backlog(codeState, ballState, lineState, );
     }
 
     public void ChangeBallState(int newBallState)
@@ -49,9 +50,19 @@ public class CodeStateInformation : MonoBehaviour
         lineState = newLineState;
     }
 
-    public void ChangeCodeExtraState(int newCodeStateExtra)
+    public void ChangeLoopState(int newLoopState)
     {
-        codeStateExtra = newCodeStateExtra;
+        loopState = newLoopState;
+    }
+
+    public void ChangePitchState(int newPitchState)
+    {
+        pitchState = newPitchState;
+    }
+
+    public void ChangeColorState(int newColorState)
+    {
+        colorState = newColorState;
     }
 
     public int getCodeState()
@@ -69,13 +80,29 @@ public class CodeStateInformation : MonoBehaviour
         return lineState;
     }
 
-    public int getCodeExtraState()
+    public int getLoopState()
     {
-        return codeStateExtra;
+        return loopState;
     }
 
-    //private void activateExtraDropdown(bool active)
+    public int getPitchState()
+    {
+        return pitchState;
+    }
+
+    public int getColorState()
+    {
+        return colorState;
+    }
+
+    private void PrintLog(string log)
+    {
+        Debug.Log(log);
+    }
+
+    //private void Backlog(int codeState, int ballState, int lineState, 
+    //    int loopState, int pitchState,int colorState)
     //{
-    //    codeStateExtraDropdown.gameObject.SetActive(active);
+
     //}
 }

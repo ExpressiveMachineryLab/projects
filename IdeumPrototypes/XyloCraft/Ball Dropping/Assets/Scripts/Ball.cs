@@ -21,6 +21,7 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = (rb.velocity.normalized) * speed;
     }
+
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
