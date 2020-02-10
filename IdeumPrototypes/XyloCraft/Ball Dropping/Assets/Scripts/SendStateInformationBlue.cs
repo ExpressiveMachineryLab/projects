@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class SendStateInformationCorner : MonoBehaviour
+public class SendStateInformationBlue : MonoBehaviour
 {
+    public GameObject controlColor;
+
     public Dropdown localCodeStateDropdown;
-    public Dropdown localBallStateDropdown;
     public Dropdown localLineStateDropdown;
     public Dropdown localLoopDropdown;
     public Dropdown localPitchDropdown;
@@ -20,11 +21,7 @@ public class SendStateInformationCorner : MonoBehaviour
         localCodeStateDropdown.onValueChanged.AddListener(delegate {
             CodeStateHandler(localCodeStateDropdown);
         });
-
-        localBallStateDropdown.onValueChanged.AddListener(delegate {
-            BallStateHandler(localBallStateDropdown);
-        });
-
+       
         localLineStateDropdown.onValueChanged.AddListener(delegate {
             LineStateHandler(localLineStateDropdown);
         });
@@ -74,10 +71,6 @@ public class SendStateInformationCorner : MonoBehaviour
                 localPitchDropdown.gameObject.SetActive(false);
                 localColorDropdown.gameObject.SetActive(false);
             }
-        }
-        if (localBallStateDropdown.value != codeInfo.getBallState())
-        {
-            localBallStateDropdown.value = codeInfo.getBallState();
         }
         if (localLineStateDropdown.value != codeInfo.getLineState())
         {
