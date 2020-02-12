@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3237701782724201539}
   - component: {fileID: 3237701782724201540}
   - component: {fileID: 4556376014507163549}
-  - component: {fileID: -973891866741165786}
+  - component: {fileID: 8972111729247174873}
   m_Layer: 10
   m_Name: Line2
   m_TagString: Line1
@@ -206,7 +206,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-973891866741165786
+--- !u!114 &8972111729247174873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3237701782724201543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa35d95ac5c1bc429f5e9379e778b57, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f8ac07cb9d65c341b46c6bd60ab33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   originalSprite: {fileID: 21300000, guid: f8ccd90bf5705824189b9951f87d3766, type: 3}

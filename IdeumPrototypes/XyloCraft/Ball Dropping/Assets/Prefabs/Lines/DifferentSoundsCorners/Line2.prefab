@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3237701782724201539}
   - component: {fileID: 3237701782724201540}
   - component: {fileID: 4556376014507163549}
-  - component: {fileID: 4433695414081183715}
+  - component: {fileID: -973891866741165786}
   m_Layer: 10
-  m_Name: Line7
+  m_Name: Line2
   m_TagString: Line1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: da2735eada1614913a62cd9f66ce126c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f89f75d1a5741412485345dd1b1b519b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -206,7 +206,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4433695414081183715
+--- !u!114 &-973891866741165786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,12 +215,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3237701782724201543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd54fcbef8c15e846bef527c5d8c4d68, type: 3}
+  m_Script: {fileID: 11500000, guid: 2aa35d95ac5c1bc429f5e9379e778b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   originalSprite: {fileID: 21300000, guid: f8ccd90bf5705824189b9951f87d3766, type: 3}
   hitSprite: {fileID: 21300000, guid: 8295f64f4fb8b6044b07b7640ae283a0, type: 3}
-  collisionSound: {fileID: 8300000, guid: da2735eada1614913a62cd9f66ce126c, type: 3}
+  collisionSound: {fileID: 8300000, guid: f89f75d1a5741412485345dd1b1b519b, type: 3}
 --- !u!1001 &5800785427222143895
 PrefabInstance:
   m_ObjectHideFlags: 0

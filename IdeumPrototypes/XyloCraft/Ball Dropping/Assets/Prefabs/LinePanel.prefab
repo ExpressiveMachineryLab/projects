@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloneObject: {fileID: 1694848394240150849, guid: 97a22e571c957cd4396addd628c4bbd7,
+  cloneObject: {fileID: 1694848394240150849, guid: 59806144761f3664a94ad730b1d42738,
     type: 3}
   SelectionManagerCode: {fileID: 0}
 --- !u!1 &2833555946679525296
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloneObject: {fileID: 1624983559148059594, guid: aa95d4e891c9efb4daeb9d643d95f797,
+  cloneObject: {fileID: 1624983559148059594, guid: d37a83a2f5e18b546a76923ed190a1c2,
     type: 3}
   SelectionManagerCode: {fileID: 0}
 --- !u!1 &5926711863241109483
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloneObject: {fileID: 92337331368953774, guid: f577724bb0291ae478864b05fd5ebe63,
+  cloneObject: {fileID: 92337331368953774, guid: 3da03a119b8049b48bb7f5bd0ada69f5,
     type: 3}
   SelectionManagerCode: {fileID: 0}
 --- !u!1 &7810572985661925009
@@ -430,6 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloneObject: {fileID: 3237701782724201543, guid: 3f02f0f3e20d30141a918cf750de329c,
+  cloneObject: {fileID: 3237701782724201543, guid: c6225430ae3d5d64fa75215329a7cd73,
     type: 3}
   SelectionManagerCode: {fileID: 0}

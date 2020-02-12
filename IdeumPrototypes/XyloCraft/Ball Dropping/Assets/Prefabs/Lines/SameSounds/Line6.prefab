@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1694848394240150848}
   - component: {fileID: 1694848394240150853}
   - component: {fileID: 1694848394240150850}
-  - component: {fileID: 1694848394240150851}
   - component: {fileID: 1571363998}
+  - component: {fileID: -5569089876883688950}
   m_Layer: 10
   m_Name: Line6
   m_TagString: Line0
@@ -110,21 +110,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 91.51982, y: 7.4178886}
   m_EdgeRadius: 0
---- !u!114 &1694848394240150851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694848394240150849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f8ac07cb9d65c341b46c6bd60ab33d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalSprite: {fileID: 21300000, guid: e57010c6f6df2434ab2c8d1eae207ded, type: 3}
-  hitSprite: {fileID: 21300000, guid: a93001c97667bc94999e55df497a2bc9, type: 3}
-  collisionSound: {fileID: 8300000, guid: 906d8735ac094486b9e438c326397128, type: 3}
 --- !u!82 &1571363998
 AudioSource:
   m_ObjectHideFlags: 0
@@ -221,6 +206,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5569089876883688950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694848394240150849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd54fcbef8c15e846bef527c5d8c4d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSprite: {fileID: 21300000, guid: e57010c6f6df2434ab2c8d1eae207ded, type: 3}
+  hitSprite: {fileID: 21300000, guid: a93001c97667bc94999e55df497a2bc9, type: 3}
+  collisionSound: {fileID: 8300000, guid: 906d8735ac094486b9e438c326397128, type: 3}
 --- !u!1001 &1957914226138547643
 PrefabInstance:
   m_ObjectHideFlags: 0
