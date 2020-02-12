@@ -20,7 +20,7 @@ public class Line3 : MonoBehaviour
     private float startPosY;
     private bool isBeingHeld = false;
 
-    private int pitchLevel = 0;
+    private int pitchLevel = 1;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -134,7 +134,36 @@ public class Line3 : MonoBehaviour
 
     private IEnumerator ChangeColor(float seconds, GameObject oldColor, GameObject newColor, SendStateInformation3 ballColor)
     {
+        int pitch = oldColor.GetComponent<Line3>().getPitchLevel();
         newColor.transform.GetChild(0).gameObject.SetActive(false);
+        newColor.GetComponent<Line3>().setPitchLevel(pitch);
+        // 1
+        if (pitch == 1)
+        {
+            newColor.transform.localScale = new Vector3(0.1f, 0.15f, 0);
+            newColor.transform.GetChild(0).localScale = new Vector3(0, 0.25f, 0);
+        }
+
+        // 2
+        if (pitch == 2)
+        {
+            newColor.transform.localScale = new Vector3(0.1f, 0.35f, 0);
+            newColor.transform.GetChild(0).localScale = new Vector3(0, 0.2f, 0);
+        }
+
+        // 3
+        if (pitch == 3)
+        {
+            newColor.transform.localScale = new Vector3(0.1f, 0.55f, 0);
+            newColor.transform.GetChild(0).localScale -= new Vector3(0, 0.15f, 0);
+        }
+
+        // 4
+        if (pitch == 4)
+        {
+            newColor.transform.localScale = new Vector3(0.1f, 0.75f, 0);
+            newColor.transform.GetChild(0).localScale -= new Vector3(0, 0.01f, 0);
+        }
         playClip.PlayOneShot(soundMan.GetAudio(ballColor.getBallNumber(), pitchLevel));
 
         yield return new WaitForSeconds(seconds);
@@ -201,29 +230,62 @@ public class Line3 : MonoBehaviour
         //  Increase Pitch + transform width!!
         if (ballColor.getCodeState() == 3)
         {
-            // ++
+            Debug.Log("Change Pitch");
+            // 1
             if (ballColor.getPitchState() == 0)
             {
-                if (pitchLevel < 4)
+                pitchLevel = 1;
+                this.gameObject.transform.localScale = new Vector3(0.1f, 0.15f, 0);
+                this.gameObject.transform.GetChild(0).localScale = new Vector3(0, 0.25f, 0);
+            }
+
+            // 2
+            if (ballColor.getPitchState() == 1)
+            {
+                pitchLevel = 2;
+                this.gameObject.transform.localScale = new Vector3(0.1f, 0.35f, 0);
+                this.gameObject.transform.GetChild(0).localScale = new Vector3(0, 0.2f, 0);
+            }
+
+            // 3
+            if (ballColor.getPitchState() == 2)
+            {
+                pitchLevel = 3;
+                this.gameObject.transform.localScale = new Vector3(0.1f, 0.55f, 0);
+                this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.15f, 0);
+            }
+
+            // 4
+            if (ballColor.getPitchState() == 3)
+            {
+                pitchLevel = 4;
+                this.gameObject.transform.localScale = new Vector3(0.1f, 0.75f, 0);
+                this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.01f, 0);
+            }
+
+            // ++
+            if (ballColor.getPitchState() == 4)
+            {
+                if (pitchLevel < 5)
                 {
                     pitchLevel++;
                     this.gameObject.transform.localScale += new Vector3(0, 0.2f, 0);
-                    this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.1f, 0);
+                    this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.05f, 0);
                 }
             }
 
             // --
-            else if (ballColor.getPitchState() == 1)
+            else if (ballColor.getPitchState() == 5)
             {
-                if (pitchLevel > 0)
+                if (pitchLevel > 1)
                 {
                     pitchLevel--;
                     this.gameObject.transform.localScale -= new Vector3(0, 0.2f, 0);
-                    this.gameObject.transform.GetChild(0).localScale += new Vector3(0, 0.1f, 0);
+                    this.gameObject.transform.GetChild(0).localScale += new Vector3(0, 0.05f, 0);
                 }
             }
             //Debug.Log(codeInfo.getLineState());
-            playClip.PlayOneShot(soundMan.GetAudio(ballColor.getLineState(), pitchLevel));
+            playClip.PlayOneShot(soundMan.GetAudio(ballColor.getLineState(), pitchLevel - 1));
 
         }
 
@@ -239,6 +301,16 @@ public class Line3 : MonoBehaviour
             StartCoroutine(ChangeColor(1f, this.gameObject, newColor, ballColor));
             //MakeSound();
         }
+    }
+
+    public int getPitchLevel()
+    {
+        return pitchLevel;
+    }
+
+    public void setPitchLevel(int newPitch)
+    {
+        pitchLevel = newPitch;
     }
 
     private void OnBecameInvisible()

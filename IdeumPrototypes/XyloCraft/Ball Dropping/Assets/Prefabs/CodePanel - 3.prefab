@@ -519,6 +519,14 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: 1
+      m_Image: {fileID: 0}
+    - m_Text: 2
+      m_Image: {fileID: 0}
+    - m_Text: 3
+      m_Image: {fileID: 0}
+    - m_Text: 4
+      m_Image: {fileID: 0}
     - m_Text: ++
       m_Image: {fileID: 0}
     - m_Text: --
@@ -2302,7 +2310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 23805dc6d30956f459a2940675577af6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abffe97fa50d1c14295b9ff6c36109c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2870,13 +2878,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc63c6e96493b64597a3f4d0ff31bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballNumber: 0
+  ballNumber: 1
   localCodeStateDropdown: {fileID: 2421603372772488187}
   localLineStateDropdown: {fileID: 2421603371785227818}
   localLoopDropdown: {fileID: 8903720656395017957}
   localPitchDropdown: {fileID: 6215010498996789487}
   localColorDropdown: {fileID: 8903720656231452492}
-  codeInfo: {fileID: 0}
 --- !u!1 &2421603372723536617
 GameObject:
   m_ObjectHideFlags: 0
