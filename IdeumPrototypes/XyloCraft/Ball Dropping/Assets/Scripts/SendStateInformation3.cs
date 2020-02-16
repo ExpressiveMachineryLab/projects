@@ -13,44 +13,22 @@ public class SendStateInformation3 : MonoBehaviour
     public Dropdown localPitchDropdown;
     public Dropdown localColorDropdown;
 
-    //public CodeStateInformation3 codeInfo;
-
     // Start is called before the first frame update
     void Start()
     { 
-        //codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation3>();
-
         localCodeStateDropdown.onValueChanged.AddListener(delegate {
             CodeStateHandler(localCodeStateDropdown);
         });
 
-        //localLineStateDropdown.onValueChanged.AddListener(delegate {
-        //    LineStateHandler(localLineStateDropdown);
-        //});
-
-        //localLoopDropdown.onValueChanged.AddListener(delegate {
-        //    LoopStateHandler(localLoopDropdown);
-        //});
-
-        //localPitchDropdown.onValueChanged.AddListener(delegate {
-        //    PitchStateHandler(localPitchDropdown);
-        //});
-
-        //localColorDropdown.onValueChanged.AddListener(delegate {
-        //    ColorStateHandler(localColorDropdown);
-        //});
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        localLineStateDropdown.onValueChanged.AddListener(delegate
+        {
+            LineStateHandler(localLineStateDropdown);
+        });
     }
 
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
-        //codeInfo.ChangeCodeState(localCodeStateDropdown.value);
-
         if (localCodeStateDropdown.value == 2)
         {
             localLoopDropdown.gameObject.SetActive(true);
@@ -107,28 +85,8 @@ public class SendStateInformation3 : MonoBehaviour
         return localColorDropdown.value;
     }
 
-    //private void BallStateHandler(Dropdown localBallStateDropdown)
-    //{
-    //    codeInfo.ChangeBallState(localBallStateDropdown.value);
-    //}
-
-    //private void LineStateHandler(Dropdown localLineStateDropdown)
-    //{
-    //    codeInfo.ChangeLineState(localLineStateDropdown.value);
-    //}
-
-    //private void LoopStateHandler(Dropdown localLoopStateDropdown)
-    //{
-    //    codeInfo.ChangeLoopState(localLoopStateDropdown.value);
-    //}
-
-    //private void PitchStateHandler(Dropdown localPitchStateDropdown)
-    //{
-    //    codeInfo.ChangePitchState(localPitchStateDropdown.value);
-    //}
-
-    //private void ColorStateHandler(Dropdown localColorStateDropdown)
-    //{
-    //    codeInfo.ChangeColorState(localColorStateDropdown.value);
-    //}
+    private void LineStateHandler(Dropdown localLineStateDropdown)
+    {
+        localCodeStateDropdown.value = 0;
+    }
 }

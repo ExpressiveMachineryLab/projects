@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17641258, y: 0.28955126}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 91.51982, y: 7.4178886}
+  m_Size: {x: 87, y: 2.3}
   m_EdgeRadius: 0
 --- !u!82 &5973569479113152227
 AudioSource:
@@ -231,12 +231,12 @@ PrefabInstance:
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}

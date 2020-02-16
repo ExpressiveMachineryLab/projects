@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Line3 : MonoBehaviour
 {
+    public int lineColor;
     public Sprite originalSprite;
     public Sprite hitSprite;
 
@@ -32,10 +33,10 @@ public class Line3 : MonoBehaviour
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
         //codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
-        blueBall = GameObject.Find("CodePanel - 3").GetComponent<SendStateInformation3>();
-        greenBall = GameObject.Find("CodePanel - 3 (3)").GetComponent<SendStateInformation3>();
-        redBall = GameObject.Find("CodePanel - 3 (1)").GetComponent<SendStateInformation3>();
-        yellowBall = GameObject.Find("CodePanel - 3 (2)").GetComponent<SendStateInformation3>();
+        blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
+        greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
+        redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformation3>();
+        yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
     }
@@ -82,13 +83,7 @@ public class Line3 : MonoBehaviour
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-        //playClip.Stop();
-    }
-
+    
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
     {
         Sprite ballOriginalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
@@ -105,8 +100,7 @@ public class Line3 : MonoBehaviour
 
     public void MakeSound()
     {
-        playClip.clip = collisionSound;
-        playClip.Play();
+        playClip.PlayOneShot(soundMan.GetAudio(lineColor, pitchLevel - 1));
     }
 
     private IEnumerator DestroyObject(float seconds)
@@ -131,52 +125,9 @@ public class Line3 : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         playClip.pitch = 1.0f;
     }
-
-    private IEnumerator ChangeColor(float seconds, GameObject oldColor, GameObject newColor, SendStateInformation3 ballColor)
-    {
-        int pitch = oldColor.GetComponent<Line3>().getPitchLevel();
-        newColor.transform.GetChild(0).gameObject.SetActive(false);
-        newColor.GetComponent<Line3>().setPitchLevel(pitch);
-        // 1
-        if (pitch == 1)
-        {
-            newColor.transform.localScale = new Vector3(0.1f, 0.15f, 0);
-            newColor.transform.GetChild(0).localScale = new Vector3(0, 0.25f, 0);
-        }
-
-        // 2
-        if (pitch == 2)
-        {
-            newColor.transform.localScale = new Vector3(0.1f, 0.35f, 0);
-            newColor.transform.GetChild(0).localScale = new Vector3(0, 0.2f, 0);
-        }
-
-        // 3
-        if (pitch == 3)
-        {
-            newColor.transform.localScale = new Vector3(0.1f, 0.55f, 0);
-            newColor.transform.GetChild(0).localScale -= new Vector3(0, 0.15f, 0);
-        }
-
-        // 4
-        if (pitch == 4)
-        {
-            newColor.transform.localScale = new Vector3(0.1f, 0.75f, 0);
-            newColor.transform.GetChild(0).localScale -= new Vector3(0, 0.01f, 0);
-        }
-        playClip.PlayOneShot(soundMan.GetAudio(ballColor.getBallNumber(), pitchLevel));
-
-        yield return new WaitForSeconds(seconds);
-        Destroy(this.gameObject);
-    }
-
+    
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        //// None
-        //if (codeInfo.getCodeState() == 0)
-        //{
-        //    MakeSound();
-        //}
         Debug.Log(collision.gameObject.tag);
         Debug.Log(this.gameObject.tag);
         if (collision.gameObject.tag == "Ball0" && this.gameObject.tag == "Line" + blueBall.getLineState())
@@ -195,18 +146,11 @@ public class Line3 : MonoBehaviour
         {
             PerformCode(yellowBall);
         }
-
         else
         {
             MakeSound();
         }
     }
-
-    //private bool CheckCorrectCollision(Collision2D collision)
-    //{
-    //    return collision.gameObject.tag == "Ball" + codeInfo.getBallState()
-    //        && this.gameObject.tag == "Line" + codeInfo.getLineState();
-    //}
 
     private void PerformCode(SendStateInformation3 ballColor)
     {
@@ -231,59 +175,29 @@ public class Line3 : MonoBehaviour
         if (ballColor.getCodeState() == 3)
         {
             Debug.Log("Change Pitch");
-            // 1
-            if (ballColor.getPitchState() == 0)
+            if (ballColor.getPitchState() < 5)
             {
-                pitchLevel = 1;
-                this.gameObject.transform.localScale = new Vector3(0.1f, 0.15f, 0);
-                this.gameObject.transform.GetChild(0).localScale = new Vector3(0, 0.25f, 0);
-            }
-
-            // 2
-            if (ballColor.getPitchState() == 1)
-            {
-                pitchLevel = 2;
-                this.gameObject.transform.localScale = new Vector3(0.1f, 0.35f, 0);
-                this.gameObject.transform.GetChild(0).localScale = new Vector3(0, 0.2f, 0);
-            }
-
-            // 3
-            if (ballColor.getPitchState() == 2)
-            {
-                pitchLevel = 3;
-                this.gameObject.transform.localScale = new Vector3(0.1f, 0.55f, 0);
-                this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.15f, 0);
-            }
-
-            // 4
-            if (ballColor.getPitchState() == 3)
-            {
-                pitchLevel = 4;
-                this.gameObject.transform.localScale = new Vector3(0.1f, 0.75f, 0);
-                this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.01f, 0);
+                pitchLevel = ballColor.getPitchState() + 1;
             }
 
             // ++
-            if (ballColor.getPitchState() == 4)
+            if (ballColor.getPitchState() == 5)
             {
                 if (pitchLevel < 5)
                 {
                     pitchLevel++;
-                    this.gameObject.transform.localScale += new Vector3(0, 0.2f, 0);
-                    this.gameObject.transform.GetChild(0).localScale -= new Vector3(0, 0.05f, 0);
                 }
             }
 
             // --
-            else if (ballColor.getPitchState() == 5)
+            else if (ballColor.getPitchState() == 6)
             {
                 if (pitchLevel > 1)
                 {
                     pitchLevel--;
-                    this.gameObject.transform.localScale -= new Vector3(0, 0.2f, 0);
-                    this.gameObject.transform.GetChild(0).localScale += new Vector3(0, 0.05f, 0);
                 }
             }
+            this.TransformLine(pitchLevel);
             //Debug.Log(codeInfo.getLineState());
             playClip.PlayOneShot(soundMan.GetAudio(ballColor.getLineState(), pitchLevel - 1));
 
@@ -292,14 +206,56 @@ public class Line3 : MonoBehaviour
         //  Change Color
         if (ballColor.getCodeState() == 4)
         {
-            // switch gameobject -> destroy + instantiate
-
-
-            //Destroy(this.gameObject);
             GameObject newColor = Instantiate(lineArray.GetObject(ballColor.getColorState()),
                 this.gameObject.transform.position, this.gameObject.transform.rotation);
-            StartCoroutine(ChangeColor(1f, this.gameObject, newColor, ballColor));
-            //MakeSound();
+
+            newColor.GetComponent<Line3>().setPitchLevel(this.getPitchLevel());
+
+            this.TransformLine(this.getPitchLevel());
+
+            Destroy(this.gameObject);
+            
+            newColor.transform.GetChild(0).gameObject.SetActive(false);
+            newColor.GetComponent<AudioSource>().PlayOneShot(soundMan.GetAudio(ballColor.getColorState(), pitchLevel - 1));
+            
+        }
+    }
+
+    private void TransformLine(int pitch)
+    {
+        // 1
+        if (pitchLevel == 1)
+        {
+            this.gameObject.transform.localScale = new Vector3(0.1f, 0.15f, 0);
+            this.gameObject.transform.GetChild(0).localScale = new Vector3(7.5f, 0.5f, 0);
+        }
+
+        // 2
+        if (pitchLevel == 2)
+        {
+            this.gameObject.transform.localScale = new Vector3(0.1f, 0.35f, 0);
+            this.gameObject.transform.GetChild(0).localScale = new Vector3(7.5f, 0.35f, 0);
+        }
+
+        // 3
+        if (pitchLevel == 3)
+        {
+            this.gameObject.transform.localScale = new Vector3(0.1f, 0.55f, 0);
+            this.gameObject.transform.GetChild(0).localScale = new Vector3(8f, 0.2f, 0);
+        }
+
+        // 4
+        if (pitchLevel == 4)
+        {
+            this.gameObject.transform.localScale = new Vector3(0.1f, 0.75f, 0);
+            this.gameObject.transform.GetChild(0).localScale = new Vector3(8f, 0.2f, 0);
+        }
+
+        // 5
+        if (pitchLevel == 5)
+        {
+            this.gameObject.transform.localScale = new Vector3(0.1f, 0.95f, 0);
+            this.gameObject.transform.GetChild(0).localScale = new Vector3(8.5f, 0.2f, 0);
         }
     }
 
@@ -317,6 +273,4 @@ public class Line3 : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
-    //public AudioClip
 }

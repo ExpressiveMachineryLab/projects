@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17641258, y: 0.28955126}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 91.51982, y: 7.4178886}
+  m_Size: {x: 87, y: 2.3}
   m_EdgeRadius: 0
 --- !u!82 &1571363998
 AudioSource:
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937ae3b7c0917554e83ee2588b820b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineColor: 0
   originalSprite: {fileID: 21300000, guid: e57010c6f6df2434ab2c8d1eae207ded, type: 3}
   hitSprite: {fileID: 21300000, guid: a93001c97667bc94999e55df497a2bc9, type: 3}
   collisionSound: {fileID: 8300000, guid: 8b669f8fa2e684e2b923d78c8fbe1667, type: 3}
@@ -231,12 +232,12 @@ PrefabInstance:
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}
@@ -282,6 +283,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142006698438778877, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8655218898352590917, guid: c71dd4abe6daff84ea0d9f57bad11f3f,
         type: 3}

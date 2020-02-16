@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class SendStateInformationSame : MonoBehaviour
 {
+    public int ballNumber;
+
     public Dropdown localCodeStateDropdown;
-    public Dropdown localBallStateDropdown;
     public Dropdown localLineStateDropdown;
     public Dropdown localLoopDropdown;
     public Dropdown localColorDropdown;
-
-    public CodeStateInformation codeInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -20,77 +19,21 @@ public class SendStateInformationSame : MonoBehaviour
             CodeStateHandler(localCodeStateDropdown);
         });
 
-        localBallStateDropdown.onValueChanged.AddListener(delegate {
-            BallStateHandler(localBallStateDropdown);
-        });
-
-        localLineStateDropdown.onValueChanged.AddListener(delegate {
+        localLineStateDropdown.onValueChanged.AddListener(delegate
+        {
             LineStateHandler(localLineStateDropdown);
         });
-
-        localLoopDropdown.onValueChanged.AddListener(delegate {
-            LoopStateHandler(localLoopDropdown);
-        });
-
-        localColorDropdown.onValueChanged.AddListener(delegate {
-            ColorStateHandler(localColorDropdown);
-        });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // if different, changes local info
-        if (localCodeStateDropdown.value != codeInfo.getCodeState())
-        {
-            localCodeStateDropdown.value = codeInfo.getCodeState();
-
-            if (codeInfo.getCodeState() == 2)
-            {
-                localLoopDropdown.gameObject.SetActive(true);
-                localColorDropdown.gameObject.SetActive(false);
-            }
-            else if (codeInfo.getCodeState() == 3)
-            {
-                localLoopDropdown.gameObject.SetActive(false);
-                localColorDropdown.gameObject.SetActive(true);
-            }
-            else
-            {
-                localLoopDropdown.gameObject.SetActive(false);
-                localColorDropdown.gameObject.SetActive(false);
-            }
-        }
-        if (localBallStateDropdown.value != codeInfo.getBallState())
-        {
-            localBallStateDropdown.value = codeInfo.getBallState();
-        }
-        if (localLineStateDropdown.value != codeInfo.getLineState())
-        {
-            localLineStateDropdown.value = codeInfo.getLineState();
-        }
-
-        if (localLoopDropdown.value != codeInfo.getLoopState())
-        {
-            localLoopDropdown.value = codeInfo.getLoopState();
-        }
-        if (localColorDropdown.value != codeInfo.getColorState())
-        {
-            localColorDropdown.value = codeInfo.getColorState();
-        }
     }
 
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
-        codeInfo.ChangeCodeState(localCodeStateDropdown.value);
-
-        if (codeInfo.getCodeState() == 2)
+        if (localCodeStateDropdown.value == 2)
         {
             localLoopDropdown.gameObject.SetActive(true);
             localColorDropdown.gameObject.SetActive(false);
         }
-        else if (codeInfo.getCodeState() == 3)
+        else if (localCodeStateDropdown.value == 3)
         {
             localLoopDropdown.gameObject.SetActive(false);
             localColorDropdown.gameObject.SetActive(true);
@@ -102,28 +45,33 @@ public class SendStateInformationSame : MonoBehaviour
         }
     }
 
-    private void BallStateHandler(Dropdown localBallStateDropdown)
+    public int getBallNumber()
     {
-        codeInfo.ChangeBallState(localBallStateDropdown.value);
+        return ballNumber;
+    }
+
+    public int getCodeState()
+    {
+        return localCodeStateDropdown.value;
+    }
+
+    public int getLineState()
+    {
+        return localLineStateDropdown.value;
+    }
+
+    public int getLoopState()
+    {
+        return localLoopDropdown.value;
+    }
+
+    public int getColorState()
+    {
+        return localColorDropdown.value;
     }
 
     private void LineStateHandler(Dropdown localLineStateDropdown)
     {
-        codeInfo.ChangeLineState(localLineStateDropdown.value);
-    }
-
-    private void LoopStateHandler(Dropdown localLoopStateDropdown)
-    {
-        codeInfo.ChangeLoopState(localLoopStateDropdown.value);
-    }
-
-    private void PitchStateHandler(Dropdown localPitchStateDropdown)
-    {
-        codeInfo.ChangePitchState(localPitchStateDropdown.value);
-    }
-
-    private void ColorStateHandler(Dropdown localColorStateDropdown)
-    {
-        codeInfo.ChangeColorState(localColorStateDropdown.value);
+        localCodeStateDropdown.value = 0;
     }
 }

@@ -47,6 +47,6 @@ public class SelectionManager : MonoBehaviour
     public void DeleteSelection(GameObject selectedGameObject)
     {
         selectedObject = null;
-        Destroy(selectedObject.gameObject);
+        Destroy(selectedGameObject.gameObject);
     }
 }

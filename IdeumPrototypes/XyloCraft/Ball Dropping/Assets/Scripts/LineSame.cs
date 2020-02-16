@@ -8,7 +8,10 @@ public class LineSame : MonoBehaviour
     public Sprite originalSprite;
     public Sprite hitSprite;
 
-    private CodeStateInformation codeInfo;
+    private SendStateInformationSame blueBall;
+    private SendStateInformationSame greenBall;
+    private SendStateInformationSame redBall;
+    private SendStateInformationSame yellowBall;
     private SoundManagerSame soundMan;
     private LineArray lineArray;
 
@@ -16,7 +19,7 @@ public class LineSame : MonoBehaviour
     private float startPosY;
     private bool isBeingHeld = false;
 
-    private int pitchLevel = 0;
+    private int pitchLevel = 1;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -27,7 +30,11 @@ public class LineSame : MonoBehaviour
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
-        codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
+        //codeInfo = GameObject.Find("GameManager").GetComponent<CodeStateInformation>();
+        blueBall = GameObject.Find("CodePanel - 3").GetComponent<SendStateInformationSame>();
+        greenBall = GameObject.Find("CodePanel - 3 (1)").GetComponent<SendStateInformationSame>();
+        redBall = GameObject.Find("CodePanel - 3 (2)").GetComponent<SendStateInformationSame>();
+        yellowBall = GameObject.Find("CodePanel - 3 (3)").GetComponent<SendStateInformationSame>();
         soundMan = GameObject.Find("SoundManager").GetComponent<SoundManagerSame>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
     }
@@ -117,64 +124,77 @@ public class LineSame : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeColor(float seconds, GameObject oldColor, GameObject newColor)
+    private IEnumerator ChangeColor(float seconds, GameObject oldColor, GameObject newColor, SendStateInformationSame ballColor)
     {
+        // selection background to false
         newColor.transform.GetChild(0).gameObject.SetActive(false);
-        playClip.PlayOneShot(soundMan.GetAudio(codeInfo.getColorState()));
-
+        newColor.GetComponent<AudioSource>().PlayOneShot(soundMan.GetAudio(ballColor.getBallNumber()));
 
         yield return new WaitForSeconds(seconds);
         Destroy(this.gameObject);
-
-        //playClip.pitch = 1.0f;
     }
 
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        // None
-        if (codeInfo.getCodeState() == 0)
+        Debug.Log(collision.gameObject.tag);
+        Debug.Log(this.gameObject.tag);
+        Debug.Log(blueBall.getLineState());
+        if (collision.gameObject.tag == "Ball0" && this.gameObject.tag == "Line" + blueBall.getLineState())
         {
-            MakeSound();
+            PerformCode(blueBall);
+        }
+        else if (collision.gameObject.tag == "Ball1" && this.gameObject.tag == "Line" + greenBall.getLineState())
+        {
+            PerformCode(greenBall);
+        }
+        else if (collision.gameObject.tag == "Ball2" && this.gameObject.tag == "Line" + redBall.getLineState())
+        {
+            PerformCode(redBall);
+        }
+        else if (collision.gameObject.tag == "Ball3" && this.gameObject.tag == "Line" + yellowBall.getLineState())
+        {
+            PerformCode(yellowBall);
         }
 
-        if (CheckCorrectCollision(collision))
-        {
-            //  Destroy
-            if (codeInfo.getCodeState() == 1)
-            {
-                StartCoroutine(DestroyObject(0.2f));
-            }
-
-            //  Loop
-            if (codeInfo.getCodeState() == 2)
-            {
-                StartCoroutine(LoopSound(1f, codeInfo.getLoopState() + 2));
-            }
-
-            //  Change Color
-            if (codeInfo.getCodeState() == 3)
-            {
-                // switch gameobject -> destroy + instantiate
-
-
-                //Destroy(this.gameObject);
-                GameObject newColor = Instantiate(lineArray.GetObject(codeInfo.getColorState()),
-                    this.gameObject.transform.position, this.gameObject.transform.rotation);
-                StartCoroutine(ChangeColor(1f, this.gameObject, newColor));
-                //MakeSound();
-            }
-        }
         else
         {
             MakeSound();
         }
     }
 
-    private bool CheckCorrectCollision(Collision2D collision)
+    private void PerformCode(SendStateInformationSame ballColor)
     {
-        return collision.gameObject.tag == "Ball" + codeInfo.getBallState()
-            && this.gameObject.tag == "Line" + codeInfo.getLineState();
+        // None
+        if (ballColor.getCodeState() == 0)
+        {
+            MakeSound();
+        }
+
+        // Destroy
+        if (ballColor.getCodeState() == 1)
+        {
+            StartCoroutine(DestroyObject(0.2f));
+        }
+
+        //  Loop
+        if (ballColor.getCodeState() == 2)
+        {
+            StartCoroutine(LoopSound(1f, ballColor.getLoopState() + 2));
+        }
+
+        //  Change Color
+        if (ballColor.getCodeState() == 3)
+        {
+            GameObject newColor = Instantiate(lineArray.GetObject(ballColor.getColorState()),
+                this.gameObject.transform.position, this.gameObject.transform.rotation);
+            //StartCoroutine(ChangeColor(0.5f, this.gameObject, newColor, ballColor));
+
+            Destroy(this.gameObject);
+            newColor.transform.GetChild(0).gameObject.SetActive(false);
+            newColor.GetComponent<AudioSource>().PlayOneShot(soundMan.GetAudio(ballColor.getColorState()));
+        }
     }
+
 
     private void OnBecameInvisible()
     {
