@@ -209,9 +209,9 @@ public class Line3 : MonoBehaviour
             GameObject newColor = Instantiate(lineArray.GetObject(ballColor.getColorState()),
                 this.gameObject.transform.position, this.gameObject.transform.rotation);
 
-            newColor.GetComponent<Line3>().setPitchLevel(this.getPitchLevel());
+            newColor.GetComponent<Line3>().SetPitchLevel(this.GetPitchLevel());
 
-            this.TransformLine(this.getPitchLevel());
+            newColor.GetComponent<Line3>().TransformLine(this.GetPitchLevel());
 
             Destroy(this.gameObject);
             
@@ -259,12 +259,12 @@ public class Line3 : MonoBehaviour
         }
     }
 
-    public int getPitchLevel()
+    public int GetPitchLevel()
     {
         return pitchLevel;
     }
 
-    public void setPitchLevel(int newPitch)
+    public void SetPitchLevel(int newPitch)
     {
         pitchLevel = newPitch;
     }
