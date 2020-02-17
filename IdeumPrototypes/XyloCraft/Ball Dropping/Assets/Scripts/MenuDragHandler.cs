@@ -6,11 +6,13 @@ using UnityEngine.EventSystems;
 public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public GameObject cloneObject;
-    public SelectionManager SelectionManagerCode;
-    //public Transform selectionBG;
-
-    //private GameObject cloneImage = Instantiate(emitter) as GameObject;
+    private SelectionManager SelectionManagerCode;
     private GameObject dragObject;
+
+    void Start()
+    {
+        SelectionManagerCode = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -27,16 +29,5 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         dragObject = null;
-    }
-    
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

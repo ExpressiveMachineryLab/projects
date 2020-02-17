@@ -10,16 +10,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] RedSounds;
     public AudioClip[] YellowSounds;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public AudioClip GetAudio(int lineColor, int pitch)
     {
 

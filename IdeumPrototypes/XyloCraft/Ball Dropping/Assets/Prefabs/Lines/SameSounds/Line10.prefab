@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd54fcbef8c15e846bef527c5d8c4d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineColor: 3
   originalSprite: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f, type: 3}
   hitSprite: {fileID: 21300000, guid: c7a7bb3bcece98d41b94b1ce17d96abd, type: 3}
   collisionSound: {fileID: 8300000, guid: d1d106bb0f7e54d14abeadbd5031f456, type: 3}

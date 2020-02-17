@@ -55,32 +55,32 @@ public class SendStateInformation3 : MonoBehaviour
         }
     }
 
-    public int getBallNumber()
+    public int GetBallNumber()
     {
         return ballNumber;
     }
 
-    public int getCodeState()
+    public int GetCodeState()
     {
         return localCodeStateDropdown.value;
     }
 
-    public int getLineState()
+    public int GetLineState()
     {
         return localLineStateDropdown.value;
     }
 
-    public int getLoopState()
+    public int GetLoopState()
     {
         return localLoopDropdown.value;
     }
 
-    public int getPitchState()
+    public int GetPitchState()
     {
         return localPitchDropdown.value;
     }
 
-    public int getColorState()
+    public int GetColorState()
     {
         return localColorDropdown.value;
     }
