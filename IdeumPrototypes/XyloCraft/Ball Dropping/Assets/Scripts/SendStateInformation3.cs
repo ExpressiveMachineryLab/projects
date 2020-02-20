@@ -13,6 +13,7 @@ public class SendStateInformation3 : MonoBehaviour
     public Dropdown localPitchDropdown;
     public Dropdown localColorDropdown;
 
+    public Image flashBorder;
     private Color thisColor;
 
     // Start is called before the first frame update
@@ -101,9 +102,10 @@ public class SendStateInformation3 : MonoBehaviour
 
     private IEnumerator Flash(int color)
     {
+        flashBorder.color += new Color(0, 0, 0, 0.5f);
         if (color == 0)
         {
-            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 0.3f);
+            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 0.1f);
         }
         if (color == 1)
         {
@@ -111,14 +113,15 @@ public class SendStateInformation3 : MonoBehaviour
         }
         if (color == 2)
         {
-            this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.3f);
+            //this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.3f);
         }
         if (color == 3)
         {
             this.gameObject.GetComponent<Image>().color = new Color(1, 0.92f, 0.016f, 0.3f);
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
+        flashBorder.color -= new Color(0, 0, 0, 0.5f);
         this.gameObject.GetComponent<Image>().color = thisColor;
         yield return new WaitForSeconds(0.1f);
     }
