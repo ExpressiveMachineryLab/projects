@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public float[] Volume;
     public AudioClip[] BlueSounds;
     public AudioClip[] GreenSounds;
     //public AudioClip[] PinkSounds;
@@ -30,5 +31,10 @@ public class SoundManager : MonoBehaviour
             return YellowSounds[pitch];
         }
         return null;
+    }
+
+    public float GetVolume(int ball)
+    {
+        return Volume[ball];
     }
 }

@@ -38,6 +38,8 @@ public class Line3 : MonoBehaviour
         yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
+
+        this.GetComponent<AudioSource>().volume = soundMan.GetVolume(lineColor);
     }
 
     // Update is called once per frame
