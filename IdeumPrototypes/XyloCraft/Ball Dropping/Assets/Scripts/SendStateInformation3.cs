@@ -13,6 +13,8 @@ public class SendStateInformation3 : MonoBehaviour
     public Dropdown localPitchDropdown;
     public Dropdown localColorDropdown;
 
+    private Color thisColor;
+
     // Start is called before the first frame update
     void Start()
     { 
@@ -24,6 +26,8 @@ public class SendStateInformation3 : MonoBehaviour
         {
             LineStateHandler(localLineStateDropdown);
         });
+
+        thisColor = this.gameObject.GetComponent<Image>().color;
     }
 
     // if change, sets info hub
@@ -88,5 +92,34 @@ public class SendStateInformation3 : MonoBehaviour
     private void LineStateHandler(Dropdown localLineStateDropdown)
     {
         localCodeStateDropdown.value = 0;
+    }
+
+    public void FlashBox(int color)
+    {
+        StartCoroutine(Flash(color));
+    }
+
+    private IEnumerator Flash(int color)
+    {
+        if (color == 0)
+        {
+            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 0.3f);
+        }
+        if (color == 1)
+        {
+            this.gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 0.3f);
+        }
+        if (color == 2)
+        {
+            this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.3f);
+        }
+        if (color == 3)
+        {
+            this.gameObject.GetComponent<Image>().color = new Color(1, 0.92f, 0.016f, 0.3f);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+        this.gameObject.GetComponent<Image>().color = thisColor;
+        yield return new WaitForSeconds(0.1f);
     }
 }

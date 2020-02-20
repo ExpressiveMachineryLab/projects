@@ -133,18 +133,22 @@ public class LineSame : MonoBehaviour
         Debug.Log(blueBall.GetLineState());
         if (collision.gameObject.tag == "Ball0" && this.gameObject.tag == "Line" + blueBall.GetLineState())
         {
+            blueBall.FlashBox(0);
             PerformCode(blueBall);
         }
         else if (collision.gameObject.tag == "Ball1" && this.gameObject.tag == "Line" + greenBall.GetLineState())
         {
+            greenBall.FlashBox(1);
             PerformCode(greenBall);
         }
         else if (collision.gameObject.tag == "Ball2" && this.gameObject.tag == "Line" + redBall.GetLineState())
         {
+            redBall.FlashBox(2);
             PerformCode(redBall);
         }
         else if (collision.gameObject.tag == "Ball3" && this.gameObject.tag == "Line" + yellowBall.GetLineState())
         {
+            yellowBall.FlashBox(3);
             PerformCode(yellowBall);
         }
 
