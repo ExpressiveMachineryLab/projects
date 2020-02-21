@@ -175,7 +175,7 @@ public class Line3 : MonoBehaviour
         //  Loop
         if (ballColor.GetCodeState() == 2)
         {
-            StartCoroutine(LoopSound(1f, ballColor.GetLoopState() + 2));
+            StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
         }
         //  Increase Pitch + transform width!!
         if (ballColor.GetCodeState() == 3)

@@ -175,7 +175,7 @@ public class LineSame : MonoBehaviour
         //  Loop
         if (ballColor.GetCodeState() == 2)
         {
-            StartCoroutine(LoopSound(1f, ballColor.GetLoopState() + 2));
+            StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
         }
 
         //  Change Color
