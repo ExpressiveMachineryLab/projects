@@ -38,7 +38,6 @@ public class LineSame : MonoBehaviour
         yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformationSame>();
         soundMan = GameObject.Find("SoundManager").GetComponent<SoundManagerSame>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
-        grid = GameObject.Find("GameManager").GetComponent<GridInfo>().GetGrid();
     }
 
     // Update is called once per frame
@@ -50,11 +49,8 @@ public class LineSame : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            Vector3 gridPos = new Vector3(Mathf.Round(mousePos.x * (1f / grid)) / (1f / grid),
-                Mathf.Round(mousePos.y * (1f / grid)) / (1f / grid), 0);
-
-            this.gameObject.transform.localPosition = new Vector3(gridPos.x, 
-                gridPos.y, 0);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x, 
+                mousePos.y, 0);
         }
     }
 

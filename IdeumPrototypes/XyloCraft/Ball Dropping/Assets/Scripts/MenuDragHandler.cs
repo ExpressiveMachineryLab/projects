@@ -8,12 +8,10 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
     public GameObject cloneObject;
     private SelectionManager SelectionManagerCode;
     private GameObject dragObject;
-    private float grid;
     
     void Start()
     {
         SelectionManagerCode = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
-        grid = GameObject.Find("GameManager").GetComponent<GridInfo>().GetGrid();
         //reciprocalGrid = (1f / 5f);
     }
 
@@ -21,15 +19,12 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        Vector3 gridPos = new Vector3(Mathf.Round(mousePos.x * (1f / grid)) / (1f / grid),
-            Mathf.Round(mousePos.y * (1f / grid)) / (1f / grid), 0);
-
         if (dragObject == null) {
-            dragObject = Instantiate(cloneObject, this.transform.position, cloneObject.transform.rotation) as GameObject;
+            dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
             SelectionManagerCode.NewSelection(dragObject);
         }
 
-        dragObject.transform.position = gridPos;
+        dragObject.transform.position = mousePos;
     }
 
     public void OnEndDrag(PointerEventData eventData)

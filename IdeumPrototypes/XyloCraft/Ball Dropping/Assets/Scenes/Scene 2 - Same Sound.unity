@@ -288,7 +288,6 @@ GameObject:
   - component: {fileID: 232937061}
   - component: {fileID: 232937063}
   - component: {fileID: 232937064}
-  - component: {fileID: 232937062}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -348,19 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionManager: {fileID: 1195690998}
---- !u!114 &232937062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232937057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47042201aa5e98649b92545e72b5f4c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grid: 2
 --- !u!114 &232937063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,12 +2278,12 @@ PrefabInstance:
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 34
+      value: 41.2
       objectReference: {fileID: 0}
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -69.5
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
@@ -2344,26 +2330,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LinePanel-SameSound (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3755942855062732181, guid: 9683b78cebd19c6428044c16bf771827,
-        type: 3}
-      propertyPath: SelectionManagerCode
-      value: 
-      objectReference: {fileID: 1195690998}
-    - target: {fileID: 3967863456699643420, guid: 9683b78cebd19c6428044c16bf771827,
-        type: 3}
-      propertyPath: SelectionManagerCode
-      value: 
-      objectReference: {fileID: 1195690998}
-    - target: {fileID: 4135270255465451343, guid: 9683b78cebd19c6428044c16bf771827,
-        type: 3}
-      propertyPath: SelectionManagerCode
-      value: 
-      objectReference: {fileID: 1195690998}
-    - target: {fileID: 7779700326478340185, guid: 9683b78cebd19c6428044c16bf771827,
-        type: 3}
-      propertyPath: SelectionManagerCode
-      value: 
-      objectReference: {fileID: 1195690998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9683b78cebd19c6428044c16bf771827, type: 3}
 --- !u!224 &205307132200686955 stripped
@@ -2403,6 +2369,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747518379}
     m_Modifications:
+    - target: {fileID: 1566860651678389468, guid: 9683b78cebd19c6428044c16bf771827,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2560537573058023854, guid: 9683b78cebd19c6428044c16bf771827,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14
+      objectReference: {fileID: 0}
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2461,12 +2437,12 @@ PrefabInstance:
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 992.3
+      value: 967
       objectReference: {fileID: 0}
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -69.5
+      value: -86
       objectReference: {fileID: 0}
     - target: {fileID: 3265210162695953664, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
@@ -2528,6 +2504,11 @@ PrefabInstance:
       propertyPath: SelectionManagerCode
       value: 
       objectReference: {fileID: 1195690998}
+    - target: {fileID: 4682458404311024250, guid: 9683b78cebd19c6428044c16bf771827,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 7779700326478340185, guid: 9683b78cebd19c6428044c16bf771827,
         type: 3}
       propertyPath: SelectionManagerCode
