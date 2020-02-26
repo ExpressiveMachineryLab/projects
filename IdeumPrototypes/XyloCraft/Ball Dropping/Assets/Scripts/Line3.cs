@@ -95,7 +95,11 @@ public class Line3 : MonoBehaviour
         collidedObject.sprite = ballHitObject;
         thisLineObject.sprite = hitSprite;
         yield return new WaitForSeconds(seconds);
-        collidedObject.sprite = ballOriginalObject;
+        if (collidedObject != null)
+        {
+            collidedObject.sprite = ballOriginalObject;
+        }
+        
         thisLineObject.sprite = originalSprite;
     }
 

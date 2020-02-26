@@ -20,10 +20,21 @@ public class Ball : MonoBehaviour
     void Update()
     {
         rb.velocity = (rb.velocity.normalized) * speed;
+        if (rb.velocity.Equals(Vector2.zero))
+        {
+            rb.velocity = (rb.velocity.normalized) * speed;
+            Destroy(this.gameObject);
+        }
     }
 
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
+    }
+
+    public GameObject SetSpeed(float sliderSpeed)
+    {
+        speed = sliderSpeed;
+        return this.gameObject;
     }
 }

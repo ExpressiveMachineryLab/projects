@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Emitter : MonoBehaviour
@@ -10,6 +11,12 @@ public class Emitter : MonoBehaviour
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
+    private Slider ballSpeedSlider;
+
+    private void Start()
+    {
+        ballSpeedSlider = GameObject.Find("Slider").GetComponent<Slider>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,6 +61,6 @@ public class Emitter : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(ballPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(ballSpeedSlider.value), firePoint.position, firePoint.rotation);
     }
 }
