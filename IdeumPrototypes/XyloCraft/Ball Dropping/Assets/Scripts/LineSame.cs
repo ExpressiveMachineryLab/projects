@@ -36,7 +36,7 @@ public class LineSame : MonoBehaviour
         greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformationSame>();
         redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformationSame>();
         yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformationSame>();
-        soundMan = GameObject.Find("SoundManager").GetComponent<SoundManagerSame>();
+        soundMan = GameObject.Find("GameManager").GetComponent<SoundManagerSame>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
     }
 
@@ -177,12 +177,11 @@ public class LineSame : MonoBehaviour
         //  Change Color
         if (ballColor.GetCodeState() == 3)
         {
-            GameObject newColor = Instantiate(lineArray.GetObject(ballColor.GetColorState()),
-                this.gameObject.transform.position, this.gameObject.transform.rotation);
-
-            Destroy(this.gameObject);
-            newColor.transform.GetChild(0).gameObject.SetActive(false);
-            newColor.GetComponent<AudioSource>().PlayOneShot(soundMan.GetAudio(ballColor.GetColorState()));
+            this.lineColor = ballColor.GetColorState();
+            this.gameObject.tag = "Line" + lineColor;
+            this.originalSprite = lineArray.GetSprite(lineColor);
+            this.hitSprite = lineArray.GetHitSprite(lineColor);
+            MakeSound();
         }
     }
     

@@ -5,6 +5,9 @@ using UnityEngine;
 public class LineArray : MonoBehaviour
 {
     public GameObject[] Lines;
+    public Sprite[] Sprites;
+    public Sprite[] Hit_Sprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +23,15 @@ public class LineArray : MonoBehaviour
     public GameObject GetObject(int index)
     {
         return Lines[index];
+    }
+
+    public Sprite GetSprite(int index)
+    {
+        return Sprites[index];
+    }
+
+    public Sprite GetHitSprite(int index)
+    {
+        return Hit_Sprites[index];
     }
 }
