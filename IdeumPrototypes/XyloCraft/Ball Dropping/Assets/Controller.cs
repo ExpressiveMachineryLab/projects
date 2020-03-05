@@ -75,7 +75,7 @@ namespace TE.Examples {
             Vector3 location = Camera.main.ScreenToWorldPoint(e.Transform.position);
             var emitter = Instantiate(BlueEmitter);
             emitter.name = "Emitter" + t.Id.ToString();
-            emitter.transform.position = location;
+            emitter.transform.position = new Vector3 (0, 0, 5);
             //emitter.transform.parent = e.Transform;
             //Instantiate(BlueEmitter, e.Transform.position, e.Transform.rotation);
             if (!emitters.ContainsKey(t.Id)) { emitters.Add(t.Id, emitter); }

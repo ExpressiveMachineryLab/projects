@@ -11,6 +11,7 @@ public class SendStateInformationSame : MonoBehaviour
     public Dropdown localLineStateDropdown;
     public Dropdown localLoopDropdown;
     public Dropdown localColorDropdown;
+    public Slider localVolumeSlider;
     public Image flashBorder;
 
     private Color thisColor;
@@ -33,22 +34,35 @@ public class SendStateInformationSame : MonoBehaviour
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
-        if (localCodeStateDropdown.value == 2)
+        if (localCodeStateDropdown.value == 1)
         {
-            localLoopDropdown.gameObject.SetActive(true);
-            localColorDropdown.gameObject.SetActive(false);
+            SetSecondary(localVolumeSlider.gameObject);
         }
-        else if (localCodeStateDropdown.value == 3)
+        else if (localCodeStateDropdown.value == 2)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(true);
+            SetSecondary(localColorDropdown.gameObject);
+        }
+        else if (localCodeStateDropdown.value == 4)
+        {
+            SetSecondary(localLoopDropdown.gameObject);
         }
         else
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(false);
+            SetSecondary(null);
         }
+
     }
+
+    private void SetSecondary(GameObject activeSecondary)
+    {
+        localLoopDropdown.gameObject.SetActive(false);
+        localColorDropdown.gameObject.SetActive(false);
+        localVolumeSlider.gameObject.SetActive(false);
+        if (activeSecondary) { activeSecondary.SetActive(true); }
+
+    }
+
+    
 
     public int GetBallNumber()
     {
@@ -73,6 +87,11 @@ public class SendStateInformationSame : MonoBehaviour
     public int GetColorState()
     {
         return localColorDropdown.value;
+    }
+
+    public float GetVolumeState()
+    {
+        return localVolumeSlider.value;
     }
 
     private void LineStateHandler(Dropdown localLineStateDropdown)

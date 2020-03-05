@@ -163,24 +163,32 @@ public class LineSame : MonoBehaviour
         }
 
         // Destroy
-        if (ballColor.GetCodeState() == 1)
+        if (ballColor.GetCodeState() == 3)
         {
             StartCoroutine(DestroyObject(0.2f));
         }
 
         //  Loop
-        if (ballColor.GetCodeState() == 2)
+        if (ballColor.GetCodeState() == 4)
         {
             StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
         }
 
         //  Change Color
-        if (ballColor.GetCodeState() == 3)
+        if (ballColor.GetCodeState() == 2)
         {
             this.lineColor = ballColor.GetColorState();
             this.gameObject.tag = "Line" + lineColor;
             this.originalSprite = lineArray.GetSprite(lineColor);
             this.hitSprite = lineArray.GetHitSprite(lineColor);
+            MakeSound();
+        }
+
+        //  Change Volume
+        if (ballColor.GetCodeState() == 1)
+        {
+            this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, ballColor.GetVolumeState());
+            this.GetComponent<AudioSource>().volume = ballColor.GetVolumeState();
             MakeSound();
         }
     }

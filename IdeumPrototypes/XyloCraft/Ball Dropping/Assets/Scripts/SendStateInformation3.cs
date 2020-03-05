@@ -12,6 +12,7 @@ public class SendStateInformation3 : MonoBehaviour
     public Dropdown localLoopDropdown;
     public Dropdown localPitchDropdown;
     public Dropdown localColorDropdown;
+    public Slider localVolumeSlider;
 
     public Image flashBorder;
     private Color thisColor;
@@ -34,30 +35,37 @@ public class SendStateInformation3 : MonoBehaviour
     // if change, sets info hub
     private void CodeStateHandler(Dropdown localCodeStateDropdown)
     {
-        if (localCodeStateDropdown.value == 2)
+        if (localCodeStateDropdown.value == 1)
         {
-            localLoopDropdown.gameObject.SetActive(true);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(false);
+            SetSecondary(localPitchDropdown.gameObject);
+        }
+        else if (localCodeStateDropdown.value == 2)
+        {
+            SetSecondary(localVolumeSlider.gameObject);
         }
         else if (localCodeStateDropdown.value == 3)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(true);
-            localColorDropdown.gameObject.SetActive(false);
+            SetSecondary(localColorDropdown.gameObject);
         }
-        else if (localCodeStateDropdown.value == 4)
+        else if (localCodeStateDropdown.value == 5)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(true);
+            SetSecondary(localLoopDropdown.gameObject);
         }
         else
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(false);
+            SetSecondary(null);
         }
+        
+    }
+
+    private void SetSecondary(GameObject activeSecondary)
+    {
+        localLoopDropdown.gameObject.SetActive(false);
+        localPitchDropdown.gameObject.SetActive(false);
+        localColorDropdown.gameObject.SetActive(false);
+        localVolumeSlider.gameObject.SetActive(false);
+        if (activeSecondary) { activeSecondary.SetActive(true); }
+        
     }
 
     public int GetBallNumber()
@@ -88,6 +96,11 @@ public class SendStateInformation3 : MonoBehaviour
     public int GetColorState()
     {
         return localColorDropdown.value;
+    }
+
+    public float GetVolumeState()
+    {
+        return localVolumeSlider.value;
     }
 
     private void LineStateHandler(Dropdown localLineStateDropdown)
