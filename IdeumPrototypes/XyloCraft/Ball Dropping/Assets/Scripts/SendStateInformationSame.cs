@@ -8,7 +8,8 @@ public class SendStateInformationSame : MonoBehaviour
     public int ballNumber;
 
     public Dropdown localCodeStateDropdown;
-    public Dropdown localLineStateDropdown;
+    public LineSelection localLineState;
+    //public Dropdown localLineStateDropdown;
     public Dropdown localLoopDropdown;
     public Dropdown localColorDropdown;
     public Slider localVolumeSlider;
@@ -23,10 +24,10 @@ public class SendStateInformationSame : MonoBehaviour
             CodeStateHandler(localCodeStateDropdown);
         });
 
-        localLineStateDropdown.onValueChanged.AddListener(delegate
-        {
-            LineStateHandler(localLineStateDropdown);
-        });
+        //localLineStateDropdown.onValueChanged.AddListener(delegate
+        //{
+        //    LineStateHandler(localLineStateDropdown);
+        //});
         
         thisColor = this.gameObject.GetComponent<Image>().color;
     }
@@ -76,7 +77,7 @@ public class SendStateInformationSame : MonoBehaviour
 
     public int GetLineState()
     {
-        return localLineStateDropdown.value;
+        return localLineState.GetLineIndex();
     }
 
     public int GetLoopState()
@@ -94,10 +95,10 @@ public class SendStateInformationSame : MonoBehaviour
         return localVolumeSlider.value;
     }
 
-    private void LineStateHandler(Dropdown localLineStateDropdown)
-    {
-        localCodeStateDropdown.value = 0;
-    }
+    //private void LineStateHandler(Dropdown localLineStateDropdown)
+    //{
+    //    localCodeStateDropdown.value = 0;
+    //}
 
     public void FlashBox(int color)
     {
