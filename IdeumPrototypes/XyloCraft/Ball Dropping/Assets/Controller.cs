@@ -30,7 +30,7 @@ namespace TE.Examples {
         if (_pool.Count <= 0) {
 
 
-          var o = Instantiate(BlueEmitter, ChildRoot, false);
+          var o = Instantiate(BlueEmitter, null, true);
           e = new ExampleTangibleData(o);
           _tangibleMap[id] = e;
           return e;
@@ -70,15 +70,16 @@ namespace TE.Examples {
 
     public void OnTangibleAdded(Tangible t) {
       Debug.Log("Tangible added: "+t.Id);
-      var e = GetExampleTangible(t.Id);
+            var e = GetExampleTangible(t.Id);
+            //Debug.Log(e.Transform.position);
       e.Update(t, _offset);
-            Vector3 location = Camera.main.ScreenToWorldPoint(e.Transform.position);
-            var emitter = Instantiate(BlueEmitter);
-            emitter.name = "Emitter" + t.Id.ToString();
-            emitter.transform.position = new Vector3 (0, 0, 5);
-            //emitter.transform.parent = e.Transform;
-            //Instantiate(BlueEmitter, e.Transform.position, e.Transform.rotation);
-            if (!emitters.ContainsKey(t.Id)) { emitters.Add(t.Id, emitter); }
+            //Vector3 location = Camera.main.ScreenToWorldPoint(e.Transform.position);
+            //var emitter = Instantiate(BlueEmitter);
+            //emitter.name = "Emitter" + t.Id.ToString();
+            //emitter.transform.position = new Vector3 (0, 0, 5);
+            ////emitter.transform.parent = e.Transform;
+            ////Instantiate(BlueEmitter, e.Transform.position, e.Transform.rotation);
+            //if (!emitters.ContainsKey(t.Id)) { emitters.Add(t.Id, emitter); }
         }
 
     public void OnTangibleRemoved(Tangible t) {
@@ -93,9 +94,9 @@ namespace TE.Examples {
       if (_tangibleMap.TryGetValue(t.Id, out e)) {
         e.Update(t, _offset);
       }
-            GameObject emitter = emitters[t.Id];
-            emitter.transform.position = new Vector3(t.X, t.Y, 0);
+            //    GameObject emitter = emitters[t.Id];
+            //    emitter.transform.position = new Vector3(t.X, t.Y, 0);
         }
 
     }
-}
+    }

@@ -1,23 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+
+
+// Emitter Class:
+// Allows emitter to be dragged
 
 public class Emitter : MonoBehaviour
 {
-    public Transform firePoint;
-    public GameObject ballPrefab;
-
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
-    private Slider ballSpeedSlider;
-
-    private void Start()
-    {
-        ballSpeedSlider = GameObject.Find("Slider").GetComponent<Slider>();
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,18 +19,6 @@ public class Emitter : MonoBehaviour
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-        }
-
-        // Fire with right click
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
-            {
-                Shoot();
-            }
         }
     }
 
@@ -57,10 +39,5 @@ public class Emitter : MonoBehaviour
     {
         isBeingHeld = false;
 
-    }
-
-    void Shoot()
-    {
-        Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(ballSpeedSlider.value), firePoint.position, firePoint.rotation);
     }
 }

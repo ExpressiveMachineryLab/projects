@@ -30,13 +30,17 @@ public class SelectionManager : MonoBehaviour
     private void SetSelection(GameObject selectedGameObject)
     {
         Debug.Log(selectedGameObject + " selected");
-        if (selectedObject != null)
+        if (selectedGameObject.tag != "Ignore")
         {
-            selectedObject.transform.GetChild(0).gameObject.SetActive(false);
+            if (selectedObject != null)
+            {
+                selectedObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
+            selectedObject = selectedGameObject;
+            selectedObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         
-        selectedObject = selectedGameObject;
-        selectedObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void NewSelection(GameObject selectedGameObject)
