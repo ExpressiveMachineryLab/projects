@@ -6,7 +6,7 @@ namespace TE.Examples {
   /// A simple example of using tangible engine
   /// </summary>
   public class Controller: MonoBehaviour, IOnTangibleAdded, IOnTangibleRemoved, IOnTangibleUpdated, IOnEnginePatternsChanged {
-
+        //public float offset;
     public RectTransform CanvasRForm;
     public Transform ChildRoot;
     public GameObject ExampleTangiblePrefab;
@@ -28,9 +28,7 @@ namespace TE.Examples {
       ExampleTangibleData e;
       if (!_tangibleMap.TryGetValue(id, out e)) {
         if (_pool.Count <= 0) {
-
-
-          var o = Instantiate(BlueEmitter, null, true);
+          var o = Instantiate(BlueEmitter, ChildRoot, true);
           e = new ExampleTangibleData(o);
           _tangibleMap[id] = e;
           return e;
@@ -59,8 +57,8 @@ namespace TE.Examples {
 
     void Start() {
       var r = CanvasRForm.rect;
-      _offset = new Vector3(r.width, r.height) * -0.5f;
-      TangibleEngine.Subscribe(this);
+            _offset = new Vector3(r.width, r.height) * -0.5f;
+            TangibleEngine.Subscribe(this);
             
         }
 
@@ -69,10 +67,11 @@ namespace TE.Examples {
     }
 
     public void OnTangibleAdded(Tangible t) {
+            Debug.Log(t.X + " " + t.Y);
       Debug.Log("Tangible added: "+t.Id);
             var e = GetExampleTangible(t.Id);
-            //Debug.Log(e.Transform.position);
-      e.Update(t, _offset);
+            Debug.Log(e.Transform.position);
+            e.Update(t, _offset);
             //Vector3 location = Camera.main.ScreenToWorldPoint(e.Transform.position);
             //var emitter = Instantiate(BlueEmitter);
             //emitter.name = "Emitter" + t.Id.ToString();
