@@ -2861,19 +2861,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4040260085966815729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &548564539021575912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548564539021575910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 1
 --- !u!1 &548564539477487440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8253812421229717335, guid: 2d43c4b66881b14479d670fff45a46c4,
@@ -3053,16 +3040,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747518379}
     m_Modifications:
-    - target: {fileID: 2633691695744212506, guid: a00882c0c3185064fb94ca52087042bf,
-        type: 3}
-      propertyPath: m_Group
-      value: 
-      objectReference: {fileID: 548564539021575912}
-    - target: {fileID: 4040260085281256087, guid: a00882c0c3185064fb94ca52087042bf,
-        type: 3}
-      propertyPath: m_Group
-      value: 
-      objectReference: {fileID: 548564539021575912}
     - target: {fileID: 4579324843987306260, guid: a00882c0c3185064fb94ca52087042bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3173,16 +3150,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emitter Panel - Tangible
       objectReference: {fileID: 0}
-    - target: {fileID: 8385633784297849788, guid: a00882c0c3185064fb94ca52087042bf,
-        type: 3}
-      propertyPath: m_Group
-      value: 
-      objectReference: {fileID: 548564539021575912}
-    - target: {fileID: 8834831397539692398, guid: a00882c0c3185064fb94ca52087042bf,
-        type: 3}
-      propertyPath: m_Group
-      value: 
-      objectReference: {fileID: 548564539021575912}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00882c0c3185064fb94ca52087042bf, type: 3}
 --- !u!1001 &6054859378526487660
