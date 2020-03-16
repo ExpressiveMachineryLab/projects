@@ -6,7 +6,7 @@ namespace TE.Examples
     /// <summary>
     /// A simple example of using tangible engine
     /// </summary>
-    public class Controller : MonoBehaviour, IOnTangibleAdded, IOnTangibleRemoved, IOnTangibleUpdated, IOnEnginePatternsChanged
+    public class EmitterTangible : MonoBehaviour, IOnTangibleAdded, IOnTangibleRemoved, IOnTangibleUpdated, IOnEnginePatternsChanged
     {
         //public float offset;
         public RectTransform CanvasRForm;
@@ -86,7 +86,7 @@ namespace TE.Examples
                 Debug.Log(e.Transform.position);
                 e.Update(t, _offset);
             }
-            
+
         }
 
         public void OnTangibleRemoved(Tangible t)
