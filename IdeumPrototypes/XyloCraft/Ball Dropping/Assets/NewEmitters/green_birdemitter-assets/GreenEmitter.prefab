@@ -291,16 +291,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'RotationKnob Variant '
       objectReference: {fileID: 0}
-    - target: {fileID: 4940754949943521244, guid: aa20e8a8cc4e2ff4a972ef071b6edc98,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940754949943521244, guid: aa20e8a8cc4e2ff4a972ef071b6edc98,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 5841944271303891325, guid: aa20e8a8cc4e2ff4a972ef071b6edc98,
         type: 3}
       propertyPath: m_LocalPosition.x
