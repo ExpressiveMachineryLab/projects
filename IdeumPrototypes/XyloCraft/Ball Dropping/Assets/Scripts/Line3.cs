@@ -34,10 +34,10 @@ public class Line3 : MonoBehaviour
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
-        blueBall = GameObject.Find("CodePanel").GetComponent<SendStateInformation3>();
-        greenBall = GameObject.Find("CodePanel").GetComponent<SendStateInformation3>();
-        redBall = GameObject.Find("CodePanel").GetComponent<SendStateInformation3>();
-        yellowBall = GameObject.Find("CodePanel").GetComponent<SendStateInformation3>();
+        blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
+        greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
+        redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformation3>();
+        yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
 
