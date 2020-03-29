@@ -20,7 +20,7 @@ public class SelectionManager : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.tag != "Rotator")
             {
                 SetSelection(hit.collider.gameObject);
             }
@@ -35,10 +35,12 @@ public class SelectionManager : MonoBehaviour
             if (selectedObject != null)
             {
                 selectedObject.transform.GetChild(0).gameObject.SetActive(false);
+                selectedObject.transform.GetChild(1).gameObject.SetActive(false);
             }
 
             selectedObject = selectedGameObject;
             selectedObject.transform.GetChild(0).gameObject.SetActive(true);
+            selectedObject.transform.GetChild(1).gameObject.SetActive(true);
         }
         
     }
