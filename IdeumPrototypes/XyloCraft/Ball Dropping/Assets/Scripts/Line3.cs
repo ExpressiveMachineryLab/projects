@@ -8,6 +8,7 @@ public class Line3 : MonoBehaviour
     public int lineColor;
     public Sprite originalSprite;
     public Sprite hitSprite;
+    public float speed = 5f;
 
     //private CodeStateInformation codeInfo;
     private SendStateInformation3 blueBall;
@@ -20,6 +21,7 @@ public class Line3 : MonoBehaviour
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
+    private bool isBeingRotated = false;
 
     private int pitchLevel = 1;
 
@@ -52,6 +54,29 @@ public class Line3 : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 
                 mousePos.y - startPosY, 0);
+        }
+
+        if (isBeingRotated)
+        {
+            Rotate();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            Debug.Log(gameObject.transform.GetChild(1).GetComponent<Collider2D>());
+            if (hit.collider != null && hit.collider.tag == "Rotator" && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>())
+            {
+                isBeingRotated = true;
+
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            isBeingRotated = false;
         }
     }
 
@@ -282,5 +307,14 @@ public class Line3 : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(this.gameObject);
+    }
+
+    void Rotate()
+    {
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //rotation *= Quaternion.Euler(0, 0, -90);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
     }
 }

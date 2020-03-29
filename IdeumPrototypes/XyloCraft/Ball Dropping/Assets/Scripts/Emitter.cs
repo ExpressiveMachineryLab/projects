@@ -11,6 +11,7 @@ public class Emitter : MonoBehaviour
     public Transform firePoint;
     public GameObject ballPrefab;
     public float speed = 5f;
+    public Animator emitterAnimator; 
 
     private Slider ballSpeedSlider;
     private float startPosX;
@@ -63,6 +64,7 @@ public class Emitter : MonoBehaviour
             if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
             {
                 ShootBall();
+                emitterAnimator.SetTrigger("Shoot");
             }
         }
     }
