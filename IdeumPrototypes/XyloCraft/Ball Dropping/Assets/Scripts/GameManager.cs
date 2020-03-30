@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private SelectionManager selectionManager;
     private int[] colors = new int[4];
+    private int Sound = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int GetSoundState() 
+    {
+        return Sound;
     }
 
     public void OnClickDelete()
@@ -50,5 +56,20 @@ public class GameManager : MonoBehaviour
     public int GetBird(int color) 
     {
         return colors[color];
+    }
+
+    public void SetToSound1() 
+    {
+        Sound = 0;
+    }
+
+    public void SetToSound2()
+    {
+        Sound = 5;
+    }
+
+    public void SetToSound3() 
+    {
+        Sound = 10;
     }
 }

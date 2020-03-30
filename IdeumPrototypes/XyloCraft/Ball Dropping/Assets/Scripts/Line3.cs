@@ -28,6 +28,8 @@ public class Line3 : MonoBehaviour
     BoxCollider2D thisCollider;
     AudioSource playClip;
 
+    private GameManager gameManger;
+
     public AudioClip collisionSound;
     
     void Start()
@@ -40,6 +42,7 @@ public class Line3 : MonoBehaviour
         yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
+        gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         this.GetComponent<AudioSource>().volume = soundMan.GetVolume(lineColor);
     }
@@ -129,7 +132,7 @@ public class Line3 : MonoBehaviour
 
     public void MakeSound()
     {
-        playClip.PlayOneShot(soundMan.GetAudio(lineColor, pitchLevel - 1));
+        playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
     }
 
     private IEnumerator DestroyObject(float seconds)
@@ -205,7 +208,7 @@ public class Line3 : MonoBehaviour
         {
             StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
         }
-        //  Increase Pitch + transform width!!
+        //  Increase Pitch + transform width
         if (ballColor.GetCodeState() == 1)
         {
             Debug.Log("Change Pitch");
@@ -232,7 +235,7 @@ public class Line3 : MonoBehaviour
                 }
             }
             this.TransformLine(pitchLevel);
-            playClip.PlayOneShot(soundMan.GetAudio(ballColor.GetLineState(), pitchLevel - 1));
+            playClip.PlayOneShot(soundMan.GetAudio(ballColor.GetLineState(), (pitchLevel - 1) + gameManger.GetSoundState()));
 
         }
 
