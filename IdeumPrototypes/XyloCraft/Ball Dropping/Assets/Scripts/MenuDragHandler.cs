@@ -55,7 +55,10 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
             else 
             {
                 dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
-                SelectionManagerCode.NewSelection(dragObject);
+                if (color != -2) 
+                {
+                    SelectionManagerCode.NewSelection(dragObject);
+                }
             }
             
         }
