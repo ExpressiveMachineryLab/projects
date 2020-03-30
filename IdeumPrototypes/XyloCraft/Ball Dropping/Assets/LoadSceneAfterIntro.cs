@@ -9,6 +9,7 @@ public class LoadSceneAfterIntro : MonoBehaviour
     public VideoPlayer VideoPlayer; 
     void Start()
     {
+        VideoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, "XylocodetitlecenteredMusic.mp4");
         VideoPlayer.loopPointReached += LoadScene;
     }
     void LoadScene(VideoPlayer vp)
