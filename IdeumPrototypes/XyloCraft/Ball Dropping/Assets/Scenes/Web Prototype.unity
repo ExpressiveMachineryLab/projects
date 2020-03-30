@@ -574,12 +574,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232937059}
-  - component: {fileID: 232937058}
-  - component: {fileID: 232937060}
-  - component: {fileID: 232937061}
   - component: {fileID: 232937063}
-  - component: {fileID: 232937064}
   - component: {fileID: 232937062}
+  - component: {fileID: 232937058}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -596,11 +593,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 232937057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c8412690a32fb4f972737d0c88fc22, type: 3}
+  m_Script: {fileID: 11500000, guid: 44c418c4b3f7ad241b6ea6efaa48cd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1195690998}
-  isLeft: 0
 --- !u!4 &232937059
 Transform:
   m_ObjectHideFlags: 0
@@ -615,31 +610,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &232937060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232937057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17785f4cad4f24387bba1cd59c6cec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &232937061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232937057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d34fab7f2ad9e40be09efcce959c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectionManager: {fileID: 1195690998}
 --- !u!114 &232937062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,22 +678,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8295f64f4fb8b6044b07b7640ae283a0, type: 3}
   - {fileID: 21300000, guid: 4dbd2c0a59863fb49b4e8bb4c9743b4f, type: 3}
   - {fileID: 21300000, guid: c7a7bb3bcece98d41b94b1ce17d96abd, type: 3}
---- !u!114 &232937064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232937057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e701668f47427264588fb3543216dedb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SlowLeft: {fileID: 0}
-  SlowRight: {fileID: 0}
-  FastLeft: {fileID: 0}
-  FastRight: {fileID: 0}
 --- !u!1 &263165054
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 1
+  limited: 1
+  color: 1
   selectedImage: {fileID: 21300000, guid: 5e903da79b196eb4ca763c0d679ce3c2, type: 3}
   cloneObject: {fileID: 2636822087528416057, guid: b304346a90868be40889b54baead674f,
     type: 3}
@@ -1248,7 +1203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 0
+  limited: 0
+  color: 0
   selectedImage: {fileID: 0}
   cloneObject: {fileID: 1694848394240150849, guid: 00141276f8fba024aba7cfb3ed628ef9,
     type: 3}
@@ -1568,7 +1524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 232937060}
+      - m_Target: {fileID: 232937058}
         m_MethodName: ResetApplication
         m_Mode: 1
         m_Arguments:
@@ -1860,7 +1816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 1
+  limited: 0
+  color: 0
   selectedImage: {fileID: 0}
   cloneObject: {fileID: 1624983559148059594, guid: 4f4406331d769aa468c6c696249c13eb,
     type: 3}
@@ -2248,7 +2205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 1
+  limited: 1
+  color: 2
   selectedImage: {fileID: 21300000, guid: a71480476fb68be4c92fbcb514e3fa0a, type: 3}
   cloneObject: {fileID: 3929882565359455622, guid: 795fb408e5a3c8f4d8614eb2a26ad50e,
     type: 3}
@@ -2424,7 +2382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 0
+  limited: 0
+  color: 0
   selectedImage: {fileID: 0}
   cloneObject: {fileID: 3237701782724201543, guid: b0be61f53180f1b459ddf8f1b24942fc,
     type: 3}
@@ -2570,7 +2529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 0
+  limited: 1
+  color: 0
   selectedImage: {fileID: 0}
   cloneObject: {fileID: 9013379172428202232, guid: d3c42c614f812a24c908bfe6f964a963,
     type: 3}
@@ -3102,7 +3062,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 232937061}
+      - m_Target: {fileID: 232937058}
         m_MethodName: OnClickDelete
         m_Mode: 1
         m_Arguments:
@@ -3645,7 +3605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 1
+  limited: 1
+  color: 0
   selectedImage: {fileID: 21300000, guid: b5c88fc13df05d64083c0d00cb2a9778, type: 3}
   cloneObject: {fileID: 9058570154345227447, guid: b67ed64da37dafc4abd9925c97e41cf8,
     type: 3}
@@ -3813,7 +3774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 0
+  limited: 0
+  color: 0
   selectedImage: {fileID: 0}
   cloneObject: {fileID: 92337331368953774, guid: cf7091d3e0bf71f43b3e3ae23f2f0197,
     type: 3}
@@ -3904,7 +3866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74652595317ca564189124ee6b1e2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyOne: 1
+  limited: 1
+  color: 3
   selectedImage: {fileID: 21300000, guid: c7f8b6e602d39f442a838a1f5ac212d6, type: 3}
   cloneObject: {fileID: 126331544982400613, guid: 5d5527cdf94a7f44a99d7b9691e3460f,
     type: 3}

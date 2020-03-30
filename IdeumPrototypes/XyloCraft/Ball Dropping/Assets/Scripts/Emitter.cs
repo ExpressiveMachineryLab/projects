@@ -11,7 +11,8 @@ public class Emitter : MonoBehaviour
     public Transform firePoint;
     public GameObject ballPrefab;
     public float speed = 5f;
-    public Animator emitterAnimator; 
+    public Animator emitterAnimator;
+    public int color;
 
     private Slider ballSpeedSlider;
     private float startPosX;
@@ -99,5 +100,10 @@ public class Emitter : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         rotation *= Quaternion.Euler(0, 0, -90);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime) ;
+    }
+
+    public int GetColor() 
+    {
+        return color;
     }
 }

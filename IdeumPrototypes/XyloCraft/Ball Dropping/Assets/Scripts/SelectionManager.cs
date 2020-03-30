@@ -55,4 +55,17 @@ public class SelectionManager : MonoBehaviour
         selectedObject = null;
         Destroy(selectedGameObject.gameObject);
     }
+
+    public int GetColor() 
+    {
+        Debug.Log(selectedObject.GetComponent<Emitter>());
+        if (selectedObject.GetComponent<Emitter>() != null)
+        {
+            return selectedObject.GetComponent<Emitter>().GetColor();
+        }
+        else 
+        {
+            return -1;
+        }
+    }
 }
