@@ -10,6 +10,8 @@ public class SelectedElement : MonoBehaviour
     public Sprite Green;
     public Sprite Yellow;
 
+    public string currentColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,23 +27,33 @@ public class SelectedElement : MonoBehaviour
     public void SetBlue() 
     {
         this.gameObject.GetComponent<Image>().sprite = Blue;
+        currentColor = Blue.name;
     }
 
     public void SetRed()
     {
         this.gameObject.GetComponent<Image>().sprite = Red;
+        currentColor = Red.name;
     }
     public void SetGreen()
     {
         this.gameObject.GetComponent<Image>().sprite = Green;
+        currentColor = Green.name;
     }
     public void SetYellow()
     {
         this.gameObject.GetComponent<Image>().sprite = Yellow;
+        currentColor = Yellow.name;
     }
     public void SetWild()
     {
         Sprite[] imageArray = {Blue, Red, Green, Yellow};
-        this.gameObject.GetComponent<Image>().sprite = imageArray[(int)(Random.value * 10 / 4)];
+        Sprite randomSprite;
+        do {
+            randomSprite = imageArray[(int)(Random.value * 4)];
+        } while (currentColor == randomSprite.name);
+        currentColor = randomSprite.name;
+        Debug.Log(currentColor);
+        this.gameObject.GetComponent<Image>().sprite = randomSprite;
     }
 }
