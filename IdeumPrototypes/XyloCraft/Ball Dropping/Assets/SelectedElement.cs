@@ -23,6 +23,10 @@ public class SelectedElement : MonoBehaviour
     {
         
     }
+    public string GetCurrentColor() 
+    {
+        return currentColor;
+    }
 
     public void SetBlue() 
     {

@@ -5,152 +5,97 @@ using UnityEngine;
 
 public class SendStateInformation : MonoBehaviour
 {
-    public Dropdown localCodeStateDropdown;
-    public Dropdown localBallStateDropdown;
-    public Dropdown localLineStateDropdown;
-    public Dropdown localLoopDropdown;
-    public Dropdown localPitchDropdown;
-    public Dropdown localColorDropdown;
+    public SelectedElement SelectedBall;
+    public SelectedElement SelectedLine;
+    public SelectedElement ChangeLine;
 
-    public CodeStateInformation codeInfo;
+    public Image flashBorder;
+    private Color thisColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        localCodeStateDropdown.onValueChanged.AddListener(delegate {
-            CodeStateHandler(localCodeStateDropdown);
-        });
-
-        localBallStateDropdown.onValueChanged.AddListener(delegate {
-            BallStateHandler(localBallStateDropdown);
-        });
-
-        localLineStateDropdown.onValueChanged.AddListener(delegate {
-            LineStateHandler(localLineStateDropdown);
-        });
-
-        localLoopDropdown.onValueChanged.AddListener(delegate {
-            LoopStateHandler(localLoopDropdown);
-        });
-
-        localPitchDropdown.onValueChanged.AddListener(delegate {
-            PitchStateHandler(localPitchDropdown);
-        });
-
-        localColorDropdown.onValueChanged.AddListener(delegate {
-            ColorStateHandler(localColorDropdown);
-        });
+        thisColor = this.gameObject.GetComponent<Image>().color;
     }
 
-    // Update is called once per frame
-    void Update()
+    public string GetBallColor()
     {
-        // if different, changes local info
-        if (localCodeStateDropdown.value != codeInfo.getCodeState())
-        {
-            localCodeStateDropdown.value = codeInfo.getCodeState();
-
-            if (codeInfo.getCodeState() == 2)
-            {
-                localLoopDropdown.gameObject.SetActive(true);
-                localPitchDropdown.gameObject.SetActive(false);
-                localColorDropdown.gameObject.SetActive(false);
-            }
-            else if (codeInfo.getCodeState() == 3)
-            {
-                localLoopDropdown.gameObject.SetActive(false);
-                localPitchDropdown.gameObject.SetActive(true);
-                localColorDropdown.gameObject.SetActive(false);
-            }
-            else if (codeInfo.getCodeState() == 4)
-            {
-                localLoopDropdown.gameObject.SetActive(false);
-                localPitchDropdown.gameObject.SetActive(false);
-                localColorDropdown.gameObject.SetActive(true);
-            }
-            else
-            {
-                localLoopDropdown.gameObject.SetActive(false);
-                localPitchDropdown.gameObject.SetActive(false);
-                localColorDropdown.gameObject.SetActive(false);
-            }
-        }
-        if (localBallStateDropdown.value != codeInfo.getBallState())
-        {
-            localBallStateDropdown.value = codeInfo.getBallState();
-        }
-        if (localLineStateDropdown.value != codeInfo.getLineState())
-        {
-            localLineStateDropdown.value = codeInfo.getLineState();
-        }
-
-        if (localLoopDropdown.value != codeInfo.getLoopState())
-        {
-            localLoopDropdown.value = codeInfo.getLoopState();
-        }
-        if (localPitchDropdown.value != codeInfo.getPitchState())
-        {
-            localPitchDropdown.value = codeInfo.getPitchState();
-        }
-        if (localColorDropdown.value != codeInfo.getColorState())
-        {
-            localColorDropdown.value = codeInfo.getColorState();
-        }
+        return SelectedBall.GetCurrentColor();
+    }
+    public string GetLineColor()
+    {
+        return SelectedLine.GetCurrentColor();
     }
 
-    // if change, sets info hub
-    private void CodeStateHandler(Dropdown localCodeStateDropdown)
+    public string GetChangeLineColor()
     {
-        codeInfo.ChangeCodeState(localCodeStateDropdown.value);
+        return ChangeLine.GetCurrentColor();
+    }
 
-        if (codeInfo.getCodeState() == 2)
+    //public int GetCodeState()
+    //{
+    //    return localCodeStateDropdown.value;
+    //}
+
+    //public int GetLineState()
+    //{
+    //    return localLineState.GetLineIndex();
+    //    //return localLineStateDropdown.value;
+    //}
+
+    //public int GetLoopState()
+    //{
+    //    return localLoopDropdown.value;
+    //}
+
+    //public int GetPitchState()
+    //{
+    //    return localPitchDropdown.value;
+    //}
+
+    //public int GetColorState()
+    //{
+    //    return localColorDropdown.value;
+    //}
+
+    //public float GetVolumeState()
+    //{
+    //    return localVolumeSlider.value;
+    //}
+
+    //private void LineStateHandler(Dropdown localLineStateDropdown)
+    //{
+    //    localCodeStateDropdown.value = 0;
+    //}
+
+    public void FlashBox(int color)
+    {
+        StartCoroutine(Flash(color));
+    }
+
+    private IEnumerator Flash(int color)
+    {
+        flashBorder.color += new Color(0, 0, 0, 0.5f);
+        if (color == 0)
         {
-            localLoopDropdown.gameObject.SetActive(true);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(false);
+            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 0.1f);
         }
-        else if (codeInfo.getCodeState() == 3)
+        if (color == 1)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(true);
-            localColorDropdown.gameObject.SetActive(false);
+            this.gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 0.3f);
         }
-        else if (codeInfo.getCodeState() == 4)
+        if (color == 2)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(true);
+            //this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.3f);
         }
-        else
+        if (color == 3)
         {
-            localLoopDropdown.gameObject.SetActive(false);
-            localPitchDropdown.gameObject.SetActive(false);
-            localColorDropdown.gameObject.SetActive(false);
+            this.gameObject.GetComponent<Image>().color = new Color(1, 0.92f, 0.016f, 0.3f);
         }
-    }
 
-    private void BallStateHandler(Dropdown localBallStateDropdown)
-    {
-        codeInfo.ChangeBallState(localBallStateDropdown.value);
-    }
-
-    private void LineStateHandler(Dropdown localLineStateDropdown)
-    {
-        codeInfo.ChangeLineState(localLineStateDropdown.value);
-    }
-
-    private void LoopStateHandler(Dropdown localLoopStateDropdown)
-    {
-        codeInfo.ChangeLoopState(localLoopStateDropdown.value);
-    }
-
-    private void PitchStateHandler(Dropdown localPitchStateDropdown)
-    {
-        codeInfo.ChangePitchState(localPitchStateDropdown.value);
-    }
-
-    private void ColorStateHandler(Dropdown localColorStateDropdown)
-    {
-        codeInfo.ChangeColorState(localColorStateDropdown.value);
+        yield return new WaitForSeconds(0.3f);
+        flashBorder.color -= new Color(0, 0, 0, 0.5f);
+        this.gameObject.GetComponent<Image>().color = thisColor;
+        yield return new WaitForSeconds(0.1f);
     }
 }

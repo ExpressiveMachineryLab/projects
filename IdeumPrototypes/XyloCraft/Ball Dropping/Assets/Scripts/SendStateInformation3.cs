@@ -14,6 +14,8 @@ public class SendStateInformation3 : MonoBehaviour
     public Dropdown localPitchDropdown;
     public Dropdown localColorDropdown;
     public Slider localVolumeSlider;
+    public GameObject SelectedBall;
+    public GameObject SelectedLine;
 
     public Image flashBorder;
     private Color thisColor;

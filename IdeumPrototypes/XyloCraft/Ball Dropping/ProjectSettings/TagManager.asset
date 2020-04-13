@@ -7,18 +7,16 @@ TagManager:
   - Pushable
   - Emitter
   - Line
-  - Ball0
-  - Ball1
-  - Ball2
-  - Ball3
-  - Ball4
-  - Line0
-  - Line1
-  - Line2
-  - Line3
-  - Line4
   - Ignore
   - Rotator
+  - BlueLine
+  - RedLine
+  - GreenLine
+  - YellowLine
+  - BlueBall
+  - GreenBall
+  - RedBall
+  - YellowBall
   layers:
   - Default
   - TransparentFX

@@ -5,18 +5,21 @@ using UnityEngine;
 
 public class Line3 : MonoBehaviour
 {
-    public int lineColor;
+    public string lineColor;
     public Sprite originalSprite;
     public Sprite hitSprite;
     public float speed = 5f;
 
     //private CodeStateInformation codeInfo;
+    private SendStateInformation InstrumentPanel1;
+    private SendStateInformation ChordPanel1;
+    private SendStateInformation RhythymPanel1;
     private SendStateInformation3 blueBall;
     private SendStateInformation3 greenBall;
     private SendStateInformation3 redBall;
     private SendStateInformation3 yellowBall;
     private SoundManager soundMan;
-    private LineArray lineArray;
+    private LineInformation lineArray;
 
     private float startPosX;
     private float startPosY;
@@ -36,15 +39,20 @@ public class Line3 : MonoBehaviour
     {
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
-        blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
-        greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
-        redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformation3>();
-        yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
+
+        InstrumentPanel1 = GameObject.Find("InstrumentPanel1").GetComponent<SendStateInformation>();
+        ChordPanel1 = GameObject.Find("ChordPanel1").GetComponent<SendStateInformation>();
+        RhythymPanel1 = GameObject.Find("RhythymPanel1").GetComponent<SendStateInformation>();
+
+        //blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
+        //greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
+        //redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformation3>();
+        //yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
-        lineArray = GameObject.Find("GameManager").GetComponent<LineArray>();
+        lineArray = GameObject.Find("GameManager").GetComponent<LineInformation>();
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        this.GetComponent<AudioSource>().volume = soundMan.GetVolume(lineColor);
+        //this.GetComponent<AudioSource>().volume = soundMan.GetVolume(lineColor);
     }
 
     // Update is called once per frame
@@ -132,7 +140,9 @@ public class Line3 : MonoBehaviour
 
     public void MakeSound()
     {
-        playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
+        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
+        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
+        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
     }
 
     private IEnumerator DestroyObject(float seconds)
@@ -150,34 +160,58 @@ public class Line3 : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
     }
-    private IEnumerator ChangePitch(float seconds, AudioClip audioClip)
-    {
-        playClip.PlayOneShot(audioClip);
-        MakeSound();
-        yield return new WaitForSeconds(seconds);
-        playClip.pitch = 1.0f;
-    }
     
     private void PerformCodeBehvaior(Collision2D collision)
     {
         Debug.Log(collision.gameObject.tag);
         Debug.Log(this.gameObject.tag);
-        if (collision.gameObject.tag == "Ball0" && this.gameObject.tag == "Line" + blueBall.GetLineState())
+
+
+        //  Instrument Panel
+        if (collision.gameObject.tag == InstrumentPanel1.GetBallColor() +"Ball" 
+            && this.gameObject.tag == InstrumentPanel1.GetLineColor() + "Line")
+        {
+            this.lineColor = InstrumentPanel1.GetChangeLineColor();
+            this.gameObject.tag = lineColor + "Line";
+            this.originalSprite = lineArray.GetSprite(lineColor);
+            this.hitSprite = lineArray.GetHitSprite(lineColor);
+            MakeSound();
+        }
+
+        // Chord + Note Panel
+        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
+        {
+            this.lineColor = InstrumentPanel1.GetChangeLineColor();
+            this.gameObject.tag = lineColor + "Line";
+            this.originalSprite = lineArray.GetSprite(lineColor);
+            this.hitSprite = lineArray.GetHitSprite(lineColor);
+            MakeSound();
+        }
+
+        // Rhythym Panel
+        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
+        {
+            StartCoroutine(LoopSound(0.2f, 2));
+        }
+
+        if (collision.gameObject.tag == "BlueBall" && this.gameObject.tag == blueBall.GetLineState() + "Line")
         {
             blueBall.FlashBox(0);
             PerformCode(blueBall);
         }
-        else if (collision.gameObject.tag == "Ball1" && this.gameObject.tag == "Line" + greenBall.GetLineState())
+        else if (collision.gameObject.tag == "GreenBall" && this.gameObject.tag == greenBall.GetLineState() + "Line")
         {
             greenBall.FlashBox(1);
             PerformCode(greenBall);
         }
-        else if (collision.gameObject.tag == "Ball2" && this.gameObject.tag == "Line" + redBall.GetLineState())
+        else if (collision.gameObject.tag == "RedBall" && this.gameObject.tag == redBall.GetLineState() + "Line")
         {
             redBall.FlashBox(2);
             PerformCode(redBall);
         }
-        else if (collision.gameObject.tag == "Ball3" && this.gameObject.tag == "Line" + yellowBall.GetLineState())
+        else if (collision.gameObject.tag == "YellowBall" && this.gameObject.tag == yellowBall.GetLineState() + "Line")
         {
             yellowBall.FlashBox(3);
             PerformCode(yellowBall);
@@ -242,10 +276,10 @@ public class Line3 : MonoBehaviour
         //  Change Color
         if (ballColor.GetCodeState() == 3)
         {
-            this.lineColor = ballColor.GetColorState();
+            //this.lineColor = ballColor.GetColorState();
             this.gameObject.tag = "Line" + lineColor;
-            this.originalSprite = lineArray.GetSprite(lineColor);
-            this.hitSprite = lineArray.GetHitSprite(lineColor);
+            //this.originalSprite = lineArray.GetSprite(lineColor);
+            //this.hitSprite = lineArray.GetHitSprite(lineColor);
             MakeSound();
         }
 
