@@ -12,35 +12,31 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] BlueSounds3;
     public AudioClip[] BlueSounds4;
     public AudioClip[] BlueSounds5;
-    private AudioClip[][] BlueSounds;
+    private AudioClip[][] BlueSounds = new AudioClip[5][];
 
     public AudioClip[] GreenSounds1;
     public AudioClip[] GreenSounds2;
     public AudioClip[] GreenSounds3;
     public AudioClip[] GreenSounds4;
     public AudioClip[] GreenSounds5;
-    private AudioClip[][] GreenSounds;
+    private AudioClip[][] GreenSounds = new AudioClip[5][];
 
     public AudioClip[] RedSounds1;
     public AudioClip[] RedSounds2;
     public AudioClip[] RedSounds3;
     public AudioClip[] RedSounds4;
     public AudioClip[] RedSounds5;
-    private AudioClip[][] RedSounds;
+    private AudioClip[][] RedSounds = new AudioClip[5][];
 
     public AudioClip[] YellowSounds1;
     public AudioClip[] YellowSounds2;
     public AudioClip[] YellowSounds3;
     public AudioClip[] YellowSounds4;
     public AudioClip[] YellowSounds5;
-    private AudioClip[][] YellowSounds;
+    private AudioClip[][] YellowSounds = new AudioClip[5][];
 
     void Start() 
     {
-        //for (int i = 0; i < BlueSounds1.Length; i++) 
-        //{
-        //    BlueSounds[0][i] = BlueSounds1[i];
-        //}
         BlueSounds[0] = BlueSounds1;
         BlueSounds[1] = BlueSounds2;
         BlueSounds[2] = BlueSounds3;

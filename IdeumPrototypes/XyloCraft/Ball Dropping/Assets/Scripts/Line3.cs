@@ -14,6 +14,10 @@ public class Line3 : MonoBehaviour
     private SendStateInformation InstrumentPanel1;
     private SendStateInformation ChordPanel1;
     private SendStateInformation RhythymPanel1;
+    private SendStateInformation InstrumentPanel2;
+    private SendStateInformation ChordPanel2;
+    private SendStateInformation RhythymPanel2;
+
     private SendStateInformation3 blueBall;
     private SendStateInformation3 greenBall;
     private SendStateInformation3 redBall;
@@ -43,6 +47,10 @@ public class Line3 : MonoBehaviour
         InstrumentPanel1 = GameObject.Find("InstrumentPanel1").GetComponent<SendStateInformation>();
         ChordPanel1 = GameObject.Find("ChordPanel1").GetComponent<SendStateInformation>();
         RhythymPanel1 = GameObject.Find("RhythymPanel1").GetComponent<SendStateInformation>();
+
+        InstrumentPanel2 = GameObject.Find("InstrumentPanel2").GetComponent<SendStateInformation>();
+        ChordPanel2 = GameObject.Find("ChordPanel2").GetComponent<SendStateInformation>();
+        RhythymPanel2 = GameObject.Find("RhythymPanel2").GetComponent<SendStateInformation>();
 
         //blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
         //greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
@@ -178,15 +186,35 @@ public class Line3 : MonoBehaviour
             MakeSound();
         }
 
-        // Chord + Note Panel
-        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
-            && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
+        else if (collision.gameObject.tag == InstrumentPanel2.GetBallColor() + "Ball"
+            && this.gameObject.tag == InstrumentPanel2.GetLineColor() + "Line")
         {
-            this.lineColor = InstrumentPanel1.GetChangeLineColor();
+            this.lineColor = InstrumentPanel2.GetChangeLineColor();
             this.gameObject.tag = lineColor + "Line";
             this.originalSprite = lineArray.GetSprite(lineColor);
             this.hitSprite = lineArray.GetHitSprite(lineColor);
             MakeSound();
+        }
+
+        // Chord + Note Panel
+        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
+        {
+            //this.lineColor = InstrumentPanel1.GetChangeLineColor();
+            //this.gameObject.tag = lineColor + "Line";
+            //this.originalSprite = lineArray.GetSprite(lineColor);
+            //this.hitSprite = lineArray.GetHitSprite(lineColor);
+            //MakeSound();
+        }
+
+        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line")
+        {
+            //this.lineColor = InstrumentPanel2.GetChangeLineColor();
+            //this.gameObject.tag = lineColor + "Line";
+            //this.originalSprite = lineArray.GetSprite(lineColor);
+            //this.hitSprite = lineArray.GetHitSprite(lineColor);
+            //MakeSound();
         }
 
         // Rhythym Panel
@@ -196,26 +224,32 @@ public class Line3 : MonoBehaviour
             StartCoroutine(LoopSound(0.2f, 2));
         }
 
-        if (collision.gameObject.tag == "BlueBall" && this.gameObject.tag == blueBall.GetLineState() + "Line")
+        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line")
         {
-            blueBall.FlashBox(0);
-            PerformCode(blueBall);
+            StartCoroutine(LoopSound(0.2f, 2));
         }
-        else if (collision.gameObject.tag == "GreenBall" && this.gameObject.tag == greenBall.GetLineState() + "Line")
-        {
-            greenBall.FlashBox(1);
-            PerformCode(greenBall);
-        }
-        else if (collision.gameObject.tag == "RedBall" && this.gameObject.tag == redBall.GetLineState() + "Line")
-        {
-            redBall.FlashBox(2);
-            PerformCode(redBall);
-        }
-        else if (collision.gameObject.tag == "YellowBall" && this.gameObject.tag == yellowBall.GetLineState() + "Line")
-        {
-            yellowBall.FlashBox(3);
-            PerformCode(yellowBall);
-        }
+
+        //if (collision.gameObject.tag == "BlueBall" && this.gameObject.tag == blueBall.GetLineState() + "Line")
+        //{
+        //    blueBall.FlashBox(0);
+        //    PerformCode(blueBall);
+        //}
+        //else if (collision.gameObject.tag == "GreenBall" && this.gameObject.tag == greenBall.GetLineState() + "Line")
+        //{
+        //    greenBall.FlashBox(1);
+        //    PerformCode(greenBall);
+        //}
+        //else if (collision.gameObject.tag == "RedBall" && this.gameObject.tag == redBall.GetLineState() + "Line")
+        //{
+        //    redBall.FlashBox(2);
+        //    PerformCode(redBall);
+        //}
+        //else if (collision.gameObject.tag == "YellowBall" && this.gameObject.tag == yellowBall.GetLineState() + "Line")
+        //{
+        //    yellowBall.FlashBox(3);
+        //    PerformCode(yellowBall);
+        //}
 
         else
         {
