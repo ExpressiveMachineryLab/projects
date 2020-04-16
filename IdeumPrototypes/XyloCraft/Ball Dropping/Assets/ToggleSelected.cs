@@ -9,14 +9,14 @@ public class ToggleSelected : MonoBehaviour
     public Sprite UnselectedSprite;
     public Sprite SelectedSprite;
     private bool isToggled;
-    public GameObject emitter;
-    private EmitterController TangibleController;
+    //public GameObject emitter;
+    //private EmitterController TangibleController;
 
     // Start is called before the first frame update
     void Start()
     {
         isToggled = false;
-        TangibleController = GameObject.Find("Controller").GetComponent<EmitterController>();
+        //TangibleController = GameObject.Find("Controller").GetComponent<EmitterController>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class ToggleSelected : MonoBehaviour
         if (isToggled)
         {
             this.gameObject.GetComponent<Image>().sprite = SelectedSprite;
-            TangibleController.SetEmitter(emitter);
+            //TangibleController.SetEmitter(emitter);
         }
         else
         {

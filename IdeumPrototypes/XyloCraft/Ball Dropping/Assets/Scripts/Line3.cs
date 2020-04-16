@@ -12,16 +12,12 @@ public class Line3 : MonoBehaviour
 
     //private CodeStateInformation codeInfo;
     private SendStateInformation InstrumentPanel1;
-    private SendStateInformation ChordPanel1;
-    private SendStateInformation RhythymPanel1;
+    private SendStateInformationChord ChordPanel1;
+    private SendStateInformationRhythym RhythymPanel1;
     private SendStateInformation InstrumentPanel2;
-    private SendStateInformation ChordPanel2;
-    private SendStateInformation RhythymPanel2;
+    private SendStateInformationChord ChordPanel2;
+    private SendStateInformationRhythym RhythymPanel2;
 
-    private SendStateInformation3 blueBall;
-    private SendStateInformation3 greenBall;
-    private SendStateInformation3 redBall;
-    private SendStateInformation3 yellowBall;
     private SoundManager soundMan;
     private LineInformation lineArray;
 
@@ -30,7 +26,7 @@ public class Line3 : MonoBehaviour
     private bool isBeingHeld = false;
     private bool isBeingRotated = false;
 
-    private int pitchLevel = 1;
+    private int pitchLevel = 0;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -45,17 +41,13 @@ public class Line3 : MonoBehaviour
         playClip = GetComponent<AudioSource>();
 
         InstrumentPanel1 = GameObject.Find("InstrumentPanel1").GetComponent<SendStateInformation>();
-        ChordPanel1 = GameObject.Find("ChordPanel1").GetComponent<SendStateInformation>();
-        RhythymPanel1 = GameObject.Find("RhythymPanel1").GetComponent<SendStateInformation>();
+        ChordPanel1 = GameObject.Find("ChordPanel1").GetComponent<SendStateInformationChord>();
+        RhythymPanel1 = GameObject.Find("RhythymPanel1").GetComponent<SendStateInformationRhythym>();
 
         InstrumentPanel2 = GameObject.Find("InstrumentPanel2").GetComponent<SendStateInformation>();
-        ChordPanel2 = GameObject.Find("ChordPanel2").GetComponent<SendStateInformation>();
-        RhythymPanel2 = GameObject.Find("RhythymPanel2").GetComponent<SendStateInformation>();
+        ChordPanel2 = GameObject.Find("ChordPanel2").GetComponent<SendStateInformationChord>();
+        RhythymPanel2 = GameObject.Find("RhythymPanel2").GetComponent<SendStateInformationRhythym>();
 
-        //blueBall = GameObject.Find("CodePanelBlue").GetComponent<SendStateInformation3>();
-        //greenBall = GameObject.Find("CodePanelGreen").GetComponent<SendStateInformation3>();
-        //redBall = GameObject.Find("CodePanelRed").GetComponent<SendStateInformation3>();
-        //yellowBall = GameObject.Find("CodePanelYellow").GetComponent<SendStateInformation3>();
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineInformation>();
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -88,7 +80,6 @@ public class Line3 : MonoBehaviour
             if (hit.collider != null && hit.collider.tag == "Rotator" && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>())
             {
                 isBeingRotated = true;
-
             }
         }
 
@@ -118,7 +109,6 @@ public class Line3 : MonoBehaviour
     private void OnMouseUp()
     {
         isBeingHeld = false;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -148,9 +138,7 @@ public class Line3 : MonoBehaviour
 
     public void MakeSound()
     {
-        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
-        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
-        //playClip.PlayOneShot(soundMan.GetAudio(lineColor, (pitchLevel - 1) + gameManger.GetSoundState()));
+        soundMan.GetAudio(playClip, this.gameObject.tag, pitchLevel);
     }
 
     private IEnumerator DestroyObject(float seconds)
@@ -171,10 +159,6 @@ public class Line3 : MonoBehaviour
     
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        Debug.Log(this.gameObject.tag);
-
-
         //  Instrument Panel
         if (collision.gameObject.tag == InstrumentPanel1.GetBallColor() +"Ball" 
             && this.gameObject.tag == InstrumentPanel1.GetLineColor() + "Line")
@@ -200,131 +184,156 @@ public class Line3 : MonoBehaviour
         if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
             && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
         {
-            //this.lineColor = InstrumentPanel1.GetChangeLineColor();
-            //this.gameObject.tag = lineColor + "Line";
-            //this.originalSprite = lineArray.GetSprite(lineColor);
-            //this.hitSprite = lineArray.GetHitSprite(lineColor);
-            //MakeSound();
-        }
-
-        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
-            && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line")
-        {
-            //this.lineColor = InstrumentPanel2.GetChangeLineColor();
-            //this.gameObject.tag = lineColor + "Line";
-            //this.originalSprite = lineArray.GetSprite(lineColor);
-            //this.hitSprite = lineArray.GetHitSprite(lineColor);
-            //MakeSound();
-        }
-
-        // Rhythym Panel
-        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
-            && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line")
-        {
-            StartCoroutine(LoopSound(0.2f, 2));
-        }
-
-        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
-            && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line")
-        {
-            StartCoroutine(LoopSound(0.2f, 2));
-        }
-
-        //if (collision.gameObject.tag == "BlueBall" && this.gameObject.tag == blueBall.GetLineState() + "Line")
-        //{
-        //    blueBall.FlashBox(0);
-        //    PerformCode(blueBall);
-        //}
-        //else if (collision.gameObject.tag == "GreenBall" && this.gameObject.tag == greenBall.GetLineState() + "Line")
-        //{
-        //    greenBall.FlashBox(1);
-        //    PerformCode(greenBall);
-        //}
-        //else if (collision.gameObject.tag == "RedBall" && this.gameObject.tag == redBall.GetLineState() + "Line")
-        //{
-        //    redBall.FlashBox(2);
-        //    PerformCode(redBall);
-        //}
-        //else if (collision.gameObject.tag == "YellowBall" && this.gameObject.tag == yellowBall.GetLineState() + "Line")
-        //{
-        //    yellowBall.FlashBox(3);
-        //    PerformCode(yellowBall);
-        //}
-
-        else
-        {
-            MakeSound();
-        }
-    }
-
-    private void PerformCode(SendStateInformation3 ballColor)
-    {
-        // None
-        if (ballColor.GetCodeState() == 0)
-        {
-            MakeSound();
-        }
-
-        // Destroy
-        if (ballColor.GetCodeState() == 4)
-        {
-            StartCoroutine(DestroyObject(0.2f));
-        }
-
-        //  Loop
-        if (ballColor.GetCodeState() == 5)
-        {
-            StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
-        }
-        //  Increase Pitch + transform width
-        if (ballColor.GetCodeState() == 1)
-        {
-            Debug.Log("Change Pitch");
-            if (ballColor.GetPitchState() < 5)
-            {
-                pitchLevel = ballColor.GetPitchState() + 1;
-            }
-
             // ++
-            if (ballColor.GetPitchState() == 5)
+            if (ChordPanel1.GetSelectedChord() == "Plus") 
             {
-                if (pitchLevel < 5)
+                if (pitchLevel < 4) 
                 {
                     pitchLevel++;
                 }
             }
-
-            // --
-            else if (ballColor.GetPitchState() == 6)
+            else if (ChordPanel1.GetSelectedChord() == "Minus")
             {
-                if (pitchLevel > 1)
+                if (pitchLevel > 0) 
                 {
                     pitchLevel--;
                 }
             }
-            this.TransformLine(pitchLevel);
-            playClip.PlayOneShot(soundMan.GetAudio(ballColor.GetLineState(), (pitchLevel - 1) + gameManger.GetSoundState()));
+            else if (ChordPanel1.GetSelectedChord() == "PlusMinus")
+            {
+                if (pitchLevel > 3) 
+                {
+                    pitchLevel = 0;
+                } else
+                {
+                    pitchLevel++;
+                }
+            }
+            soundMan.GetAudio(playClip, ChordPanel1.GetLineColor(), pitchLevel);
 
         }
 
-        //  Change Color
-        if (ballColor.GetCodeState() == 3)
+        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
+            && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line")
         {
-            //this.lineColor = ballColor.GetColorState();
-            this.gameObject.tag = "Line" + lineColor;
-            //this.originalSprite = lineArray.GetSprite(lineColor);
-            //this.hitSprite = lineArray.GetHitSprite(lineColor);
-            MakeSound();
+            // ++
+            if (ChordPanel2.GetSelectedChord() == "Plus")
+            {
+                if (pitchLevel < 4)
+                {
+                    pitchLevel++;
+                }
+            }
+            else if (ChordPanel2.GetSelectedChord() == "Minus")
+            {
+                if (pitchLevel > 0)
+                {
+                    pitchLevel--;
+                }
+            }
+            else if (ChordPanel2.GetSelectedChord() == "PlusMinus")
+            {
+                if (pitchLevel > 3)
+                {
+                    pitchLevel = 0;
+                    Debug.Log(pitchLevel);
+                }
+                else
+                {
+                    pitchLevel++;
+                }
+            }
+            Debug.Log(pitchLevel);
+            soundMan.GetAudio(playClip, ChordPanel2.GetLineColor(), pitchLevel);
         }
 
-        // Change Volume
-        if (ballColor.GetCodeState() == 2)
+        // Rhythym Panel
+        if (collision.gameObject.tag == RhythymPanel1.GetBallColor() + "Ball"
+            && this.gameObject.tag == RhythymPanel1.GetLineColor() + "Line")
         {
-            this.GetComponent<SpriteRenderer>().color = new Color (1f, 1f, 1f, ballColor.GetVolumeState());
-            this.GetComponent<AudioSource>().volume = ballColor.GetVolumeState();
-            MakeSound();
+            StartCoroutine(LoopSound(0.2f, RhythymPanel1.GetSelectedRhythym()));
+        }
+
+        if (collision.gameObject.tag == RhythymPanel2.GetBallColor() + "Ball"
+            && this.gameObject.tag == RhythymPanel2.GetLineColor() + "Line")
+        {
+            StartCoroutine(LoopSound(0.2f, RhythymPanel2.GetSelectedRhythym()));
+        }
+
+        else
+        {
+            MakeSound(); 
         }
     }
+
+    //private void PerformCode(SendStateInformation3 ballColor)
+    //{
+    //    // None
+    //    if (ballColor.GetCodeState() == 0)
+    //    {
+    //        MakeSound();
+    //    }
+
+    //    // Destroy
+    //    if (ballColor.GetCodeState() == 4)
+    //    {
+    //        StartCoroutine(DestroyObject(0.2f));
+    //    }
+
+    //    //  Loop
+    //    if (ballColor.GetCodeState() == 5)
+    //    {
+    //        StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
+    //    }
+    //    //  Increase Pitch + transform width
+    //    if (ballColor.GetCodeState() == 1)
+    //    {
+    //        Debug.Log("Change Pitch");
+    //        if (ballColor.GetPitchState() < 5)
+    //        {
+    //            pitchLevel = ballColor.GetPitchState() + 1;
+    //        }
+
+    //        // ++
+    //        if (ballColor.GetPitchState() == 5)
+    //        {
+    //            if (pitchLevel < 5)
+    //            {
+    //                pitchLevel++;
+    //            }
+    //        }
+
+    //        // --
+    //        else if (ballColor.GetPitchState() == 6)
+    //        {
+    //            if (pitchLevel > 1)
+    //            {
+    //                pitchLevel--;
+    //            }
+    //        }
+    //        this.TransformLine(pitchLevel);
+    //        playClip.PlayOneShot(soundMan.GetAudio(ChordPanel1.GetLineColor(), (pitchLevel - 1) + gameManger.GetSoundState()));
+
+    //    }
+
+    //    //  Change Color
+    //    if (ballColor.GetCodeState() == 3)
+    //    {
+    //        //this.lineColor = ballColor.GetColorState();
+    //        this.gameObject.tag = "Line" + lineColor;
+    //        //this.originalSprite = lineArray.GetSprite(lineColor);
+    //        //this.hitSprite = lineArray.GetHitSprite(lineColor);
+    //        MakeSound();
+    //    }
+
+    //    // Change Volume
+    //    if (ballColor.GetCodeState() == 2)
+    //    {
+    //        this.GetComponent<SpriteRenderer>().color = new Color (1f, 1f, 1f, ballColor.GetVolumeState());
+    //        this.GetComponent<AudioSource>().volume = ballColor.GetVolumeState();
+    //        MakeSound();
+    //    }
+    //}
 
     private void TransformLine(int pitch)
     {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5555148069966462027}
   - component: {fileID: 7137083567527295696}
   - component: {fileID: 2671764337917598991}
+  - component: {fileID: 3881536566660372468}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -76,7 +77,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
+--- !u!114 &3881536566660372468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525709670389346800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63150432f4cc4cf4fb4cb3f0526b94b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentChord: None
 --- !u!1 &1173843007300422225
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,8 +179,7 @@ GameObject:
   - component: {fileID: 1386752542486092542}
   - component: {fileID: 1386752542486092539}
   - component: {fileID: 1386752542486092540}
-  - component: {fileID: 1386752542486092541}
-  - component: {fileID: 4066356241443632426}
+  - component: {fileID: 1386752543083255942}
   m_Layer: 5
   m_Name: ChordPanel
   m_TagString: Untagged
@@ -233,23 +246,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1386752542486092541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386752542486092543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedBall: {fileID: 3409630546438284124}
-  SelectedLine: {fileID: 3994955599031033570}
-  ChangeLine: {fileID: 0}
-  flashBorder: {fileID: 1386752544215781481}
---- !u!114 &4066356241443632426
+--- !u!114 &1386752543083255942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,10 +258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3526bb87b2b96f4eb48a93bdb097970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedBall: {fileID: 0}
-  SelectedLine: {fileID: 0}
-  ChangeLine: {fileID: 0}
-  flashBorder: {fileID: 0}
+  SelectedBall: {fileID: 3409630546438284124}
+  SelectedLine: {fileID: 3994955599031033570}
+  Chord: {fileID: 3881536566660372468}
+  flashBorder: {fileID: 1386752544215781481}
 --- !u!1 &1386752544215781483
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +424,7 @@ GameObject:
   - component: {fileID: 4038595388680137123}
   - component: {fileID: 5153566571536716713}
   - component: {fileID: 1288855551598796453}
+  - component: {fileID: 153881961660706543}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -508,7 +506,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -532,11 +530,47 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5153566571536716713}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2671764337917598991}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3881536566660372468}
+        m_MethodName: SetChordToMinus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 153881961660706543}
+        m_MethodName: toggled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &153881961660706543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346867596512284303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764a53e79be27574fb736a6385a694ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnselectedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  SelectedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &5266513289735270463
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +737,7 @@ GameObject:
   - component: {fileID: 4890352203709697020}
   - component: {fileID: 9138413765042578590}
   - component: {fileID: 5774055440875705479}
+  - component: {fileID: 8164405775810973753}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -784,7 +819,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -808,11 +843,47 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9138413765042578590}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2671764337917598991}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3881536566660372468}
+        m_MethodName: SetChordToPlusMinus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8164405775810973753}
+        m_MethodName: toggled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &8164405775810973753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286975519530254661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764a53e79be27574fb736a6385a694ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnselectedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  SelectedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &9092768301693673204
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +896,7 @@ GameObject:
   - component: {fileID: 6126825202749074149}
   - component: {fileID: 4106645632811953178}
   - component: {fileID: 1231470562482674934}
+  - component: {fileID: 958433434}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -906,7 +978,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -918,7 +990,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -930,11 +1002,47 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4106645632811953178}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2671764337917598991}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3881536566660372468}
+        m_MethodName: SetChordToPlus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 958433434}
+        m_MethodName: toggled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &958433434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092768301693673204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764a53e79be27574fb736a6385a694ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnselectedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  SelectedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &1386752544307767656
 PrefabInstance:
   m_ObjectHideFlags: 0

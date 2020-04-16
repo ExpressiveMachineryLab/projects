@@ -62,25 +62,40 @@ public class SoundManager : MonoBehaviour
         YellowSounds[4] = YellowSounds5;
     }
 
-    public AudioClip GetAudio(int lineColor, int pitch)
+    public AudioClip GetAudio(AudioSource playClip, string lineColor, int pitch)
     {
+        Debug.Log(pitch);
+        if (lineColor == "BlueLine") 
+        {
+            for (int i = 0; i < BlueSounds[pitch].Length; i++) 
+            {
+                playClip.PlayOneShot(BlueSounds[pitch][i]);
+            }
+        }
 
-        //    if (lineColor == 0)
-        //    {
-        //        return BlueSounds[pitch];
-        //    }
-        //    else if (lineColor == 1)
-        //    {
-        //        return GreenSounds[pitch];
-        //    }
-        //    else if (lineColor == 2)
-        //    {
-        //        return RedSounds[pitch];
-        //    }
-        //    else if (lineColor == 3)
-        //    {
-        //        return YellowSounds[pitch];
-        //    }
+        if (lineColor == "GreenLine")
+        {
+            for (int i = 0; i < GreenSounds[pitch].Length; i++)
+            {
+                playClip.PlayOneShot(GreenSounds[pitch][i]);
+            }
+        }
+
+        if (lineColor == "RedLine")
+        {
+            for (int i = 0; i < RedSounds[pitch].Length; i++)
+            {
+                playClip.PlayOneShot(RedSounds[pitch][i]);
+            }
+        }
+
+        if (lineColor == "YellowLine")
+        {
+            for (int i = 0; i < YellowSounds[pitch].Length; i++)
+            {
+                playClip.PlayOneShot(YellowSounds[pitch][i]);
+            }
+        }
         return null;
     }
     public void PlayAudio (AudioSource lineAudioSource, string color, int chord) 

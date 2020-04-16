@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SendStateInformationChord : MonoBehaviour
+public class SendStateInformationRhythym : MonoBehaviour
 {
     public SelectedElement SelectedBall;
     public SelectedElement SelectedLine;
-    public SelectedElementChord Chord;
+    public SelectedElementRhythym Rhythym;
 
     public Image flashBorder;
     private Color thisColor;
@@ -27,9 +27,9 @@ public class SendStateInformationChord : MonoBehaviour
         return SelectedLine.GetCurrentColor();
     }
 
-    public string GetSelectedChord()
+    public int GetSelectedRhythym()
     {
-        return Chord.GetCurrentChord();
+        return Rhythym.GetCurrentRhythym();
     }
 
     public void FlashBox(int color)
