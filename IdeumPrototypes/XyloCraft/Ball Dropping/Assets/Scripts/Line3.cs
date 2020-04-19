@@ -27,6 +27,7 @@ public class Line3 : MonoBehaviour
     private bool isBeingRotated = false;
 
     private int pitchLevel = 0;
+    private bool pitchPositive = true;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -187,26 +188,42 @@ public class Line3 : MonoBehaviour
             // ++
             if (ChordPanel1.GetSelectedChord() == "Plus") 
             {
-                if (pitchLevel < 4) 
+                if (pitchLevel < 4)
                 {
                     pitchLevel++;
+                }
+                else 
+                {
+                    pitchLevel = 0;
                 }
             }
             else if (ChordPanel1.GetSelectedChord() == "Minus")
             {
-                if (pitchLevel > 0) 
+                if (pitchLevel > 0)
                 {
                     pitchLevel--;
+                }
+                else 
+                {
+                    pitchLevel = 4;
                 }
             }
             else if (ChordPanel1.GetSelectedChord() == "PlusMinus")
             {
-                if (pitchLevel > 3) 
+                if (pitchLevel == 4) 
                 {
-                    pitchLevel = 0;
-                } else
+                    pitchPositive = false;
+                } else if (pitchLevel == 0)
+                {
+                    pitchPositive = true;
+                }
+
+                if (pitchPositive)
                 {
                     pitchLevel++;
+                }
+                else {
+                    pitchLevel--;
                 }
             }
             soundMan.GetAudio(playClip, ChordPanel1.GetLineColor(), pitchLevel);
