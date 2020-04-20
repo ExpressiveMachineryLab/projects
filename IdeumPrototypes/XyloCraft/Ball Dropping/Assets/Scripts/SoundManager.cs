@@ -85,6 +85,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < RedSounds[pitch].Length; i++)
             {
+                playClip.volume = 0.2f;
                 playClip.PlayOneShot(RedSounds[pitch][i]);
             }
         }
