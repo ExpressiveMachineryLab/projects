@@ -167,6 +167,7 @@ MonoBehaviour:
   Red: {fileID: 21300000, guid: d543fe99986babc4499d1ff9d07c804d, type: 3}
   Green: {fileID: 21300000, guid: f8ccd90bf5705824189b9951f87d3766, type: 3}
   Yellow: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f, type: 3}
+  Wild: {fileID: 21300000, guid: b561481c678c62d489640f4fd0b34041, type: 3}
   currentColor: Blue
 --- !u!1 &2616119573041976852
 GameObject:
@@ -2041,6 +2042,7 @@ MonoBehaviour:
   Red: {fileID: 21300000, guid: 2be3d2956113fcc408c8f42add17015a, type: 3}
   Green: {fileID: 21300000, guid: abffe97fa50d1c14295b9ff6c36109c3, type: 3}
   Yellow: {fileID: 21300000, guid: 19651706da375ce4cb7480a2775af0b3, type: 3}
+  Wild: {fileID: 21300000, guid: 512fa3c6f33fac148b6e36289075246c, type: 3}
   currentColor: Red
 --- !u!1 &4354924755059767724
 GameObject:

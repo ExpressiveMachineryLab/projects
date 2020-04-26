@@ -9,6 +9,7 @@ public class SelectedElement : MonoBehaviour
     public Sprite Red;
     public Sprite Green;
     public Sprite Yellow;
+    public Sprite Wild;
 
     public string currentColor;
 
@@ -51,13 +52,15 @@ public class SelectedElement : MonoBehaviour
     }
     public void SetWild()
     {
-        Sprite[] imageArray = {Blue, Red, Green, Yellow};
-        Sprite randomSprite;
-        do {
-            randomSprite = imageArray[(int)(Random.value * 4)];
-        } while (currentColor == randomSprite.name);
-        currentColor = randomSprite.name;
-        Debug.Log(currentColor);
-        this.gameObject.GetComponent<Image>().sprite = randomSprite;
+        this.gameObject.GetComponent<Image>().sprite = Wild;
+        currentColor = "All";
+        //Sprite[] imageArray = {Blue, Red, Green, Yellow};
+        //Sprite randomSprite;
+        //do {
+        //    randomSprite = imageArray[(int)(Random.value * 4)];
+        //} while (currentColor == randomSprite.name);
+        //currentColor = randomSprite.name;
+        //Debug.Log(currentColor);
+        //this.gameObject.GetComponent<Image>().sprite = randomSprite;
     }
 }

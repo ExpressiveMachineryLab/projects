@@ -161,7 +161,9 @@ public class Line3 : MonoBehaviour
     private void PerformCodeBehvaior(Collision2D collision)
     {
         //  Instrument Panel
-        if (collision.gameObject.tag == InstrumentPanel1.GetBallColor() +"Ball" 
+        if ((InstrumentPanel1.GetBallColor() == "All" && this.gameObject.tag == InstrumentPanel1.GetLineColor() + "Line" ) ||
+            (InstrumentPanel1.GetLineColor() == "All" && collision.gameObject.tag == InstrumentPanel1.GetBallColor() + "Ball" ) ||
+            collision.gameObject.tag == InstrumentPanel1.GetBallColor() +"Ball" 
             && this.gameObject.tag == InstrumentPanel1.GetLineColor() + "Line" 
             && InstrumentPanel1.GetRepeatState() != "None")
         {
@@ -176,7 +178,9 @@ public class Line3 : MonoBehaviour
             }
         }
 
-        else if (collision.gameObject.tag == InstrumentPanel2.GetBallColor() + "Ball"
+        else if ((InstrumentPanel2.GetBallColor() == "All" && this.gameObject.tag == InstrumentPanel2.GetLineColor() + "Line") ||
+            (InstrumentPanel2.GetLineColor() == "All" && collision.gameObject.tag == InstrumentPanel2.GetBallColor() + "Ball") ||
+            collision.gameObject.tag == InstrumentPanel2.GetBallColor() + "Ball"
             && this.gameObject.tag == InstrumentPanel2.GetLineColor() + "Line" 
             && InstrumentPanel2.GetRepeatState() != "None")
         {
@@ -192,7 +196,9 @@ public class Line3 : MonoBehaviour
         }
 
         // Chord + Note Panel
-        if (collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
+        if ((ChordPanel1.GetBallColor() == "All" && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line") ||
+            (ChordPanel1.GetLineColor() == "All" && collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball") ||
+            collision.gameObject.tag == ChordPanel1.GetBallColor() + "Ball"
             && this.gameObject.tag == ChordPanel1.GetLineColor() + "Line"
             && ChordPanel1.GetRepeatState() != "None")
         {
@@ -244,7 +250,9 @@ public class Line3 : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
+        if ((ChordPanel2.GetBallColor() == "All" && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line") ||
+            (ChordPanel2.GetLineColor() == "All" && collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball") || 
+            collision.gameObject.tag == ChordPanel2.GetBallColor() + "Ball"
             && this.gameObject.tag == ChordPanel2.GetLineColor() + "Line"
             && ChordPanel2.GetRepeatState() != "None")
         {
@@ -300,7 +308,9 @@ public class Line3 : MonoBehaviour
         }
 
         // Rhythym Panel
-        if (collision.gameObject.tag == RhythymPanel1.GetBallColor() + "Ball"
+        if ((RhythymPanel1.GetBallColor() == "All" && this.gameObject.tag == RhythymPanel1.GetLineColor() + "Line") ||
+            (RhythymPanel1.GetLineColor() == "All" && collision.gameObject.tag == RhythymPanel1.GetBallColor() + "Ball") || 
+            collision.gameObject.tag == RhythymPanel1.GetBallColor() + "Ball"
             && this.gameObject.tag == RhythymPanel1.GetLineColor() + "Line"
             && RhythymPanel1.GetRepeatState() != "None")
         {
@@ -312,7 +322,9 @@ public class Line3 : MonoBehaviour
         }
 
 
-        if (collision.gameObject.tag == RhythymPanel2.GetBallColor() + "Ball"
+        if ((RhythymPanel2.GetBallColor() == "All" && this.gameObject.tag == RhythymPanel2.GetLineColor() + "Line") ||
+            (RhythymPanel2.GetLineColor() == "All" && collision.gameObject.tag == RhythymPanel2.GetBallColor() + "Ball") || 
+            collision.gameObject.tag == RhythymPanel2.GetBallColor() + "Ball"
             && this.gameObject.tag == RhythymPanel2.GetLineColor() + "Line"
             && RhythymPanel2.GetRepeatState() != "None")
         {
