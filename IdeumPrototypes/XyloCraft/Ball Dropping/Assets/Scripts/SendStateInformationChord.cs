@@ -8,6 +8,7 @@ public class SendStateInformationChord : MonoBehaviour
     public SelectedElement SelectedBall;
     public SelectedElement SelectedLine;
     public SelectedElementChord Chord;
+    public SelectedElementRepeat RepeatState;
 
     public Image flashBorder;
     private Color thisColor;
@@ -31,6 +32,17 @@ public class SendStateInformationChord : MonoBehaviour
     {
         return Chord.GetCurrentChord();
     }
+
+    public string GetRepeatState() 
+    {
+        return RepeatState.GetCurrentRhythym();
+    }
+    public void SetRepeatStateNone()
+    {
+        RepeatState.SetModeToNone();
+        RepeatState.SetNoneToggle();
+    }
+
 
     public void FlashBox(int color)
     {

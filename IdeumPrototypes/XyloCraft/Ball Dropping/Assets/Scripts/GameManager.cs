@@ -65,11 +65,11 @@ public class GameManager : MonoBehaviour
 
     public void SetToSound2()
     {
-        Sound = 5;
+        Sound = 1;
     }
 
     public void SetToSound3() 
     {
-        Sound = 10;
+        Sound = 2;
     }
 }

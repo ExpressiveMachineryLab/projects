@@ -12,8 +12,15 @@ public class SelectedElementChord : MonoBehaviour
         {
             currentChord = "Plus";
         }
+        else if (currentChord == "Minus")
+        {
+            SetChordToPlusMinus();
+        }
+        else if (currentChord == "PlusMinus") 
+        {
+            currentChord = "Minus";
+        }
         else { SetChordToNone(); }
-        
     }
 
     public void SetChordToMinus() 
@@ -22,18 +29,20 @@ public class SelectedElementChord : MonoBehaviour
         {
             currentChord = "Minus";
         }
+        else if (currentChord == "Plus") 
+        {
+            SetChordToPlusMinus();
+        }
+        else if (currentChord == "PlusMinus")
+        {
+            currentChord = "Plus";
+        }
         else { SetChordToNone(); }
-        
     }
 
     public void SetChordToPlusMinus() 
     {
-        if (currentChord == "None")
-        {
-            currentChord = "PlusMinus";
-        }
-        else { SetChordToNone(); }
-        
+        currentChord = "PlusMinus";
     }
 
     public void SetChordToNone() 

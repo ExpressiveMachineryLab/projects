@@ -8,6 +8,7 @@ public class SendStateInformation : MonoBehaviour
     public SelectedElement SelectedBall;
     public SelectedElement SelectedLine;
     public SelectedElement ChangeLine;
+    public SelectedElementRepeat RepeatState;
 
     public Image flashBorder;
     private Color thisColor;
@@ -31,6 +32,17 @@ public class SendStateInformation : MonoBehaviour
     {
         return ChangeLine.GetCurrentColor();
     }
+
+    public string GetRepeatState()
+    {
+        return RepeatState.GetCurrentRhythym();
+    }
+    public void SetRepeatStateNone()
+    {
+        RepeatState.SetModeToNone();
+        RepeatState.SetNoneToggle();
+    }
+
 
     //public int GetCodeState()
     //{

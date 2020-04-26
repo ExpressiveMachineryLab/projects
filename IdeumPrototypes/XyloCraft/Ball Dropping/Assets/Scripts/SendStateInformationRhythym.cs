@@ -8,6 +8,7 @@ public class SendStateInformationRhythym : MonoBehaviour
     public SelectedElement SelectedBall;
     public SelectedElement SelectedLine;
     public SelectedElementRhythym Rhythym;
+    public SelectedElementRepeat RepeatState;
 
     public Image flashBorder;
     private Color thisColor;
@@ -30,6 +31,17 @@ public class SendStateInformationRhythym : MonoBehaviour
     public int GetSelectedRhythym()
     {
         return Rhythym.GetCurrentRhythym();
+    }
+
+    public string GetRepeatState()
+    {
+        return RepeatState.GetCurrentRhythym();
+    }
+
+    public void SetRepeatStateNone() 
+    {
+        RepeatState.SetModeToNone();
+        RepeatState.SetNoneToggle();
     }
 
     public void FlashBox(int color)

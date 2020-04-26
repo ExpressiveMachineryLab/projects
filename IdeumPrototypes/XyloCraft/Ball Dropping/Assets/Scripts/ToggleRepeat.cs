@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TE.Examples;
 
-public class ToggleSelected : MonoBehaviour
+public class ToggleRepeat : MonoBehaviour
 {
     public Sprite UnselectedSprite;
     public Sprite SelectedSprite;
-    private bool isToggled;
+    public bool isToggled;
     //public GameObject emitter;
     //private EmitterController TangibleController;
 
     // Start is called before the first frame update
     void Start()
     {
-        isToggled = false;
+        //isToggled = false;
         //TangibleController = GameObject.Find("Controller").GetComponent<EmitterController>();
+        if (isToggled)
+        {
+            this.gameObject.GetComponent<Image>().sprite = SelectedSprite;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void toggled()
