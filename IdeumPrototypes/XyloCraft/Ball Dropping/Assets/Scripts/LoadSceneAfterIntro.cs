@@ -6,14 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneAfterIntro : MonoBehaviour
 {
-    public VideoPlayer VideoPlayer; 
+    public VideoPlayer VideoPlayer;
+    public GameObject button;
     void Start()
     {
-        VideoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, "XylocodetitlecenteredMusic.mp4");
-        VideoPlayer.loopPointReached += LoadScene;
+        
     }
     void LoadScene(VideoPlayer vp)
     {
         SceneManager.LoadScene("Web Prototype");
+    }
+
+    public void Play() 
+    {
+        button.SetActive(false);
+        VideoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, "XylocodetitlecenteredMusic.mp4");
+        VideoPlayer.loopPointReached += LoadScene;
     }
 }

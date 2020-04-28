@@ -307,6 +307,7 @@ public class Line3 : MonoBehaviour
             }
         }
 
+
         // Rhythym Panel
         if ((RhythymPanel1.GetBallColor() == "All" && this.gameObject.tag == RhythymPanel1.GetLineColor() + "Line") ||
             (RhythymPanel1.GetLineColor() == "All" && collision.gameObject.tag == RhythymPanel1.GetBallColor() + "Ball") || 
