@@ -19,7 +19,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] BlueSounds23;
     public AudioClip[] BlueSounds24;
     public AudioClip[] BlueSounds25;
-    private AudioClip[][][] BlueSounds = new AudioClip[2][][];
+
+    public AudioClip[] BlueSounds31;
+    public AudioClip[] BlueSounds32;
+    public AudioClip[] BlueSounds33;
+    public AudioClip[] BlueSounds34;
+    public AudioClip[] BlueSounds35;
+
+    private AudioClip[][][] BlueSounds = new AudioClip[3][][];
 
     public AudioClip[] GreenSounds11;
     public AudioClip[] GreenSounds12;
@@ -32,7 +39,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] GreenSounds23;
     public AudioClip[] GreenSounds24;
     public AudioClip[] GreenSounds25;
-    private AudioClip[][][] GreenSounds = new AudioClip[2][][];
+
+    public AudioClip[] GreenSounds31;
+    public AudioClip[] GreenSounds32;
+    public AudioClip[] GreenSounds33;
+    public AudioClip[] GreenSounds34;
+    public AudioClip[] GreenSounds35;
+
+    private AudioClip[][][] GreenSounds = new AudioClip[3][][];
 
     public AudioClip[] RedSounds11;
     public AudioClip[] RedSounds12;
@@ -45,7 +59,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] RedSounds23;
     public AudioClip[] RedSounds24;
     public AudioClip[] RedSounds25;
-    private AudioClip[][][] RedSounds = new AudioClip[2][][];
+
+    public AudioClip[] RedSounds31;
+    public AudioClip[] RedSounds32;
+    public AudioClip[] RedSounds33;
+    public AudioClip[] RedSounds34;
+    public AudioClip[] RedSounds35;
+
+    private AudioClip[][][] RedSounds = new AudioClip[3][][];
 
     public AudioClip[] YellowSounds11;
     public AudioClip[] YellowSounds12;
@@ -58,7 +79,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] YellowSounds23;
     public AudioClip[] YellowSounds24;
     public AudioClip[] YellowSounds25;
-    private AudioClip[][][] YellowSounds = new AudioClip[2][][];
+
+    public AudioClip[] YellowSounds31;
+    public AudioClip[] YellowSounds32;
+    public AudioClip[] YellowSounds33;
+    public AudioClip[] YellowSounds34;
+    public AudioClip[] YellowSounds35;
+
+    private AudioClip[][][] YellowSounds = new AudioClip[3][][];
 
     void Start() 
     {
@@ -76,6 +104,13 @@ public class SoundManager : MonoBehaviour
         BlueSounds[1][3] = BlueSounds24;
         BlueSounds[1][4] = BlueSounds25;
 
+        BlueSounds[2] = new AudioClip[5][];
+        BlueSounds[2][0] = BlueSounds31;
+        BlueSounds[2][1] = BlueSounds32;
+        BlueSounds[2][2] = BlueSounds33;
+        BlueSounds[2][3] = BlueSounds34;
+        BlueSounds[2][4] = BlueSounds35;
+
         GreenSounds[0] = new AudioClip[5][];
         GreenSounds[0][0] = GreenSounds11;
         GreenSounds[0][1] = GreenSounds12;
@@ -89,6 +124,13 @@ public class SoundManager : MonoBehaviour
         GreenSounds[1][2] = GreenSounds23;
         GreenSounds[1][3] = GreenSounds24;
         GreenSounds[1][4] = GreenSounds25;
+
+        GreenSounds[2] = new AudioClip[5][];
+        GreenSounds[2][0] = GreenSounds31;
+        GreenSounds[2][1] = GreenSounds32;
+        GreenSounds[2][2] = GreenSounds33;
+        GreenSounds[2][3] = GreenSounds34;
+        GreenSounds[2][4] = GreenSounds35;
 
         RedSounds[0] = new AudioClip[5][];
         RedSounds[0][0] = RedSounds11;
@@ -104,6 +146,13 @@ public class SoundManager : MonoBehaviour
         RedSounds[1][3] = RedSounds24;
         RedSounds[1][4] = RedSounds25;
 
+        RedSounds[2] = new AudioClip[5][];
+        RedSounds[2][0] = RedSounds31;
+        RedSounds[2][1] = RedSounds32;
+        RedSounds[2][2] = RedSounds33;
+        RedSounds[2][3] = RedSounds34;
+        RedSounds[2][4] = RedSounds35;
+
         YellowSounds[0] = new AudioClip[5][];
         YellowSounds[0][0] = YellowSounds11;
         YellowSounds[0][1] = YellowSounds12;
@@ -117,6 +166,13 @@ public class SoundManager : MonoBehaviour
         YellowSounds[1][2] = YellowSounds23;
         YellowSounds[1][3] = YellowSounds24;
         YellowSounds[1][4] = YellowSounds25;
+
+        YellowSounds[2] = new AudioClip[5][];
+        YellowSounds[2][0] = YellowSounds31;
+        YellowSounds[2][1] = YellowSounds32;
+        YellowSounds[2][2] = YellowSounds33;
+        YellowSounds[2][3] = YellowSounds34;
+        YellowSounds[2][4] = YellowSounds35;
     }
 
     public AudioClip GetAudio(AudioSource playClip, string lineColor, int pitch, int mode)
@@ -141,7 +197,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < RedSounds[mode][pitch].Length; i++)
             {
-                playClip.volume = 0.2f;
+                playClip.volume = 0.3f;
                 playClip.PlayOneShot(RedSounds[mode][pitch][i]);
             }
         }

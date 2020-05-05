@@ -236,6 +236,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3237701782724201539, guid: b0be61f53180f1b459ddf8f1b24942fc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f,
+        type: 3}
     - target: {fileID: 3237701782724201542, guid: b0be61f53180f1b459ddf8f1b24942fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -301,6 +307,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Line2_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3237701782724201543, guid: b0be61f53180f1b459ddf8f1b24942fc,
+        type: 3}
+      propertyPath: m_TagString
+      value: YellowLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356581719635881987, guid: b0be61f53180f1b459ddf8f1b24942fc,
+        type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f,
+        type: 3}
+    - target: {fileID: 7356581719635881987, guid: b0be61f53180f1b459ddf8f1b24942fc,
+        type: 3}
+      propertyPath: hitSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c7a7bb3bcece98d41b94b1ce17d96abd,
+        type: 3}
+    - target: {fileID: 7356581719635881987, guid: b0be61f53180f1b459ddf8f1b24942fc,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e087d9a00d38476198554062a258c4d, type: 3}
     - target: {fileID: 7626694866612278687, guid: b0be61f53180f1b459ddf8f1b24942fc,
         type: 3}
       propertyPath: m_IsActive
