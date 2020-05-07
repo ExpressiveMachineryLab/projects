@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private SelectionManager selectionManager;
     private int[] colors = new int[4];
     private int Sound = 0;
+    private float speed = 1;
+    private Slider speedMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
+        speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
         selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
     }
 
@@ -19,6 +23,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateSpeed() 
+    {
+        speed = speedMultiplier.value;
+    }
+
+    public float GetSpeedMultiplier() 
+    {
+        return speed;
     }
 
     public int GetSoundState() 

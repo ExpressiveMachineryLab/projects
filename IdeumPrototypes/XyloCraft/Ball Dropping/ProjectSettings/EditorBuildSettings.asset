@@ -5,18 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 960a3a4785bef244185f7b0b21d4b6fc
   - enabled: 1
-    path: Assets/Scenes/Web Prototype.unity
-    guid: e880f17c79d6c40458208c29bbc3642c
-  - enabled: 0
-    path: Assets/Scenes/Web Prototype Guitars.unity
-=======
-  - enabled: 0
     path: Assets/Scenes/Web Prototype Development.unity
     guid: e880f17c79d6c40458208c29bbc3642c
   - enabled: 0
-    path: Assets/Web Prototype Guitars.unity
-
+    path: Assets/Scenes/Web Prototype Guitars.unity
+    guid: 9b4cb19ca607340d89996769be9fd779
+  m_configObjects: {}
