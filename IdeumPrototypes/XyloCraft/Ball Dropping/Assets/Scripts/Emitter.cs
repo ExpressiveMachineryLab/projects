@@ -19,6 +19,8 @@ public class Emitter : MonoBehaviour
     private float startPosY;
     private bool isBeingHeld = false;
     private bool isBeingRotated = false;
+    private float clickTimer;
+    private bool clickTimerOn;
 
     void Start()
     {
@@ -28,6 +30,11 @@ public class Emitter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (clickTimerOn) 
+        {
+            clickTimer += Time.deltaTime;
+        }
+
         if (isBeingHeld)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -57,17 +64,6 @@ public class Emitter : MonoBehaviour
             isBeingRotated = false;
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
-            {
-                ShootBall();
-                emitterAnimator.SetTrigger("Shoot");
-            }
-        }
     }
 
     private void OnMouseDown()
@@ -80,11 +76,25 @@ public class Emitter : MonoBehaviour
         startPosX = mousePos.x - this.transform.localPosition.x;
         startPosY = mousePos.y - this.transform.localPosition.y;
 
+        clickTimer = 0;
         isBeingHeld = true;
     }
 
     private void OnMouseUp()
     {
+        clickTimerOn = false;
+        if (clickTimer < 0.15) 
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
+            {
+                ShootBall();
+                emitterAnimator.SetTrigger("Shoot");
+
+            }
+        }
         isBeingHeld = false;
 
     }
