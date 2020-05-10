@@ -1670,6 +1670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRepeatMode: 
+  NoneToggle: {fileID: 1072818390341404353}
+  OnceToggle: {fileID: 2976586052497534495}
   None: {fileID: 1099046133468447413}
   Once: {fileID: 904367307932018691}
   Repeat: {fileID: 1306006364964913837}

@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectedElementRepeat : MonoBehaviour
 {
     public string currentRepeatMode;
+    public Toggle NoneToggle;
+    public Toggle OnceToggle;
     public ToggleRepeat None;
     public ToggleRepeat Once;
     public ToggleRepeat Repeat;
@@ -27,8 +30,11 @@ public class SelectedElementRepeat : MonoBehaviour
 
     public void SetNoneToggle() 
     {
-        Once.toggled();
-        None.toggled();
+        
+        //Once.toggled();
+        //None.toggled();
+        NoneToggle.isOn = true;
+        OnceToggle.isOn = false;
     }
 
     public void SetModeToOnce()

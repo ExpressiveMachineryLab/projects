@@ -117,6 +117,7 @@ public class Line3 : MonoBehaviour
         //Debug.Log(codeInfo.getCodeState());
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
+        this.GetComponentInChildren<ParticleSystem>().Play();
     }
     
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
