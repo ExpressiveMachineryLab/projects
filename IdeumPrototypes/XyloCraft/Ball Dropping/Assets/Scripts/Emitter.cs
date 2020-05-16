@@ -77,6 +77,7 @@ public class Emitter : MonoBehaviour
         startPosY = mousePos.y - this.transform.localPosition.y;
 
         clickTimer = 0;
+        clickTimerOn = true;
         isBeingHeld = true;
     }
 

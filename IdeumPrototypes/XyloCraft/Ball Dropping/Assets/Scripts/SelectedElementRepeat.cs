@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectedElementRepeat : MonoBehaviour
 {
     public string currentRepeatMode;
+    public Image grey;
     public Toggle NoneToggle;
     public Toggle OnceToggle;
     public ToggleRepeat None;
@@ -26,6 +27,7 @@ public class SelectedElementRepeat : MonoBehaviour
     public void SetModeToNone()
     {
         currentRepeatMode = "None";
+        grey.enabled = true;
     }
 
     public void SetNoneToggle() 
@@ -40,11 +42,13 @@ public class SelectedElementRepeat : MonoBehaviour
     public void SetModeToOnce()
     {
         currentRepeatMode = "Once";
+        grey.enabled = false;
     }
 
     public void SetModeToRepeat()
     {
         currentRepeatMode = "Repeat";
+        grey.enabled = false;
     }
 
     public string GetCurrentRhythym()
