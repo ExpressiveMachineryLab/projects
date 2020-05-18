@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Ball Dropping",
+"productVersion": "0.1",
+"dataUrl": "XylocodeWeb_04correct.data.unityweb",
+"wasmCodeUrl": "XylocodeWeb_04correct.wasm.code.unityweb",
+"wasmFrameworkUrl": "XylocodeWeb_04correct.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.7f1"
+}
