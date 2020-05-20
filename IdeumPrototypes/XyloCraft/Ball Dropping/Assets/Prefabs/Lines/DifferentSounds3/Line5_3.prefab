@@ -336,8 +336,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2546236351794852353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -2.1, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.14999999, z: 0}
+  m_LocalPosition: {x: -0.2, y: 4.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 92337331368953775}
   m_RootOrder: 2
@@ -352,7 +352,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.20438004, y: -2.4460602}
@@ -407,8 +407,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8455417393594920697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -2.175, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.14999999, z: 0}
+  m_LocalPosition: {x: -0.1, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 92337331368953775}
   m_RootOrder: 5
@@ -5219,8 +5219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8789244542889316096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -1.3499999, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.14999999, z: 0}
+  m_LocalPosition: {x: -0.19999695, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 92337331368953775}
   m_RootOrder: 3
@@ -5235,7 +5235,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.20438004, y: -2.4460602}
@@ -5290,8 +5290,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9050501536086429939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -2.175, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.14999999, z: 0}
+  m_LocalPosition: {x: -0.09999466, y: -0.10000038, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 92337331368953775}
   m_RootOrder: 4
@@ -10032,7 +10032,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: da9bef0e16d9d384db425ed386b06fb6, type: 2}
-  - {fileID: 2100000, guid: da9bef0e16d9d384db425ed386b06fb6, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
