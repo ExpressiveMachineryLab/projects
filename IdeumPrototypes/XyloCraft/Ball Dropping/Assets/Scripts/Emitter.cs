@@ -24,7 +24,7 @@ public class Emitter : MonoBehaviour
 
     void Start()
     {
-        ballSpeedSlider = GameObject.Find("Slider").GetComponent<Slider>();
+        //ballSpeedSlider = GameObject.Find("Slider").GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -101,7 +101,7 @@ public class Emitter : MonoBehaviour
     }
     void ShootBall()
     {
-        Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(ballSpeedSlider.value), firePoint.position, firePoint.rotation);
+        Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(10), firePoint.position, firePoint.rotation);
     }
 
     void Rotate()
