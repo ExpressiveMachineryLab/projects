@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     private int Sound = 0;
     private float speed = 1;
     private Slider speedMultiplier;
+    private Scrollbar CodeBoxScroll;
 
     // Start is called before the first frame update
     void Start()
     {
         speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
         selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
+        CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
     }
 
     // Update is called once per frame
@@ -85,5 +87,20 @@ public class GameManager : MonoBehaviour
     public void SetToSound3() 
     {
         Sound = 2;
+    }
+
+    public void ScrollToChord() 
+    {
+        CodeBoxScroll.value = 1;
+    }
+
+    public void ScrollToRepeat() 
+    {
+        CodeBoxScroll.value = 0.838f;
+    }
+
+    public void ScrollToGenre() 
+    {
+        CodeBoxScroll.value = 0.676f;
     }
 }
