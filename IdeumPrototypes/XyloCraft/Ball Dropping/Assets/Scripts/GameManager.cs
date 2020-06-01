@@ -6,6 +6,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject ChordPanel;
+    public GameObject RepeatPanel;
+    public GameObject GenrePanel;
+    public GameObject EffectsPanel;
+    public GameObject TeamPanel;
+    public GameObject ActionPanel;
+
+    public Animator CodeBox;
+
     private SelectionManager selectionManager;
     private int[] colors = new int[4];
     private int Sound = 0;
@@ -92,15 +101,45 @@ public class GameManager : MonoBehaviour
     public void ScrollToChord() 
     {
         CodeBoxScroll.value = 1;
+        if (!CodeBox.GetBool("Open")) 
+        {
+            CodeBox.SetTrigger("Clicked");
+            CodeBox.SetTrigger("Open");
+        }
     }
 
     public void ScrollToRepeat() 
     {
         CodeBoxScroll.value = 0.838f;
+        if (!CodeBox.GetBool("Open"))
+        {
+            CodeBox.SetTrigger("Clicked");
+            CodeBox.SetTrigger("Open");
+        }
     }
 
     public void ScrollToGenre() 
     {
         CodeBoxScroll.value = 0.676f;
+        if (!CodeBox.GetBool("Open"))
+        {
+            CodeBox.SetTrigger("Clicked");
+            CodeBox.SetTrigger("Open");
+        }
+    }
+
+    public void ScrollToEffects() 
+    {
+        CodeBoxScroll.value = 0.5616257f;
+        if (!CodeBox.GetBool("Open"))
+        {
+            CodeBox.SetTrigger("Clicked");
+            CodeBox.SetTrigger("Open");
+        }
+    }
+
+    public void ToggleTab() 
+    {
+        CodeBox.SetBool("Open", !CodeBox.GetBool("Open"));
     }
 }

@@ -30,7 +30,7 @@ public class SelectionManager : MonoBehaviour
     private void SetSelection(GameObject selectedGameObject)
     {
         Debug.Log(selectedGameObject + " selected");
-        if (selectedGameObject.tag != "Ignore")
+        if (!selectedGameObject.tag.Contains("Ball"))
         {
             if (selectedObject != null)
             {
