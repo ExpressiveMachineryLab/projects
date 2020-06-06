@@ -12,6 +12,7 @@ public class SelectedElementRepeat : MonoBehaviour
     public ToggleRepeat None;
     public ToggleRepeat Once;
     public ToggleRepeat Repeat;
+    public Text ifStatement;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class SelectedElementRepeat : MonoBehaviour
     {
         currentRepeatMode = "None";
         grey.enabled = true;
+        ifStatement.text = "   (";
     }
 
     public void SetNoneToggle() 
@@ -43,12 +45,14 @@ public class SelectedElementRepeat : MonoBehaviour
     {
         currentRepeatMode = "Once";
         grey.enabled = false;
+        ifStatement.text = "If (";
     }
 
     public void SetModeToRepeat()
     {
         currentRepeatMode = "Repeat";
         grey.enabled = false;
+        ifStatement.text = "While (";
     }
 
     public string GetCurrentRhythym()
