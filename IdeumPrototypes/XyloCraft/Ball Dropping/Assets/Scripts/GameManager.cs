@@ -138,6 +138,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ScrollToLineActions() 
+    {
+        CodeBoxScroll.value = 0.1729164f;
+        if (!CodeBox.GetBool("Open"))
+        {
+            CodeBox.SetTrigger("Clicked");
+            CodeBox.SetTrigger("Open");
+        }
+    }
+
     public void ToggleTab() 
     {
         CodeBox.SetBool("Open", !CodeBox.GetBool("Open"));
