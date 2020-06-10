@@ -12,7 +12,7 @@ public class SendStateInformationActions : MonoBehaviour
     public SelectedElement DestroyLine;
     public SelectedElementRepeat RepeatState;
 
-    private string DropdownState;
+    private string DropdownState = "Instruments";
 
     //public Image flashBorder;
     private Color thisColor;
@@ -37,10 +37,15 @@ public class SendStateInformationActions : MonoBehaviour
         DropdownState = state;
     }
 
-    //public string GetChangeLineColor()
-    //{
-    //    return ChangeLine.GetCurrentColor();
-    //}
+    public string GetDropdownState() 
+    {
+        return DropdownState;
+    }
+
+    public string GetChangeLineInstrumentColor()
+    {
+        return ChangeLineInstrument.GetCurrentColor();
+    }
 
     public string GetRepeatState()
     {
@@ -79,10 +84,10 @@ public class SendStateInformationActions : MonoBehaviour
     //    return localColorDropdown.value;
     //}
 
-    //public float GetVolumeState()
-    //{
-    //    return localVolumeSlider.value;
-    //}
+    public float GetVolumeState()
+    {
+        return VolumeSlider.value;
+    }
 
     //private void LineStateHandler(Dropdown localLineStateDropdown)
     //{

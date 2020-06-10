@@ -12,15 +12,17 @@ public class Line3 : MonoBehaviour
 
     public Animator effects;
 
-    private int InstrumentPanelCount = 3;
-    private int ChordPanelCount = 2;
-    private int RhythymPanelCount = 2;
-    private int EffectPanelCount = 2;
+    //private int InstrumentPanelCount = 4;
+    private int ChordPanelCount = 4;
+    private int RhythymPanelCount = 4;
+    private int EffectPanelCount = 4;
+    private int ActionsPanelCount = 4;
 
     //private ArrayList InstrumentPanels = new ArrayList();
     private ArrayList ChordPanels = new ArrayList();
     private ArrayList RhythymPanels = new ArrayList();
     private ArrayList EffectPanels = new ArrayList();
+    private ArrayList ActionsPanels = new ArrayList();
 
     private SoundManager soundMan;
     private LineInformation lineArray;
@@ -63,6 +65,11 @@ public class Line3 : MonoBehaviour
         for (int i = 1; i <= EffectPanelCount; i++)
         {
             EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+        }
+
+        for (int i = 1; i <= ActionsPanelCount; i++)
+        {
+            ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
         }
 
         //InstrumentPanel1 = GameObject.Find("InstrumentPanel1").GetComponent<SendStateInformation>();
@@ -305,12 +312,48 @@ public class Line3 : MonoBehaviour
             && panel.GetRepeatState() != "None")
             {
                 effects.SetTrigger("Play");
-                //this.lineColor = panel.GetChangeLineColor();
-                //this.gameObject.tag = lineColor + "Line";
-                //this.originalSprite = lineArray.GetSprite(lineColor);
-                //this.hitSprite = lineArray.GetHitSprite(lineColor);
                 
                 MakeSound();
+                if (panel.GetRepeatState() == "Once")
+                {
+                    panel.SetRepeatStateNone();
+                }
+            }
+            else
+            {
+                MakeSound();
+            }
+        }
+
+        //  Actions Panel
+        foreach (SendStateInformationActions panel in ActionsPanels)
+        {
+            if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+                (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+                collision.gameObject.tag == panel.GetBallColor() + "Ball"
+                && this.gameObject.tag == panel.GetLineColor() + "Line"
+                && panel.GetRepeatState() != "None") 
+            {
+                if (panel.GetDropdownState() == "Instruments")
+                {
+                    this.lineColor = panel.GetChangeLineInstrumentColor();
+                    this.gameObject.tag = lineColor + "Line";
+                    this.originalSprite = lineArray.GetSprite(lineColor);
+                    this.hitSprite = lineArray.GetHitSprite(lineColor);
+                    MakeSound();
+                    
+                }
+                else if (panel.GetDropdownState() == "Volume")
+                {
+                    this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, panel.GetVolumeState());
+                    this.GetComponent<AudioSource>().volume = panel.GetVolumeState();
+                    MakeSound();
+                }
+                else if (panel.GetDropdownState() == "Destroy")
+                {
+                    StartCoroutine(DestroyObject(0.2f));
+                }
+
                 if (panel.GetRepeatState() == "Once")
                 {
                     panel.SetRepeatStateNone();
