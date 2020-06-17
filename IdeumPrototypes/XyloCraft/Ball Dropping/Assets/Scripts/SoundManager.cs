@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Stores all the sounds produced by the lines
 
 public class SoundManager : MonoBehaviour
 {
     public float[] Volume;
     private int mode = 0;
 
+    // Each sound can consist of one or more sounds
     public AudioClip[] BlueSounds11;
     public AudioClip[] BlueSounds12;
     public AudioClip[] BlueSounds13;
@@ -26,6 +28,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] BlueSounds34;
     public AudioClip[] BlueSounds35;
 
+    // The encompassing array
     private AudioClip[][][] BlueSounds = new AudioClip[3][][];
 
     public AudioClip[] GreenSounds11;
@@ -210,38 +213,5 @@ public class SoundManager : MonoBehaviour
             }
         }
         return null;
-    }
-    public void PlayAudio (AudioSource lineAudioSource, string color, int chord, int mode) 
-    {
-        AudioClip[][] CurrentSounds = null;
-        if (color == "Blue") 
-        {
-            CurrentSounds = BlueSounds[mode];
-        }
-
-        if (color == "Green")
-        {
-            CurrentSounds = GreenSounds[mode];
-        }
-
-        if (color == "Red")
-        {
-            CurrentSounds = RedSounds[mode];
-        }
-
-        if (color == "Yellow")
-        {
-            CurrentSounds = YellowSounds[mode];
-        }
-
-        for (int i = 0; i < CurrentSounds.Length; i++) 
-        {
-            lineAudioSource.PlayOneShot(CurrentSounds[chord][i]);
-        }
-    }
-
-    public float GetVolume(int ball)
-    {
-        return Volume[ball];
     }
 }

@@ -34,25 +34,36 @@ public class SelectedElementRepeat : MonoBehaviour
 
     public void SetNoneToggle() 
     {
-        
-        //Once.toggled();
-        //None.toggled();
         NoneToggle.isOn = true;
         OnceToggle.isOn = false;
     }
 
     public void SetModeToOnce()
     {
-        currentRepeatMode = "Once";
-        grey.enabled = false;
-        ifStatement.text = "If (";
+        if (currentRepeatMode != "Once")
+        {
+            currentRepeatMode = "Once";
+            grey.enabled = false;
+            ifStatement.text = "If (";
+        }
+        else 
+        {
+            SetModeToNone();
+        }
     }
 
     public void SetModeToRepeat()
     {
-        currentRepeatMode = "Repeat";
-        grey.enabled = false;
-        ifStatement.text = "While (";
+        if (currentRepeatMode != "Repeat")
+        {
+            currentRepeatMode = "Repeat";
+            grey.enabled = false;
+            ifStatement.text = "While (";
+        }
+        else 
+        {
+            SetModeToNone();
+        }
     }
 
     public string GetCurrentRhythym()
