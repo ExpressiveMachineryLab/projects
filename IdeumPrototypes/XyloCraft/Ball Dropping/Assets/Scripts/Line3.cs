@@ -12,13 +12,11 @@ public class Line3 : MonoBehaviour
 
     public Animator effects;
 
-    //private int InstrumentPanelCount = 4;
-    private int ChordPanelCount = 4;
-    private int RhythymPanelCount = 4;
-    private int EffectPanelCount = 4;
-    private int ActionsPanelCount = 4;
+    private int ChordPanelCount;
+    private int RhythymPanelCount;
+    private int EffectPanelCount;
+    private int ActionsPanelCount;
 
-    //private ArrayList InstrumentPanels = new ArrayList();
     private ArrayList ChordPanels = new ArrayList();
     private ArrayList RhythymPanels = new ArrayList();
     private ArrayList EffectPanels = new ArrayList();
@@ -47,11 +45,6 @@ public class Line3 : MonoBehaviour
         thisCollider = GetComponent<BoxCollider2D>();
         playClip = GetComponent<AudioSource>();
 
-        //for (int i = 1; i <= InstrumentPanelCount; i++) 
-        //{
-        //    InstrumentPanels.Add(GameObject.Find("InstrumentPanel" + i).GetComponent<SendStateInformation>());
-        //}
-
         for (int i = 1; i <= ChordPanelCount; i++)
         {
             ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
@@ -72,22 +65,25 @@ public class Line3 : MonoBehaviour
             ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
         }
 
-        //InstrumentPanel1 = GameObject.Find("InstrumentPanel1").GetComponent<SendStateInformation>();
-        //ChordPanel1 = GameObject.Find("ChordPanel1").GetComponent<SendStateInformationChord>();
-        //RhythymPanel1 = GameObject.Find("RhythymPanel1").GetComponent<SendStateInformationRhythym>();
-
-        //InstrumentPanel2 = GameObject.Find("InstrumentPanel2").GetComponent<SendStateInformation>();
-        //ChordPanel2 = GameObject.Find("ChordPanel2").GetComponent<SendStateInformationChord>();
-        //RhythymPanel2 = GameObject.Find("RhythymPanel2").GetComponent<SendStateInformationRhythym>();
-
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineInformation>();
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        //this.GetComponent<AudioSource>().volume = soundMan.GetVolume(lineColor);
+        if (gameManger.OneBox == true) 
+        {
+            ChordPanelCount = 0;
+            RhythymPanelCount = 0;
+            EffectPanelCount = 0;
+            ActionsPanelCount = 0;
+        } else 
+        {
+            ChordPanelCount = 4;
+            RhythymPanelCount = 4;
+            EffectPanelCount = 4;
+            ActionsPanelCount = 4;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isBeingHeld)
@@ -136,6 +132,11 @@ public class Line3 : MonoBehaviour
 
             isBeingHeld = true;
         }
+
+        // check and update panel count
+        ChordPanelCount = gameManger.GetChordCount();
+        RhythymPanelCount = gameManger.GetRhythymCount();
+        EffectPanelCount = gameManger.GetEffectCount();
     }
 
     private void OnMouseUp()
@@ -145,10 +146,8 @@ public class Line3 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(codeInfo.getCodeState());
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
-        //this.GetComponentInChildren<ParticleSystem>().Play();
     }
     
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
@@ -192,31 +191,6 @@ public class Line3 : MonoBehaviour
     
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        //  Instrument Panel
-        //foreach (SendStateInformation panel in InstrumentPanels) 
-        //{
-        //    if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-        //    (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-        //    collision.gameObject.tag == panel.GetBallColor() + "Ball"
-        //    && this.gameObject.tag == panel.GetLineColor() + "Line"
-        //    && panel.GetRepeatState() != "None")
-        //    {
-        //        this.lineColor = panel.GetChangeLineColor();
-        //        this.gameObject.tag = lineColor + "Line";
-        //        this.originalSprite = lineArray.GetSprite(lineColor);
-        //        this.hitSprite = lineArray.GetHitSprite(lineColor);
-        //        MakeSound();
-        //        if (panel.GetRepeatState() == "Once")
-        //        {
-        //            panel.SetRepeatStateNone();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MakeSound();
-        //    }
-        //}
-
         // Chord + Note Panel
         foreach (SendStateInformationChord panel in ChordPanels)
         {
@@ -365,114 +339,6 @@ public class Line3 : MonoBehaviour
             }
         }
     }
-
-    //private void PerformCode(SendStateInformation3 ballColor)
-    //{
-    //    // None
-    //    if (ballColor.GetCodeState() == 0)
-    //    {
-    //        MakeSound();
-    //    }
-
-    //    // Destroy
-    //    if (ballColor.GetCodeState() == 4)
-    //    {
-    //        StartCoroutine(DestroyObject(0.2f));
-    //    }
-
-    //    //  Loop
-    //    if (ballColor.GetCodeState() == 5)
-    //    {
-    //        StartCoroutine(LoopSound(0.2f, ballColor.GetLoopState() + 2));
-    //    }
-    //    //  Increase Pitch + transform width
-    //    if (ballColor.GetCodeState() == 1)
-    //    {
-    //        Debug.Log("Change Pitch");
-    //        if (ballColor.GetPitchState() < 5)
-    //        {
-    //            pitchLevel = ballColor.GetPitchState() + 1;
-    //        }
-
-    //        // ++
-    //        if (ballColor.GetPitchState() == 5)
-    //        {
-    //            if (pitchLevel < 5)
-    //            {
-    //                pitchLevel++;
-    //            }
-    //        }
-
-    //        // --
-    //        else if (ballColor.GetPitchState() == 6)
-    //        {
-    //            if (pitchLevel > 1)
-    //            {
-    //                pitchLevel--;
-    //            }
-    //        }
-    //        this.TransformLine(pitchLevel);
-    //        playClip.PlayOneShot(soundMan.GetAudio(ChordPanel1.GetLineColor(), (pitchLevel - 1) + gameManger.GetSoundState()));
-
-    //    }
-
-    //    //  Change Color
-    //    if (ballColor.GetCodeState() == 3)
-    //    {
-    //        //this.lineColor = ballColor.GetColorState();
-    //        this.gameObject.tag = "Line" + lineColor;
-    //        //this.originalSprite = lineArray.GetSprite(lineColor);
-    //        //this.hitSprite = lineArray.GetHitSprite(lineColor);
-    //        MakeSound();
-    //    }
-
-    //    // Change Volume
-    //    if (ballColor.GetCodeState() == 2)
-    //    {
-    //        this.GetComponent<SpriteRenderer>().color = new Color (1f, 1f, 1f, ballColor.GetVolumeState());
-    //        this.GetComponent<AudioSource>().volume = ballColor.GetVolumeState();
-    //        MakeSound();
-    //    }
-    //}
-
-    private void TransformLine(int pitch)
-    {
-        // 1
-        if (pitchLevel == 1)
-        {
-            this.gameObject.transform.localScale = new Vector3(0.1f, 0.15f, 0);
-            this.gameObject.transform.GetChild(0).localScale = new Vector3(7.5f, 0.5f, 0);
-        }
-
-        // 2
-        if (pitchLevel == 2)
-        {
-            this.gameObject.transform.localScale = new Vector3(0.1f, 0.35f, 0);
-            this.gameObject.transform.GetChild(0).localScale = new Vector3(7.5f, 0.35f, 0);
-        }
-
-        // 3
-        if (pitchLevel == 3)
-        {
-            this.gameObject.transform.localScale = new Vector3(0.1f, 0.55f, 0);
-            this.gameObject.transform.GetChild(0).localScale = new Vector3(8f, 0.2f, 0);
-        }
-
-        // 4
-        if (pitchLevel == 4)
-        {
-            this.gameObject.transform.localScale = new Vector3(0.1f, 0.75f, 0);
-            this.gameObject.transform.GetChild(0).localScale = new Vector3(8f, 0.2f, 0);
-        }
-
-        // 5
-        if (pitchLevel == 5)
-        {
-            this.gameObject.transform.localScale = new Vector3(0.1f, 0.95f, 0);
-            this.gameObject.transform.GetChild(0).localScale = new Vector3(8.5f, 0.2f, 0);
-        }
-    }
-
     public int GetPitchLevel()
     {
         return pitchLevel;
@@ -493,7 +359,6 @@ public class Line3 : MonoBehaviour
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //rotation *= Quaternion.Euler(0, 0, -90);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
     }
 }

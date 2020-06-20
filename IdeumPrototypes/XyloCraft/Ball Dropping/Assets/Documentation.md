@@ -15,12 +15,15 @@ Each rule has a seperate **SendStateInformation** code as each rule has differen
 ### Chords & Notes
 
 ### Repeat
+Repeat will play the sound in succession the number of times selected. 
 
 ### Music Genres
 Music Genres is a series of three buttons that changes the mode.  
 
-Refer to **[Sound Manager](##Sound-Manager)** and **SendStateInformationChord** code.
+Refer to **[Sound Manager](##Sound-Manager)**, **[Game Manager](##Game-Manager)** and 
+**SendStateInformationChord** code.  
 
+Each button, on value changed, will run the corresponding GameManager's SetToSound function. 
 
 ### Visual Effects
 Produces visual effects. Currently have place holder 2D animations that play whenever activated.
@@ -42,6 +45,8 @@ the rule once. After, it will turn off automatically. When the **While** Button 
 button is the **On/Off** Button. The top two will only work if the On/Off button is activated.   
 
 Refer to **SelectedElementRepeat** code.
+
+## Line
 
 ## Sound Manager
 Refer to **SoundManager** code. Attached to GameManager object in scene.
@@ -66,3 +71,5 @@ we currently have.
         BlueSounds[0][4] = BlueSounds15;  
 
 **AudioClip GetAudio(AudioSource playClip, string lineColor, int pitch, int mode)**
+
+## Game Manager

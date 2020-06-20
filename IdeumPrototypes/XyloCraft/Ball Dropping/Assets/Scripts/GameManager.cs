@@ -22,12 +22,25 @@ public class GameManager : MonoBehaviour
     private Slider speedMultiplier;
     private Scrollbar CodeBoxScroll;
 
+    public bool OneBox;
+    public Dropdown Action;
+
+    private int ChordPanelCount;
+    private int RhythymPanelCount;
+    private int EffectPanelCount;
+    private int ActionsPanelCount;
+
     // Start is called before the first frame update
     void Start()
     {
-        speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
+        if (!OneBox) 
+        {
+            speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
+            CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
+        }
+        
         selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
-        CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
+        
     }
 
     // Update is called once per frame
@@ -152,4 +165,34 @@ public class GameManager : MonoBehaviour
     {
         CodeBox.SetBool("Open", !CodeBox.GetBool("Open"));
     }
+
+    public void AddRule()
+    {
+        if (Action.value == 0)
+        {
+            ChordPanelCount++;
+            Debug.Log(ChordPanelCount);
+        }
+        else if (Action.value == 1)
+        {
+            RhythymPanelCount++;
+        }
+        else if (Action.value == 2)
+        {
+            EffectPanelCount++;
+        }
+        
+    }
+    public int GetChordCount() 
+    {
+        return ChordPanelCount;
+    }
+    public int GetRhythymCount() 
+    {
+        return RhythymPanelCount;
+    }
+    public int GetEffectCount() 
+    {
+        return EffectPanelCount;
+    } 
 }
