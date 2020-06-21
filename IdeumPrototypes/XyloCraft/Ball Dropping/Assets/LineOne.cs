@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Line3 : MonoBehaviour
+public class LineOne : MonoBehaviour
 {
     public string lineColor;
     public Sprite originalSprite;
@@ -39,7 +39,7 @@ public class Line3 : MonoBehaviour
     private GameManager gameManger;
 
     public AudioClip collisionSound;
-    
+
     void Start()
     {
         thisCollider = GetComponent<BoxCollider2D>();
@@ -90,7 +90,7 @@ public class Line3 : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX,
                 mousePos.y - startPosY, 0);
         }
 
@@ -148,7 +148,7 @@ public class Line3 : MonoBehaviour
         StartCoroutine(ChangeSprite(0.15f, collision));
         PerformCodeBehvaior(collision);
     }
-    
+
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
     {
         Sprite ballOriginalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
@@ -163,7 +163,7 @@ public class Line3 : MonoBehaviour
         {
             collidedObject.sprite = ballOriginalObject;
         }
-        
+
         thisLineObject.sprite = originalSprite;
     }
 
@@ -187,7 +187,7 @@ public class Line3 : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
     }
-    
+
     private void PerformCodeBehvaior(Collision2D collision)
     {
         // Chord + Note Panel
@@ -195,7 +195,7 @@ public class Line3 : MonoBehaviour
         {
             if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
             (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-            collision.gameObject.tag ==panel.GetBallColor() + "Ball"
+            collision.gameObject.tag == panel.GetBallColor() + "Ball"
             && this.gameObject.tag == panel.GetLineColor() + "Line"
             && panel.GetRepeatState() != "None")
             {
@@ -285,7 +285,7 @@ public class Line3 : MonoBehaviour
             && panel.GetRepeatState() != "None")
             {
                 effects.SetTrigger("Play");
-                
+
                 MakeSound();
                 if (panel.GetRepeatState() == "Once")
                 {
@@ -305,7 +305,7 @@ public class Line3 : MonoBehaviour
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 collision.gameObject.tag == panel.GetBallColor() + "Ball"
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
-                && panel.GetRepeatState() != "None") 
+                && panel.GetRepeatState() != "None")
             {
                 if (panel.GetDropdownState() == "Instruments")
                 {
@@ -314,7 +314,7 @@ public class Line3 : MonoBehaviour
                     this.originalSprite = lineArray.GetSprite(lineColor);
                     this.hitSprite = lineArray.GetHitSprite(lineColor);
                     MakeSound();
-                    
+
                 }
                 else if (panel.GetDropdownState() == "Volume")
                 {
@@ -338,7 +338,7 @@ public class Line3 : MonoBehaviour
             }
         }
         MakeSound();
-        
+
     }
     public int GetPitchLevel()
     {

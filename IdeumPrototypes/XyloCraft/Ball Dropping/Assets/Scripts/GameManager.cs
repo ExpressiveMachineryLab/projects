@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject TeamPanel;
     public GameObject ActionPanel;
 
+    public GameObject CodeButton;
+    public GameObject ScrollView;
+
     public Animator CodeBox;
 
     private SelectionManager selectionManager;
@@ -52,6 +55,16 @@ public class GameManager : MonoBehaviour
     public void UpdateSpeed() 
     {
         speed = speedMultiplier.value;
+    }
+
+    public void IncreaseSpeed() 
+    {
+        speed = 1.5f;
+    }
+
+    public void DecreaseSpeed() 
+    {
+        speed = 0.5f;
     }
 
     public float GetSpeedMultiplier() 
@@ -181,7 +194,9 @@ public class GameManager : MonoBehaviour
         {
             EffectPanelCount++;
         }
-        
+        //GameObject temp = Instantiate(CodeButton);
+        //temp.GetComponent<Text>().text = "Code " + (ChordPanelCount+RhythymPanelCount+EffectPanelCount);
+        //temp.transform.parent = ScrollView.transform;
     }
     public int GetChordCount() 
     {

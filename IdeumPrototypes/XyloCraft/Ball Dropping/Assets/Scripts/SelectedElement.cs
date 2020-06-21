@@ -63,4 +63,12 @@ public class SelectedElement : MonoBehaviour
         //Debug.Log(currentColor);
         //this.gameObject.GetComponent<Image>().sprite = randomSprite;
     }
+    public void SetWildSprite() 
+    {
+        Debug.Log("Pressed");
+        Sprite[] imageArray = { Blue, Red, Green, Yellow };
+        Sprite randomSprite = imageArray[(int)(Random.value * 4)];
+        currentColor = imageArray[(int)(Random.value * 4)].name;
+        this.gameObject.GetComponent<Image>().sprite = randomSprite;
+    }
 }
