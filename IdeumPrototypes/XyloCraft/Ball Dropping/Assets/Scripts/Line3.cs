@@ -64,22 +64,38 @@ public class Line3 : MonoBehaviour
 
         for (int i = 1; i <= ChordPanelCount; i++)
         {
-            ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
+            if (GameObject.Find("ChordPanel" + i) != null) 
+            {
+                ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
+            }
+            
         }
 
         for (int i = 1; i <= RhythymPanelCount; i++)
         {
-            RhythymPanels.Add(GameObject.Find("RhythymPanel" + i).GetComponent<SendStateInformationRhythym>());
+            if (GameObject.Find("RhythymPanel" + i) != null)
+            {
+                RhythymPanels.Add(GameObject.Find("RhythymPanel" + i).GetComponent<SendStateInformationRhythym>());
+            }
+           
         }
 
         for (int i = 1; i <= EffectPanelCount; i++)
         {
-            EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+            if (GameObject.Find("EffectsPanel" + i) != null)
+            {
+                EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+            }
+            
         }
 
         for (int i = 1; i <= ActionsPanelCount; i++)
         {
-            ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
+            if (GameObject.Find("ActionsPanel" + i) != null)
+            {
+                ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
+            }
+           
         }
     }
 
@@ -147,27 +163,35 @@ public class Line3 : MonoBehaviour
         ChordPanelCount = gameManger.GetChordCount();
         RhythymPanelCount = gameManger.GetRhythymCount();
         EffectPanelCount = gameManger.GetEffectCount();
-        if (gameManger.OneBox)
-        for (int i = 1; i <= ChordPanelCount; i++)
+        if (gameManger.OneBox) 
         {
-            ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
-        }
+            for (int i = 1; i <= ChordPanelCount; i++)
+            {
+                if (GameObject.Find("ChordPanel" + i) != null)
+                {
+                    ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
+                }
 
-        for (int i = 1; i <= RhythymPanelCount; i++)
-        {
-            RhythymPanels.Add(GameObject.Find("RhythymPanel" + i).GetComponent<SendStateInformationRhythym>());
-        }
+            }
 
-        for (int i = 1; i <= EffectPanelCount; i++)
-        {
-            EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
-        }
+            for (int i = 1; i <= RhythymPanelCount; i++)
+            {
+                if (GameObject.Find("RhythymPanel" + i) != null)
+                {
+                    RhythymPanels.Add(GameObject.Find("RhythymPanel" + i).GetComponent<SendStateInformationRhythym>());
+                }
 
-        for (int i = 1; i <= ActionsPanelCount; i++)
-        {
-            ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
-        }
+            }
 
+            for (int i = 1; i <= EffectPanelCount; i++)
+            {
+                if (GameObject.Find("EffectsPanel" + i) != null)
+                {
+                    EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+                }
+
+            }
+        }
         PerformCodeBehvaior(collision);
 
     }
@@ -312,10 +336,10 @@ public class Line3 : MonoBehaviour
             if (panel != null) 
             {
                 if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-                            (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                            collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                            && this.gameObject.tag == panel.GetLineColor() + "Line"
-                            && panel.GetRepeatState() != "None")
+                    (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+                    collision.gameObject.tag == panel.GetBallColor() + "Ball"
+                    && this.gameObject.tag == panel.GetLineColor() + "Line"
+                    && panel.GetRepeatState() != "None")
                 {
                     effects.SetTrigger("Play");
                     Debug.Log(panel.GetBallColor() + " " + panel.GetLineColor());

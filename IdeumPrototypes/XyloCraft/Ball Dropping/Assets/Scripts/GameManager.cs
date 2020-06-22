@@ -31,17 +31,18 @@ public class GameManager : MonoBehaviour
     private Scrollbar CodeBoxScroll;
 
     public bool OneBox;
+    public bool FourBox;
     public Dropdown Action;
 
-    private int ChordPanelCount;
-    private int RhythymPanelCount;
-    private int EffectPanelCount;
+    public int ChordPanelCount;
+    public int RhythymPanelCount;
+    public int EffectPanelCount;
     private int ActionsPanelCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!OneBox) 
+        if (!OneBox && !FourBox) 
         {
             speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
             CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
@@ -56,7 +57,18 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
+    public void IncreaseChordCount() 
+    {
+        ChordPanelCount++;
+    }
+    public void IncreaseRhythymCount()
+    {
+        RhythymPanelCount++;
+    }
+    public void IncreaseEffectCount()
+    {
+        EffectPanelCount++;
+    }
     public void LoadOneBox() 
     {
         SceneManager.LoadScene("OneBox Prototype");
@@ -237,6 +249,7 @@ public class GameManager : MonoBehaviour
             temp.GetComponent<SendStateInformationChord>().SetBallColor(ballColor);
             temp.GetComponent<SendStateInformationChord>().SetLineColor(lineColor);
             temp.GetComponent<SendStateInformationChord>().SetSelectedChord(chord);
+            temp.GetComponent<SendStateInformationChord>().SetRepeatState(repeat);
 
             LastSelectedCodeButton = name;
             LastSelectedButton = ChordTemp;
@@ -259,9 +272,10 @@ public class GameManager : MonoBehaviour
             GameObject temp = Instantiate(RepeatPanel);
             temp.transform.SetParent(HiddenCodeBoxes.transform, false);
             temp.name = "RhythymPanel" + RhythymPanelCount;
-            temp.GetComponent<SendStateInformationRhythym>().SetBallColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor());
-            temp.GetComponent<SendStateInformationRhythym>().SetLineColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor());
-            temp.GetComponent<SendStateInformationRhythym>().SetSelectedRhythym(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetSelectedRhythym());
+            temp.GetComponent<SendStateInformationRhythym>().SetBallColor(ballColor);
+            temp.GetComponent<SendStateInformationRhythym>().SetLineColor(lineColor);
+            temp.GetComponent<SendStateInformationRhythym>().SetSelectedRhythym(rhythym);
+            temp.GetComponent<SendStateInformationRhythym>().SetRepeatState(repeat);
 
             LastSelectedCodeButton = name;
             LastSelectedButton = ChordTemp;
@@ -274,17 +288,20 @@ public class GameManager : MonoBehaviour
             string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
             string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
+            Debug.Log(repeat);
 
             GameObject ChordTemp = Instantiate(CodeButton);
             ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
             ChordTemp.transform.SetParent(ScrollView.transform, false);
+
             ChordTemp.GetComponent<CodeList>().SetIdentifer(name, ballColor, repeat, lineColor);
 
             GameObject temp = Instantiate(EffectsPanel);
             temp.transform.SetParent(HiddenCodeBoxes.transform, false);
             temp.name = "EffectsPanel" + EffectPanelCount;
-            temp.GetComponent<SendStateInformation>().SetBallColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor());
-            temp.GetComponent<SendStateInformation>().SetLineColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor());
+            temp.GetComponent<SendStateInformation>().SetBallColor(ballColor);
+            temp.GetComponent<SendStateInformation>().SetLineColor(lineColor);
+            temp.GetComponent<SendStateInformation>().SetRepeatState(repeat);
 
             LastSelectedCodeButton = name;
             LastSelectedButton = ChordTemp;

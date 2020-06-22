@@ -83,6 +83,21 @@ public class SendStateInformation : MonoBehaviour
         RepeatState.SetNoneToggle();
     }
 
+    public void SetRepeatState(string repeat)
+    {
+        if (repeat == "None")
+        {
+            RepeatState.SetModeToNone();
+        }
+        else if (repeat == "Once")
+        {
+            RepeatState.SetModeToOnce();
+        }
+        else if (repeat == "Repeat")
+        {
+            RepeatState.SetModeToRepeat();
+        }
+    }
 
     //public int GetCodeState()
     //{

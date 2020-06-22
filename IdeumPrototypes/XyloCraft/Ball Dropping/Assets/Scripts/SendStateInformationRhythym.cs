@@ -117,4 +117,19 @@ public class SendStateInformationRhythym : MonoBehaviour
         this.gameObject.GetComponent<Image>().color = thisColor;
         yield return new WaitForSeconds(0.1f);
     }
+    public void SetRepeatState(string repeat)
+    {
+        if (repeat == "None")
+        {
+            RepeatState.SetModeToNone();
+        }
+        else if (repeat == "Once")
+        {
+            RepeatState.SetModeToOnce();
+        }
+        else if (repeat == "Repeat")
+        {
+            RepeatState.SetModeToRepeat();
+        }
+    }
 }

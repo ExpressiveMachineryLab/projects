@@ -17,6 +17,8 @@ public class SendStateInformationOneBox : MonoBehaviour
     public GameObject four;
     public GameObject five;
 
+    public int AssignedNumber;
+
     public Dropdown Mode;
 
     public SelectedElementRepeat RepeatState;
@@ -196,6 +198,22 @@ public class SendStateInformationOneBox : MonoBehaviour
         Rhythym.SetCurrentRhythym(optional);
     }
 
+    public void SetRepeatState(string repeat)
+    {
+        if (repeat == "None")
+        {
+            RepeatState.SetModeToNone();
+        }
+        else if (repeat == "Once")
+        {
+            RepeatState.SetModeToOnce();
+        }
+        else if (repeat == "Repeat")
+        {
+            RepeatState.SetModeToRepeat();
+        }
+    }
+
     public void UpdatePanel() 
     {
         if (Mode.value == 0)
@@ -206,6 +224,10 @@ public class SendStateInformationOneBox : MonoBehaviour
             VisualOptions.gameObject.SetActive(false);
             ModeOptions.gameObject.SetActive(false);
             SpeedOptions.gameObject.SetActive(false);
+            if (!GA.OneBox) 
+            {
+                this.gameObject.name = "ChordPanel" + AssignedNumber;
+            }
         }
         else if (Mode.value == 1)
         {
@@ -215,6 +237,10 @@ public class SendStateInformationOneBox : MonoBehaviour
             VisualOptions.gameObject.SetActive(false);
             ModeOptions.gameObject.SetActive(false);
             SpeedOptions.gameObject.SetActive(false);
+            if (!GA.OneBox)
+            {
+                this.gameObject.name = "RhythymPanel" + AssignedNumber;
+            }
         }
         else if (Mode.value == 2)
         {
@@ -224,6 +250,10 @@ public class SendStateInformationOneBox : MonoBehaviour
             VisualOptions.gameObject.SetActive(true);
             ModeOptions.gameObject.SetActive(false);
             SpeedOptions.gameObject.SetActive(false);
+            if (!GA.OneBox)
+            {
+                this.gameObject.name = "EffectPanel" + AssignedNumber;
+            }
         }
         else if (Mode.value == 3)
         {
@@ -262,6 +292,7 @@ public class SendStateInformationOneBox : MonoBehaviour
 
     public string GetRepeatState()
     {
+        Debug.Log(RepeatState.GetCurrentRhythym());
         return RepeatState.GetCurrentRhythym();
     }
     public void SetRepeatStateNone()
@@ -270,19 +301,5 @@ public class SendStateInformationOneBox : MonoBehaviour
         RepeatState.SetNoneToggle();
     }
 
-    public void SetRepeatState(string repeat) 
-    {
-        if (repeat == "None")
-        {
-            RepeatState.SetModeToNone();
-        }
-        else if (repeat == "Once") 
-        {
-            RepeatState.SetModeToOnce();
-        }
-        else if (repeat == "Repeat")
-        {
-            RepeatState.SetModeToRepeat();
-        }
-    }
+    
 }

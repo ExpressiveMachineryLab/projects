@@ -16,7 +16,16 @@ public class SelectedElementRepeat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentRepeatMode = "None";
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().OneBox)
+        {
+            currentRepeatMode = "Repeat";
+
+        }
+        else 
+        {
+            currentRepeatMode = "None";
+        }
+        
     }
 
     // Update is called once per frame
