@@ -27,10 +27,53 @@ public class SendStateInformationRhythym : MonoBehaviour
     {
         return SelectedLine.GetCurrentColor();
     }
+    public void SetBallColor(string color)
+    {
+        if (color == "Blue")
+        {
+            SelectedBall.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedBall.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedBall.SetGreen();
+        }
+        else if (color == "Yellow")
+        {
+            SelectedBall.SetYellow();
+        }
+    }
 
+    public void SetLineColor(string color)
+    {
+        if (color == "Blue")
+        {
+            SelectedLine.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedLine.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedLine.SetGreen();
+        }
+        else if (color == "Yellow")
+        {
+            SelectedLine.SetYellow();
+        }
+    }
     public int GetSelectedRhythym()
     {
         return Rhythym.GetCurrentRhythym();
+    }
+
+    public void SetSelectedRhythym(int rhythym) 
+    {
+        Rhythym.SetCurrentRhythym(rhythym);
     }
 
     public string GetRepeatState()

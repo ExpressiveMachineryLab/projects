@@ -60,4 +60,9 @@ public class SelectedElementRhythym : MonoBehaviour
     {
         return currentRhythym;
     }
+
+    public void SetCurrentRhythym(int rhythym) 
+    {
+        currentRhythym = rhythym;
+    }
 }

@@ -28,6 +28,46 @@ public class SendStateInformation : MonoBehaviour
         return SelectedLine.GetCurrentColor();
     }
 
+    public void SetBallColor(string color)
+    {
+        if (color == "Blue")
+        {
+            SelectedBall.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedBall.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedBall.SetGreen();
+        }
+        else if (color == "Yellow")
+        {
+            SelectedBall.SetYellow();
+        }
+    }
+
+    public void SetLineColor(string color)
+    {
+        if (color == "Blue")
+        {
+            SelectedLine.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedLine.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedLine.SetGreen();
+        }
+        else if (color == "Yellow")
+        {
+            SelectedLine.SetYellow();
+        }
+    }
+
     //public string GetChangeLineColor()
     //{
     //    return ChangeLine.GetCurrentColor();

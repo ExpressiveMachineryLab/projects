@@ -14,7 +14,7 @@ public class LoadSceneAfterIntro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("Web Prototype");
+        SceneManager.LoadScene("Web Prototype Development");
     }
 
     public void Play() 

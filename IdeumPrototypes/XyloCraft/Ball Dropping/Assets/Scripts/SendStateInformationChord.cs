@@ -23,6 +23,47 @@ public class SendStateInformationChord : MonoBehaviour
     {
         return SelectedBall.GetCurrentColor();
     }
+
+    public void SetBallColor(string color) 
+    {
+        if (color == "Blue")
+        {
+            SelectedBall.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedBall.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedBall.SetGreen();
+        }
+        else if (color == "Yellow") 
+        {
+            SelectedBall.SetYellow();
+        }
+    }
+
+    public void SetLineColor(string color) 
+    {
+        if (color == "Blue")
+        {
+            SelectedLine.SetBlue();
+        }
+        else if (color == "Red")
+        {
+            SelectedLine.SetRed();
+        }
+        else if (color == "Green")
+        {
+            SelectedLine.SetGreen();
+        }
+        else if (color == "Yellow")
+        {
+            SelectedLine.SetYellow();
+        }
+    }
+
     public string GetLineColor()
     {
         return SelectedLine.GetCurrentColor();
@@ -31,6 +72,11 @@ public class SendStateInformationChord : MonoBehaviour
     public string GetSelectedChord()
     {
         return Chord.GetCurrentChord();
+    }
+
+    public void SetSelectedChord(string chord) 
+    {
+        Chord.SetCurrentChord(chord);
     }
 
     public string GetRepeatState() 

@@ -12,13 +12,18 @@ public class GameManager : MonoBehaviour
     public GameObject EffectsPanel;
     public GameObject TeamPanel;
     public GameObject ActionPanel;
+    public GameObject OneBoxPanel;
 
     public GameObject CodeButton;
     public GameObject ScrollView;
+    public GameObject HiddenCodeBoxes;
+    public string CurrentCode;
 
     public Animator CodeBox;
 
     private SelectionManager selectionManager;
+    public string LastSelectedCodeButton;
+    public GameObject LastSelectedButton;
     private int[] colors = new int[4];
     private int Sound = 0;
     private float speed = 1;
@@ -52,6 +57,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void LoadOneBox() 
+    {
+        SceneManager.LoadScene("OneBox Prototype");
+    }
+
+    public void LoadFourBox() 
+    {
+        SceneManager.LoadScene("FourBox");
+    }
+
+    public void LoadTab() 
+    {
+        SceneManager.LoadScene("Web Prototype Development");
+    }
+
     public void UpdateSpeed() 
     {
         speed = speedMultiplier.value;
@@ -59,12 +79,28 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseSpeed() 
     {
-        speed = 1.5f;
+        if (speed != 1)
+        {
+            speed = 1;
+        }
+        else 
+        {
+            speed = 1.5f;
+        }
+        
     }
 
     public void DecreaseSpeed() 
     {
-        speed = 0.5f;
+        if (speed != 1)
+        {
+            speed = 1;
+        }
+        else 
+        {
+            speed = 0.5f;
+        }
+        
     }
 
     public float GetSpeedMultiplier() 
@@ -184,20 +220,85 @@ public class GameManager : MonoBehaviour
         if (Action.value == 0)
         {
             ChordPanelCount++;
-            Debug.Log(ChordPanelCount);
+            string name = "ChordPanel" + ChordPanelCount;
+            string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
+            string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
+            string chord = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetSelectedChord();
+            string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
+
+            GameObject ChordTemp = Instantiate(CodeButton);
+            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.transform.SetParent(ScrollView.transform, false);
+            ChordTemp.GetComponent<CodeList>().SetIdentiferChord(name, ballColor, lineColor, repeat, chord);
+
+            GameObject temp = Instantiate(ChordPanel);
+            temp.transform.SetParent(HiddenCodeBoxes.transform, false);
+            temp.name = name;
+            temp.GetComponent<SendStateInformationChord>().SetBallColor(ballColor);
+            temp.GetComponent<SendStateInformationChord>().SetLineColor(lineColor);
+            temp.GetComponent<SendStateInformationChord>().SetSelectedChord(chord);
+
+            LastSelectedCodeButton = name;
+            LastSelectedButton = ChordTemp;
         }
         else if (Action.value == 1)
         {
             RhythymPanelCount++;
+
+            string name = "RhythymPanel" + RhythymPanelCount;
+            string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
+            string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
+            int rhythym = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetSelectedRhythym();
+            string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
+
+            GameObject ChordTemp = Instantiate(CodeButton);
+            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.transform.SetParent(ScrollView.transform, false);
+            ChordTemp.GetComponent<CodeList>().SetIdentiferRhythym(name, ballColor, lineColor, repeat, rhythym);
+
+            GameObject temp = Instantiate(RepeatPanel);
+            temp.transform.SetParent(HiddenCodeBoxes.transform, false);
+            temp.name = "RhythymPanel" + RhythymPanelCount;
+            temp.GetComponent<SendStateInformationRhythym>().SetBallColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor());
+            temp.GetComponent<SendStateInformationRhythym>().SetLineColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor());
+            temp.GetComponent<SendStateInformationRhythym>().SetSelectedRhythym(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetSelectedRhythym());
+
+            LastSelectedCodeButton = name;
+            LastSelectedButton = ChordTemp;
         }
         else if (Action.value == 2)
         {
             EffectPanelCount++;
+
+            string name = "EffectPanel" + EffectPanelCount;
+            string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
+            string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
+            string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
+
+            GameObject ChordTemp = Instantiate(CodeButton);
+            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.transform.SetParent(ScrollView.transform, false);
+            ChordTemp.GetComponent<CodeList>().SetIdentifer(name, ballColor, repeat, lineColor);
+
+            GameObject temp = Instantiate(EffectsPanel);
+            temp.transform.SetParent(HiddenCodeBoxes.transform, false);
+            temp.name = "EffectsPanel" + EffectPanelCount;
+            temp.GetComponent<SendStateInformation>().SetBallColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor());
+            temp.GetComponent<SendStateInformation>().SetLineColor(OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor());
+
+            LastSelectedCodeButton = name;
+            LastSelectedButton = ChordTemp;
         }
-        //GameObject temp = Instantiate(CodeButton);
-        //temp.GetComponent<Text>().text = "Code " + (ChordPanelCount+RhythymPanelCount+EffectPanelCount);
-        //temp.transform.parent = ScrollView.transform;
+        
     }
+
+    public void DeleteCode() 
+    {
+        Destroy(LastSelectedButton);
+        Destroy(GameObject.Find(LastSelectedCodeButton));
+        LastSelectedCodeButton = null;
+    }
+
     public int GetChordCount() 
     {
         return ChordPanelCount;
@@ -209,5 +310,10 @@ public class GameManager : MonoBehaviour
     public int GetEffectCount() 
     {
         return EffectPanelCount;
-    } 
+    }
+
+    public void SetOneBoxPanel() 
+    {
+    
+    }
 }

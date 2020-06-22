@@ -54,4 +54,9 @@ public class SelectedElementChord : MonoBehaviour
     {
         return currentChord;
     }
+
+    public void SetCurrentChord(string chord) 
+    {
+        currentChord = chord;
+    }
 }
