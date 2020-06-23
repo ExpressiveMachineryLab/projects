@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         {
             EffectPanelCount++;
 
-            string name = "EffectPanel" + EffectPanelCount;
+            string name = "EffectsPanel" + EffectPanelCount;
             string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
             string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();

@@ -252,7 +252,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             SpeedOptions.gameObject.SetActive(false);
             if (!GA.OneBox)
             {
-                this.gameObject.name = "EffectPanel" + AssignedNumber;
+                this.gameObject.name = "EffectsPanel" + AssignedNumber;
             }
         }
         else if (Mode.value == 3)

@@ -47,7 +47,7 @@ public class Line3 : MonoBehaviour
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineInformation>();
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if (gameManger.OneBox == true)
+        if (gameManger.OneBox)
         {
             ChordPanelCount = 0;
             RhythymPanelCount = 0;
@@ -61,7 +61,6 @@ public class Line3 : MonoBehaviour
             EffectPanelCount = 4;
             ActionsPanelCount = 4;
         }
-
         for (int i = 1; i <= ChordPanelCount; i++)
         {
             if (GameObject.Find("ChordPanel" + i) != null) 
@@ -80,6 +79,7 @@ public class Line3 : MonoBehaviour
            
         }
 
+        Debug.Log(EffectPanelCount);
         for (int i = 1; i <= EffectPanelCount; i++)
         {
             if (GameObject.Find("EffectsPanel" + i) != null)
@@ -160,10 +160,10 @@ public class Line3 : MonoBehaviour
     {
         StartCoroutine(ChangeSprite(0.15f, collision));
         // check and update panel count
-        ChordPanelCount = gameManger.GetChordCount();
-        RhythymPanelCount = gameManger.GetRhythymCount();
-        EffectPanelCount = gameManger.GetEffectCount();
-        if (gameManger.OneBox) 
+        //ChordPanelCount = gameManger.GetChordCount();
+        //RhythymPanelCount = gameManger.GetRhythymCount();
+        //EffectPanelCount = gameManger.GetEffectCount();
+        if (gameManger.OneBox || gameManger.FourBox) 
         {
             for (int i = 1; i <= ChordPanelCount; i++)
             {
@@ -183,11 +183,14 @@ public class Line3 : MonoBehaviour
 
             }
 
+            Debug.Log(EffectPanelCount);
             for (int i = 1; i <= EffectPanelCount; i++)
             {
+                Debug.Log("Iteration");
                 if (GameObject.Find("EffectsPanel" + i) != null)
                 {
                     EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+                    Debug.Log("Found");
                 }
 
             }
@@ -237,6 +240,7 @@ public class Line3 : MonoBehaviour
     
     private void PerformCodeBehvaior(Collision2D collision)
     {
+        Debug.Log("hello");
         // Chord + Note Panel
         foreach (SendStateInformationChord panel in ChordPanels)
         {
@@ -333,28 +337,29 @@ public class Line3 : MonoBehaviour
         //  Effects Panel
         foreach (SendStateInformation panel in EffectPanels)
         {
-            if (panel != null) 
+            Debug.Log(panel);
+            Debug.Log("you");
+            Debug.Log(panel.GetRepeatState());
+            if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+                (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+                collision.gameObject.tag == panel.GetBallColor() + "Ball"
+                && this.gameObject.tag == panel.GetLineColor() + "Line"
+                && panel.GetRepeatState() != "None")
             {
-                if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-                    (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                    collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                    && this.gameObject.tag == panel.GetLineColor() + "Line"
-                    && panel.GetRepeatState() != "None")
+                Debug.Log("there");
+                effects.SetTrigger("Play");
+                Debug.Log(panel.GetBallColor() + " " + panel.GetLineColor());
+                MakeSound();
+                if (panel.GetRepeatState() == "Once")
                 {
-                    effects.SetTrigger("Play");
-                    Debug.Log(panel.GetBallColor() + " " + panel.GetLineColor());
-                    MakeSound();
-                    if (panel.GetRepeatState() == "Once")
-                    {
-                        panel.SetRepeatStateNone();
-                    }
-                }
-                else
-                {
-                    MakeSound();
+                    panel.SetRepeatStateNone();
                 }
             }
-            
+            else
+            {
+                MakeSound();
+            }
+
         }
 
         //  Actions Panel
