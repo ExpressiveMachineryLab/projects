@@ -79,7 +79,6 @@ public class Line3 : MonoBehaviour
            
         }
 
-        Debug.Log(EffectPanelCount);
         for (int i = 1; i <= EffectPanelCount; i++)
         {
             if (GameObject.Find("EffectsPanel" + i) != null)
@@ -371,36 +370,50 @@ public class Line3 : MonoBehaviour
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
                 && panel.GetRepeatState() != "None") 
             {
-                if (panel.GetDropdownState() == "Instruments")
+                if (gameManger.ThreeBox) 
                 {
                     this.lineColor = panel.GetChangeLineInstrumentColor();
                     this.gameObject.tag = lineColor + "Line";
                     this.originalSprite = lineArray.GetSprite(lineColor);
                     this.hitSprite = lineArray.GetHitSprite(lineColor);
                     MakeSound();
-                    
                 }
-                else if (panel.GetDropdownState() == "Volume")
+                else
                 {
-                    this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, panel.GetVolumeState());
-                    this.GetComponent<AudioSource>().volume = panel.GetVolumeState();
-                    MakeSound();
-                }
-                else if (panel.GetDropdownState() == "Destroy")
-                {
-                    StartCoroutine(DestroyObject(0.2f));
-                }
+                    if (panel.GetDropdownState() == "Instruments")
+                    {
+                        this.lineColor = panel.GetChangeLineInstrumentColor();
+                        this.gameObject.tag = lineColor + "Line";
+                        this.originalSprite = lineArray.GetSprite(lineColor);
+                        this.hitSprite = lineArray.GetHitSprite(lineColor);
+                        MakeSound();
 
-                if (panel.GetRepeatState() == "Once")
-                {
-                    panel.SetRepeatStateNone();
+                    }
+                    else if (panel.GetDropdownState() == "Volume")
+                    {
+                        this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, panel.GetVolumeState());
+                        this.GetComponent<AudioSource>().volume = panel.GetVolumeState();
+                        MakeSound();
+                    }
+                    else if (panel.GetDropdownState() == "Destroy")
+                    {
+                        StartCoroutine(DestroyObject(0.2f));
+                    }
+
+                    if (panel.GetRepeatState() == "Once")
+                    {
+                        panel.SetRepeatStateNone();
+                    }
+
                 }
+                
             }
             else
             {
                 MakeSound();
             }
         }
+
         MakeSound();
         
     }

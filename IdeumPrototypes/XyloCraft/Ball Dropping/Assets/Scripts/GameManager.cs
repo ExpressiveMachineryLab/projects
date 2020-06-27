@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public bool OneBox;
     public bool FourBox;
+    public bool ThreeBox;
     public Dropdown Action;
 
     public int ChordPanelCount;
@@ -42,12 +43,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!OneBox && !FourBox) 
+        if (GameObject.Find("GlobalSpeedSlider") != null) 
         {
             speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
-            CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
         }
         
+        if (GameObject.Find("Scrollbar Vertical") != null)
+        {
+            CodeBoxScroll = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
+        }
+
         selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
         
     }
@@ -82,6 +87,11 @@ public class GameManager : MonoBehaviour
     public void LoadTab() 
     {
         SceneManager.LoadScene("Web Prototype Development");
+    }
+
+    public void LoadThree() 
+    {
+        SceneManager.LoadScene("Web Prototype Working");
     }
 
     public void UpdateSpeed() 

@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2800430672042037978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2800430672042037976}
+  - component: {fileID: 2800430672042037980}
+  - component: {fileID: 2800430672042037981}
+  - component: {fileID: 2800430672042037977}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2800430672042037976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800430672042037978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2800430672042037980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800430672042037978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b458096f821c4847842a8b8137b510d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlueLine: {fileID: 1694848394240150849, guid: 00141276f8fba024aba7cfb3ed628ef9,
+    type: 3}
+  GreenLine: {fileID: 3237701782724201543, guid: b0be61f53180f1b459ddf8f1b24942fc,
+    type: 3}
+  RedLine: {fileID: 1624983559148059594, guid: 4f4406331d769aa468c6c696249c13eb, type: 3}
+  YellowLine: {fileID: 92337331368953774, guid: cf7091d3e0bf71f43b3e3ae23f2f0197,
+    type: 3}
+  BlueLineSprite: {fileID: 21300000, guid: e57010c6f6df2434ab2c8d1eae207ded, type: 3}
+  GreenLineSprite: {fileID: 21300000, guid: f8ccd90bf5705824189b9951f87d3766, type: 3}
+  RedLineSprite: {fileID: 21300000, guid: d543fe99986babc4499d1ff9d07c804d, type: 3}
+  YellowLineSprite: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f, type: 3}
+  BlueLineHitSprite: {fileID: 21300000, guid: a93001c97667bc94999e55df497a2bc9, type: 3}
+  GreenLineHitSprite: {fileID: 21300000, guid: 8295f64f4fb8b6044b07b7640ae283a0, type: 3}
+  RedLineHitSprite: {fileID: 21300000, guid: 4dbd2c0a59863fb49b4e8bb4c9743b4f, type: 3}
+  YellowLineHitSprite: {fileID: 21300000, guid: c7a7bb3bcece98d41b94b1ce17d96abd,
+    type: 3}
+--- !u!114 &2800430672042037981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800430672042037978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf4ec0edbcb11d49b3635fd55c9b1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Volume:
+  - 1
+  - 1
+  - 1
+  - 1
+  BlueSounds11:
+  - {fileID: 8300000, guid: 239b1f927c9af4882be3559e71086cc6, type: 3}
+  BlueSounds12:
+  - {fileID: 8300000, guid: 83b9fa41e9edb4baab0cd1c53cea086b, type: 3}
+  BlueSounds13:
+  - {fileID: 8300000, guid: 865e9539bf52d402ea405cdef7f98fd9, type: 3}
+  BlueSounds14:
+  - {fileID: 8300000, guid: 100f66a1183794dbe8bbefed76ecc175, type: 3}
+  BlueSounds15:
+  - {fileID: 8300000, guid: 27706343cd0a04c198ff10ab47c76967, type: 3}
+  BlueSounds21:
+  - {fileID: 8300000, guid: eb0d3060151eb45e38d497696763ce9b, type: 3}
+  BlueSounds22:
+  - {fileID: 8300000, guid: 65ddedd655d9b49e4b3ddd7f7fa1d2a0, type: 3}
+  BlueSounds23:
+  - {fileID: 8300000, guid: 63e6f6d7a7ed44cf59a5c629ab52bbd4, type: 3}
+  BlueSounds24:
+  - {fileID: 8300000, guid: 49cf4622193fd4219944f98e98822dd6, type: 3}
+  BlueSounds25:
+  - {fileID: 8300000, guid: 58595d39745154977ab0c9642fecef52, type: 3}
+  BlueSounds31:
+  - {fileID: 8300000, guid: 7e203b13a13514208a168051db6e1622, type: 3}
+  BlueSounds32:
+  - {fileID: 8300000, guid: f4cef8fb4616e4f048b736e72b99260c, type: 3}
+  BlueSounds33:
+  - {fileID: 8300000, guid: 8758daa7f118c40b09d3a8f30b48e3f7, type: 3}
+  BlueSounds34:
+  - {fileID: 8300000, guid: 411c7402a933743188f43f0590a99268, type: 3}
+  BlueSounds35:
+  - {fileID: 8300000, guid: d08f32bd9b01a4887b49378289b78ef4, type: 3}
+  GreenSounds11:
+  - {fileID: 8300000, guid: 625e11bb28c7a43ddb8903f01a308e2e, type: 3}
+  GreenSounds12:
+  - {fileID: 8300000, guid: 8e5f915a709864ce8acf294f0e24784e, type: 3}
+  GreenSounds13:
+  - {fileID: 8300000, guid: 3443d225670304c81a130fa3fd18e045, type: 3}
+  GreenSounds14:
+  - {fileID: 8300000, guid: 32e988bf352cd449aba0be0dfe419436, type: 3}
+  GreenSounds15:
+  - {fileID: 8300000, guid: a40203411530347dbaa0c7ffd20b0fe2, type: 3}
+  GreenSounds21:
+  - {fileID: 8300000, guid: 78c73183d1f01ac4cb184ec8a4066664, type: 3}
+  GreenSounds22:
+  - {fileID: 8300000, guid: 586c3adeb5325d24499db6a1832b1a94, type: 3}
+  GreenSounds23:
+  - {fileID: 8300000, guid: c7fe2355b5f89e7458e51f8db53ca5c6, type: 3}
+  GreenSounds24:
+  - {fileID: 8300000, guid: 6909d30b6a53e4347b387e01cbbfc963, type: 3}
+  GreenSounds25:
+  - {fileID: 8300000, guid: 2478fd89bb0725c429fd692687626b57, type: 3}
+  GreenSounds31:
+  - {fileID: 8300000, guid: dc1da758e2cd144d2a296597e4e213da, type: 3}
+  GreenSounds32:
+  - {fileID: 8300000, guid: 7a908b03a62e7455fa87656cd2c7dceb, type: 3}
+  GreenSounds33:
+  - {fileID: 8300000, guid: 2bc98f6d8eeaa49b2a7254966c2dd8aa, type: 3}
+  GreenSounds34:
+  - {fileID: 8300000, guid: 885cd97a5126b4c9c992642fd021dee1, type: 3}
+  GreenSounds35:
+  - {fileID: 8300000, guid: 8cbe2feb3d1d24730a80dc8313251fbf, type: 3}
+  RedSounds11:
+  - {fileID: 8300000, guid: c59b8c107051e461d84bdac498dce3b5, type: 3}
+  RedSounds12:
+  - {fileID: 8300000, guid: a697b2c1f99424a5f98c8956c9ceae7f, type: 3}
+  RedSounds13:
+  - {fileID: 8300000, guid: ace9d11f6b2a04f409aaaf849ba45dea, type: 3}
+  RedSounds14:
+  - {fileID: 8300000, guid: 20ddd06a8c9d449deaac6cd179934551, type: 3}
+  RedSounds15:
+  - {fileID: 8300000, guid: e73f458bd0df34ed199b77060e9b096e, type: 3}
+  RedSounds21:
+  - {fileID: 8300000, guid: d6fc730f914104c0f9a713111793a896, type: 3}
+  RedSounds22:
+  - {fileID: 8300000, guid: 472fd9c075f334ae39cc5d970bb3420b, type: 3}
+  RedSounds23:
+  - {fileID: 8300000, guid: f12d057bb697440c4b926ead06bd9685, type: 3}
+  RedSounds24:
+  - {fileID: 8300000, guid: 80bdfbcb6da1c4cb9bb053c7ba838135, type: 3}
+  RedSounds25:
+  - {fileID: 8300000, guid: bb2abec079f4c4908b3029cb35d8b138, type: 3}
+  RedSounds31:
+  - {fileID: 8300000, guid: 6a90cebf7c2e445178086fab2c1444e3, type: 3}
+  RedSounds32:
+  - {fileID: 8300000, guid: f9d8cb5f68cd44c158d48cdb7e833084, type: 3}
+  RedSounds33:
+  - {fileID: 8300000, guid: ac6ebe5af50d3429aa5d2a2992f90eef, type: 3}
+  RedSounds34:
+  - {fileID: 8300000, guid: 076c0e082b86e40f7b1f53c069a68c93, type: 3}
+  RedSounds35:
+  - {fileID: 8300000, guid: 27d81da764c6748e6ab1d10080a90cbc, type: 3}
+  YellowSounds11:
+  - {fileID: 8300000, guid: 8ce630c7b9fe64b1c8348dc69a038a0d, type: 3}
+  YellowSounds12:
+  - {fileID: 8300000, guid: 040de663ae6544641b55d7a20a800bb6, type: 3}
+  YellowSounds13:
+  - {fileID: 8300000, guid: 238eb5844fa804623973098fa58a37e1, type: 3}
+  YellowSounds14:
+  - {fileID: 8300000, guid: 6cbc6a925596445898d898ad3556a3b5, type: 3}
+  YellowSounds15:
+  - {fileID: 8300000, guid: c043708702eff4702bf366459f99df25, type: 3}
+  YellowSounds21:
+  - {fileID: 8300000, guid: e4358f499871340f3acd1a1101c96e49, type: 3}
+  YellowSounds22:
+  - {fileID: 8300000, guid: 56d62855468a04e338a18ae857e005fa, type: 3}
+  YellowSounds23:
+  - {fileID: 8300000, guid: 61310dbf5151946e9a06c1c47c14fdbf, type: 3}
+  YellowSounds24:
+  - {fileID: 8300000, guid: 74a5b17cde5e14499a5751a37bb3e5e9, type: 3}
+  YellowSounds25:
+  - {fileID: 8300000, guid: 1cb84f592118f47a697ab5ce6c01d645, type: 3}
+  YellowSounds31:
+  - {fileID: 8300000, guid: bdeef2493dd034d8f9505630973f1874, type: 3}
+  YellowSounds32:
+  - {fileID: 8300000, guid: 299bc830d84e243efad2ee99d69b5d4a, type: 3}
+  YellowSounds33:
+  - {fileID: 8300000, guid: e07cce57203ce4cfdbf8bfd63c043652, type: 3}
+  YellowSounds34:
+  - {fileID: 8300000, guid: 18a0eb0cf8b8d4ab0a59659fb7275e89, type: 3}
+  YellowSounds35:
+  - {fileID: 8300000, guid: 2b8f015fd259c4727adada12394a32d9, type: 3}
+--- !u!114 &2800430672042037977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800430672042037978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c418c4b3f7ad241b6ea6efaa48cd9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChordPanel: {fileID: 1386752542486092543, guid: 224c07513d3689f49876eec0884e5afe,
+    type: 3}
+  RepeatPanel: {fileID: 7327807358051084825, guid: 9566d1b3ea64a8c4187b9ff80b370e42,
+    type: 3}
+  GenrePanel: {fileID: 1386752542486092543, guid: a49ee0985468adb4ab40df77b0a4cf17,
+    type: 3}
+  EffectsPanel: {fileID: 1386752542486092543, guid: 8b36c4e26de84e7448edb69783aea48e,
+    type: 3}
+  TeamPanel: {fileID: 0}
+  ActionPanel: {fileID: 0}
+  OneBoxPanel: {fileID: 0}
+  CodeButton: {fileID: 0}
+  ScrollView: {fileID: 0}
+  HiddenCodeBoxes: {fileID: 0}
+  CurrentCode: 
+  CodeBox: {fileID: 0}
+  LastSelectedCodeButton: 
+  LastSelectedButton: {fileID: 0}
+  OneBox: 0
+  FourBox: 0
+  Action: {fileID: 0}
+  ChordPanelCount: 0
+  RhythymPanelCount: 0
+  EffectPanelCount: 0
