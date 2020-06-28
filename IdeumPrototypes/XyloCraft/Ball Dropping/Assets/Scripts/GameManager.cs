@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (FourBox) 
+        {
+            ChordPanelCount = 4;
+        }
         if (GameObject.Find("GlobalSpeedSlider") != null) 
         {
             speedMultiplier = GameObject.Find("GlobalSpeedSlider").GetComponent<Slider>();
@@ -74,9 +78,10 @@ public class GameManager : MonoBehaviour
     {
         EffectPanelCount++;
     }
+
     public void LoadOneBox() 
     {
-        SceneManager.LoadScene("OneBox Prototype");
+        SceneManager.LoadScene("OneBoxProtoype");
     }
 
     public void LoadFourBox() 

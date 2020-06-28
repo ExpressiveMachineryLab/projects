@@ -1799,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 1072818390341404353, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: m_IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099046133468447413, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -1820,7 +1820,7 @@ PrefabInstance:
     - target: {fileID: 2616119572879030154, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: currentColor
-      value: Red
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2616119572879030157, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -3668,7 +3668,7 @@ PrefabInstance:
     - target: {fileID: 1072818390341404353, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: m_IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099046133468447413, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -3689,7 +3689,7 @@ PrefabInstance:
     - target: {fileID: 2616119572879030154, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: currentColor
-      value: Red
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2616119572879030157, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -5313,8 +5313,10 @@ GameObject:
   - component: {fileID: 559082323}
   - component: {fileID: 559082327}
   - component: {fileID: 559082326}
-  - component: {fileID: 559082325}
   - component: {fileID: 559082324}
+  - component: {fileID: 559082329}
+  - component: {fileID: 559082328}
+  - component: {fileID: 559082325}
   m_Layer: 5
   m_Name: ChordPanel3
   m_TagString: Untagged
@@ -5391,14 +5393,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 559082322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6cd77d12c447947af1d7a336a9a834, type: 3}
+  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedBall: {fileID: 232960487}
   SelectedLine: {fileID: 232960486}
-  ChangeLineInstrument: {fileID: 0}
-  VolumeSlider: {fileID: 0}
-  DestroyLine: {fileID: 0}
   RepeatState: {fileID: 232960485}
 --- !u!114 &559082326
 MonoBehaviour:
@@ -5437,6 +5436,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559082322}
   m_CullTransparentMesh: 0
+--- !u!114 &559082328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559082322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e0b853d7daf15479d40df5428ce9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 232960487}
+  SelectedLine: {fileID: 232960486}
+  Rhythym: {fileID: 1931716231}
+  RepeatState: {fileID: 232960485}
+  flashBorder: {fileID: 0}
+--- !u!114 &559082329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559082322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3526bb87b2b96f4eb48a93bdb097970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 232960487}
+  SelectedLine: {fileID: 232960486}
+  Chord: {fileID: 949856701}
+  RepeatState: {fileID: 232960485}
+  flashBorder: {fileID: 0}
 --- !u!1 &577060875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5927,8 +5960,6 @@ MonoBehaviour:
     - m_Text: Visuals
       m_Image: {fileID: 0}
     - m_Text: Mode
-      m_Image: {fileID: 0}
-    - m_Text: Speed
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7746,8 +7777,10 @@ GameObject:
   - component: {fileID: 804140444}
   - component: {fileID: 804140448}
   - component: {fileID: 804140447}
-  - component: {fileID: 804140446}
   - component: {fileID: 804140445}
+  - component: {fileID: 804140450}
+  - component: {fileID: 804140449}
+  - component: {fileID: 804140446}
   m_Layer: 5
   m_Name: ChordPanel4
   m_TagString: Untagged
@@ -7824,14 +7857,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 804140443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6cd77d12c447947af1d7a336a9a834, type: 3}
+  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedBall: {fileID: 377728155}
   SelectedLine: {fileID: 377728154}
-  ChangeLineInstrument: {fileID: 0}
-  VolumeSlider: {fileID: 0}
-  DestroyLine: {fileID: 0}
   RepeatState: {fileID: 377728153}
 --- !u!114 &804140447
 MonoBehaviour:
@@ -7870,6 +7900,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804140443}
   m_CullTransparentMesh: 0
+--- !u!114 &804140449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804140443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e0b853d7daf15479d40df5428ce9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 377728155}
+  SelectedLine: {fileID: 377728154}
+  Rhythym: {fileID: 1258395573}
+  RepeatState: {fileID: 377728153}
+  flashBorder: {fileID: 0}
+--- !u!114 &804140450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804140443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3526bb87b2b96f4eb48a93bdb097970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 377728155}
+  SelectedLine: {fileID: 377728154}
+  Chord: {fileID: 1974328911}
+  RepeatState: {fileID: 377728153}
+  flashBorder: {fileID: 0}
 --- !u!1 &826195905
 GameObject:
   m_ObjectHideFlags: 0
@@ -12497,8 +12561,10 @@ GameObject:
   - component: {fileID: 1415493855}
   - component: {fileID: 1415493859}
   - component: {fileID: 1415493858}
-  - component: {fileID: 1415493857}
   - component: {fileID: 1415493856}
+  - component: {fileID: 1415493861}
+  - component: {fileID: 1415493860}
+  - component: {fileID: 1415493857}
   m_Layer: 5
   m_Name: ChordPanel2
   m_TagString: Untagged
@@ -12575,14 +12641,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415493854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6cd77d12c447947af1d7a336a9a834, type: 3}
+  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedBall: {fileID: 1858282555}
   SelectedLine: {fileID: 1858282554}
-  ChangeLineInstrument: {fileID: 0}
-  VolumeSlider: {fileID: 0}
-  DestroyLine: {fileID: 0}
   RepeatState: {fileID: 1858282553}
 --- !u!114 &1415493858
 MonoBehaviour:
@@ -12621,6 +12684,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415493854}
   m_CullTransparentMesh: 0
+--- !u!114 &1415493860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415493854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e0b853d7daf15479d40df5428ce9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 1858282555}
+  SelectedLine: {fileID: 1858282554}
+  Rhythym: {fileID: 1695911312}
+  RepeatState: {fileID: 1858282553}
+  flashBorder: {fileID: 0}
+--- !u!114 &1415493861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415493854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3526bb87b2b96f4eb48a93bdb097970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 1858282555}
+  SelectedLine: {fileID: 1858282554}
+  Chord: {fileID: 130612101}
+  RepeatState: {fileID: 1858282553}
+  flashBorder: {fileID: 0}
 --- !u!1 &1429814529
 GameObject:
   m_ObjectHideFlags: 0
@@ -12780,8 +12877,6 @@ MonoBehaviour:
     - m_Text: Visuals
       m_Image: {fileID: 0}
     - m_Text: Mode
-      m_Image: {fileID: 0}
-    - m_Text: Speed
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16609,7 +16704,7 @@ PrefabInstance:
     - target: {fileID: 1072818390341404353, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: m_IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099046133468447413, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -16630,7 +16725,7 @@ PrefabInstance:
     - target: {fileID: 2616119572879030154, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: currentColor
-      value: Red
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2616119572879030157, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -19222,8 +19317,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Mode
       m_Image: {fileID: 0}
-    - m_Text: Speed
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -20310,24 +20403,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1773407710935475063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931292321589459377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6cd77d12c447947af1d7a336a9a834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedBall: {fileID: 1931292320843614762}
-  SelectedLine: {fileID: 1931292320843614761}
-  ChangeLineInstrument: {fileID: 0}
-  VolumeSlider: {fileID: 0}
-  DestroyLine: {fileID: 0}
-  RepeatState: {fileID: 1931292320843614760}
 --- !u!222 &1784627240887797821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20381,7 +20456,7 @@ PrefabInstance:
     - target: {fileID: 1072818390341404353, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: m_IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099046133468447413, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -20402,7 +20477,7 @@ PrefabInstance:
     - target: {fileID: 2616119572879030154, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
       propertyPath: currentColor
-      value: Red
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2616119572879030157, guid: 0543d5f381e1d8542af585bf7265717c,
         type: 3}
@@ -21306,8 +21381,10 @@ GameObject:
   - component: {fileID: 1931292321589459376}
   - component: {fileID: 1931292321589459381}
   - component: {fileID: 1931292321589459378}
-  - component: {fileID: 1773407710935475063}
   - component: {fileID: 3949673735634535830}
+  - component: {fileID: 1931292321589459382}
+  - component: {fileID: 1931292321589459380}
+  - component: {fileID: 1931292321589459379}
   m_Layer: 5
   m_Name: ChordPanel1
   m_TagString: Untagged
@@ -21344,6 +21421,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1931292321589459379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931292321589459377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 1931292320843614762}
+  SelectedLine: {fileID: 1931292320843614761}
+  RepeatState: {fileID: 1931292320843614760}
+--- !u!114 &1931292321589459380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931292321589459377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e0b853d7daf15479d40df5428ce9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 1931292320843614762}
+  SelectedLine: {fileID: 1931292320843614761}
+  Rhythym: {fileID: 2529765454432034967}
+  RepeatState: {fileID: 1931292320843614760}
+  flashBorder: {fileID: 0}
 --- !u!222 &1931292321589459381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21352,6 +21461,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931292321589459377}
   m_CullTransparentMesh: 0
+--- !u!114 &1931292321589459382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931292321589459377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3526bb87b2b96f4eb48a93bdb097970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedBall: {fileID: 1931292320843614762}
+  SelectedLine: {fileID: 1931292320843614761}
+  Chord: {fileID: 4213092629902387801}
+  RepeatState: {fileID: 1931292320843614760}
+  flashBorder: {fileID: 0}
 --- !u!224 &1954437129591489304
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22149,8 +22275,6 @@ MonoBehaviour:
     - m_Text: Visuals
       m_Image: {fileID: 0}
     - m_Text: Mode
-      m_Image: {fileID: 0}
-    - m_Text: Speed
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

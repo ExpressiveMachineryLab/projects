@@ -47,20 +47,26 @@ public class Line3 : MonoBehaviour
         soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
         lineArray = GameObject.Find("GameManager").GetComponent<LineInformation>();
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if (gameManger.OneBox)
-        {
-            ChordPanelCount = 0;
-            RhythymPanelCount = 0;
-            EffectPanelCount = 0;
-            ActionsPanelCount = 0;
-        }
-        else
-        {
-            ChordPanelCount = 4;
-            RhythymPanelCount = 4;
-            EffectPanelCount = 4;
-            ActionsPanelCount = 4;
-        }
+
+        ChordPanelCount = 4;
+        RhythymPanelCount = 4;
+        EffectPanelCount = 4;
+        ActionsPanelCount = 4;
+
+        //if (gameManger.OneBox)
+        //{
+        //    ChordPanelCount = 0;
+        //    RhythymPanelCount = 0;
+        //    EffectPanelCount = 0;
+        //    ActionsPanelCount = 0;
+        //}
+        //else
+        //{
+        //    ChordPanelCount = 4;
+        //    RhythymPanelCount = 4;
+        //    EffectPanelCount = 4;
+        //    ActionsPanelCount = 4;
+        //}
         for (int i = 1; i <= ChordPanelCount; i++)
         {
             if (GameObject.Find("ChordPanel" + i) != null) 
@@ -158,14 +164,22 @@ public class Line3 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StartCoroutine(ChangeSprite(0.15f, collision));
-        // check and update panel count
-        //ChordPanelCount = gameManger.GetChordCount();
-        //RhythymPanelCount = gameManger.GetRhythymCount();
-        //EffectPanelCount = gameManger.GetEffectCount();
+        //check and update panel count
+        if (gameManger.OneBox) 
+        {
+            ChordPanelCount = gameManger.GetChordCount();
+            RhythymPanelCount = gameManger.GetRhythymCount();
+            EffectPanelCount = gameManger.GetEffectCount();
+        }
         if (gameManger.OneBox || gameManger.FourBox) 
         {
+            ChordPanels = new ArrayList();
+            RhythymPanels = new ArrayList();
+            EffectPanels = new ArrayList();
+           
             for (int i = 1; i <= ChordPanelCount; i++)
             {
+                
                 if (GameObject.Find("ChordPanel" + i) != null)
                 {
                     ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
@@ -182,7 +196,6 @@ public class Line3 : MonoBehaviour
 
             }
 
-            Debug.Log(EffectPanelCount);
             for (int i = 1; i <= EffectPanelCount; i++)
             {
                 Debug.Log("Iteration");
@@ -194,6 +207,7 @@ public class Line3 : MonoBehaviour
 
             }
         }
+
         PerformCodeBehvaior(collision);
 
     }
@@ -239,18 +253,21 @@ public class Line3 : MonoBehaviour
     
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        Debug.Log("hello");
+        
         // Chord + Note Panel
         foreach (SendStateInformationChord panel in ChordPanels)
         {
+            
             if (panel != null) 
             {
+                Debug.Log("hello");
                 if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 collision.gameObject.tag == panel.GetBallColor() + "Ball"
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
                 && panel.GetRepeatState() != "None")
                 {
+                    
                     // ++
                     if (panel.GetSelectedChord() == "Plus")
                     {

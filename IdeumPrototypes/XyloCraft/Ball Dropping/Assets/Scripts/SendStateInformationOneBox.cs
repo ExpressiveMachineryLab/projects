@@ -227,6 +227,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             if (!GA.OneBox) 
             {
                 this.gameObject.name = "ChordPanel" + AssignedNumber;
+                GA.IncreaseChordCount();
             }
         }
         else if (Mode.value == 1)
@@ -240,6 +241,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             if (!GA.OneBox)
             {
                 this.gameObject.name = "RhythymPanel" + AssignedNumber;
+                GA.IncreaseRhythymCount();
             }
         }
         else if (Mode.value == 2)
@@ -253,6 +255,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             if (!GA.OneBox)
             {
                 this.gameObject.name = "EffectsPanel" + AssignedNumber;
+                GA.IncreaseEffectCount();
             }
         }
         else if (Mode.value == 3)
