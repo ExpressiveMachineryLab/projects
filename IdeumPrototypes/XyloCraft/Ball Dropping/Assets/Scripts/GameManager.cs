@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToRepeat() 
     {
-        CodeBoxScroll.value = 0.838f;
+        CodeBoxScroll.value = 0.8681281f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToGenre() 
     {
-        CodeBoxScroll.value = 0.676f;
+        CodeBoxScroll.value = 0.726986f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToEffects() 
     {
-        CodeBoxScroll.value = 0.5616257f;
+        CodeBoxScroll.value = 0.5152746f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToLineActions() 
     {
-        CodeBoxScroll.value = 0.1729164f;
+        CodeBoxScroll.value = 0.3745433f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
