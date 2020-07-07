@@ -53,7 +53,7 @@ public class SelectedElementRepeat : MonoBehaviour
         {
             currentRepeatMode = "Once";
             grey.enabled = false;
-            ifStatement.text = "If (";
+          //  ifStatement.text = "If (";
         }
         else 
         {
@@ -67,7 +67,7 @@ public class SelectedElementRepeat : MonoBehaviour
         {
             currentRepeatMode = "Repeat";
             grey.enabled = false;
-            ifStatement.text = "While (";
+           // ifStatement.text = "While (";
         }
         else 
         {
