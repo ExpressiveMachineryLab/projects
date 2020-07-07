@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 152, y: -41}
+  m_AnchoredPosition: {x: 351.00006, y: -102.99995}
   m_SizeDelta: {x: 100, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10411191
@@ -2213,7 +2213,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound1
         m_Mode: 1
         m_Arguments:
@@ -5937,7 +5937,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound1
         m_Mode: 1
         m_Arguments:
@@ -8851,7 +8851,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound2
         m_Mode: 1
         m_Arguments:
@@ -13254,7 +13254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 152, y: -41}
+  m_AnchoredPosition: {x: 351.00006, y: -102.99995}
   m_SizeDelta: {x: 100, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756075090
@@ -13744,7 +13744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 152, y: -41}
+  m_AnchoredPosition: {x: 351, y: -103}
   m_SizeDelta: {x: 100, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &775841096
@@ -16176,7 +16176,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound3
         m_Mode: 1
         m_Arguments:
@@ -23279,7 +23279,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound2
         m_Mode: 1
         m_Arguments:
@@ -25370,7 +25370,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound3
         m_Mode: 1
         m_Arguments:
@@ -26005,7 +26005,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound1
         m_Mode: 1
         m_Arguments:
@@ -29109,7 +29109,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound3
         m_Mode: 1
         m_Arguments:
@@ -34203,7 +34203,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound2
         m_Mode: 1
         m_Arguments:
@@ -38556,7 +38556,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound2
         m_Mode: 1
         m_Arguments:
@@ -40909,7 +40909,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound1
         m_Mode: 1
         m_Arguments:
@@ -41362,7 +41362,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 30782277}
         m_MethodName: SetToSound3
         m_Mode: 1
         m_Arguments:
@@ -44642,7 +44642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 152, y: -41}
+  m_AnchoredPosition: {x: 351.00006, y: -102.99995}
   m_SizeDelta: {x: 100, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9135323769889406188
