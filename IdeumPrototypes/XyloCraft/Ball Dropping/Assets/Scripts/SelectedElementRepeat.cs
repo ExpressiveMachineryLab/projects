@@ -23,7 +23,7 @@ public class SelectedElementRepeat : MonoBehaviour
         }
         else 
         {
-            currentRepeatMode = "None";
+            SetModeToNone();
         }
         
     }
@@ -39,7 +39,18 @@ public class SelectedElementRepeat : MonoBehaviour
         currentRepeatMode = "None";
         grey.enabled = true;
         ifStatement.text = "   (";
-        resetButtons();
+        if (Once.isToggled)
+        {
+            Once.toggled();
+        }
+        if (Repeat.isToggled)
+        {
+            Repeat.toggled();
+        }
+        if (!None.isToggled)
+        {
+            None.toggled();
+        }
     }
 
     public void SetNoneToggle() 
@@ -48,21 +59,6 @@ public class SelectedElementRepeat : MonoBehaviour
         OnceToggle.isOn = false;
     }
 
-    public void resetButtons()
-    {
-        if (Once.isToggled)
-        {
-            Once.toggled();
-        }
-        if (None.isToggled)
-        {
-            None.toggled();
-        }
-        if (Repeat.isToggled)
-        {
-            Repeat.toggled();
-        }
-    }
 
     public void SetModeToOnce()
     {
@@ -70,7 +66,19 @@ public class SelectedElementRepeat : MonoBehaviour
         {
             currentRepeatMode = "Once";
             grey.enabled = false;
-          //  ifStatement.text = "If (";
+            //  ifStatement.text = "If (";
+            if (None.isToggled)
+            {
+                None.toggled();
+            }
+            if (Repeat.isToggled)
+            {
+                Repeat.toggled();
+            }
+            if (!Once.isToggled)
+            {
+                Once.toggled();
+            }
         }
         else 
         {
@@ -84,7 +92,19 @@ public class SelectedElementRepeat : MonoBehaviour
         {
             currentRepeatMode = "Repeat";
             grey.enabled = false;
-           // ifStatement.text = "While (";
+            // ifStatement.text = "While (";
+            if (Once.isToggled)
+            {
+                Once.toggled();
+            }
+            if (None.isToggled)
+            {
+                None.toggled();
+            }
+            if (!Repeat.isToggled)
+            {
+                Repeat.toggled();
+            }
         }
         else 
         {
