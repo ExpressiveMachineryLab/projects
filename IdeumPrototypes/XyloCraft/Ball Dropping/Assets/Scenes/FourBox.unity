@@ -2304,6 +2304,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1070859298}
+        m_MethodName: SetModeToNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &208204819
 MonoBehaviour:
@@ -8042,7 +8053,7 @@ RectTransform:
   - {fileID: 53960834}
   - {fileID: 405970240}
   m_Father: {fileID: 1563957883}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9710,6 +9721,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 644470607}
+        m_MethodName: SetModeToNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &615726254
 MonoBehaviour:
@@ -10974,7 +10996,7 @@ RectTransform:
   - {fileID: 1743088626}
   - {fileID: 1563957883}
   m_Father: {fileID: 747518379}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -11531,7 +11553,7 @@ RectTransform:
   - {fileID: 563071643}
   - {fileID: 1147858533}
   m_Father: {fileID: 1743088626}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12050,19 +12072,19 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1730472361}
   - {fileID: 1335841014}
+  - {fileID: 1730472361}
+  - {fileID: 645051987}
   - {fileID: 2421603372206825983}
   - {fileID: 2421603372649806671}
   - {fileID: 3022874746745243230}
   - {fileID: 2421603372126192804}
-  - {fileID: 645051987}
   - {fileID: 559082323}
   - {fileID: 804140444}
+  - {fileID: 1884118603}
   - {fileID: 2119125909}
   - {fileID: 1641081075}
   - {fileID: 762865746}
-  - {fileID: 1884118603}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13980,7 +14002,7 @@ RectTransform:
   - {fileID: 1267523017}
   - {fileID: 1545995551}
   m_Father: {fileID: 2112716119}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20871,7 +20893,7 @@ RectTransform:
   - {fileID: 741161456}
   - {fileID: 1616576058}
   m_Father: {fileID: 747518379}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21147,6 +21169,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1743088627}
         m_MethodName: UpdatePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 232491293}
+        m_MethodName: SetModeToNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24322,8 +24355,8 @@ RectTransform:
   - {fileID: 1527033784}
   - {fileID: 1066241314}
   - {fileID: 615726252}
-  - {fileID: 644470606}
   - {fileID: 526987601}
+  - {fileID: 644470606}
   - {fileID: 1142290462}
   - {fileID: 1013922880}
   - {fileID: 516020771}
@@ -24359,7 +24392,7 @@ MonoBehaviour:
   three: {fileID: 1915775422}
   four: {fileID: 450600612}
   five: {fileID: 323668275}
-  AssignedNumber: 1
+  AssignedNumber: 4
   Mode: {fileID: 615726253}
   RepeatState: {fileID: 644470607}
   ChordOptions: {fileID: 526987600}
@@ -27010,8 +27043,8 @@ RectTransform:
   - {fileID: 1639795749}
   - {fileID: 1257245183}
   - {fileID: 1355228882}
-  - {fileID: 232491292}
   - {fileID: 713194161}
+  - {fileID: 232491292}
   - {fileID: 741310218}
   - {fileID: 1556578183}
   - {fileID: 377651836}
@@ -27047,7 +27080,7 @@ MonoBehaviour:
   three: {fileID: 883249938}
   four: {fileID: 1386421634}
   five: {fileID: 1251354921}
-  AssignedNumber: 1
+  AssignedNumber: 3
   Mode: {fileID: 1355228883}
   RepeatState: {fileID: 232491293}
   ChordOptions: {fileID: 713194160}
@@ -29161,7 +29194,7 @@ RectTransform:
   - {fileID: 1819130410}
   - {fileID: 1681056216}
   m_Father: {fileID: 747518379}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -31627,8 +31660,8 @@ RectTransform:
   - {fileID: 1595547160}
   - {fileID: 155676443}
   - {fileID: 208204817}
-  - {fileID: 1070859297}
   - {fileID: 863889676}
+  - {fileID: 1070859297}
   - {fileID: 1006399320}
   - {fileID: 1990389323}
   - {fileID: 1176345254}
@@ -31664,7 +31697,7 @@ MonoBehaviour:
   three: {fileID: 1535304292}
   four: {fileID: 2113698021}
   five: {fileID: 778661999}
-  AssignedNumber: 1
+  AssignedNumber: 2
   Mode: {fileID: 208204818}
   RepeatState: {fileID: 1070859298}
   ChordOptions: {fileID: 863889675}
@@ -34517,8 +34550,8 @@ RectTransform:
   - {fileID: 346156447}
   - {fileID: 1229886676100808001}
   - {fileID: 8409793784398009562}
-  - {fileID: 1931292320843614763}
   - {fileID: 3088597236943025199}
+  - {fileID: 1931292320843614763}
   - {fileID: 9072985514207719624}
   - {fileID: 8929124843821230201}
   - {fileID: 4039168226168154667}
@@ -35446,6 +35479,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1931292320843614760}
+        m_MethodName: SetModeToNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &3015340987162136940
 MonoBehaviour:
@@ -35511,7 +35555,7 @@ RectTransform:
   - {fileID: 4653376826013140000}
   - {fileID: 746410789852373519}
   m_Father: {fileID: 1931292321589459376}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
