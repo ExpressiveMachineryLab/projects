@@ -480,6 +480,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1132655584}
+        m_MethodName: SetModeToNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &33014712
 MonoBehaviour:
@@ -8740,6 +8751,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 780688377}
+        m_MethodName: SetModeToNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &474204749
 MonoBehaviour:
@@ -12355,7 +12377,7 @@ GameObject:
   - component: {fileID: 730614814}
   - component: {fileID: 730614813}
   m_Layer: 5
-  m_Name: ChordPanel1 (1)
+  m_Name: ChordPanel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12412,7 +12434,7 @@ MonoBehaviour:
   three: {fileID: 452419873}
   four: {fileID: 636477879}
   five: {fileID: 765455334}
-  AssignedNumber: 1
+  AssignedNumber: 2
   Mode: {fileID: 33014711}
   RepeatState: {fileID: 1132655584}
   ChordOptions: {fileID: 2052820731}
@@ -26660,7 +26682,7 @@ GameObject:
   - component: {fileID: 1766854579}
   - component: {fileID: 1766854578}
   m_Layer: 5
-  m_Name: ChordPanel1 (3)
+  m_Name: ChordPanel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26717,7 +26739,7 @@ MonoBehaviour:
   three: {fileID: 1840812104}
   four: {fileID: 918198924}
   five: {fileID: 1094794740}
-  AssignedNumber: 1
+  AssignedNumber: 4
   Mode: {fileID: 2093443825}
   RepeatState: {fileID: 162779559}
   ChordOptions: {fileID: 1963710852}
@@ -31800,7 +31822,7 @@ GameObject:
   - component: {fileID: 2059169193}
   - component: {fileID: 2059169192}
   m_Layer: 5
-  m_Name: ChordPanel1 (2)
+  m_Name: ChordPanel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31857,7 +31879,7 @@ MonoBehaviour:
   three: {fileID: 130929025}
   four: {fileID: 1994532703}
   five: {fileID: 277666155}
-  AssignedNumber: 1
+  AssignedNumber: 4
   Mode: {fileID: 474204748}
   RepeatState: {fileID: 780688377}
   ChordOptions: {fileID: 1636499734}
@@ -32423,6 +32445,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1766854577}
         m_MethodName: UpdatePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 162779559}
+        m_MethodName: SetModeToNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36411,6 +36444,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3949673735634535830}
         m_MethodName: UpdatePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1931292320843614760}
+        m_MethodName: SetModeToNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

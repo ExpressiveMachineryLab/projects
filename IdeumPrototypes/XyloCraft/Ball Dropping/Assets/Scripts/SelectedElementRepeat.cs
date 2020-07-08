@@ -39,12 +39,29 @@ public class SelectedElementRepeat : MonoBehaviour
         currentRepeatMode = "None";
         grey.enabled = true;
         ifStatement.text = "   (";
+        resetButtons();
     }
 
     public void SetNoneToggle() 
     {
         NoneToggle.isOn = true;
         OnceToggle.isOn = false;
+    }
+
+    public void resetButtons()
+    {
+        if (Once.isToggled)
+        {
+            Once.toggled();
+        }
+        if (None.isToggled)
+        {
+            None.toggled();
+        }
+        if (Repeat.isToggled)
+        {
+            Repeat.toggled();
+        }
     }
 
     public void SetModeToOnce()
