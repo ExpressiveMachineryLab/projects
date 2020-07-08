@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToRepeat() 
     {
-        CodeBoxScroll.value = 0.838f;
+        CodeBoxScroll.value = 0.6795676f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToGenre() 
     {
-        CodeBoxScroll.value = 0.676f;
+        CodeBoxScroll.value = 0.3483143f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToEffects() 
     {
-        CodeBoxScroll.value = 0.5616257f;
+        CodeBoxScroll.value = 0;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
 
     public void ScrollToLineActions() 
     {
-        CodeBoxScroll.value = 0.1729164f;
+        CodeBoxScroll.value = 0f;
         if (!CodeBox.GetBool("Open"))
         {
             CodeBox.SetTrigger("Clicked");
@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Chord " + chord;
             ChordTemp.transform.SetParent(ScrollView.transform, false);
             ChordTemp.GetComponent<CodeList>().SetIdentiferChord(name, ballColor, lineColor, repeat, chord);
 
@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Repeat " + rhythym;
             ChordTemp.transform.SetParent(ScrollView.transform, false);
             ChordTemp.GetComponent<CodeList>().SetIdentiferRhythym(name, ballColor, lineColor, repeat, rhythym);
 
@@ -306,7 +306,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(repeat);
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "Code " + (ChordPanelCount + RhythymPanelCount + EffectPanelCount);
+            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Play Effect";
             ChordTemp.transform.SetParent(ScrollView.transform, false);
 
             ChordTemp.GetComponent<CodeList>().SetIdentifer(name, ballColor, repeat, lineColor);
