@@ -443,6 +443,106 @@ PrefabInstance:
       propertyPath: YellowSounds15.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 643a610ab366b3f419cf22945d347a0b, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds21.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 58e4bdfcf781a4be2a619795989d65d6, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds22.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 25b83fddbc3174478878532eb1c4be3a, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds23.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ba48914a3b7b48cb8c2cf80bf7a456b, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds24.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 177ca1a701821423ea7349cd84f7d106, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds25.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 78ee45673435d4ba2865298f24a5798d, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds21.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5dee266a2f69e4c849df495e70471a10, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds22.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 101e26b5e53654366ae64c43b4430d90, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds23.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 31e30f2dd72a24d8dbe1e987ded349e1, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds24.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ca738312c78834bf4bfb8ca453f0000c, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds25.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c2a628d978d2f4f1db038755bb196fec, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds21.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cac23254d3a354b06acb840c19cf671b, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds22.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e8026dc830024f4788c65940c8a54da, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds23.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ddcac66d05bb4a90887c76b92d5ad2e, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds24.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6738290b9b96745b5896d8e719efc15b, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds25.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a425d7662942741fd81f0a0d69fb9b87, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds21.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe557d7ddb3174f5a90e8bed90129020, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds22.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c446fde8d7ca74299bb87a9ca3a7a042, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds23.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f334ce830a66d4b63a2352cc3137bc92, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds24.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 101e26b5e53654366ae64c43b4430d90, type: 3}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds25.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c9b11374a9af34e30ba5265f0bb05a4a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619f0755e76bc614cbcf503a6c900942, type: 3}
 --- !u!114 &30782277 stripped
@@ -25735,7 +25835,7 @@ PrefabInstance:
     - target: {fileID: 7875126290740277562, guid: bddef70c65f3db04dbe3fd7d5cfd9462,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.000061
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7875126290740277562, guid: bddef70c65f3db04dbe3fd7d5cfd9462,
         type: 3}
@@ -25992,7 +26092,7 @@ PrefabInstance:
     - target: {fileID: 7875126291716088867, guid: bddef70c65f3db04dbe3fd7d5cfd9462,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.79982
+      value: 33.799805
       objectReference: {fileID: 0}
     - target: {fileID: 7875126291892354039, guid: bddef70c65f3db04dbe3fd7d5cfd9462,
         type: 3}
