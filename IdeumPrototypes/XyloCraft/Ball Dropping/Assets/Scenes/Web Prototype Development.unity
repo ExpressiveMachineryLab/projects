@@ -772,9 +772,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 421073805}
   m_Direction: 0
   m_MinValue: 0.3
-  m_MaxValue: 5
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1.96
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -950,15 +950,15 @@ MonoBehaviour:
   - 1
   - 1
   BlueSounds11:
-  - {fileID: 8300000, guid: 239b1f927c9af4882be3559e71086cc6, type: 3}
+  - {fileID: 8300000, guid: 41f3d50742feb4618a87ee79a70e5b81, type: 3}
   BlueSounds12:
-  - {fileID: 8300000, guid: 83b9fa41e9edb4baab0cd1c53cea086b, type: 3}
+  - {fileID: 8300000, guid: 26306e50769104daaaa6b6b9dc6bb494, type: 3}
   BlueSounds13:
-  - {fileID: 8300000, guid: 865e9539bf52d402ea405cdef7f98fd9, type: 3}
+  - {fileID: 8300000, guid: 6f0c50fee1c0848eca5dbe25d5151999, type: 3}
   BlueSounds14:
-  - {fileID: 8300000, guid: 100f66a1183794dbe8bbefed76ecc175, type: 3}
+  - {fileID: 8300000, guid: abffabcf714e343e6b89efc386aa9626, type: 3}
   BlueSounds15:
-  - {fileID: 8300000, guid: 27706343cd0a04c198ff10ab47c76967, type: 3}
+  - {fileID: 8300000, guid: b75d0777d8ba54a28b568596b1f3876a, type: 3}
   BlueSounds21:
   - {fileID: 8300000, guid: eb0d3060151eb45e38d497696763ce9b, type: 3}
   BlueSounds22:
@@ -980,15 +980,15 @@ MonoBehaviour:
   BlueSounds35:
   - {fileID: 8300000, guid: d08f32bd9b01a4887b49378289b78ef4, type: 3}
   GreenSounds11:
-  - {fileID: 8300000, guid: 625e11bb28c7a43ddb8903f01a308e2e, type: 3}
+  - {fileID: 8300000, guid: 9f63486b0c12c41418088e3093ea832f, type: 3}
   GreenSounds12:
-  - {fileID: 8300000, guid: 8e5f915a709864ce8acf294f0e24784e, type: 3}
+  - {fileID: 8300000, guid: ca5f9b83ca6894724a52f64b852ef91c, type: 3}
   GreenSounds13:
-  - {fileID: 8300000, guid: 3443d225670304c81a130fa3fd18e045, type: 3}
+  - {fileID: 8300000, guid: 8d134a937baee4c6cb3a83232d60ed6a, type: 3}
   GreenSounds14:
-  - {fileID: 8300000, guid: 32e988bf352cd449aba0be0dfe419436, type: 3}
+  - {fileID: 8300000, guid: dedfebd7cb3be4dafb570144ce1401e2, type: 3}
   GreenSounds15:
-  - {fileID: 8300000, guid: a40203411530347dbaa0c7ffd20b0fe2, type: 3}
+  - {fileID: 8300000, guid: 59db39d5151b44777b75126660474606, type: 3}
   GreenSounds21:
   - {fileID: 8300000, guid: 78c73183d1f01ac4cb184ec8a4066664, type: 3}
   GreenSounds22:
@@ -1040,17 +1040,17 @@ MonoBehaviour:
   RedSounds35:
   - {fileID: 8300000, guid: 27d81da764c6748e6ab1d10080a90cbc, type: 3}
   YellowSounds11:
-  - {fileID: 8300000, guid: 8ce630c7b9fe64b1c8348dc69a038a0d, type: 3}
+  - {fileID: 8300000, guid: de3598ea71600e24190823333e566c0c, type: 3}
   YellowSounds12:
-  - {fileID: 8300000, guid: 040de663ae6544641b55d7a20a800bb6, type: 3}
+  - {fileID: 8300000, guid: 34b4e84241b30594a9fed326a729d60c, type: 3}
   YellowSounds13:
-  - {fileID: 8300000, guid: 238eb5844fa804623973098fa58a37e1, type: 3}
+  - {fileID: 8300000, guid: daca989af39a592478eaca367a132c86, type: 3}
   YellowSounds14:
-  - {fileID: 8300000, guid: 6cbc6a925596445898d898ad3556a3b5, type: 3}
+  - {fileID: 8300000, guid: 92dbb0352c2c6614e8ee15b3fdba871a, type: 3}
   YellowSounds15:
-  - {fileID: 8300000, guid: c043708702eff4702bf366459f99df25, type: 3}
+  - {fileID: 8300000, guid: 11963cf00ec93ed4c8367e2065be384c, type: 3}
   YellowSounds21:
-  - {fileID: 8300000, guid: e4358f499871340f3acd1a1101c96e49, type: 3}
+  - {fileID: 8300000, guid: 13c4874588094c442b2b09dcfa1658ba, type: 3}
   YellowSounds22:
   - {fileID: 8300000, guid: 56d62855468a04e338a18ae857e005fa, type: 3}
   YellowSounds23:
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 857999827}
   m_Direction: 2
   m_Value: 0.9999984
-  m_Size: 0.44428578
+  m_Size: 0.44428572
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2253,8 +2253,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1279555112}
   m_HandleRect: {fileID: 1279555111}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

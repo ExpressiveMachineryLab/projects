@@ -203,7 +203,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 462464414}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -652,14 +652,13 @@ MonoBehaviour:
   m_HandleRect: {fileID: 502214154}
   m_Direction: 0
   m_MinValue: 0.1
-  m_MaxValue: 2
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2800430672042037977, guid: 619f0755e76bc614cbcf503a6c900942,
-          type: 3}
+      - m_Target: {fileID: 232937058}
         m_MethodName: UpdateSpeed
         m_Mode: 1
         m_Arguments:
