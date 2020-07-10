@@ -200,7 +200,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < RedSounds[mode][pitch].Length; i++)
             {
-                playClip.volume = 0.3f;
+                playClip.volume = 0.7f;
                 playClip.PlayOneShot(RedSounds[mode][pitch][i]);
             }
         }
@@ -208,7 +208,8 @@ public class SoundManager : MonoBehaviour
         if (lineColor == "YellowLine")
         {
             for (int i = 0; i < YellowSounds[mode][pitch].Length; i++)
-            {
+            {   
+                playClip.volume = 0.3f;
                 playClip.PlayOneShot(YellowSounds[mode][pitch][i]);
             }
         }
