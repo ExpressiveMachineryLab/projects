@@ -184,6 +184,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < BlueSounds[mode][pitch].Length; i++) 
             {
+                playClip.volume = 0.6f;
                 playClip.PlayOneShot(BlueSounds[mode][pitch][i]);
             }
         }
@@ -192,6 +193,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < GreenSounds[mode][pitch].Length; i++)
             {
+                playClip.volume = 0.6f;
                 playClip.PlayOneShot(GreenSounds[mode][pitch][i]);
             }
         }
@@ -200,7 +202,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < RedSounds[mode][pitch].Length; i++)
             {
-                playClip.volume = 0.7f;
+                playClip.volume = 0.3f;
                 playClip.PlayOneShot(RedSounds[mode][pitch][i]);
             }
         }
@@ -209,7 +211,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < YellowSounds[mode][pitch].Length; i++)
             {   
-                playClip.volume = 0.3f;
+                playClip.volume = 0.6f;
                 playClip.PlayOneShot(YellowSounds[mode][pitch][i]);
             }
         }
