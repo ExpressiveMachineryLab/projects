@@ -343,7 +343,6 @@ public class GameManager : MonoBehaviour
     {
         return EffectPanelCount;
     }
-
     public void SetOneBoxPanel() 
     {
     

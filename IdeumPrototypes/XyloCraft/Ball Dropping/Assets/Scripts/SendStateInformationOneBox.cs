@@ -17,6 +17,9 @@ public class SendStateInformationOneBox : MonoBehaviour
     public GameObject four;
     public GameObject five;
 
+    public Text textSummary;
+    public ToggleSelected textToggle;
+
     public int AssignedNumber;
 
     public Dropdown Mode;
@@ -304,5 +307,80 @@ public class SendStateInformationOneBox : MonoBehaviour
         RepeatState.SetNoneToggle();
     }
 
-    
+    public void UpdateText()
+    {
+        if (Mode.value == 0)
+        {
+            if (RepeatState.GetCurrentRhythym() == "Once")
+            {
+                textSummary.text = "If (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Chord " + GetSelectedChord() + " }";
+            }
+            else if (RepeatState.GetCurrentRhythym() == "Repeat")
+            {
+                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Chord " + GetSelectedChord() + " }";
+            }
+            else 
+            {
+                textSummary.text = "(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Chord " + GetSelectedChord() + " }";
+            }
+
+
+        }
+        else if (Mode.value == 1)
+        {
+            if (RepeatState.GetCurrentRhythym() == "Once")
+            {
+                textSummary.text = "If (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Repeat " + GetSelectedRhythym() + " }";
+            }
+            else if (RepeatState.GetCurrentRhythym() == "Repeat")
+            {
+                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Repeat " + GetSelectedRhythym() + " }";
+            }
+            else
+            {
+                textSummary.text = "(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Repeat " + GetSelectedRhythym() + " }";
+            }
+
+            
+        }
+        else if (Mode.value == 2) 
+        {
+            if (RepeatState.GetCurrentRhythym() == "Once")
+            {
+                textSummary.text = "If (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+            }
+            else if (RepeatState.GetCurrentRhythym() == "Repeat")
+            {
+                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+            }
+            else
+            {
+                textSummary.text = "(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+            }
+        }
+    }
+
+    public void ToggleText() 
+    {
+        textToggle.toggled();
+        UpdateText();
+        textSummary.enabled = !textSummary.enabled;
+    }
+
+    public void RandomElements() 
+    {
+        Mode.value = (int)(Random.value * 3);
+        if (Mode.value == 0)
+        {
+            string[] chordOptions = { "Plus", "Minus", "PlusMinus" };
+            SetSelectedChord(chordOptions[(int)(Random.value * 3)]);
+        }
+        else if (Mode.value == 1) 
+        {
+            SetSelectedRhythym((int)(Random.value * 5));
+        }
+
+        string[] repeatOptions = { "None", "Once", "Repeat" };
+        SetRepeatState(repeatOptions[(int)(Random.value * 3)]);
+    }
 }
