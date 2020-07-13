@@ -317,7 +317,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             }
             else if (RepeatState.GetCurrentRhythym() == "Repeat")
             {
-                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Chord " + GetSelectedChord() + " }";
+                textSummary.text = "While True: if(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Chord " + GetSelectedChord() + " }";
             }
             else 
             {
@@ -334,7 +334,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             }
             else if (RepeatState.GetCurrentRhythym() == "Repeat")
             {
-                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Repeat " + GetSelectedRhythym() + " }";
+                textSummary.text = "While True: if(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Repeat " + GetSelectedRhythym() + " }";
             }
             else
             {
@@ -351,7 +351,7 @@ public class SendStateInformationOneBox : MonoBehaviour
             }
             else if (RepeatState.GetCurrentRhythym() == "Repeat")
             {
-                textSummary.text = "While (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+                textSummary.text = "While True: if(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
             }
             else
             {
