@@ -211,7 +211,7 @@ public class SoundManager : MonoBehaviour
         {
             for (int i = 0; i < YellowSounds[mode][pitch].Length; i++)
             {   
-                playClip.volume = 0.6f;
+                playClip.volume = 0.8f;
                 playClip.PlayOneShot(YellowSounds[mode][pitch][i]);
             }
         }
