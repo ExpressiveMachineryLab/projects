@@ -6,11 +6,15 @@ using UnityEngine;
 public class Line3 : MonoBehaviour
 {
     public string lineColor;
-    public Sprite originalSprite;
-    public Sprite hitSprite;
+
+    public Sprite[] chordSprites; //should always be of length 5
+    public Sprite[] chordHitSprites;
+
     public float speed = 5f;
 
     public Animator effects;
+
+    public SpriteRenderer lineSprite;
 
     private int ChordPanelCount;
     private int RhythymPanelCount;
@@ -39,7 +43,7 @@ public class Line3 : MonoBehaviour
     private GameManager gameManger;
 
     public AudioClip collisionSound;
-    
+
     void Start()
     {
         thisCollider = GetComponent<BoxCollider2D>();
@@ -69,11 +73,11 @@ public class Line3 : MonoBehaviour
         //}
         for (int i = 1; i <= ChordPanelCount; i++)
         {
-            if (GameObject.Find("ChordPanel" + i) != null) 
+            if (GameObject.Find("ChordPanel" + i) != null)
             {
                 ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
             }
-            
+
         }
 
         for (int i = 1; i <= RhythymPanelCount; i++)
@@ -82,7 +86,7 @@ public class Line3 : MonoBehaviour
             {
                 RhythymPanels.Add(GameObject.Find("RhythymPanel" + i).GetComponent<SendStateInformationRhythym>());
             }
-           
+
         }
 
         for (int i = 1; i <= EffectPanelCount; i++)
@@ -91,7 +95,7 @@ public class Line3 : MonoBehaviour
             {
                 EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
             }
-            
+
         }
 
         for (int i = 1; i <= ActionsPanelCount; i++)
@@ -100,7 +104,7 @@ public class Line3 : MonoBehaviour
             {
                 ActionsPanels.Add(GameObject.Find("ActionsPanel" + i).GetComponent<SendStateInformationActions>());
             }
-           
+
         }
     }
 
@@ -111,7 +115,7 @@ public class Line3 : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX,
                 mousePos.y - startPosY, 0);
         }
 
@@ -153,7 +157,7 @@ public class Line3 : MonoBehaviour
             isBeingHeld = true;
         }
 
-        
+
     }
 
     private void OnMouseUp()
@@ -163,23 +167,23 @@ public class Line3 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(ChangeSprite(0.15f, collision));
+
         //check and update panel count
-        if (gameManger.OneBox) 
+        if (gameManger.OneBox)
         {
             ChordPanelCount = gameManger.GetChordCount();
             RhythymPanelCount = gameManger.GetRhythymCount();
             EffectPanelCount = gameManger.GetEffectCount();
         }
-        if (gameManger.OneBox || gameManger.FourBox) 
+        if (gameManger.OneBox || gameManger.FourBox)
         {
             ChordPanels = new ArrayList();
             RhythymPanels = new ArrayList();
             EffectPanels = new ArrayList();
-           
+
             for (int i = 1; i <= ChordPanelCount; i++)
             {
-                
+
                 if (GameObject.Find("ChordPanel" + i) != null)
                 {
                     ChordPanels.Add(GameObject.Find("ChordPanel" + i).GetComponent<SendStateInformationChord>());
@@ -211,23 +215,28 @@ public class Line3 : MonoBehaviour
         PerformCodeBehvaior(collision);
 
     }
-    
+
     private IEnumerator ChangeSprite(float seconds, Collision2D collision)
     {
+
         Sprite ballOriginalObject = collision.gameObject.GetComponent<Ball>().originalSprite;
         Sprite ballHitObject = collision.gameObject.GetComponent<Ball>().hitSprite;
         SpriteRenderer collidedObject = collision.gameObject.GetComponent<SpriteRenderer>();
-        SpriteRenderer thisLineObject = this.gameObject.GetComponent<SpriteRenderer>();
+       // SpriteRenderer thisLineObject = this.gameObject.GetComponent<SpriteRenderer>();
 
         collidedObject.sprite = ballHitObject;
-        thisLineObject.sprite = hitSprite;
+
+
+        lineSprite.sprite = chordHitSprites[pitchLevel];
+
         yield return new WaitForSeconds(seconds);
         if (collidedObject != null)
         {
             collidedObject.sprite = ballOriginalObject;
         }
-        
-        thisLineObject.sprite = originalSprite;
+
+        lineSprite.sprite = chordSprites[pitchLevel];
+
     }
 
     public void MakeSound()
@@ -250,16 +259,17 @@ public class Line3 : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
     }
-    
+
     private void PerformCodeBehvaior(Collision2D collision)
     {
-        
+
         // Chord + Note Panel
         foreach (SendStateInformationChord panel in ChordPanels)
         {
-            
-            if (panel != null) 
+
+            if (panel != null)
             {
+                
                 Debug.Log("hello");
                 if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
@@ -267,7 +277,6 @@ public class Line3 : MonoBehaviour
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
                 && panel.GetRepeatState() != "None")
                 {
-                    
                     // ++
                     if (panel.GetSelectedChord() == "Plus")
                     {
@@ -311,6 +320,10 @@ public class Line3 : MonoBehaviour
                             pitchLevel--;
                         }
                     }
+                    //SpriteRenderer thisLineObject = this.gameObject.GetComponent<SpriteRenderer>();
+                    //thisLineObject.sprite = chordSprites[pitchLevel];
+
+
                     soundMan.GetAudio(playClip, panel.GetLineColor(), pitchLevel, gameManger.GetSoundState());
                     if (panel.GetRepeatState() == "Once")
                     {
@@ -320,15 +333,16 @@ public class Line3 : MonoBehaviour
                 else
                 {
                     MakeSound();
+
                 }
             }
-            
+
         }
 
         // Rhythym Panel
         foreach (SendStateInformationRhythym panel in RhythymPanels)
         {
-            if (panel != null) 
+            if (panel != null)
             {
                 if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
@@ -347,7 +361,7 @@ public class Line3 : MonoBehaviour
                     MakeSound();
                 }
             }
-            
+
         }
 
         //  Effects Panel
@@ -385,14 +399,14 @@ public class Line3 : MonoBehaviour
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 collision.gameObject.tag == panel.GetBallColor() + "Ball"
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
-                && panel.GetRepeatState() != "None") 
+                && panel.GetRepeatState() != "None")
             {
-                if (gameManger.ThreeBox) 
+                if (gameManger.ThreeBox)
                 {
                     this.lineColor = panel.GetChangeLineInstrumentColor();
                     this.gameObject.tag = lineColor + "Line";
-                    this.originalSprite = lineArray.GetSprite(lineColor);
-                    this.hitSprite = lineArray.GetHitSprite(lineColor);
+                  //  this.chordSprites = new Sprite[] { lineArray.GetSprite(lineColor) };
+                 //   this.chordHitSprites = new Sprite[]lineArray.GetHitSprite(lineColor);
                     MakeSound();
                 }
                 else
@@ -401,8 +415,8 @@ public class Line3 : MonoBehaviour
                     {
                         this.lineColor = panel.GetChangeLineInstrumentColor();
                         this.gameObject.tag = lineColor + "Line";
-                        this.originalSprite = lineArray.GetSprite(lineColor);
-                        this.hitSprite = lineArray.GetHitSprite(lineColor);
+                       // this.originalSprite = lineArray.GetSprite(lineColor);
+                       // this.hitSprite = lineArray.GetHitSprite(lineColor);
                         MakeSound();
 
                     }
@@ -423,7 +437,7 @@ public class Line3 : MonoBehaviour
                     }
 
                 }
-                
+
             }
             else
             {
@@ -431,8 +445,10 @@ public class Line3 : MonoBehaviour
             }
         }
 
+
+        StartCoroutine(ChangeSprite(0.15f, collision));
         MakeSound();
-        
+
     }
     public int GetPitchLevel()
     {
