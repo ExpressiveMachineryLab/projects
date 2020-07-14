@@ -370,10 +370,10 @@ public class Line3 : MonoBehaviour
             Debug.Log(panel);
             Debug.Log("you");
             Debug.Log(panel.GetRepeatState());
-            if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+            if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball"
+                && this.gameObject.tag == panel.GetLineColor() + "Line"))
                 && panel.GetRepeatState() != "None")
             {
                 Debug.Log("there");
