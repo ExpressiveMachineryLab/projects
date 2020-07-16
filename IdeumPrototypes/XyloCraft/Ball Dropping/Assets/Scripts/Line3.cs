@@ -269,12 +269,12 @@ public class Line3 : MonoBehaviour
 
             if (panel != null)
             {
-                
+
                 Debug.Log("hello");
-                if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+                if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball"
+                && this.gameObject.tag == panel.GetLineColor() + "Line"))
                 && panel.GetRepeatState() != "None")
                 {
                     // ++
@@ -332,7 +332,6 @@ public class Line3 : MonoBehaviour
                 }
                 else
                 {
-                    MakeSound();
 
                 }
             }
@@ -358,7 +357,7 @@ public class Line3 : MonoBehaviour
                 }
                 else
                 {
-                    MakeSound();
+                   // MakeSound();
                 }
             }
 
@@ -379,7 +378,7 @@ public class Line3 : MonoBehaviour
                 Debug.Log("there");
                 effects.SetTrigger("Play");
                 Debug.Log(panel.GetBallColor() + " " + panel.GetLineColor());
-                MakeSound();
+              //  MakeSound();
                 if (panel.GetRepeatState() == "Once")
                 {
                     panel.SetRepeatStateNone();
@@ -387,7 +386,7 @@ public class Line3 : MonoBehaviour
             }
             else
             {
-                MakeSound();
+              //  MakeSound();
             }
 
         }
@@ -407,7 +406,7 @@ public class Line3 : MonoBehaviour
                     this.gameObject.tag = lineColor + "Line";
                   //  this.chordSprites = new Sprite[] { lineArray.GetSprite(lineColor) };
                  //   this.chordHitSprites = new Sprite[]lineArray.GetHitSprite(lineColor);
-                    MakeSound();
+                 //   MakeSound();
                 }
                 else
                 {
@@ -417,14 +416,14 @@ public class Line3 : MonoBehaviour
                         this.gameObject.tag = lineColor + "Line";
                        // this.originalSprite = lineArray.GetSprite(lineColor);
                        // this.hitSprite = lineArray.GetHitSprite(lineColor);
-                        MakeSound();
+                      //  MakeSound();
 
                     }
                     else if (panel.GetDropdownState() == "Volume")
                     {
                         this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, panel.GetVolumeState());
                         this.GetComponent<AudioSource>().volume = panel.GetVolumeState();
-                        MakeSound();
+                      //  MakeSound();
                     }
                     else if (panel.GetDropdownState() == "Destroy")
                     {
@@ -441,7 +440,7 @@ public class Line3 : MonoBehaviour
             }
             else
             {
-                MakeSound();
+               // MakeSound();
             }
         }
 
