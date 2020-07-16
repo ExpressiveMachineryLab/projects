@@ -16,8 +16,12 @@ public class SendStateInformationOneBox : MonoBehaviour
     public GameObject three;
     public GameObject four;
     public GameObject five;
+    public SelectedElementVisual Visual;
+    public GameObject VisualPlusButton;
+    public GameObject VisualMinusButton;
 
     public Text textSummary;
+    public Text ifStatement;
     public ToggleSelected textToggle;
 
     public int AssignedNumber;
@@ -201,6 +205,66 @@ public class SendStateInformationOneBox : MonoBehaviour
         Rhythym.SetCurrentRhythym(optional);
     }
 
+    public void SetSelectedVisual(string visual)
+    {
+
+        if (visual == "Plus")
+        {
+            if (Visual.GetCurrentVisual() == "Minus" || Visual.GetCurrentVisual() == "PlusMinus")
+            {
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() != "Plus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+            }
+        }
+        else if (visual == "Minus")
+        {
+            if (Visual.GetCurrentVisual() != "Minus")
+            {
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() == "Plus" || Visual.GetCurrentVisual() == "PlusMinus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+            }
+        }
+        else if (visual == "PlusMinus")
+        {
+            if (Visual.GetCurrentVisual() != "PlusMinus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() == "Plus")
+            {
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() == "Minus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+            }
+        }
+        else if (visual == "None")
+        {
+            if (Visual.GetCurrentVisual() == "PlusMinus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() == "Plus")
+            {
+                VisualPlusButton.GetComponent<ToggleSelected>().toggled();
+            }
+            else if (Visual.GetCurrentVisual() == "Minus")
+            {
+                VisualMinusButton.GetComponent<ToggleSelected>().toggled();
+            }
+        }
+        Visual.SetCurrentVisual(visual);
+    }
+
     public void SetRepeatState(string repeat)
     {
         if (repeat == "None")
@@ -215,6 +279,11 @@ public class SendStateInformationOneBox : MonoBehaviour
         {
             RepeatState.SetModeToRepeat();
         }
+    }
+
+    public void SetNumber(int number) 
+    {
+        ifStatement.text = number + ". (";
     }
 
     public void UpdatePanel() 

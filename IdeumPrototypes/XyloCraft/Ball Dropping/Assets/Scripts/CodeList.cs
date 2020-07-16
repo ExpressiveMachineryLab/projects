@@ -11,6 +11,7 @@ public class CodeList : MonoBehaviour
     public string repeat;
     public string optional;
     public int rhythymOp;
+    public int number;
 
     private GameManager GA;
     private SendStateInformationOneBox OneBoxPanel;
@@ -35,6 +36,7 @@ public class CodeList : MonoBehaviour
             OneBoxPanel.SetLineColor(lineColor);
             OneBoxPanel.SetSelectedChord(optional);
             OneBoxPanel.SetRepeatState(repeat);
+            OneBoxPanel.SetNumber(number);
             OneBoxPanel.UpdateDropdown(0);
         }
         else if (identifer.Contains("Rhythym"))
@@ -43,6 +45,7 @@ public class CodeList : MonoBehaviour
             OneBoxPanel.SetLineColor(lineColor);
             OneBoxPanel.SetSelectedRhythym(rhythymOp);
             OneBoxPanel.SetRepeatState(repeat);
+            OneBoxPanel.SetNumber(number);
             OneBoxPanel.UpdateDropdown(1);
         }
         else if (identifer.Contains("Effect")) 
@@ -50,36 +53,40 @@ public class CodeList : MonoBehaviour
             OneBoxPanel.SetBallColor(ballColor);
             OneBoxPanel.SetLineColor(lineColor);
             OneBoxPanel.SetRepeatState(repeat);
+            OneBoxPanel.SetNumber(number);
             OneBoxPanel.UpdateDropdown(2);
         }
         GA.LastSelectedCodeButton = identifer;
         GA.LastSelectedButton = this.gameObject;
     }
 
-    public void SetIdentifer(string name, string ballColor, string repeat, string lineColor) 
+    public void SetIdentifer(string name, string ballColor, string repeat, string lineColor, int number) 
     {
         identifer = name;
         this.ballColor = ballColor;
         this.lineColor = lineColor;
         this.repeat = repeat;
+        this.number = number;
     }
 
-    public void SetIdentiferChord(string name, string ballColor, string lineColor, string repeat, string optional)
+    public void SetIdentiferChord(string name, string ballColor, string lineColor, string repeat, string optional, int number)
     {
         identifer = name;
         this.ballColor = ballColor;
         this.lineColor = lineColor;
         this.optional = optional;
         this.repeat = repeat;
+        this.number = number;
     }
 
-    public void SetIdentiferRhythym(string name, string ballColor, string lineColor, string repeat,  int optional)
+    public void SetIdentiferRhythym(string name, string ballColor, string lineColor, string repeat,  int optional, int number)
     {
         identifer = name;
         this.ballColor = ballColor;
         this.lineColor = lineColor;
         this.rhythymOp = optional;
         this.repeat = repeat;
+        this.number = number;
     }
     public void DestroyButton() 
     {

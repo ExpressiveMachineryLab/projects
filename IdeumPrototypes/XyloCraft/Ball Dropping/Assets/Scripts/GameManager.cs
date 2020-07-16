@@ -244,6 +244,8 @@ public class GameManager : MonoBehaviour
 
     public void AddRule()
     {
+        int number = ChordPanelCount + RhythymPanelCount + EffectPanelCount + 1;
+        OneBoxPanel.GetComponent<SendStateInformationOneBox>().SetNumber(number);
         if (Action.value == 0)
         {
             ChordPanelCount++;
@@ -254,9 +256,9 @@ public class GameManager : MonoBehaviour
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Chord " + chord;
+            ChordTemp.GetComponentInChildren<Text>().text = number + ". If " + ballColor + " ball hits " + lineColor + " line: Chord " + chord;
             ChordTemp.transform.SetParent(ScrollView.transform, false);
-            ChordTemp.GetComponent<CodeList>().SetIdentiferChord(name, ballColor, lineColor, repeat, chord);
+            ChordTemp.GetComponent<CodeList>().SetIdentiferChord(name, ballColor, lineColor, repeat, chord, number);
 
             GameObject temp = Instantiate(ChordPanel);
             temp.transform.SetParent(HiddenCodeBoxes.transform, false);
@@ -280,9 +282,9 @@ public class GameManager : MonoBehaviour
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Repeat " + rhythym;
+            ChordTemp.GetComponentInChildren<Text>().text = number + ". If " + ballColor + " ball hits " + lineColor + " line: Repeat " + rhythym;
             ChordTemp.transform.SetParent(ScrollView.transform, false);
-            ChordTemp.GetComponent<CodeList>().SetIdentiferRhythym(name, ballColor, lineColor, repeat, rhythym);
+            ChordTemp.GetComponent<CodeList>().SetIdentiferRhythym(name, ballColor, lineColor, repeat, rhythym, number);
 
             GameObject temp = Instantiate(RepeatPanel);
             temp.transform.SetParent(HiddenCodeBoxes.transform, false);
@@ -303,20 +305,22 @@ public class GameManager : MonoBehaviour
             string ballColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetBallColor();
             string lineColor = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetLineColor();
             string repeat = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetRepeatState();
+            string visual = OneBoxPanel.GetComponent<SendStateInformationOneBox>().GetSelectedChord();
             Debug.Log(repeat);
 
             GameObject ChordTemp = Instantiate(CodeButton);
-            ChordTemp.GetComponentInChildren<Text>().text = "If " + ballColor + " ball hits " + lineColor + " line: Play Effect";
+            ChordTemp.GetComponentInChildren<Text>().text = number + ". If " + ballColor + " ball hits " + lineColor + " line: Visual " + visual;
             ChordTemp.transform.SetParent(ScrollView.transform, false);
 
-            ChordTemp.GetComponent<CodeList>().SetIdentifer(name, ballColor, repeat, lineColor);
+            ChordTemp.GetComponent<CodeList>().SetIdentifer(name, ballColor, repeat, lineColor, number);
 
-            GameObject temp = Instantiate(EffectsPanel);
+            GameObject temp = Instantiate(ChordPanel);
             temp.transform.SetParent(HiddenCodeBoxes.transform, false);
             temp.name = "EffectsPanel" + EffectPanelCount;
-            temp.GetComponent<SendStateInformation>().SetBallColor(ballColor);
-            temp.GetComponent<SendStateInformation>().SetLineColor(lineColor);
-            temp.GetComponent<SendStateInformation>().SetRepeatState(repeat);
+            temp.GetComponent<SendStateInformationChord>().SetBallColor(ballColor);
+            temp.GetComponent<SendStateInformationChord>().SetLineColor(lineColor);
+            temp.GetComponent<SendStateInformationChord>().SetSelectedChord(visual);
+            temp.GetComponent<SendStateInformationChord>().SetRepeatState(repeat);
 
             LastSelectedCodeButton = name;
             LastSelectedButton = ChordTemp;
