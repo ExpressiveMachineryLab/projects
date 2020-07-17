@@ -270,6 +270,7 @@ public class SoundManager : MonoBehaviour
         YellowSounds[2][3] = YellowSounds34;
         YellowSounds[2][4] = YellowSounds35;
 
+        YellowSounds[3] = new AudioClip[5][];
         YellowSounds[3][0] = YellowSounds41;
         YellowSounds[3][1] = YellowSounds42;
         YellowSounds[3][2] = YellowSounds43;

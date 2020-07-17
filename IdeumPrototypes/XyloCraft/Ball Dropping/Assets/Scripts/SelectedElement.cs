@@ -50,6 +50,46 @@ public class SelectedElement : MonoBehaviour
         this.gameObject.GetComponent<Image>().sprite = Yellow;
         currentColor = Yellow.name;
     }
+
+    public void SetNext()
+    {
+        if (currentColor == Blue.name)
+        {
+        this.gameObject.GetComponent<Image>().sprite = Red;
+        currentColor = Red.name;
+        }
+        
+        else if (currentColor == Red.name)
+        {
+        this.gameObject.GetComponent<Image>().sprite = Green;
+        currentColor = Green.name;
+        }
+
+        else if (currentColor == Green.name)
+        {
+        this.gameObject.GetComponent<Image>().sprite = Yellow;
+        currentColor = Yellow.name;
+        }
+
+        else if (currentColor == Yellow.name)
+        {
+        this.gameObject.GetComponent<Image>().sprite = Wild;
+        currentColor = "All";
+        }
+
+        else if(currentColor == "All")
+        {
+        this.gameObject.GetComponent<Image>().sprite = Blue;
+        currentColor = Blue.name;
+
+        }
+
+
+    }
+
+
+    
+
     public void SetWild()
     {
         this.gameObject.GetComponent<Image>().sprite = Wild;
