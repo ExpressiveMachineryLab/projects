@@ -187,6 +187,16 @@ public class GameManager : MonoBehaviour
         Sound = 2;
     }
 
+    public void SetToSound4() 
+    {
+        Sound = 3;
+    }
+
+    public void SetToSound5() 
+    {
+        Sound = 4;
+    }
+
     public void ScrollToChord() 
     {
         CodeBoxScroll.value = 1;
