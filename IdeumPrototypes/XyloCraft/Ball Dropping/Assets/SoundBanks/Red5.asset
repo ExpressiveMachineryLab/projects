@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
+  m_Name: Red5
+  m_EditorClassIdentifier: 
+  volumes:
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
+  clips:
+  - {fileID: 8300000, guid: 3c490b5888c62424eaddd457c6e8440c, type: 3}
+  - {fileID: 8300000, guid: 26c78e35d4f2ac44bbac58a0e939f0f0, type: 3}
+  - {fileID: 8300000, guid: d0c97b74946b41b4aa9e9e94440aa6c0, type: 3}
+  - {fileID: 8300000, guid: f5632afd2c23e9040a92c60c2d5ea4cb, type: 3}
+  - {fileID: 8300000, guid: 3211bed91bd44ec40b2d27a0011cf021, type: 3}

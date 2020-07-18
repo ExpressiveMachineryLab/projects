@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
+  m_Name: Yellow1
+  m_EditorClassIdentifier: 
+  volumes:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  clips:
+  - {fileID: 8300000, guid: 0b7bed4ec74ff864dbfe1e583d7e256b, type: 3}
+  - {fileID: 8300000, guid: d424aa7c94f29854580dc58a90964834, type: 3}
+  - {fileID: 8300000, guid: 3468f3540673b57479d1b3936077fc85, type: 3}
+  - {fileID: 8300000, guid: 61cc7d29890cb6847899810a1034c30e, type: 3}
+  - {fileID: 8300000, guid: 55f118021f8219c45897d491a13b2ebd, type: 3}
