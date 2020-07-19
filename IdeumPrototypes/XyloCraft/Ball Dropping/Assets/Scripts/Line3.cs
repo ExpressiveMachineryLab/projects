@@ -95,7 +95,7 @@ public class Line3 : MonoBehaviour
         {
             if (GameObject.Find("EffectsPanel" + i) != null)
             {
-                EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformationChord>());
+                EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformationVisual>());
             }
 
         }
@@ -206,7 +206,7 @@ public class Line3 : MonoBehaviour
             {
                 if (GameObject.Find("EffectsPanel" + i) != null)
                 {
-                    EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+                    EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformationVisual>());
                 }
 
             }
@@ -367,7 +367,7 @@ public class Line3 : MonoBehaviour
                     // ++
                     if (panel.GetSelectedVisual() == "Plus")
                     {
-                        if (visualLevel < 4)
+                        if (visualLevel < 3)
                         {
                             visualLevel++;
                         }
@@ -384,12 +384,12 @@ public class Line3 : MonoBehaviour
                         }
                         else
                         {
-                            visualLevel = 4;
+                            visualLevel = 3;
                         }
                     }
                     else if (panel.GetSelectedVisual() == "PlusMinus")
                     {
-                        if (visualLevel == 4)
+                        if (visualLevel == 3)
                         {
                             visualPositive = false;
                         }
@@ -407,7 +407,7 @@ public class Line3 : MonoBehaviour
                             visualLevel--;
                         }
                     }
-                    effects.SetTrigger("Play");
+                    effects.SetTrigger("Play" + visualLevel);
                     if (panel.GetRepeatState() == "Once")
                     {
                         panel.SetRepeatStateNone();
