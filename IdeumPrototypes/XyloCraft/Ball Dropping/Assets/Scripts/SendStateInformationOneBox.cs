@@ -38,7 +38,7 @@ public class SendStateInformationOneBox : MonoBehaviour
 
     public GameObject Conditionals;
 
-    //public Image flashBorder;
+    public Image flashBorder;
     private Color thisColor;
 
     private GameManager GA; 
@@ -456,5 +456,20 @@ public class SendStateInformationOneBox : MonoBehaviour
 
         string[] repeatOptions = { "None", "Once", "Repeat" };
         SetRepeatState(repeatOptions[(int)(Random.value * 3)]);
+    }
+
+    public void FlashBox()
+    {
+        StartCoroutine(Flash());
+    }
+
+    private IEnumerator Flash()
+    {
+        flashBorder.color += new Color(0, 0, 0, 0.5f);
+
+        yield return new WaitForSeconds(0.3f);
+        flashBorder.color -= new Color(0, 0, 0, 0.5f);
+        this.gameObject.GetComponent<Image>().color = thisColor;
+        yield return new WaitForSeconds(0.1f);
     }
 }

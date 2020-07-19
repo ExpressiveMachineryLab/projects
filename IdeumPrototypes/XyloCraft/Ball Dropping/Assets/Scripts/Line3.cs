@@ -276,6 +276,7 @@ public class Line3 : MonoBehaviour
                 && this.gameObject.tag == panel.GetLineColor() + "Line"))
                 && panel.GetRepeatState() != "None")
                 {
+                    panel.FlashBox();
                     // ++
                     if (panel.GetSelectedChord() == "Plus")
                     {
@@ -338,12 +339,14 @@ public class Line3 : MonoBehaviour
         {
             if (panel != null)
             {
+                
                 if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 collision.gameObject.tag == panel.GetBallColor() + "Ball"
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
                 && panel.GetRepeatState() != "None")
                 {
+                    panel.FlashBox();
                     StartCoroutine(LoopSound(0.2f, panel.GetSelectedRhythym()));
                     if (panel.GetRepeatState() == "Once")
                     {
@@ -365,6 +368,7 @@ public class Line3 : MonoBehaviour
                 && this.gameObject.tag == panel.GetLineColor() + "Line"))
                 && panel.GetRepeatState() != "None")
                 {
+                    panel.FlashBox();
                     // ++
                     if (panel.GetSelectedVisual() == "Plus")
                     {
@@ -428,6 +432,7 @@ public class Line3 : MonoBehaviour
                 && this.gameObject.tag == panel.GetLineColor() + "Line"
                 && panel.GetRepeatState() != "None")
             {
+                panel.FlashBox();
                 if (gameManger.ThreeBox)
                 {
                     this.lineColor = panel.GetChangeLineInstrumentColor();

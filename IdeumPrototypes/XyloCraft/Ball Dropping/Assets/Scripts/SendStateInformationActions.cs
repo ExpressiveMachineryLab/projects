@@ -14,7 +14,7 @@ public class SendStateInformationActions : MonoBehaviour
 
     private string DropdownState = "Instruments";
 
-    //public Image flashBorder;
+    public Image flashBorder;
     private Color thisColor;
 
     // Start is called before the first frame update
@@ -60,5 +60,19 @@ public class SendStateInformationActions : MonoBehaviour
     public float GetVolumeState()
     {
         return VolumeSlider.value;
+    }
+    public void FlashBox()
+    {
+        StartCoroutine(Flash());
+    }
+
+    private IEnumerator Flash()
+    {
+        flashBorder.color -= new Color(0, 0, 0, 0.5f);
+
+
+        yield return new WaitForSeconds(0.3f);
+        flashBorder.color += new Color(0, 0, 0, 0.5f);
+        yield return new WaitForSeconds(0.1f);
     }
 }

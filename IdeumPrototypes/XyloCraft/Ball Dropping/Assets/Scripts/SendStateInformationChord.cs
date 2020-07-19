@@ -90,34 +90,18 @@ public class SendStateInformationChord : MonoBehaviour
     }
 
 
-    public void FlashBox(int color)
+    public void FlashBox()
     {
-        StartCoroutine(Flash(color));
+        StartCoroutine(Flash());
     }
 
-    private IEnumerator Flash(int color)
+    private IEnumerator Flash()
     {
-        flashBorder.color += new Color(0, 0, 0, 0.5f);
-        if (color == 0)
-        {
-            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 0.1f);
-        }
-        if (color == 1)
-        {
-            this.gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 0.3f);
-        }
-        if (color == 2)
-        {
-            //this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.3f);
-        }
-        if (color == 3)
-        {
-            this.gameObject.GetComponent<Image>().color = new Color(1, 0.92f, 0.016f, 0.3f);
-        }
+        flashBorder.color -= new Color(0, 0, 0, 0.5f);
+        
 
         yield return new WaitForSeconds(0.3f);
-        flashBorder.color -= new Color(0, 0, 0, 0.5f);
-        this.gameObject.GetComponent<Image>().color = thisColor;
+        flashBorder.color += new Color(0, 0, 0, 0.5f);
         yield return new WaitForSeconds(0.1f);
     }
     public void SetRepeatState(string repeat)
