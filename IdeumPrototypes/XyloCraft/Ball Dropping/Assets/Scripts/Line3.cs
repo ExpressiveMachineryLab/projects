@@ -206,6 +206,7 @@ public class Line3 : MonoBehaviour
             {
                 if (GameObject.Find("EffectsPanel" + i) != null)
                 {
+                    Debug.Log("Added");
                     EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformationVisual>());
                 }
 
@@ -352,7 +353,7 @@ public class Line3 : MonoBehaviour
             }
 
         }
-
+        
         //  Effects Panel
         foreach (SendStateInformationVisual panel in EffectPanels)
         {
@@ -369,6 +370,7 @@ public class Line3 : MonoBehaviour
                     {
                         if (visualLevel < 3)
                         {
+                            Debug.Log("Increase");
                             visualLevel++;
                         }
                         else
@@ -407,6 +409,7 @@ public class Line3 : MonoBehaviour
                             visualLevel--;
                         }
                     }
+                    Debug.Log("Play");
                     effects.SetTrigger("Play" + visualLevel);
                     if (panel.GetRepeatState() == "Once")
                     {

@@ -421,15 +421,15 @@ public class SendStateInformationOneBox : MonoBehaviour
         {
             if (RepeatState.GetCurrentRhythym() == "Once")
             {
-                textSummary.text = "If (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+                textSummary.text = "If (" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Visual " + GetSelectedVisual() +" }";
             }
             else if (RepeatState.GetCurrentRhythym() == "Repeat")
             {
-                textSummary.text = "While True: if(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+                textSummary.text = "While True: if(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Visual " + GetSelectedVisual() + " }";
             }
             else
             {
-                textSummary.text = "(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Play Effect}";
+                textSummary.text = "(" + GetBallColor() + " ball hits " + GetLineColor() + " line) {Visual " + GetSelectedVisual() + " }";
             }
         }
     }
