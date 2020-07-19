@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5555148069966462027}
   - component: {fileID: 7137083567527295696}
-  - component: {fileID: 3881536566660372468}
+  - component: {fileID: 4152768567181088156}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5555148069966462027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &3881536566660372468
+--- !u!114 &4152768567181088156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,10 +73,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 525709670389346800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63150432f4cc4cf4fb4cb3f0526b94b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e5132e348116c545a96604a7f5b3c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentChord: None
+  currentVisual: None
 --- !u!1 &1173843007300422225
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 1386752542486092542}
   - component: {fileID: 1386752542486092539}
   - component: {fileID: 1386752542486092540}
-  - component: {fileID: 3404944504293279149}
+  - component: {fileID: 3273381921210074221}
   m_Layer: 5
   m_Name: EffectsPanel
   m_TagString: Untagged
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3404944504293279149
+--- !u!114 &3273381921210074221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,12 +245,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386752542486092543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4367c50cd303f204ab6456eaf1d15189, type: 3}
+  m_Script: {fileID: 11500000, guid: 39fe0883465a88546912f966c20e3fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedBall: {fileID: 3409630546438284124}
   SelectedLine: {fileID: 3994955599031033570}
+  Visual: {fileID: 4152768567181088156}
   RepeatState: {fileID: 6186365111541024258}
+  flashBorder: {fileID: 0}
 --- !u!1 &1386752544215781483
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,10 +514,10 @@ RectTransform:
   m_Father: {fileID: 5555148069966462027}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 65, y: -11.9}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4038595388680137123
 CanvasRenderer:
@@ -600,8 +602,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3881536566660372468}
-        m_MethodName: SetChordToMinus
+      - m_Target: {fileID: 4152768567181088156}
+        m_MethodName: SetVisualToMinus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -991,7 +993,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3881536566660372468}
+      - m_Target: {fileID: 0}
         m_MethodName: SetChordToPlusMinus
         m_Mode: 1
         m_Arguments:
@@ -1064,10 +1066,10 @@ RectTransform:
   m_Father: {fileID: 5555148069966462027}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -11.9}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6126825202749074149
 CanvasRenderer:
@@ -1152,8 +1154,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3881536566660372468}
-        m_MethodName: SetChordToPlus
+      - m_Target: {fileID: 4152768567181088156}
+        m_MethodName: SetVisualToPlus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

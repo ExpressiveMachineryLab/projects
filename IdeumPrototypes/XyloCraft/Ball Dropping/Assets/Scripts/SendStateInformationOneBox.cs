@@ -365,6 +365,11 @@ public class SendStateInformationOneBox : MonoBehaviour
         return Rhythym.GetCurrentRhythym();
     }
 
+    public string GetSelectedVisual() 
+    {
+        return Visual.GetCurrentVisual();
+    }
+
     public string GetRepeatState()
     {
         Debug.Log(RepeatState.GetCurrentRhythym());

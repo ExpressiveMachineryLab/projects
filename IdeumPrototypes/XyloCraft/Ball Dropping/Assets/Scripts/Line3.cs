@@ -35,7 +35,9 @@ public class Line3 : MonoBehaviour
     private bool isBeingRotated = false;
 
     private int pitchLevel = 0;
+    private int visualLevel = 0;
     private bool pitchPositive = true;
+    private bool visualPositive = true;
 
     BoxCollider2D thisCollider;
     AudioSource playClip;
@@ -93,7 +95,7 @@ public class Line3 : MonoBehaviour
         {
             if (GameObject.Find("EffectsPanel" + i) != null)
             {
-                EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
+                EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformationChord>());
             }
 
         }
@@ -202,11 +204,9 @@ public class Line3 : MonoBehaviour
 
             for (int i = 1; i <= EffectPanelCount; i++)
             {
-                Debug.Log("Iteration");
                 if (GameObject.Find("EffectsPanel" + i) != null)
                 {
                     EffectPanels.Add(GameObject.Find("EffectsPanel" + i).GetComponent<SendStateInformation>());
-                    Debug.Log("Found");
                 }
 
             }
@@ -269,8 +269,6 @@ public class Line3 : MonoBehaviour
 
             if (panel != null)
             {
-
-                Debug.Log("hello");
                 if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 (collision.gameObject.tag == panel.GetBallColor() + "Ball"
@@ -330,10 +328,6 @@ public class Line3 : MonoBehaviour
                         panel.SetRepeatStateNone();
                     }
                 }
-                else
-                {
-
-                }
             }
 
         }
@@ -355,40 +349,71 @@ public class Line3 : MonoBehaviour
                         panel.SetRepeatStateNone();
                     }
                 }
-                else
-                {
-                   // MakeSound();
-                }
             }
 
         }
 
         //  Effects Panel
-        foreach (SendStateInformation panel in EffectPanels)
+        foreach (SendStateInformationVisual panel in EffectPanels)
         {
-            Debug.Log(panel);
-            Debug.Log("you");
-            Debug.Log(panel.GetRepeatState());
-            if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+            if (panel != null)
+            {
+                if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
                 (collision.gameObject.tag == panel.GetBallColor() + "Ball"
                 && this.gameObject.tag == panel.GetLineColor() + "Line"))
                 && panel.GetRepeatState() != "None")
-            {
-                Debug.Log("there");
-                effects.SetTrigger("Play");
-                Debug.Log(panel.GetBallColor() + " " + panel.GetLineColor());
-              //  MakeSound();
-                if (panel.GetRepeatState() == "Once")
                 {
-                    panel.SetRepeatStateNone();
+                    // ++
+                    if (panel.GetSelectedVisual() == "Plus")
+                    {
+                        if (visualLevel < 4)
+                        {
+                            visualLevel++;
+                        }
+                        else
+                        {
+                            visualLevel = 0;
+                        }
+                    }
+                    else if (panel.GetSelectedVisual() == "Minus")
+                    {
+                        if (visualLevel > 0)
+                        {
+                            visualLevel--;
+                        }
+                        else
+                        {
+                            visualLevel = 4;
+                        }
+                    }
+                    else if (panel.GetSelectedVisual() == "PlusMinus")
+                    {
+                        if (visualLevel == 4)
+                        {
+                            visualPositive = false;
+                        }
+                        else if (visualLevel == 0)
+                        {
+                            visualPositive = true;
+                        }
+
+                        if (visualPositive)
+                        {
+                            visualLevel++;
+                        }
+                        else
+                        {
+                            visualLevel--;
+                        }
+                    }
+                    effects.SetTrigger("Play");
+                    if (panel.GetRepeatState() == "Once")
+                    {
+                        panel.SetRepeatStateNone();
+                    }
                 }
             }
-            else
-            {
-              //  MakeSound();
-            }
-
         }
 
         //  Actions Panel
@@ -437,10 +462,6 @@ public class Line3 : MonoBehaviour
 
                 }
 
-            }
-            else
-            {
-               // MakeSound();
             }
         }
 
