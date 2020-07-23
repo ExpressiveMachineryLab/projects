@@ -18,7 +18,8 @@ public class SmallVideoPlayer : MonoBehaviour
 	}
 
 	private void Awake() {
-		if (videoPlayer != null) videoPlayer.Play();
+		if (videoPlayer != null) videoPlayer.Pause();
+
 	}
 
 	private void OnMouseDown() {
