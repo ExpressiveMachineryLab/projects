@@ -270,11 +270,10 @@ public class Line3 : MonoBehaviour
 
             if (panel != null)
             {
-                if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+                if (panel.GetRepeatState() != "None" && 
+				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
                 (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                (collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"))
-                && panel.GetRepeatState() != "None")
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line")))
                 {
                     panel.FlashBox();
                     // ++
@@ -334,40 +333,42 @@ public class Line3 : MonoBehaviour
 
         }
 
-        // Rhythym Panel
+		// Rhythym Panel
+		int repeats = 0;
         foreach (SendStateInformationRhythym panel in RhythymPanels)
         {
             if (panel != null)
             {
-                
-                if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-                (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"
-                && panel.GetRepeatState() != "None")
-                {
+
+				if (panel.GetRepeatState() != "None" &&
+				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+				{
                     panel.FlashBox();
-                    StartCoroutine(LoopSound(0.2f, panel.GetSelectedRhythym()));
-                    if (panel.GetRepeatState() == "Once")
+					repeats += panel.GetSelectedRhythym();
+					if (panel.GetRepeatState() == "Once")
                     {
                         panel.SetRepeatStateNone();
                     }
                 }
             }
-
         }
+		if (repeats > 0) 
+		{
+			StartCoroutine(LoopSound(0.2f, repeats));
+		}
         
         //  Effects Panel
         foreach (SendStateInformationVisual panel in EffectPanels)
         {
             if (panel != null)
             {
-                if (((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-                (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                (collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"))
-                && panel.GetRepeatState() != "None")
-                {
+				if (panel.GetRepeatState() != "None" &&
+				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+				{
                     panel.FlashBox();
                     // ++
                     if (panel.GetSelectedVisual() == "Plus")
@@ -426,12 +427,11 @@ public class Line3 : MonoBehaviour
         //  Actions Panel
         foreach (SendStateInformationActions panel in ActionsPanels)
         {
-            if ((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
-                (panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-                collision.gameObject.tag == panel.GetBallColor() + "Ball"
-                && this.gameObject.tag == panel.GetLineColor() + "Line"
-                && panel.GetRepeatState() != "None")
-            {
+			if (panel.GetRepeatState() != "None" &&
+				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
+				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
+				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+				{
                 panel.FlashBox();
                 if (gameManger.ThreeBox)
                 {
