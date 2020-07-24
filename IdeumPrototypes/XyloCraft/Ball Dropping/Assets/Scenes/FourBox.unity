@@ -3906,7 +3906,7 @@ PrefabInstance:
     - target: {fileID: 3444635709037823074, guid: 9dbedc3bba3abde48bdff94425171048,
         type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444635709037823074, guid: 9dbedc3bba3abde48bdff94425171048,
         type: 3}
@@ -3918,6 +3918,11 @@ PrefabInstance:
       propertyPath: relatedObjects.Array.data[1]
       value: 
       objectReference: {fileID: 1513402442}
+    - target: {fileID: 3444635709037823077, guid: 9dbedc3bba3abde48bdff94425171048,
+        type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3444635709256719899, guid: 9dbedc3bba3abde48bdff94425171048,
         type: 3}
       propertyPath: m_Name
@@ -16946,7 +16951,7 @@ GameObject:
   - component: {fileID: 1346921235}
   - component: {fileID: 1346921234}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TutorialVideoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
