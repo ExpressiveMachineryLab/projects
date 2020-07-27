@@ -261,6 +261,7 @@ MonoBehaviour:
   speed: 5
   emitterAnimator: {fileID: 999364255513868912}
   color: 0
+  launchKey: LaunchB
 --- !u!1001 &8846413452954746924
 PrefabInstance:
   m_ObjectHideFlags: 0

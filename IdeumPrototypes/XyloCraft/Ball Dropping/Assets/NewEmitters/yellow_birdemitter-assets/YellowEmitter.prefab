@@ -150,6 +150,7 @@ MonoBehaviour:
   speed: 5
   emitterAnimator: {fileID: 8189835709524848802}
   color: 3
+  launchKey: LaunchY
 --- !u!1 &6170189018210818532
 GameObject:
   m_ObjectHideFlags: 0

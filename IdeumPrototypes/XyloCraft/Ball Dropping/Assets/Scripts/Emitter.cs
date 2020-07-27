@@ -13,6 +13,7 @@ public class Emitter : MonoBehaviour
     public float speed = 5f;
     public Animator emitterAnimator;
     public int color;
+	public string launchKey;
 
     private Slider ballSpeedSlider;
     private float startPosX;
@@ -21,6 +22,8 @@ public class Emitter : MonoBehaviour
     private bool isBeingRotated = false;
     private float clickTimer;
     private bool clickTimerOn;
+	private float lastLaunch = 0f;
+	private bool justLaunched = false;
 
     void Start()
     {
@@ -64,6 +67,17 @@ public class Emitter : MonoBehaviour
             isBeingRotated = false;
         }
 
+		lastLaunch += Time.deltaTime;
+		if (!justLaunched && Input.GetAxisRaw(launchKey) > 0.1 && lastLaunch > 0.1) {
+			lastLaunch = 0f;
+			ShootBall();
+			justLaunched = true;
+		}
+		if (justLaunched && Input.GetAxisRaw(launchKey) < 0.1) {
+			lastLaunch = 0f;
+			justLaunched = false;
+		}
+
     }
 
     private void OnMouseDown()
@@ -90,11 +104,7 @@ public class Emitter : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
-            {
-                ShootBall();
-                emitterAnimator.SetTrigger("Shoot");
-
-            }
+				ShootBall();
         }
         isBeingHeld = false;
 
@@ -102,7 +112,8 @@ public class Emitter : MonoBehaviour
     void ShootBall()
     {
         Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(10), firePoint.position, firePoint.rotation);
-    }
+		emitterAnimator.SetTrigger("Shoot");
+	}
 
     void Rotate()
     {
