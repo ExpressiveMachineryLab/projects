@@ -4,6 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SoundBank", menuName = "SoundBank")]
 public class SoundBank : ScriptableObject {
+	public string bankName = "New Sound Bank";
+
 	[SerializeField]
 	private float[] volumes = new float[5];
 	[SerializeField]

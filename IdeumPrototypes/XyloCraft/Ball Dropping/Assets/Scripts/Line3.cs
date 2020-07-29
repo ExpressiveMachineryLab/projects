@@ -501,3 +501,11 @@ public class Line3 : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
     }
 }
+
+public enum ElemColor {
+	Red,
+	Yellow,
+	Blue,
+	Green,
+	All
+}
