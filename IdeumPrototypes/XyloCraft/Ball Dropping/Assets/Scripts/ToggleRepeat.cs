@@ -34,13 +34,13 @@ public class ToggleRepeat : MonoBehaviour
 
         if (isToggled)
         {
-            Debug.Log("Toggled On");
+            //Debug.Log("Toggled On");
             this.gameObject.GetComponent<Image>().sprite = SelectedSprite;
             //TangibleController.SetEmitter(emitter);
         }
         else
         {
-            Debug.Log("Toggled Off");
+            //Debug.Log("Toggled Off");
             this.gameObject.GetComponent<Image>().sprite = UnselectedSprite;
         }
     }

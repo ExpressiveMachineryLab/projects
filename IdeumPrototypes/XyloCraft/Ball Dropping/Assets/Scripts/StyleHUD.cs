@@ -9,8 +9,8 @@ public class StyleHUD : MonoBehaviour {
 	private StyleBank[] availableStyles;
 	[SerializeField]
 	private SoundBank[] availableSounds;
+	private ElemColor currentColor = ElemColor.Red;
 
-	public ElemColor currentColor = ElemColor.Red;
 	public int styleIndex = 0;
 	public int redIndex = 0;
 	public int yellowIndex = 0;
@@ -27,6 +27,9 @@ public class StyleHUD : MonoBehaviour {
 	}
 
 	public void setStyle(int index) {
+		//Debug.Log("Setting STyle to " + index);
+		styleIndex = index;
+
 		soundMan.redBank = availableStyles[styleIndex].redBank;
 		soundMan.yellowBank = availableStyles[styleIndex].yellowBank;
 		soundMan.blueBank = availableStyles[styleIndex].blueBank;
@@ -52,5 +55,25 @@ public class StyleHUD : MonoBehaviour {
 				greenIndex = index;
 				break;
 		}
+	}
+
+	public void SetColor(ElemColor newColor) {
+		if (newColor != ElemColor.All) currentColor = newColor;
+	}
+
+	public void SetColorToRed() {
+		currentColor = ElemColor.Red;
+	}
+
+	public void SetColorToYellow() {
+		currentColor = ElemColor.Yellow;
+	}
+
+	public void SetColorToBlue() {
+		currentColor = ElemColor.Blue;
+	}
+
+	public void SetColorToGreen() {
+		currentColor = ElemColor.Green;
 	}
 }
