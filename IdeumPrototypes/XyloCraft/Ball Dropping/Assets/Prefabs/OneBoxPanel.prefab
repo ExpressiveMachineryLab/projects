@@ -1098,6 +1098,7 @@ MonoBehaviour:
   VolumeSlider: {fileID: 0}
   DestroyLine: {fileID: 0}
   RepeatState: {fileID: 6186365111541024258}
+  flashBorder: {fileID: 0}
 --- !u!114 &4549734462181107416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,6 +1137,7 @@ MonoBehaviour:
   ModeOptions: {fileID: 3206009650136364203}
   SpeedOptions: {fileID: 704738171964489062}
   Conditionals: {fileID: 4448861252073414334}
+  flashBorder: {fileID: 0}
 --- !u!1 &1551340527981409702
 GameObject:
   m_ObjectHideFlags: 0
