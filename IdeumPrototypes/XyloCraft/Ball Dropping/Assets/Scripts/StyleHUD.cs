@@ -9,6 +9,8 @@ public class StyleHUD : MonoBehaviour {
 	private StyleBank[] availableStyles;
 	[SerializeField]
 	private SoundBank[] availableSounds;
+	[SerializeField]
+	private GameObject buttonPrefab;
 	private ElemColor currentColor = ElemColor.Red;
 
 	public int styleIndex = 0;
@@ -24,10 +26,32 @@ public class StyleHUD : MonoBehaviour {
 
 	private void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
+
+		for (var i = 0; i < availableStyles.Length; i++)
+		{
+			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
+			newButton.transform.parent = styleGrid.transform;
+			newButton.gameObject.GetComponentInChildren<Text>().text = availableStyles[i].name;
+			newButton.gameObject.name = availableStyles[i].name + "Button";
+			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
+			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Style;
+			newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
+		}
+
+		for (var i = 0; i < availableSounds.Length; i++)
+		{
+			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
+			newButton.transform.parent = soundGrid.transform;
+			newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].name;
+			newButton.gameObject.name = availableSounds[i].name + "Button";
+			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
+			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
+			newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
+		}
 	}
 
-	public void setStyle(int index) {
-		//Debug.Log("Setting STyle to " + index);
+	public void SetStyle(int index)
+	{
 		styleIndex = index;
 
 		soundMan.redBank = availableStyles[styleIndex].redBank;
