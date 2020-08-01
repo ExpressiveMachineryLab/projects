@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ClickOutsideToClose : MonoBehaviour {
+public class ClickOutsideToClose : MonoBehaviour
+{
 
-	[SerializeField]
-	private GameObject[] alsoInclude;
+	public GameObject[] alsoInclude;
 
 	void Start()
 	{
@@ -17,23 +17,29 @@ public class ClickOutsideToClose : MonoBehaviour {
 		button.transition = Selectable.Transition.None;
 	}
 
-	void Update() {
-		if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)) {
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+		{
 			gameObject.SetActive(ClickingSelfOrChild());
 		}
 	}
-	private bool ClickingSelfOrChild() {
+	private bool ClickingSelfOrChild()
+	{
 		RectTransform[] rectTransforms = gameObject.GetComponentsInChildren<RectTransform>();
-		foreach (RectTransform rectTransform in rectTransforms) {
+		foreach (RectTransform rectTransform in rectTransforms)
+		{
 			if (EventSystem.current.currentSelectedGameObject == rectTransform.gameObject)
 			{
 				return true;
 			}
 		}
-		
-		foreach (GameObject parent in alsoInclude) {
+
+		foreach (GameObject parent in alsoInclude)
+		{
 			RectTransform[] rectTransforms2 = parent.GetComponentsInChildren<RectTransform>();
-			foreach (RectTransform rectTransform in rectTransforms2) {
+			foreach (RectTransform rectTransform in rectTransforms2)
+			{
 				if (EventSystem.current.currentSelectedGameObject == rectTransform.gameObject)
 				{
 					return true;

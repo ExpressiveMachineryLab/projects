@@ -87,17 +87,21 @@ public class StyleHUD : MonoBehaviour {
 
 	public void SetColorToRed() {
 		currentColor = ElemColor.Red;
+		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Red";
 	}
 
 	public void SetColorToYellow() {
 		currentColor = ElemColor.Yellow;
+		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Yellow";
 	}
 
 	public void SetColorToBlue() {
 		currentColor = ElemColor.Blue;
+		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Blue";
 	}
 
 	public void SetColorToGreen() {
 		currentColor = ElemColor.Green;
+		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Green";
 	}
 }

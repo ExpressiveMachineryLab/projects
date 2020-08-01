@@ -705,7 +705,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Blue
 --- !u!222 &86003938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1576,7 +1576,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Yellow
 --- !u!222 &211045188
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2454,7 +2454,7 @@ GameObject:
   - component: {fileID: 335887236}
   - component: {fileID: 335887235}
   m_Layer: 5
-  m_Name: SoundMenuButton (2)
+  m_Name: SoundMenuButtonBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6919,7 +6919,7 @@ GameObject:
   - component: {fileID: 697201441}
   - component: {fileID: 697201440}
   m_Layer: 5
-  m_Name: SoundMenuButton (3)
+  m_Name: SoundMenuButtonGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9465,7 +9465,7 @@ GameObject:
   - component: {fileID: 847534554}
   - component: {fileID: 847534553}
   m_Layer: 5
-  m_Name: SoundMenuButton (1)
+  m_Name: SoundMenuButtonYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9675,7 +9675,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Red
 --- !u!222 &863096662
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11588,7 +11588,7 @@ GameObject:
   - component: {fileID: 1136297405}
   - component: {fileID: 1136297408}
   m_Layer: 5
-  m_Name: SoundMenuButton
+  m_Name: SoundMenuButtonRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13145,7 +13145,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Green
+
+'
 --- !u!222 &1333127517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21495,7 +21497,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Style
+
+'
 --- !u!222 &2059278626
 CanvasRenderer:
   m_ObjectHideFlags: 0
