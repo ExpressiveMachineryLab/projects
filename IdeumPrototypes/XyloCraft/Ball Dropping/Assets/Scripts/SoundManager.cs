@@ -16,13 +16,13 @@ public class SoundManager : MonoBehaviour
 	public SoundBank greenBank;
 
 	[SerializeField]
-	private SoundBank[] RedSounds = new SoundBank[5];
+	private SoundBank[] RedSounds = new SoundBank[6];
 	[SerializeField]
-	private SoundBank[] YellowSounds = new SoundBank[5];
+	private SoundBank[] YellowSounds = new SoundBank[6];
 	[SerializeField]
-	private SoundBank[] BlueSounds = new SoundBank[5];
+	private SoundBank[] BlueSounds = new SoundBank[6];
 	[SerializeField]
-	private SoundBank[] GreenSounds = new SoundBank[5];
+	private SoundBank[] GreenSounds = new SoundBank[6];
 
 	private void Start() {
 		if (redBank == null) redBank = RedSounds[0];

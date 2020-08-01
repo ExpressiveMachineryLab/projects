@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
+  m_Name: Blue6
+  m_EditorClassIdentifier: 
+  bankName: New Sound Bank
+  volumes:
+  - 0.6
+  - 0.6
+  - 0.6
+  - 0.6
+  - 0.6
+  clips:
+  - {fileID: 8300000, guid: 911349f89d97748d7ac15dc1029a8789, type: 3}
+  - {fileID: 8300000, guid: 5983de3d2c9ad431d87ce70d3a3badb3, type: 3}
+  - {fileID: 8300000, guid: 3e70b110e11486e47bcd2c6cb2f590fb, type: 3}
+  - {fileID: 8300000, guid: 04bfa9ea1cb0f3045a6432ef3596bd00, type: 3}
+  - {fileID: 8300000, guid: 5d97dfe37171447849d50a5d9b4d564e, type: 3}
