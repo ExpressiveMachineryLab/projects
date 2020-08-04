@@ -207,6 +207,11 @@ public class GameManager : MonoBehaviour
         Sound = 6;
     }
 
+    public void SetToSound8() 
+    {
+        Sound = 7;
+    }
+
     public void ScrollToChord() 
     {
         CodeBoxScroll.value = 1;

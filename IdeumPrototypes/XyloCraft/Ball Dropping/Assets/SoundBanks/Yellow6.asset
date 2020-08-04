@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Yellow6
   volumes:
+  - 0.3
   - 0.6
   - 0.6
-  - 0.6
-  - 0.6
+  - 0.1
   - 0.6
   clips:
   - {fileID: 8300000, guid: 9bace62d4d94a4e86931bda02654767d, type: 3}

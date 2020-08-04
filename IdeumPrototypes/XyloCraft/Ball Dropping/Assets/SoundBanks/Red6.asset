@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: New Sound Bank
   volumes:
+  - 0.3
   - 0.6
   - 0.6
   - 0.6
-  - 0.6
-  - 0.6
+  - 0.1
   clips:
   - {fileID: 8300000, guid: 8b669f8fa2e684e2b923d78c8fbe1667, type: 3}
   - {fileID: 8300000, guid: 9f50b232c87254789a694ba0b802e991, type: 3}

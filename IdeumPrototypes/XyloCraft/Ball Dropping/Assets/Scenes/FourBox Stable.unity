@@ -515,22 +515,22 @@ PrefabInstance:
     - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
       propertyPath: RedSounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
       propertyPath: YellowSounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
       propertyPath: BlueSounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
       propertyPath: GreenSounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
@@ -579,6 +579,30 @@ PrefabInstance:
       propertyPath: BlueSounds.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 3c4a5cae5063a4048aeda5891f685b5a,
+        type: 2}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: eb99c22599b69468ea9606e867612fb9,
+        type: 2}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: BlueSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a9ec16d266a4186b1c25f08f86e0e5,
+        type: 2}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: GreenSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: e2f3172f4935f46ffbbecbe11751739a,
+        type: 2}
+    - target: {fileID: 2800430672042037981, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
+      propertyPath: RedSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 099d524d13b264518944ff923eb3e780,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619f0755e76bc614cbcf503a6c900942, type: 3}
@@ -1862,7 +1886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &175319581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1878,10 +1902,10 @@ RectTransform:
   m_Father: {fileID: 1421786184}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -61.9}
-  m_SizeDelta: {x: 100, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175319582
 MonoBehaviour:
@@ -4516,7 +4540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnselectedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   SelectedSprite: {fileID: 21300000, guid: ce16bd59913704afe858c1fcd29283cf, type: 3}
-  isToggled: 1
+  isToggled: 0
 --- !u!114 &409728226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14926,7 +14950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1122157289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14942,10 +14966,10 @@ RectTransform:
   m_Father: {fileID: 1421786184}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -61.9}
-  m_SizeDelta: {x: 100, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122157290
 MonoBehaviour:
@@ -15009,7 +15033,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 30782277}
-        m_MethodName: SetToSound6
+        m_MethodName: SetToSound8
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19068,7 +19092,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mix
+  m_Text: Creek
 --- !u!222 &1350041700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24403,7 +24427,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Violin
+  m_Text: Drums
 --- !u!222 &1751403055
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: New Sound Bank
   volumes:
-  - 0.6
+  - 0.3
   - 0.6
   - 0.6
   - 0.6
@@ -22,6 +22,6 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: c2db24a7054374b96894d742092dcd61, type: 3}
   - {fileID: 8300000, guid: 83db1a3a779ca4795a43360d58f3ecc8, type: 3}
-  - {fileID: 8300000, guid: 076a8e670d88949b49522630ec2863e8, type: 3}
+  - {fileID: 8300000, guid: 21c09b691632340ba8fd0d9d74b02e1f, type: 3}
   - {fileID: 8300000, guid: da95dcc1f27b964478892f39fcc4fd9e, type: 3}
   - {fileID: 8300000, guid: bbafed72c6f7b354bb52f0577ae3d802, type: 3}
