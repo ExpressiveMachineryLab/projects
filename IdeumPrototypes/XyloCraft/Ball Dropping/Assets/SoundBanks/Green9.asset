@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
-  m_Name: Yellow6
+  m_Name: Green9
   m_EditorClassIdentifier: 
-  bankName: Yellow6
+  bankName: New Sound Bank
   volumes:
   - 0.6
   - 0.6
   - 0.6
   - 0.6
-  - 2
+  - 0.6
   clips:
-  - {fileID: 8300000, guid: 8018c807a162c44b0a4d7802736a4057, type: 3}
-  - {fileID: 8300000, guid: ae11e24bd047943fc91d8f908451baf7, type: 3}
-  - {fileID: 8300000, guid: 1ca7608b477fd4faf972d8e69b7c9888, type: 3}
-  - {fileID: 8300000, guid: 9928db4a1caea489ab5207b035b705df, type: 3}
-  - {fileID: 8300000, guid: 763cba9c70fdf43d0a54f8d47fe02529, type: 3}
+  - {fileID: 8300000, guid: d1e57c1ad130a42c99b164dc785e0892, type: 3}
+  - {fileID: 8300000, guid: 9015fd4e387d94a9a9cf27b1f7ab2254, type: 3}
+  - {fileID: 8300000, guid: 0651b15f1ea344fcdac5cfb5e93a0ae6, type: 3}
+  - {fileID: 8300000, guid: a6111dfc88ac8442aa9d5e97714bd518, type: 3}
+  - {fileID: 8300000, guid: 2193c2d4c3477486c817deb446fe8a90, type: 3}
