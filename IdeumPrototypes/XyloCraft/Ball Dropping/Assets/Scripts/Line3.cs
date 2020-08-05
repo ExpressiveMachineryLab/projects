@@ -344,7 +344,8 @@ public class Line3 : MonoBehaviour
 				if (panel.GetRepeatState() != "None" &&
 				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
 				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+                (panel.GetLineColor() == "All" && panel.GetBallColor() == "All") ||
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
 				{
                     panel.FlashBox();
 					repeats += panel.GetSelectedRhythym();
@@ -368,7 +369,8 @@ public class Line3 : MonoBehaviour
 				if (panel.GetRepeatState() != "None" &&
 				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
 				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+                (panel.GetLineColor() == "All" && panel.GetBallColor() == "All") ||
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
 				{
                     panel.FlashBox();
                     // ++
@@ -431,7 +433,8 @@ public class Line3 : MonoBehaviour
 			if (panel.GetRepeatState() != "None" &&
 				((panel.GetBallColor() == "All" && this.gameObject.tag == panel.GetLineColor() + "Line") ||
 				(panel.GetLineColor() == "All" && collision.gameObject.tag == panel.GetBallColor() + "Ball") ||
-				(collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
+                (panel.GetLineColor() == "All" && panel.GetBallColor() == "All") ||
+                (collision.gameObject.tag == panel.GetBallColor() + "Ball" && this.gameObject.tag == panel.GetLineColor() + "Line"))) 
 				{
                 panel.FlashBox();
                 if (gameManger.ThreeBox)
