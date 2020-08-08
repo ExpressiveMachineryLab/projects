@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
-
+	public ElemColor color;
     Vector2 forceVector;
     public float speed = 20f;
     public Rigidbody2D rb;
