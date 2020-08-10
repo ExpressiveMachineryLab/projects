@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e6eb0c1cd6006418ad28b91b57462e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: 3
   speed: 20
   rb: {fileID: 2085812209214407065}
   originalSprite: {fileID: 21300000, guid: abffe97fa50d1c14295b9ff6c36109c3, type: 3}

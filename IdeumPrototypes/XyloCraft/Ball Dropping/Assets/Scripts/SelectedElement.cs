@@ -5,104 +5,104 @@ using UnityEngine.UI;
 
 public class SelectedElement : MonoBehaviour
 {
-    public Sprite Blue;
-    public Sprite Red;
-    public Sprite Green;
-    public Sprite Yellow;
+	public SelectedElementType type;
+	public ElemColor color;
+	public string currentColor;
+
+	public Sprite Red;
+	public Sprite Yellow;
+	public Sprite Blue;
+	public Sprite Green;
     public Sprite Wild;
 
-    public string currentColor;
+	private void Start()
+	{
+		if (color == ElemColor.Red)
+		{
+			SetRed();
+		}
+		else if (color == ElemColor.Yellow)
+		{
+			SetYellow();
+		}
+		else if (color == ElemColor.Blue)
+		{
+			SetBlue();
+		}
+		else if (color == ElemColor.Green)
+		{
+			SetGreen();
+		}
+		else if (color == ElemColor.All)
+		{
+			SetWild();
+		}
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public string GetCurrentColor() 
+	public string GetCurrentColor() 
     {
         return currentColor;
-    }
-
-    public void SetBlue() 
-    {
-        this.gameObject.GetComponent<Image>().sprite = Blue;
-        currentColor = Blue.name;
     }
 
     public void SetRed()
     {
         this.gameObject.GetComponent<Image>().sprite = Red;
         currentColor = Red.name;
-    }
-    public void SetGreen()
+		color = ElemColor.Red;
+	}
+
+	public void SetYellow()
+	{
+		this.gameObject.GetComponent<Image>().sprite = Yellow;
+		currentColor = Yellow.name;
+		color = ElemColor.Yellow;
+	}
+
+	public void SetBlue()
+	{
+		this.gameObject.GetComponent<Image>().sprite = Blue;
+		currentColor = Blue.name;
+		color = ElemColor.Blue;
+	}
+
+	public void SetGreen()
     {
         this.gameObject.GetComponent<Image>().sprite = Green;
         currentColor = Green.name;
-    }
-    public void SetYellow()
-    {
-        this.gameObject.GetComponent<Image>().sprite = Yellow;
-        currentColor = Yellow.name;
-    }
+		color = ElemColor.Green;
+	}
 
-    public void SetNext()
-    {
-        if (currentColor == Blue.name)
-        {
-        this.gameObject.GetComponent<Image>().sprite = Red;
-        currentColor = Red.name;
-        }
-        
-        else if (currentColor == Red.name)
-        {
-        this.gameObject.GetComponent<Image>().sprite = Green;
-        currentColor = Green.name;
-        }
+	public void SetWild()
+	{
+		this.gameObject.GetComponent<Image>().sprite = Wild;
+		currentColor = "All";
+		color = ElemColor.All;
+	}
 
-        else if (currentColor == Green.name)
-        {
-        this.gameObject.GetComponent<Image>().sprite = Yellow;
-        currentColor = Yellow.name;
-        }
+	public void SetNext()
+	{
+		if (color == ElemColor.Red)
+		{
+			SetYellow();
+		}
+		else if (color == ElemColor.Yellow)
+		{
+			SetBlue();
+		}
+		else if (color == ElemColor.Blue)
+		{
+			SetGreen();
+		}
+		else if (color == ElemColor.Green)
+		{
+			SetWild();
+		}
+		else if (color == ElemColor.All)
+		{
+			SetRed();
+		}
+	}
 
-        else if (currentColor == Yellow.name)
-        {
-        this.gameObject.GetComponent<Image>().sprite = Wild;
-        currentColor = "All";
-        }
-
-        else if(currentColor == "All")
-        {
-        this.gameObject.GetComponent<Image>().sprite = Blue;
-        currentColor = Blue.name;
-
-        }
-
-
-    }
-
-
-    
-
-    public void SetWild()
-    {
-        this.gameObject.GetComponent<Image>().sprite = Wild;
-        currentColor = "All";
-        //Sprite[] imageArray = {Blue, Red, Green, Yellow};
-        //Sprite randomSprite;
-        //do {
-        //    randomSprite = imageArray[(int)(Random.value * 4)];
-        //} while (currentColor == randomSprite.name);
-        //currentColor = randomSprite.name;
-        //Debug.Log(currentColor);
-        //this.gameObject.GetComponent<Image>().sprite = randomSprite;
-    }
     public void SetWildSprite() 
     {
         Sprite[] imageArray = { Blue, Red, Green, Yellow };
@@ -110,4 +110,10 @@ public class SelectedElement : MonoBehaviour
         currentColor = randomSprite.name;
         this.gameObject.GetComponent<Image>().sprite = randomSprite;
     }
+}
+
+public enum SelectedElementType
+{
+	Ball,
+	Line
 }

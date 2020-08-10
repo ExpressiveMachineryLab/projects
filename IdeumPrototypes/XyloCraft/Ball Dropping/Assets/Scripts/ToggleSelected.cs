@@ -22,12 +22,6 @@ public class ToggleSelected : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void toggled()
     {
         isToggled = !isToggled;

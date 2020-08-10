@@ -23,7 +23,7 @@ public class Line8 : MonoBehaviour
 	private bool isBeingHeld = false;
 	private bool isBeingRotated = false;
 
-	private int pitchLevel = 0;
+	public int pitchLevel = 0;
 	private int visualLevel = 0;
 	private bool pitchPositive = true;
 	private bool visualPositive = true;
@@ -115,8 +115,8 @@ public class Line8 : MonoBehaviour
 		{
 			//check if the panel is active and if the colors in panel match colors in the line and ball
 			if (!panel.gameObject.activeInHierarchy ||
-				(panel.lineColor != color && panel.lineColor != ElemColor.All) ||
-				(panel.ballColor != ball.color && panel.ballColor != ElemColor.All))
+				(panel.GetBallColor() != ball.color && panel.GetBallColor() != ElemColor.All) ||
+				(panel.GetLineColor() != color && panel.GetLineColor() != ElemColor.All))
 			{
 				continue;
 			}
@@ -126,11 +126,13 @@ public class Line8 : MonoBehaviour
 			{
 				if (panel.selectedChord == SelectedPM.Plus)
 				{
-					pitchLevel = pitchLevel++ % 5;
+					pitchLevel++;
+					pitchLevel = pitchLevel % 5;
 				}
 				else if (panel.selectedChord == SelectedPM.Minus)
 				{
-					pitchLevel = pitchLevel-- % 5;
+					pitchLevel--;
+					if (pitchLevel < 0) pitchLevel = 4;
 				}
 				else if (panel.selectedChord == SelectedPM.PlusMinus)
 				{
