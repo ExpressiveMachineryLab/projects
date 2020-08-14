@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StyleHUD : MonoBehaviour {
+public class StyleHUD : MonoBehaviour
+{
 
 	[SerializeField]
 	private StyleBank[] availableStyles;
@@ -20,11 +21,12 @@ public class StyleHUD : MonoBehaviour {
 	public int greenIndex = 0;
 
 	public GridLayoutGroup styleGrid;
-	public GridLayoutGroup soundGrid;
+	public GridLayoutGroup[] soundGrids;
 
 	private SoundManager soundMan;
 
-	private void Start() {
+	private void Start()
+	{
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 
 		for (var i = 0; i < availableStyles.Length; i++)
@@ -40,13 +42,17 @@ public class StyleHUD : MonoBehaviour {
 
 		for (var i = 0; i < availableSounds.Length; i++)
 		{
-			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
-			newButton.transform.parent = soundGrid.transform;
-			newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].name;
-			newButton.gameObject.name = availableSounds[i].name + "Button";
-			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
-			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
-			newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
+			foreach (GridLayoutGroup grid in soundGrids)
+			{
+				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
+				newButton.transform.parent = grid.transform;
+				newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].name;
+				newButton.gameObject.name = availableSounds[i].name + "Button";
+				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
+				newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
+				newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
+				newButton.gameObject.GetComponent<GridButtonComponent>().text = grid.transform.GetComponentInParent<Text>();
+			}
 		}
 	}
 
@@ -60,8 +66,10 @@ public class StyleHUD : MonoBehaviour {
 		soundMan.greenBank = availableStyles[styleIndex].GreenBank;
 	}
 
-	public void setSound(int index) {
-		switch (currentColor) {
+	public void SetSound(int index)
+	{
+		switch (currentColor)
+		{
 			case ElemColor.Red:
 				soundMan.redBank = availableSounds[index];
 				redIndex = index;
@@ -81,27 +89,33 @@ public class StyleHUD : MonoBehaviour {
 		}
 	}
 
-	public void SetColor(ElemColor newColor) {
+	public SoundBank GetSound(int index)
+	{
+		return availableSounds[index];
+	}
+
+	public void SetColor(ElemColor newColor)
+	{
 		if (newColor != ElemColor.All) currentColor = newColor;
 	}
 
-	public void SetColorToRed() {
+	public void SetColorToRed()
+	{
 		currentColor = ElemColor.Red;
-		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Red";
 	}
 
-	public void SetColorToYellow() {
+	public void SetColorToYellow()
+	{
 		currentColor = ElemColor.Yellow;
-		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Yellow";
 	}
 
-	public void SetColorToBlue() {
+	public void SetColorToBlue()
+	{
 		currentColor = ElemColor.Blue;
-		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Blue";
 	}
 
-	public void SetColorToGreen() {
+	public void SetColorToGreen()
+	{
 		currentColor = ElemColor.Green;
-		soundGrid.gameObject.transform.parent.gameObject.GetComponentInChildren<Text>().text = "Sounds for Green";
 	}
 }
