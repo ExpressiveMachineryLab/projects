@@ -25,6 +25,11 @@ public class StyleHUD : MonoBehaviour
 
 	private SoundManager soundMan;
 
+	private Text redText;
+	private Text yellowText;
+	private Text blueText;
+	private Text greenText;
+
 	private void Start()
 	{
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
@@ -33,7 +38,7 @@ public class StyleHUD : MonoBehaviour
 		{
 			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 			newButton.transform.parent = styleGrid.transform;
-			newButton.gameObject.GetComponentInChildren<Text>().text = availableStyles[i].name;
+			newButton.gameObject.GetComponentInChildren<Text>().text = availableStyles[i].styleName;
 			newButton.gameObject.name = availableStyles[i].name + "Button";
 			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Style;
@@ -46,7 +51,7 @@ public class StyleHUD : MonoBehaviour
 			{
 				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 				newButton.transform.parent = grid.transform;
-				newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].name;
+				newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].bankName;
 				newButton.gameObject.name = availableSounds[i].name + "Button";
 				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 				newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
@@ -54,6 +59,29 @@ public class StyleHUD : MonoBehaviour
 				newButton.gameObject.GetComponent<GridButtonComponent>().text = grid.transform.GetComponentInParent<Text>();
 			}
 		}
+
+		Text[] textInChildren = gameObject.GetComponentsInChildren<Text>();
+		foreach (Text text in textInChildren)
+		{
+			if (text.gameObject.name.Contains("Red"))
+			{
+				redText = text;
+			}
+			if (text.gameObject.name.Contains("Yellow"))
+			{
+				yellowText = text;
+			}
+			if (text.gameObject.name.Contains("Blue"))
+			{
+				blueText = text;
+			}
+			if (text.gameObject.name.Contains("Green"))
+			{
+				greenText = text;
+			}
+		}
+
+		SetStyle(styleIndex);
 	}
 
 	public void SetStyle(int index)
@@ -63,7 +91,12 @@ public class StyleHUD : MonoBehaviour
 		soundMan.redBank = availableStyles[styleIndex].redBank;
 		soundMan.yellowBank = availableStyles[styleIndex].yellowBank;
 		soundMan.blueBank = availableStyles[styleIndex].blueBank;
-		soundMan.greenBank = availableStyles[styleIndex].GreenBank;
+		soundMan.greenBank = availableStyles[styleIndex].greenBank;
+
+		if (redText != null) redText.text = availableStyles[styleIndex].redBank.bankName;
+		if (yellowText != null) yellowText.text = availableStyles[styleIndex].yellowBank.bankName;
+		if (blueText != null) blueText.text = availableStyles[styleIndex].blueBank.bankName;
+		if (greenText != null) greenText.text = availableStyles[styleIndex].greenBank.bankName;
 	}
 
 	public void SetSound(int index)

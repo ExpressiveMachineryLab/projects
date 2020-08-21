@@ -115,5 +115,6 @@ public class SelectedElement : MonoBehaviour
 public enum SelectedElementType
 {
 	Ball,
-	Line
+	Line,
+	Emitter
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "StyleBank", menuName = "StyleBank")]
 public class StyleBank : ScriptableObject {
-	public string bankName = "New Style Bank";
+	public string styleName = "New Style Bank";
 
 	public SoundBank redBank;
 	public SoundBank yellowBank;
 	public SoundBank blueBank;
-	public SoundBank GreenBank;
+	public SoundBank greenBank;
 }

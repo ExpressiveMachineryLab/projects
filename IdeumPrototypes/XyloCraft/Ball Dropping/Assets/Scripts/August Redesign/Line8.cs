@@ -15,7 +15,7 @@ public class Line8 : MonoBehaviour
 	public SpriteRenderer lineSprite;
 
 	private AudioSource playClip;
-	private CodePanel8[] panels;
+	private LinePanel8[] panels;
 	private SoundManager soundMan;
 
 	private float startPosX;
@@ -33,7 +33,7 @@ public class Line8 : MonoBehaviour
 	{
 		playClip = GetComponent<AudioSource>();
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
-		panels = FindObjectsOfType<CodePanel8>();
+		panels = FindObjectsOfType<LinePanel8>();
 	}
 
 	private void Update()
@@ -111,7 +111,7 @@ public class Line8 : MonoBehaviour
 	{
 		int repeats = 0;
 
-		foreach (CodePanel8 panel in panels)
+		foreach (LinePanel8 panel in panels)
 		{
 			//check if the panel is active and if the colors in panel match colors in the line and ball
 			if (!panel.gameObject.activeInHierarchy ||

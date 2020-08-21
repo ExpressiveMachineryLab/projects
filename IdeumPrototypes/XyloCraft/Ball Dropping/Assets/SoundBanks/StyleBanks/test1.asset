@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7dd7af910565e45ae2f3f95173aafd, type: 3}
   m_Name: test1
   m_EditorClassIdentifier: 
-  bankName: Test1
+  styleName: Orchestral
   redBank: {fileID: 11400000, guid: b21b79321f7040243bb4e202f8cf9f95, type: 2}
   yellowBank: {fileID: 11400000, guid: c6167ece239ef7a4f950e8cb24962d3b, type: 2}
   blueBank: {fileID: 11400000, guid: 25c5326a1d6746545a138e2c5246f005, type: 2}
-  GreenBank: {fileID: 11400000, guid: cb09449ad7597cc458923e8b718878ed, type: 2}
+  greenBank: {fileID: 11400000, guid: cb09449ad7597cc458923e8b718878ed, type: 2}

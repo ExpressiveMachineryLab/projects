@@ -14,7 +14,9 @@ public class Emitter8 : MonoBehaviour
 	public float speed = 5f;
 	public Animator emitterAnimator;
 	public string launchKey;
-	
+
+	private EmitterPanel8[] panels;
+
 	private float startPosX;
 	private float startPosY;
 	private bool isBeingHeld = false;
@@ -23,7 +25,12 @@ public class Emitter8 : MonoBehaviour
 	private bool clickTimerOn;
 	private float lastLaunch = 0f;
 	private bool justLaunched = false;
-	
+
+	private void Start()
+	{
+		panels = FindObjectsOfType<EmitterPanel8>();
+	}
+
 	void Update()
 	{
 		clickTimer += Time.deltaTime;
@@ -56,10 +63,30 @@ public class Emitter8 : MonoBehaviour
 		if (!justLaunched && Input.GetAxisRaw(launchKey) > 0.1 && lastLaunch > 0.1)
 		{
 			lastLaunch = 0f;
-			ShootBall();
+			foreach (EmitterPanel8 panel in panels)
+			{
+				if (panel.ifType == EmmiterIf.Key)
+				{
+					PerformCodeBehvaior();
+					break;
+				}
+			}
 			justLaunched = true;
 		}
-		if (justLaunched && Input.GetAxisRaw(launchKey) < 0.1)
+		if (!justLaunched && Input.GetAxisRaw("Space") > 0.1 && lastLaunch > 0.1)
+		{
+			lastLaunch = 0f;
+			foreach (EmitterPanel8 panel in panels)
+			{
+				if (panel.ifType == EmmiterIf.Space)
+				{
+					PerformCodeBehvaior();
+					break;
+				}
+			}
+			justLaunched = true;
+		}
+		if (justLaunched && Input.GetAxisRaw(launchKey) + Input.GetAxisRaw("Space") < 0.1)
 		{
 			lastLaunch = 0f;
 			justLaunched = false;
@@ -91,10 +118,46 @@ public class Emitter8 : MonoBehaviour
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
 			if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>())
-				ShootBall();
+			{
+				foreach (EmitterPanel8 panel in panels)
+				{
+					if (panel.ifType == EmmiterIf.Click)
+					{
+						PerformCodeBehvaior();
+						break;
+					}
+				}
+			}
 		}
 		isBeingHeld = false;
 	}
+
+	void PerformCodeBehvaior()
+	{
+		int repeats = 0;
+
+		foreach (EmitterPanel8 panel in panels)
+		{
+			//check if the panel is active and if the colors in panel match colors the emitter
+			if (!panel.gameObject.activeInHierarchy ||
+				(panel.GetBirdColor() != color && panel.GetBirdColor() != ElemColor.All))
+			{
+				continue;
+			}
+
+			repeats += panel.numberToShoot;
+		}
+		
+		if (repeats > 0)
+		{
+			StartCoroutine(LoopShoot(0.2f, repeats));
+		}
+		else
+		{
+			ShootBall();
+		}
+	}
+
 	void ShootBall()
 	{
 		Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(10), firePoint.position, firePoint.rotation);
@@ -108,5 +171,14 @@ public class Emitter8 : MonoBehaviour
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		rotation *= Quaternion.Euler(0, 0, -90);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
+	}
+
+	private IEnumerator LoopShoot(float seconds, int numLoops)
+	{
+		for (int i = 0; i < numLoops; i++)
+		{
+			ShootBall();
+			yield return new WaitForSeconds(seconds);
+		}
 	}
 }
