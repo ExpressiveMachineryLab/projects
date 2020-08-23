@@ -6,12 +6,9 @@ using UnityEngine.UI;
 public class StyleHUD : MonoBehaviour
 {
 
-	[SerializeField]
-	private StyleBank[] availableStyles;
-	[SerializeField]
-	private SoundBank[] availableSounds;
-	[SerializeField]
-	private GameObject buttonPrefab;
+	public StyleBank[] availableStyles;
+	public SoundBank[] availableSounds;
+	public GameObject buttonPrefab;
 	private ElemColor currentColor = ElemColor.Red;
 
 	public int styleIndex = 0;
@@ -37,7 +34,7 @@ public class StyleHUD : MonoBehaviour
 		for (var i = 0; i < availableStyles.Length; i++)
 		{
 			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
-			newButton.transform.parent = styleGrid.transform;
+			newButton.transform.SetParent(styleGrid.transform);
 			newButton.gameObject.GetComponentInChildren<Text>().text = availableStyles[i].styleName;
 			newButton.gameObject.name = availableStyles[i].name + "Button";
 			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
@@ -50,7 +47,7 @@ public class StyleHUD : MonoBehaviour
 			foreach (GridLayoutGroup grid in soundGrids)
 			{
 				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
-				newButton.transform.parent = grid.transform;
+				newButton.transform.SetParent(grid.transform);
 				newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].bankName;
 				newButton.gameObject.name = availableSounds[i].name + "Button";
 				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;

@@ -20,6 +20,7 @@ public class LinePanel8 : MonoBehaviour
 	private bool visualMinus = false;
 
 	public Dropdown modeDropdown;
+	public Text rhythmText;
 	public GameObject chordItems;
 	public GameObject rhythmItems;
 	public GameObject visualItems;
@@ -144,6 +145,23 @@ public class LinePanel8 : MonoBehaviour
 	public void SetRhythmToNumber(int number)
 	{
 		selectedRhythm = number;
+		if (selectedRhythm > 8) selectedRhythm = 8;
+		if (selectedRhythm < 1) selectedRhythm = 1;
+		rhythmText.text = "" + selectedRhythm;
+	}
+
+	public void IncRhythm()
+	{
+		selectedRhythm++;
+		if (selectedRhythm > 8) selectedRhythm = 8;
+		if (rhythmText != null) rhythmText.text = "" + selectedRhythm;
+	}
+
+	public void DecRhyth()
+	{
+		selectedRhythm--;
+		if (selectedRhythm < 1) selectedRhythm = 1;
+		if (rhythmText != null) rhythmText.text = "" + selectedRhythm;
 	}
 
 	//Visual options

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Emitter Class:
-// Allows emitter to be dragged
-
 public class Emitter8 : MonoBehaviour
 {
 	public ElemColor color;
@@ -146,15 +143,13 @@ public class Emitter8 : MonoBehaviour
 			}
 
 			repeats += panel.numberToShoot;
+
+			panel.FlashBox();
 		}
 		
 		if (repeats > 0)
 		{
-			StartCoroutine(LoopShoot(0.2f, repeats));
-		}
-		else
-		{
-			ShootBall();
+			StartCoroutine(LoopShoot(0.3f, repeats));
 		}
 	}
 

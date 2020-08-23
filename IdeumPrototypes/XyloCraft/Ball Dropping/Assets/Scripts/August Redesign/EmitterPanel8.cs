@@ -10,6 +10,7 @@ public class EmitterPanel8 : MonoBehaviour
 	public int numberToShoot = 1;
 
 	public Dropdown actionDropdown;
+	public Text numberText;
 
 	private void Start()
 	{
@@ -20,9 +21,60 @@ public class EmitterPanel8 : MonoBehaviour
 		}
 	}
 
+	public void FlashBox()
+	{
+
+	}
+
 	public ElemColor GetBirdColor()
 	{
 		return birdElement.color;
+	}
+
+	public void UpdateFromDropdown()
+	{
+		switch (actionDropdown.value)
+		{
+			case 0:
+				ifType = EmmiterIf.Click;
+				break;
+			case 1:
+				ifType = EmmiterIf.Space;
+				break;
+			case 2:
+				ifType = EmmiterIf.Key;
+				break;
+		}
+	}
+
+	public void UpdateFromInt (int value)
+	{
+		switch (value)
+		{
+			case 0:
+				ifType = EmmiterIf.Click;
+				break;
+			case 1:
+				ifType = EmmiterIf.Space;
+				break;
+			case 2:
+				ifType = EmmiterIf.Key;
+				break;
+		}
+	}
+
+	public void IncNumberToShoot()
+	{
+		numberToShoot++;
+		if (numberToShoot > 8) numberToShoot = 8;
+		if (numberText != null) numberText.text = "" + numberToShoot;
+	}
+
+	public void DecNumberToShoot()
+	{
+		numberToShoot--;
+		if (numberToShoot < 1) numberToShoot = 1;
+		if (numberText != null) numberText.text = "" + numberToShoot;
 	}
 
 }

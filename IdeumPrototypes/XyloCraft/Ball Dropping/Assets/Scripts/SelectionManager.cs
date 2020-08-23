@@ -5,14 +5,7 @@ using UnityEngine;
 public class SelectionManager : MonoBehaviour
 {
     public GameObject selectedObject;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+	
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -29,7 +22,7 @@ public class SelectionManager : MonoBehaviour
 
     private void SetSelection(GameObject selectedGameObject)
     {
-        Debug.Log(selectedGameObject + " selected");
+        //Debug.Log(selectedGameObject + " selected");
         if (!selectedGameObject.tag.Contains("Ball"))
         {
             if (selectedObject != null)
@@ -58,7 +51,7 @@ public class SelectionManager : MonoBehaviour
 
     public int GetColor() 
     {
-        Debug.Log(selectedObject.GetComponent<Emitter>());
+        //Debug.Log(selectedObject.GetComponent<Emitter>());
         if (selectedObject.GetComponent<Emitter>() != null)
         {
             return selectedObject.GetComponent<Emitter>().GetColor();
