@@ -6,10 +6,8 @@ using UnityEngine;
 public class SoundBank : ScriptableObject {
 	public string bankName = "New Sound Bank";
 
-	[SerializeField]
-	private float[] volumes = new float[5];
-	[SerializeField]
-	private AudioClip[] clips = new AudioClip[5];
+	public float[] volumes = new float[5];
+	public AudioClip[] clips = new AudioClip[5];
 
 	public void playAudioClip(AudioSource source, int index) 
 	{

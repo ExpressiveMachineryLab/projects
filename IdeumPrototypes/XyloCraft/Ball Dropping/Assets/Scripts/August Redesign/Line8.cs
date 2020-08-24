@@ -13,8 +13,7 @@ public class Line8 : MonoBehaviour
 
 	public Animator effects;
 	public SpriteRenderer lineSprite;
-
-	private AudioSource playClip;
+	
 	private LinePanel8[] panels;
 	private SoundManager soundMan;
 
@@ -31,7 +30,7 @@ public class Line8 : MonoBehaviour
 
 	private void Start()
 	{
-		playClip = GetComponent<AudioSource>();
+		//playClip = GetComponents<AudioSource>();
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 		panels = FindObjectsOfType<LinePanel8>();
 	}
@@ -193,6 +192,8 @@ public class Line8 : MonoBehaviour
 						visualLevel--;
 					}
 				}
+
+				effects.SetTrigger("Play" + visualLevel);
 			}
 			
 			panel.FlashBox();
@@ -212,7 +213,7 @@ public class Line8 : MonoBehaviour
 
 	private void MakeSound()
 	{
-		soundMan.GetAudio(playClip, color, pitchLevel);
+		soundMan.GetAudio(transform.position, color, pitchLevel);
 	}
 
 	private void Rotate()

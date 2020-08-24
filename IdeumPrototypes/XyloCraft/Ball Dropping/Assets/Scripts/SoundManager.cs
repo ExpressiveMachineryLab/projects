@@ -22,11 +22,25 @@ public class SoundManager : MonoBehaviour
 	[SerializeField]
 	private SoundBank[] GreenSounds = new SoundBank[8];
 
+	private GameObject[] audioSourceArray = new GameObject[16];
+	private int audioSourceIndex = 0;
+
+
+
 	private void Start() {
 		if (redBank == null) redBank = RedSounds[0];
 		if (yellowBank == null) yellowBank = YellowSounds[0];
 		if (blueBank == null) blueBank = BlueSounds[0];
 		if (greenBank == null) greenBank = GreenSounds[0];
+
+		for (int i = 0; i < audioSourceArray.Length; i++)
+		{
+			audioSourceArray[i] = new GameObject("SoundSource");
+			audioSourceArray[i].transform.SetParent(transform);
+			audioSourceArray[i].AddComponent<AudioSource>();
+			audioSourceArray[i].GetComponent<AudioSource>().spatialBlend = 1;
+			audioSourceArray[i].GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Linear;
+		}
 	}
 
 
@@ -51,26 +65,58 @@ public class SoundManager : MonoBehaviour
 		return;
 	}
 
-	public void GetAudio(AudioSource playClip, ElemColor color, int pitch)
+	public void GetAudio(Vector3 position, ElemColor color, int pitch)
 	{
 		if (color == ElemColor.Red)
 		{
-			redBank.playAudioClip(playClip, pitch);
+			audioSourceArray[audioSourceIndex].transform.position = position;
+			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
+			sound.Stop();
+			sound.clip = redBank.clips[pitch];
+			sound.volume = redBank.volumes[pitch];
+			sound.Play();
+
+			audioSourceIndex++;
+			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
 		}
 
 		if (color == ElemColor.Yellow)
 		{
-			yellowBank.playAudioClip(playClip, pitch);
+			audioSourceArray[audioSourceIndex].transform.position = position;
+			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
+			sound.Stop();
+			sound.clip = yellowBank.clips[pitch];
+			sound.volume = yellowBank.volumes[pitch];
+			sound.Play();
+
+			audioSourceIndex++;
+			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
 		}
 
 		if (color == ElemColor.Blue)
 		{
-			blueBank.playAudioClip(playClip, pitch);
+			audioSourceArray[audioSourceIndex].transform.position = position;
+			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
+			sound.Stop();
+			sound.clip = blueBank.clips[pitch];
+			sound.volume = blueBank.volumes[pitch];
+			sound.Play();
+
+			audioSourceIndex++;
+			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
 		}
 
 		if (color == ElemColor.Green)
 		{
-			greenBank.playAudioClip(playClip, pitch);
+			audioSourceArray[audioSourceIndex].transform.position = position;
+			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
+			sound.Stop();
+			sound.clip = greenBank.clips[pitch];
+			sound.volume = greenBank.volumes[pitch];
+			sound.Play();
+
+			audioSourceIndex++;
+			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
 		}
 	}
 }

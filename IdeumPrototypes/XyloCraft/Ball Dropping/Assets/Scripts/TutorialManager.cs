@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
 {
 
 	public GameObject[] popUps;
-	private int popUpIndex;
+	private int popUpIndex = 0;
 
     // Update is called once per frame
     void Update(){
