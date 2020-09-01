@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Yellow1
   m_EditorClassIdentifier: 
   bankName: Flute
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 1
   - 1
-  - 1
+  - 0.15
   - 1
   - 1
   clips:

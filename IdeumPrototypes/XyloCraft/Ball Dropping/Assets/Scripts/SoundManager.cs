@@ -22,25 +22,16 @@ public class SoundManager : MonoBehaviour
 	[SerializeField]
 	private SoundBank[] GreenSounds = new SoundBank[8];
 
-	private GameObject[] audioSourceArray = new GameObject[16];
-	private int audioSourceIndex = 0;
+	public GameObject[] audioSourceArray = new GameObject[16];
+	public int audioSourceIndex = 0;
 
-
+	private float fadeTime = 0.25f;
 
 	private void Start() {
 		if (redBank == null) redBank = RedSounds[0];
 		if (yellowBank == null) yellowBank = YellowSounds[0];
 		if (blueBank == null) blueBank = BlueSounds[0];
 		if (greenBank == null) greenBank = GreenSounds[0];
-
-		for (int i = 0; i < audioSourceArray.Length; i++)
-		{
-			audioSourceArray[i] = new GameObject("SoundSource");
-			audioSourceArray[i].transform.SetParent(transform);
-			audioSourceArray[i].AddComponent<AudioSource>();
-			audioSourceArray[i].GetComponent<AudioSource>().spatialBlend = 1;
-			audioSourceArray[i].GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Linear;
-		}
 	}
 
 
@@ -65,58 +56,99 @@ public class SoundManager : MonoBehaviour
 		return;
 	}
 
-	public void GetAudio(Vector3 position, ElemColor color, int pitch)
+	public GameObject GetAudio(GameObject source, ElemColor color, int pitch)
 	{
+
 		if (color == ElemColor.Red)
 		{
-			audioSourceArray[audioSourceIndex].transform.position = position;
-			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
-			sound.Stop();
-			sound.clip = redBank.clips[pitch];
-			sound.volume = redBank.volumes[pitch];
-			sound.Play();
+			GameObject newSource = redBank.playAudioClip(source, pitch);
 
+			if (redBank.voice == Phonic.Mono)
+			{
+				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), redBank.fadeTime));
+			}
+
+			audioSourceArray[audioSourceIndex] = newSource;
 			audioSourceIndex++;
 			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
+			if (audioSourceArray[audioSourceIndex] != null) StartCoroutine(FadeOutAndStop(audioSourceArray[audioSourceIndex].GetComponent<AudioSource>(), fadeTime));
+
+			return newSource;
 		}
 
 		if (color == ElemColor.Yellow)
 		{
-			audioSourceArray[audioSourceIndex].transform.position = position;
-			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
-			sound.Stop();
-			sound.clip = yellowBank.clips[pitch];
-			sound.volume = yellowBank.volumes[pitch];
-			sound.Play();
+			GameObject newSource = yellowBank.playAudioClip(source, pitch);
 
+			if (yellowBank.voice == Phonic.Mono)
+			{
+				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), yellowBank.fadeTime));
+			}
+
+			audioSourceArray[audioSourceIndex] = newSource;
 			audioSourceIndex++;
 			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
+			if (audioSourceArray[audioSourceIndex] != null) StartCoroutine(FadeOutAndStop(audioSourceArray[audioSourceIndex].GetComponent<AudioSource>(), fadeTime));
+
+			return newSource;
 		}
 
 		if (color == ElemColor.Blue)
 		{
-			audioSourceArray[audioSourceIndex].transform.position = position;
-			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
-			sound.Stop();
-			sound.clip = blueBank.clips[pitch];
-			sound.volume = blueBank.volumes[pitch];
-			sound.Play();
+			GameObject newSource = blueBank.playAudioClip(source, pitch);
 
+			if (blueBank.voice == Phonic.Mono)
+			{
+				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), blueBank.fadeTime));
+			}
+
+			audioSourceArray[audioSourceIndex] = newSource;
 			audioSourceIndex++;
 			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
+			if (audioSourceArray[audioSourceIndex] != null) StartCoroutine(FadeOutAndStop(audioSourceArray[audioSourceIndex].GetComponent<AudioSource>(), fadeTime));
+
+			return newSource;
 		}
 
 		if (color == ElemColor.Green)
 		{
-			audioSourceArray[audioSourceIndex].transform.position = position;
-			AudioSource sound = audioSourceArray[audioSourceIndex].GetComponent<AudioSource>();
-			sound.Stop();
-			sound.clip = greenBank.clips[pitch];
-			sound.volume = greenBank.volumes[pitch];
-			sound.Play();
+			GameObject newSource = greenBank.playAudioClip(source, pitch);
 
+			if (greenBank.voice == Phonic.Mono)
+			{
+				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), greenBank.fadeTime));
+			}
+
+			audioSourceArray[audioSourceIndex] = newSource;
 			audioSourceIndex++;
 			if (audioSourceIndex >= audioSourceArray.Length) audioSourceIndex = 0;
+			if (audioSourceArray[audioSourceIndex] != null) StartCoroutine(FadeOutAndStop(audioSourceArray[audioSourceIndex].GetComponent<AudioSource>(), fadeTime));
+
+			return newSource;
+		}
+
+		return null;
+	}
+
+	IEnumerator FadeOutAndStop(AudioSource source, float fadeTime)
+	{
+		float startTime = Time.time;
+		float currentTime = 0f;
+		float startVolume = source.volume;
+
+		while (startTime + fadeTime > Time.time && source != null)
+		{
+
+			currentTime = Time.time - startTime;
+
+			source.volume = Mathf.Lerp(startVolume, 0f, currentTime / fadeTime);
+			yield return null;
+		}
+
+		if (source != null)
+		{
+			source.Stop();
+			Destroy(source.gameObject);
 		}
 	}
 }

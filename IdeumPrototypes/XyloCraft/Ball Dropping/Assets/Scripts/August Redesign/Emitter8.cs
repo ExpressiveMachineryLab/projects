@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class Emitter8 : MonoBehaviour
 {
+	public SelectedElementType type = SelectedElementType.Emitter;
 	public ElemColor color;
-	public Transform firePoint;
 	public GameObject ballPrefab;
 	public float speed = 5f;
-	public Animator emitterAnimator;
 	public string launchKey;
+
+	public Vector3 position;
+	public Quaternion rotation;
+
+	private Transform firePoint;
+	private Animator emitterAnimator;
 
 	private EmitterPanel8[] panels;
 
@@ -25,7 +30,21 @@ public class Emitter8 : MonoBehaviour
 
 	private void Start()
 	{
+		Init();
+
+		//Debug.Log(JsonUtility.ToJson(this));
+	}
+
+	public void Init()
+	{
 		panels = FindObjectsOfType<EmitterPanel8>();
+		emitterAnimator = GetComponent<Animator>();
+
+		Transform[] gettingFirePoint = GetComponentsInChildren<Transform>();
+		foreach (Transform fire in gettingFirePoint)
+		{
+			if (fire.gameObject.name == "FirePoint") firePoint = fire;
+		}
 	}
 
 	void Update()
@@ -175,5 +194,21 @@ public class Emitter8 : MonoBehaviour
 			ShootBall();
 			yield return new WaitForSeconds(seconds);
 		}
+	}
+
+	public string EmitterToJSON()
+	{
+		position = transform.position;
+		rotation = transform.rotation;
+
+		return JsonUtility.ToJson(this);
+	}
+
+	public void EmitterFromJSON(string json)
+	{
+		JsonUtility.FromJsonOverwrite(json, this);
+
+		transform.position = position;
+		transform.rotation = rotation;
 	}
 }

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Red4
   m_EditorClassIdentifier: 
   bankName: Bass C
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.3
   - 0.3

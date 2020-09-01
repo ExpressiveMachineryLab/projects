@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Yellow7
   m_EditorClassIdentifier: 
   bankName: Sax Axe
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.7
   - 0.7

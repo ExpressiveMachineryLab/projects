@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Green7
   m_EditorClassIdentifier: 
   bankName: Minor Sax
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.7
   - 0.7

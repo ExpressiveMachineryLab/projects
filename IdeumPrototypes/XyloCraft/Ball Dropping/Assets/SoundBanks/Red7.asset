@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Red7
   m_EditorClassIdentifier: 
   bankName: Little Sax
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.8
   - 0.8

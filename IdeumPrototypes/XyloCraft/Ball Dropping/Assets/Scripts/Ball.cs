@@ -5,19 +5,26 @@ using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
+	public SelectedElementType type = SelectedElementType.Ball;
 	public ElemColor color;
-    Vector2 forceVector;
     public float speed = 20f;
-    public Rigidbody2D rb;
     public Sprite originalSprite;
     public Sprite hitSprite;
-    private GameManager gameManager;
+
+	public Vector3 position;
+	public Quaternion rotation;
+
+	private Rigidbody2D rb;
+	private GameManager gameManager;
 	
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
-    }
+
+		//Debug.Log(JsonUtility.ToJson(this));
+	}
 
     void Update()
     {
@@ -40,4 +47,19 @@ public class Ball : MonoBehaviour
         return this.gameObject;
     }
 
+	public string BallToJSON()
+	{
+		position = transform.position;
+		rotation = transform.rotation;
+
+		return JsonUtility.ToJson(this);
+	}
+
+	public void BallFromJSON(string json)
+	{
+		JsonUtility.FromJsonOverwrite(json, this);
+
+		transform.position = position;
+		transform.rotation = rotation;
+	}
 }

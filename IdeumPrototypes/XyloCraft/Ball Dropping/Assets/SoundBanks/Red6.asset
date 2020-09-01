@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Red6
   m_EditorClassIdentifier: 
   bankName: Wave Kick
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.5
   - 0.5

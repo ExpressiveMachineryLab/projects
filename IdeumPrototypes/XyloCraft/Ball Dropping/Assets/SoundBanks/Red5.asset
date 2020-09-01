@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Red5
   m_EditorClassIdentifier: 
   bankName: Violin Am
+  voice: 1
+  fadeTime: 0.25
   volumes:
   - 0.6
   - 0.6

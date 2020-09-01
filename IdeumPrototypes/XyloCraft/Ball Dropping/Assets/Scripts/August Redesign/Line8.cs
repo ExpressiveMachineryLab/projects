@@ -5,34 +5,51 @@ using UnityEngine;
 
 public class Line8 : MonoBehaviour
 {
+	public SelectedElementType type = SelectedElementType.Line;
 	public ElemColor color;
 
 	public Sprite[] chordSprites; //should always be of length 5
 	public Sprite[] chordHitSprites;
 	public float speed = 5f;
 
-	public Animator effects;
-	public SpriteRenderer lineSprite;
-	
+	public Vector3 position;
+	public Quaternion rotation;
+
+	public int pitchLevel = 0;
+	public int visualLevel = 0;
+	public bool pitchPositive = true;
+	public bool visualPositive = true;
+
+	private Animator effects;
+	private SpriteRenderer lineSprite;
+
 	private LinePanel8[] panels;
 	private SoundManager soundMan;
+	private GameObject playClip;
 
 	private float startPosX;
 	private float startPosY;
 	private bool isBeingHeld = false;
 	private bool isBeingRotated = false;
-
-	public int pitchLevel = 0;
-	private int visualLevel = 0;
-	private bool pitchPositive = true;
-	private bool visualPositive = true;
 	
 
 	private void Start()
 	{
-		//playClip = GetComponents<AudioSource>();
+		Init();
+		//Debug.Log(JsonUtility.ToJson(this));
+	}
+
+	public void Init()
+	{
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 		panels = FindObjectsOfType<LinePanel8>();
+		effects = GetComponent<Animator>();
+		SpriteRenderer[] findLineSprite = GetComponentsInChildren<SpriteRenderer>();
+
+		foreach (SpriteRenderer item in findLineSprite)
+		{
+			if (item.gameObject.name == "LineSprite") lineSprite = item;
+		}
 	}
 
 	private void Update()
@@ -213,7 +230,20 @@ public class Line8 : MonoBehaviour
 
 	private void MakeSound()
 	{
-		soundMan.GetAudio(transform.position, color, pitchLevel);
+		if (playClip != null)
+		{
+			soundMan.GetAudio(playClip, color, pitchLevel);
+		}
+		else
+		{
+			playClip = new GameObject("Dummy");
+			playClip.transform.SetParent(transform);
+			AudioSource sound = playClip.AddComponent<AudioSource>();
+
+			Destroy(playClip, 0.1f);
+
+			playClip = soundMan.GetAudio(playClip, color, pitchLevel);
+		}
 	}
 
 	private void Rotate()
@@ -259,6 +289,24 @@ public class Line8 : MonoBehaviour
 		MakeSound();
 		yield return new WaitForSeconds(seconds);
 		Destroy(this.gameObject);
+	}
+
+	public string LineToJSON()
+	{
+		position = transform.position;
+		rotation = transform.rotation;
+
+		return JsonUtility.ToJson(this);
+	}
+
+	public void LineFromJSON(string json)
+	{
+		JsonUtility.FromJsonOverwrite(json, this);
+
+		transform.position = position;
+		transform.rotation = rotation;
+
+		lineSprite.sprite = chordSprites[pitchLevel];
 	}
 }
 

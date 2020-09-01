@@ -10026,6 +10026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9626dec065a78c04d868b300f1c40233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   color: 3
   chordSprites:
   - {fileID: 21300000, guid: 44c0761ef0f171947aa6ef4362f7e074, type: 3}
@@ -10042,7 +10043,12 @@ MonoBehaviour:
   speed: 5
   effects: {fileID: 5877521215883843690}
   lineSprite: {fileID: 1198447605072043427}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   pitchLevel: 0
+  visualLevel: 0
+  pitchPositive: 1
+  visualPositive: 1
 --- !u!1 &7966315130611386709
 GameObject:
   m_ObjectHideFlags: 0
