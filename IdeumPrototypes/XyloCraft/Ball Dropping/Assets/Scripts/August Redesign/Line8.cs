@@ -12,9 +12,6 @@ public class Line8 : MonoBehaviour
 	public Sprite[] chordHitSprites;
 	public float speed = 5f;
 
-	public Vector3 position;
-	public Quaternion rotation;
-
 	public int pitchLevel = 0;
 	public int visualLevel = 0;
 	public bool pitchPositive = true;
@@ -35,12 +32,6 @@ public class Line8 : MonoBehaviour
 
 	private void Start()
 	{
-		Init();
-		//Debug.Log(JsonUtility.ToJson(this));
-	}
-
-	public void Init()
-	{
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 		panels = FindObjectsOfType<LinePanel8>();
 		effects = GetComponent<Animator>();
@@ -50,6 +41,10 @@ public class Line8 : MonoBehaviour
 		{
 			if (item.gameObject.name == "LineSprite") lineSprite = item;
 		}
+
+		lineSprite.sprite = chordSprites[pitchLevel];
+
+		//Debug.Log(JsonUtility.ToJson(this));
 	}
 
 	private void Update()
@@ -291,30 +286,45 @@ public class Line8 : MonoBehaviour
 		Destroy(this.gameObject);
 	}
 
-	public string LineToJSON()
+	public string LineToSO()
 	{
-		position = transform.position;
-		rotation = transform.rotation;
+		string SOstring = "1";
+		SOstring += (int)color;
+		SOstring += "i";
+		SOstring += "," + speed;
+		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
+		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
+		SOstring += "," + pitchLevel;
+		SOstring += "," + visualLevel;
+		SOstring += "," + (pitchPositive ? "1" : "0");
+		SOstring += "," + (visualPositive ? "1" : "0");
 
-		return JsonUtility.ToJson(this);
+		return SOstring;
 	}
 
-	public void LineFromJSON(string json)
+	public void LineFromSO(string SOline)
 	{
-		JsonUtility.FromJsonOverwrite(json, this);
+		string[] SOstring = SOline.Split(new[] { "," }, System.StringSplitOptions.None);
 
+		speed = float.Parse(SOstring[1]);
+		Vector3 position = new Vector3
+		{
+			x = float.Parse(SOstring[2]),
+			y = float.Parse(SOstring[3]),
+			z = float.Parse(SOstring[4])
+		};
 		transform.position = position;
+		Quaternion rotation = new Quaternion
+		{
+			w = float.Parse(SOstring[5]),
+			x = float.Parse(SOstring[6]),
+			y = float.Parse(SOstring[7]),
+			z = float.Parse(SOstring[8])
+		};
 		transform.rotation = rotation;
-
-		lineSprite.sprite = chordSprites[pitchLevel];
+		pitchLevel = int.Parse(SOstring[9]);
+		visualLevel = int.Parse(SOstring[10]);
+		pitchPositive = int.Parse(SOstring[11]) == 1 ? true: false;
+		visualPositive = int.Parse(SOstring[12]) == 1 ? true : false;
 	}
-}
-
-public enum ElemColor
-{
-	Red,
-	Yellow,
-	Blue,
-	Green,
-	All
 }

@@ -8,7 +8,6 @@ public class GridButtonComponent : MonoBehaviour
 	public int index = 0;
 	public GridButtonType type = GridButtonType.Sound;
 	public StyleHUD hud;
-	public Text text;
 
 	public void Execute()
 	{
@@ -19,7 +18,7 @@ public class GridButtonComponent : MonoBehaviour
 		if (type == GridButtonType.Sound)
 		{
 			hud.SetSound(index);
-			if (text != null) text.text = hud.GetSound(index).bankName;
+			hud.ResetTextNames();
 		}
 		
 	}

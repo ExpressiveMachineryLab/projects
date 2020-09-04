@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +34,6 @@ public class SoundManager : MonoBehaviour
 		if (blueBank == null) blueBank = BlueSounds[0];
 		if (greenBank == null) greenBank = GreenSounds[0];
 	}
-
 
 	public void GetAudio(AudioSource playClip, string lineColor, int pitch, int mode)
 	{
@@ -150,5 +150,31 @@ public class SoundManager : MonoBehaviour
 			source.Stop();
 			Destroy(source.gameObject);
 		}
+	}
+
+	public string SoundManagerToSO()
+	{
+		StyleHUD hud = FindObjectOfType<StyleHUD>();
+
+		string SOstring = "5";
+		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, redBank);
+		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, yellowBank);
+		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, blueBank);
+		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, greenBank);
+		
+		return SOstring;
+	}
+
+	public void SoundManagerFromSO(string SoundManagerSO)
+	{
+		StyleHUD hud = FindObjectOfType<StyleHUD>();
+		string[] SOstring = SoundManagerSO.Split(new[] { "," }, System.StringSplitOptions.None);
+
+		redBank = hud.availableSounds[int.Parse(SOstring[1])];
+		yellowBank = hud.availableSounds[int.Parse(SOstring[2])];
+		blueBank = hud.availableSounds[int.Parse(SOstring[3])];
+		greenBank = hud.availableSounds[int.Parse(SOstring[4])];
+
+		hud.ResetTextNames();
 	}
 }

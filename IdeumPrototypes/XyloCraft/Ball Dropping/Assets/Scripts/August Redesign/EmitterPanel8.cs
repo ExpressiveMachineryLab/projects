@@ -77,6 +77,25 @@ public class EmitterPanel8 : MonoBehaviour
 		if (numberText != null) numberText.text = "" + numberToShoot;
 	}
 
+	public string EmitterPanelToSO()
+	{
+		string SOstring = "4";
+		SOstring += "i";
+		SOstring += "," + (int)ifType;
+		SOstring += "," + numberToShoot;
+		SOstring += "," + (int)birdElement.color;
+
+		return SOstring;
+	}
+
+	public void EmitterPanelFromSO(string SOlinePanel)
+	{
+		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
+
+		ifType = (EmmiterIf)int.Parse(SOstring[1]);
+		numberToShoot = int.Parse(SOstring[2]);
+		birdElement.color = (ElemColor)int.Parse(SOstring[3]);
+	}
 }
 
 public enum EmmiterIf

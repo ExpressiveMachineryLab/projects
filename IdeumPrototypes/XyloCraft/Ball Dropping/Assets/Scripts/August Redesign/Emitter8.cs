@@ -11,9 +11,6 @@ public class Emitter8 : MonoBehaviour
 	public float speed = 5f;
 	public string launchKey;
 
-	public Vector3 position;
-	public Quaternion rotation;
-
 	private Transform firePoint;
 	private Animator emitterAnimator;
 
@@ -24,18 +21,10 @@ public class Emitter8 : MonoBehaviour
 	private bool isBeingHeld = false;
 	private bool isBeingRotated = false;
 	private float clickTimer;
-	private bool clickTimerOn;
 	private float lastLaunch = 0f;
 	private bool justLaunched = false;
 
 	private void Start()
-	{
-		Init();
-
-		//Debug.Log(JsonUtility.ToJson(this));
-	}
-
-	public void Init()
 	{
 		panels = FindObjectsOfType<EmitterPanel8>();
 		emitterAnimator = GetComponent<Animator>();
@@ -45,6 +34,8 @@ public class Emitter8 : MonoBehaviour
 		{
 			if (fire.gameObject.name == "FirePoint") firePoint = fire;
 		}
+
+		//Debug.Log(JsonUtility.ToJson(this));
 	}
 
 	void Update()
@@ -121,13 +112,11 @@ public class Emitter8 : MonoBehaviour
 		startPosY = mousePos.y - this.transform.localPosition.y;
 
 		clickTimer = 0;
-		clickTimerOn = true;
 		isBeingHeld = true;
 	}
 
 	private void OnMouseUp()
 	{
-		clickTimerOn = false;
 		if (clickTimer < 0.15)
 		{
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -196,19 +185,37 @@ public class Emitter8 : MonoBehaviour
 		}
 	}
 
-	public string EmitterToJSON()
+	public string BirdToSO()
 	{
-		position = transform.position;
-		rotation = transform.rotation;
+		string SOstring = "2";
+		SOstring += (int)color;
+		SOstring += "i";
+		SOstring += "," + speed;
+		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
+		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
 
-		return JsonUtility.ToJson(this);
+		return SOstring;
 	}
 
-	public void EmitterFromJSON(string json)
+	public void BirdFromSO(string SObird)
 	{
-		JsonUtility.FromJsonOverwrite(json, this);
+		string[] SOstring = SObird.Split(new[] { "," }, System.StringSplitOptions.None);
 
+		speed = float.Parse(SOstring[1]);
+		Vector3 position = new Vector3
+		{
+			x = float.Parse(SOstring[2]),
+			y = float.Parse(SOstring[3]),
+			z = float.Parse(SOstring[4])
+		};
 		transform.position = position;
+		Quaternion rotation = new Quaternion
+		{
+			w = float.Parse(SOstring[5]),
+			x = float.Parse(SOstring[6]),
+			y = float.Parse(SOstring[7]),
+			z = float.Parse(SOstring[8])
+		};
 		transform.rotation = rotation;
 	}
 }

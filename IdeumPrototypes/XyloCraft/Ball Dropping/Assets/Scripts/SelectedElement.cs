@@ -13,9 +13,8 @@ public class SelectedElement : MonoBehaviour
 	public Sprite Yellow;
 	public Sprite Blue;
 	public Sprite Green;
-    public Sprite Wild;
-
-	public Image secondImage;
+	public Sprite Wild;
+	public Sprite None;
 
 	private void Start()
 	{
@@ -39,6 +38,10 @@ public class SelectedElement : MonoBehaviour
 		{
 			SetWild();
 		}
+		else if (color == ElemColor.None)
+		{
+			SetNone();
+		}
 	}
 
 	public string GetCurrentColor() 
@@ -51,7 +54,6 @@ public class SelectedElement : MonoBehaviour
         this.gameObject.GetComponent<Image>().sprite = Red;
         currentColor = Red.name;
 		color = ElemColor.Red;
-		if (secondImage != null) secondImage.sprite = Red;
 	}
 
 	public void SetYellow()
@@ -59,7 +61,6 @@ public class SelectedElement : MonoBehaviour
 		this.gameObject.GetComponent<Image>().sprite = Yellow;
 		currentColor = Yellow.name;
 		color = ElemColor.Yellow;
-		if (secondImage != null) secondImage.sprite = Yellow;
 	}
 
 	public void SetBlue()
@@ -67,7 +68,6 @@ public class SelectedElement : MonoBehaviour
 		this.gameObject.GetComponent<Image>().sprite = Blue;
 		currentColor = Blue.name;
 		color = ElemColor.Blue;
-		if (secondImage != null) secondImage.sprite = Blue;
 	}
 
 	public void SetGreen()
@@ -75,7 +75,6 @@ public class SelectedElement : MonoBehaviour
         this.gameObject.GetComponent<Image>().sprite = Green;
         currentColor = Green.name;
 		color = ElemColor.Green;
-		if (secondImage != null) secondImage.sprite = Green;
 	}
 
 	public void SetWild()
@@ -83,7 +82,13 @@ public class SelectedElement : MonoBehaviour
 		this.gameObject.GetComponent<Image>().sprite = Wild;
 		currentColor = "All";
 		color = ElemColor.All;
-		if (secondImage != null) secondImage.sprite = Wild;
+	}
+
+	public void SetNone()
+	{
+		this.gameObject.GetComponent<Image>().sprite = None;
+		currentColor = "None";
+		color = ElemColor.None;
 	}
 
 	public void SetNext()
@@ -110,13 +115,6 @@ public class SelectedElement : MonoBehaviour
 		}
 	}
 
-    public void SetWildSprite() 
-    {
-        Sprite[] imageArray = { Blue, Red, Green, Yellow };
-        Sprite randomSprite = imageArray[(int)(Random.value * 4)];
-        currentColor = randomSprite.name;
-        this.gameObject.GetComponent<Image>().sprite = randomSprite;
-    }
 }
 
 public enum SelectedElementType
@@ -124,4 +122,14 @@ public enum SelectedElementType
 	Ball,
 	Line,
 	Emitter
+}
+
+public enum ElemColor
+{
+	Red,
+	Yellow,
+	Blue,
+	Green,
+	All,
+	None
 }

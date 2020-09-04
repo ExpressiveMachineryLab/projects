@@ -8,20 +8,9 @@ public class JSONInterpreter : MonoBehaviour
 	public string textInput;
 	public InputField textField;
 
-	public GameObject emitterRedPrefab;
-	public GameObject emitterYellowPrefab;
-	public GameObject emitterBluePrefab;
-	public GameObject emitterGreenPrefab;
-
-	public GameObject lineRedPrefab;
-	public GameObject lineYellowPrefab;
-	public GameObject lineBluedPrefab;
-	public GameObject lineGreenPrefab;
-
-	public GameObject ballRedPrefab;
-	public GameObject ballYellowPrefab;
-	public GameObject ballBluePrefab;
-	public GameObject ballGreenPrefab;
+	public GameObject[] emitterPrefabs;
+	public GameObject[] linePrefabs;
+	public GameObject[] ballPrefabs;
 
 	public void CopyToField()
 	{
@@ -35,64 +24,83 @@ public class JSONInterpreter : MonoBehaviour
 
 	public void GenerateJSON()
 	{
-		Emitter8[] emitters = FindObjectsOfType<Emitter8>();
-		Line8[] lines = FindObjectsOfType<Line8>();
-		Ball[] balls = FindObjectsOfType<Ball>();
-
 		textInput = "";
 
+		SoundManager soundMan = FindObjectOfType<SoundManager>();
+		textInput += soundMan.SoundManagerToSO() + "#";
+
+		EmitterPanel8[] emitterPanels = FindObjectsOfType<EmitterPanel8>();
+		foreach (EmitterPanel8 emitterPanel in emitterPanels)
+		{
+			textInput += emitterPanel.EmitterPanelToSO() + "#";
+		}
+		
+		LinePanel8[] linePanels = FindObjectsOfType<LinePanel8>();
+		foreach (LinePanel8 linePanel in linePanels)
+		{
+			textInput += linePanel.LinePanelToSO() + "#";
+		}
+
+		Emitter8[] emitters = FindObjectsOfType<Emitter8>();
 		foreach (Emitter8 emitter in emitters)
 		{
-			textInput += emitter.EmitterToJSON() + "##";
+			textInput += emitter.BirdToSO() + "#";
 		}
-
+		
+		Line8[] lines = FindObjectsOfType<Line8>();
 		foreach (Line8 line in lines)
 		{
-			textInput += line.LineToJSON() + "##";
+			textInput += line.LineToSO() + "#";
 		}
 
+		Ball[] balls = FindObjectsOfType<Ball>();
 		foreach (Ball ball in balls)
 		{
-			textInput += ball.BallToJSON() + "##";
+			textInput += ball.BallToSO() + "#";
 		}
 
-		textInput = textInput.Substring(0, textInput.Length - 2);
+		textInput = textInput.Substring(0, textInput.Length - 1);
 	}
 
 	public void ParseJSON()
 	{
-		string[] contents = textInput.Split(new[] { "##" }, System.StringSplitOptions.RemoveEmptyEntries);
+		string[] contentsArray = textInput.Split(new[] { "#" }, System.StringSplitOptions.None);
 
-		foreach (string item in contents)
+		foreach (string item in contentsArray)
 		{
-			switch (int.Parse(item[8].ToString()))
+			if (int.Parse(item[0].ToString()) == 0)
 			{
-				case 2:
-					GameObject newEmitter = null;
-					if (int.Parse(item[18].ToString()) == 0) newEmitter = Instantiate(emitterRedPrefab);
-					if (int.Parse(item[18].ToString()) == 1) newEmitter = Instantiate(emitterYellowPrefab);
-					if (int.Parse(item[18].ToString()) == 2) newEmitter = Instantiate(emitterBluePrefab);
-					if (int.Parse(item[18].ToString()) == 3) newEmitter = Instantiate(emitterGreenPrefab);
-					newEmitter.GetComponent<Emitter8>().EmitterFromJSON(item);
-					break;
-				case 1:
-					GameObject newLine = null;
-					if (int.Parse(item[18].ToString()) == 0) newLine = Instantiate(lineRedPrefab);
-					if (int.Parse(item[18].ToString()) == 1) newLine = Instantiate(lineYellowPrefab);
-					if (int.Parse(item[18].ToString()) == 2) newLine = Instantiate(lineBluedPrefab);
-					if (int.Parse(item[18].ToString()) == 3) newLine = Instantiate(lineGreenPrefab);
-					newLine.GetComponent<Line8>().Init();
-					newLine.GetComponent<Line8>().LineFromJSON(item);
-					break;
-				case 0:
-					GameObject newBall = null;
-					if (int.Parse(item[18].ToString()) == 0) newBall = Instantiate(ballRedPrefab);
-					if (int.Parse(item[18].ToString()) == 1) newBall = Instantiate(ballYellowPrefab);
-					if (int.Parse(item[18].ToString()) == 2) newBall = Instantiate(ballBluePrefab);
-					if (int.Parse(item[18].ToString()) == 3) newBall = Instantiate(ballGreenPrefab);
-					newBall.GetComponent<Ball>().BallFromJSON(item);
-					break;
+				GameObject newBall = Instantiate(ballPrefabs[int.Parse(item[1].ToString())]);
+				newBall.GetComponent<Ball>().BallFromSO(item);
+			}
+			else if (int.Parse(item[0].ToString()) == 1)
+			{
+				GameObject newLine = Instantiate(linePrefabs[int.Parse(item[1].ToString())]);
+				newLine.GetComponent<Line8>().LineFromSO(item);
+				newLine.transform.GetChild(0).gameObject.SetActive(false);
+				newLine.transform.GetChild(1).gameObject.SetActive(false);
+			}
+			else if (int.Parse(item[0].ToString()) == 2)
+			{
+				GameObject newBird = Instantiate(emitterPrefabs[int.Parse(item[1].ToString())]);
+				newBird.GetComponent<Emitter8>().BirdFromSO(item);
+				newBird.transform.GetChild(0).gameObject.SetActive(false);
+				newBird.transform.GetChild(1).gameObject.SetActive(false);
+			}
+			else if (int.Parse(item[0].ToString()) == 3)
+			{
+
+			}
+			else if (int.Parse(item[0].ToString()) == 4)
+			{
+
+			}
+			else if (int.Parse(item[0].ToString()) == 5)
+			{
+				FindObjectOfType<SoundManager>().SoundManagerFromSO(item);
 			}
 		}
+
+
 	}
 }

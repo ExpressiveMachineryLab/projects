@@ -196,6 +196,40 @@ public class LinePanel8 : MonoBehaviour
 			selectedVisual = SelectedPM.Off;
 		}
 	}
+
+	public string LinePanelToSO()
+	{
+		string SOstring = "3";
+		SOstring += "i";
+		SOstring += "," + (int)mode;
+		SOstring += "," + (int)selectedChord;
+		SOstring += "," + selectedRhythm;
+		SOstring += "," + (int)selectedVisual;
+		SOstring += "," + (chordPlus ? "1" : "0");
+		SOstring += "," + (chordMinus ? "1" : "0");
+		SOstring += "," + (visualPlus ? "1" : "0");
+		SOstring += "," + (visualMinus ? "1" : "0");
+		SOstring += "," + (int)ballElement.color;
+		SOstring += "," + (int)lineElement.color;
+
+		return SOstring;
+	}
+
+	public void LinePanelFromSO(string SOlinePanel)
+	{
+		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
+
+		mode = (PanelMode)int.Parse(SOstring[1]);
+		selectedChord = (SelectedPM)int.Parse(SOstring[2]);
+		selectedRhythm = int.Parse(SOstring[3]);
+		selectedVisual = (SelectedPM)int.Parse(SOstring[4]);
+		chordPlus = int.Parse(SOstring[5]) == 1 ? true : false;
+		chordMinus = int.Parse(SOstring[6]) == 1 ? true : false;
+		visualPlus = int.Parse(SOstring[7]) == 1 ? true : false;
+		visualMinus = int.Parse(SOstring[8]) == 1 ? true : false;
+		ballElement.color = (ElemColor)int.Parse(SOstring[9]);
+		lineElement.color = (ElemColor)int.Parse(SOstring[10]);
+	}
 }
 
 public enum PanelMode

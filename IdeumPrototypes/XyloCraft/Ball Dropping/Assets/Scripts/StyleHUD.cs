@@ -11,11 +11,11 @@ public class StyleHUD : MonoBehaviour
 	public GameObject buttonPrefab;
 	private ElemColor currentColor = ElemColor.Red;
 
-	public int styleIndex = 0;
-	public int redIndex = 0;
-	public int yellowIndex = 0;
-	public int blueIndex = 0;
-	public int greenIndex = 0;
+	//public int styleIndex = 0;
+	//public int redIndex = 0;
+	//public int yellowIndex = 0;
+	//public int blueIndex = 0;
+	//public int greenIndex = 0;
 
 	public GridLayoutGroup styleGrid;
 	public GridLayoutGroup[] soundGrids;
@@ -53,7 +53,6 @@ public class StyleHUD : MonoBehaviour
 				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 				newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
 				newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
-				newButton.gameObject.GetComponent<GridButtonComponent>().text = grid.transform.GetComponentInParent<Text>();
 			}
 		}
 
@@ -78,22 +77,18 @@ public class StyleHUD : MonoBehaviour
 			}
 		}
 
-		SetStyle(styleIndex);
+		GetComponentInChildren<RawImage>().gameObject.SetActive(false);
+		ResetTextNames();
 	}
 
 	public void SetStyle(int index)
 	{
-		styleIndex = index;
+		soundMan.redBank = availableStyles[index].redBank;
+		soundMan.yellowBank = availableStyles[index].yellowBank;
+		soundMan.blueBank = availableStyles[index].blueBank;
+		soundMan.greenBank = availableStyles[index].greenBank;
 
-		soundMan.redBank = availableStyles[styleIndex].redBank;
-		soundMan.yellowBank = availableStyles[styleIndex].yellowBank;
-		soundMan.blueBank = availableStyles[styleIndex].blueBank;
-		soundMan.greenBank = availableStyles[styleIndex].greenBank;
-
-		if (redText != null) redText.text = availableStyles[styleIndex].redBank.bankName;
-		if (yellowText != null) yellowText.text = availableStyles[styleIndex].yellowBank.bankName;
-		if (blueText != null) blueText.text = availableStyles[styleIndex].blueBank.bankName;
-		if (greenText != null) greenText.text = availableStyles[styleIndex].greenBank.bankName;
+		ResetTextNames();
 	}
 
 	public void SetSound(int index)
@@ -102,19 +97,15 @@ public class StyleHUD : MonoBehaviour
 		{
 			case ElemColor.Red:
 				soundMan.redBank = availableSounds[index];
-				redIndex = index;
 				break;
 			case ElemColor.Yellow:
 				soundMan.yellowBank = availableSounds[index];
-				yellowIndex = index;
 				break;
 			case ElemColor.Blue:
 				soundMan.blueBank = availableSounds[index];
-				blueIndex = index;
 				break;
 			case ElemColor.Green:
 				soundMan.greenBank = availableSounds[index];
-				greenIndex = index;
 				break;
 		}
 	}
@@ -147,5 +138,13 @@ public class StyleHUD : MonoBehaviour
 	public void SetColorToGreen()
 	{
 		currentColor = ElemColor.Green;
+	}
+
+	public void ResetTextNames()
+	{
+		if (redText != null) redText.text = soundMan.redBank.bankName;
+		if (yellowText != null) yellowText.text = soundMan.yellowBank.bankName;
+		if (blueText != null) blueText.text = soundMan.blueBank.bankName;
+		if (greenText != null) greenText.text = soundMan.greenBank.bankName;
 	}
 }
