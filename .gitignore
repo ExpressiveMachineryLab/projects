@@ -3,5 +3,10 @@ Logs/
 Temp/
 *.csproj
 
+.vs
+*.suo
+*.ide
+*.ide-wal
+
 *.sln
 *.cache
