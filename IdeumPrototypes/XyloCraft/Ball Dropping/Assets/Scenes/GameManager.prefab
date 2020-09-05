@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800430672042037976}
-  - component: {fileID: 2800430672042037980}
   - component: {fileID: 2800430672042037981}
   - component: {fileID: 2800430672042037977}
   m_Layer: 0
@@ -33,34 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2800430672042037980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800430672042037978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b458096f821c4847842a8b8137b510d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlueLine: {fileID: 1694848394240150849, guid: 00141276f8fba024aba7cfb3ed628ef9,
-    type: 3}
-  GreenLine: {fileID: 3237701782724201543, guid: b0be61f53180f1b459ddf8f1b24942fc,
-    type: 3}
-  RedLine: {fileID: 1624983559148059594, guid: 4f4406331d769aa468c6c696249c13eb, type: 3}
-  YellowLine: {fileID: 92337331368953774, guid: cf7091d3e0bf71f43b3e3ae23f2f0197,
-    type: 3}
-  BlueLineSprite: {fileID: 21300000, guid: e57010c6f6df2434ab2c8d1eae207ded, type: 3}
-  GreenLineSprite: {fileID: 21300000, guid: f8ccd90bf5705824189b9951f87d3766, type: 3}
-  RedLineSprite: {fileID: 21300000, guid: d543fe99986babc4499d1ff9d07c804d, type: 3}
-  YellowLineSprite: {fileID: 21300000, guid: 6f6afe22fdc5347439532a0e31ba6b1f, type: 3}
-  BlueLineHitSprite: {fileID: 21300000, guid: a93001c97667bc94999e55df497a2bc9, type: 3}
-  GreenLineHitSprite: {fileID: 21300000, guid: 8295f64f4fb8b6044b07b7640ae283a0, type: 3}
-  RedLineHitSprite: {fileID: 21300000, guid: 4dbd2c0a59863fb49b4e8bb4c9743b4f, type: 3}
-  YellowLineHitSprite: {fileID: 21300000, guid: c7a7bb3bcece98d41b94b1ce17d96abd,
-    type: 3}
 --- !u!114 &2800430672042037981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,18 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf4ec0edbcb11d49b3635fd55c9b1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlueSounds:
-  - {fileID: 11400000, guid: 25c5326a1d6746545a138e2c5246f005, type: 2}
-  - {fileID: 11400000, guid: 91bffa70a1e0f3f4ab9789f46299db70, type: 2}
-  - {fileID: 11400000, guid: 0113d79fb8fc7fb4885bcf69244248c7, type: 2}
-  - {fileID: 11400000, guid: 1aeba67e4242e10408294843e9b56c6f, type: 2}
-  - {fileID: 11400000, guid: ea67d15e67b8b0542a297446ecfdde27, type: 2}
-  GreenSounds:
-  - {fileID: 11400000, guid: cb09449ad7597cc458923e8b718878ed, type: 2}
-  - {fileID: 11400000, guid: d55b0e63a2af96a4890337d8ddcb50a6, type: 2}
-  - {fileID: 11400000, guid: e3fee17766475074cbed6b456130589a, type: 2}
-  - {fileID: 11400000, guid: 1aad245f06150b74d9a9638b523db8c6, type: 2}
-  - {fileID: 11400000, guid: 924a9a0623289ff4db74446ea7bdd7af, type: 2}
+  redBank: {fileID: 0}
+  yellowBank: {fileID: 0}
+  blueBank: {fileID: 0}
+  greenBank: {fileID: 0}
   RedSounds:
   - {fileID: 11400000, guid: b21b79321f7040243bb4e202f8cf9f95, type: 2}
   - {fileID: 11400000, guid: 23e7fcdaa34170a4a98a9ccbb5fe9fb5, type: 2}
@@ -97,6 +60,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 09aa295ca54a7854c944745b1922b735, type: 2}
   - {fileID: 11400000, guid: 052bd5cb38ec85c4391304de41adeb74, type: 2}
   - {fileID: 11400000, guid: 2cc749a9c8a01904dab32988bd02cd8a, type: 2}
+  BlueSounds:
+  - {fileID: 11400000, guid: 25c5326a1d6746545a138e2c5246f005, type: 2}
+  - {fileID: 11400000, guid: 91bffa70a1e0f3f4ab9789f46299db70, type: 2}
+  - {fileID: 11400000, guid: 0113d79fb8fc7fb4885bcf69244248c7, type: 2}
+  - {fileID: 11400000, guid: 1aeba67e4242e10408294843e9b56c6f, type: 2}
+  - {fileID: 11400000, guid: ea67d15e67b8b0542a297446ecfdde27, type: 2}
+  GreenSounds:
+  - {fileID: 11400000, guid: cb09449ad7597cc458923e8b718878ed, type: 2}
+  - {fileID: 11400000, guid: d55b0e63a2af96a4890337d8ddcb50a6, type: 2}
+  - {fileID: 11400000, guid: e3fee17766475074cbed6b456130589a, type: 2}
+  - {fileID: 11400000, guid: 1aad245f06150b74d9a9638b523db8c6, type: 2}
+  - {fileID: 11400000, guid: 924a9a0623289ff4db74446ea7bdd7af, type: 2}
+  audioSourceArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  audioSourceIndex: 0
 --- !u!114 &2800430672042037977
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,11 +29,25 @@ public class ToggleSelected : MonoBehaviour
         if (isToggled)
         {
             this.gameObject.GetComponent<Image>().sprite = SelectedSprite;
-            //TangibleController.SetEmitter(emitter);
         }
         else
         {
             this.gameObject.GetComponent<Image>().sprite = UnselectedSprite;
         }
     }
+
+	public void SetToggle(bool newToggle)
+	{
+		isToggled = newToggle;
+
+		if (isToggled)
+		{
+			this.gameObject.GetComponent<Image>().sprite = SelectedSprite;
+		}
+		else
+		{
+			this.gameObject.GetComponent<Image>().sprite = UnselectedSprite;
+		}
+
+	}
 }

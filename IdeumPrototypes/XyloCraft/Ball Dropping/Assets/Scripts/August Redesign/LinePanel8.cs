@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LinePanel8 : MonoBehaviour
 {
+	public string id = "";
+
 	public PanelMode mode = PanelMode.Chord;
 
 	public SelectedElement ballElement;
@@ -32,6 +34,17 @@ public class LinePanel8 : MonoBehaviour
 		{
 			if (element.type == SelectedElementType.Ball) ballElement = element;
 			if (element.type == SelectedElementType.Line) lineElement = element;
+		}
+
+		if (id == "")
+		{
+			id = "3";
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(1);
+		}
+		else if (!id[0].Equals("3".ToCharArray()[0]))
+		{
+			id = "3" + id;
 		}
 	}
 
@@ -199,12 +212,9 @@ public class LinePanel8 : MonoBehaviour
 
 	public string LinePanelToSO()
 	{
-		string SOstring = "3";
-		SOstring += "i";
+		string SOstring = id;
 		SOstring += "," + (int)mode;
-		SOstring += "," + (int)selectedChord;
 		SOstring += "," + selectedRhythm;
-		SOstring += "," + (int)selectedVisual;
 		SOstring += "," + (chordPlus ? "1" : "0");
 		SOstring += "," + (chordMinus ? "1" : "0");
 		SOstring += "," + (visualPlus ? "1" : "0");
@@ -217,18 +227,38 @@ public class LinePanel8 : MonoBehaviour
 
 	public void LinePanelFromSO(string SOlinePanel)
 	{
+		chordItems.SetActive(true);
+		rhythmItems.SetActive(true);
+		visualItems.SetActive(true);
+		ToggleSelected[] toggles = GetComponentsInChildren<ToggleSelected>();
 		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		mode = (PanelMode)int.Parse(SOstring[1]);
-		selectedChord = (SelectedPM)int.Parse(SOstring[2]);
-		selectedRhythm = int.Parse(SOstring[3]);
-		selectedVisual = (SelectedPM)int.Parse(SOstring[4]);
-		chordPlus = int.Parse(SOstring[5]) == 1 ? true : false;
-		chordMinus = int.Parse(SOstring[6]) == 1 ? true : false;
-		visualPlus = int.Parse(SOstring[7]) == 1 ? true : false;
-		visualMinus = int.Parse(SOstring[8]) == 1 ? true : false;
-		ballElement.color = (ElemColor)int.Parse(SOstring[9]);
-		lineElement.color = (ElemColor)int.Parse(SOstring[10]);
+		modeDropdown.value = (int)mode;
+		UpdateFromDropdown();
+
+		selectedRhythm = int.Parse(SOstring[2]);
+		rhythmText.text = "" + selectedRhythm;
+
+		chordPlus = int.Parse(SOstring[3]) == 1 ? true : false;
+		toggles[0].SetToggle(chordPlus);
+
+		chordMinus = int.Parse(SOstring[4]) == 1 ? true : false;
+		toggles[1].SetToggle(chordMinus);
+		SetSelectedChord();
+
+		visualPlus = int.Parse(SOstring[5]) == 1 ? true : false;
+		toggles[2].SetToggle(visualPlus);
+
+		visualMinus = int.Parse(SOstring[6]) == 1 ? true : false;
+		toggles[3].SetToggle(visualMinus);
+		SetSelectedVisual();
+
+		ballElement.color = (ElemColor)int.Parse(SOstring[7]);
+		ballElement.UpdateImage();
+
+		lineElement.color = (ElemColor)int.Parse(SOstring[8]);
+		lineElement.UpdateImage();
 	}
 }
 

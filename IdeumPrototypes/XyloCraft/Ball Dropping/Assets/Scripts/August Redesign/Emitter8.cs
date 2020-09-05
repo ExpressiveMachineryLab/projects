@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Emitter8 : MonoBehaviour
 {
 	public SelectedElementType type = SelectedElementType.Emitter;
+	public string id = "";
 	public ElemColor color;
 	public GameObject ballPrefab;
 	public float speed = 5f;
@@ -113,6 +114,13 @@ public class Emitter8 : MonoBehaviour
 
 		clickTimer = 0;
 		isBeingHeld = true;
+
+		if (id == "")
+		{
+			id = "2" + (int)color;
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(8);
+		}
 	}
 
 	private void OnMouseUp()
@@ -187,9 +195,7 @@ public class Emitter8 : MonoBehaviour
 
 	public string BirdToSO()
 	{
-		string SOstring = "2";
-		SOstring += (int)color;
-		SOstring += "i";
+		string SOstring = id;
 		SOstring += "," + speed;
 		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
 		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;

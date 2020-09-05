@@ -157,23 +157,26 @@ public class SoundManager : MonoBehaviour
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 
 		string SOstring = "5";
-		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, redBank);
-		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, yellowBank);
-		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, blueBank);
-		SOstring += "," + Array.IndexOf<SoundBank>(hud.availableSounds, greenBank);
-		
+		SOstring += "," + Array.IndexOf(hud.availableSounds, redBank);
+		SOstring += "," + Array.IndexOf(hud.availableSounds, yellowBank);
+		SOstring += "," + Array.IndexOf(hud.availableSounds, blueBank);
+		SOstring += "," + Array.IndexOf(hud.availableSounds, greenBank);
+		SOstring += "," + FindObjectOfType<GameManager>().GetSpeedMultiplier();
+
+
 		return SOstring;
 	}
 
 	public void SoundManagerFromSO(string SoundManagerSO)
 	{
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
-		string[] SOstring = SoundManagerSO.Split(new[] { "," }, System.StringSplitOptions.None);
+		string[] SOstring = SoundManagerSO.Split(new[] { "," }, StringSplitOptions.None);
 
 		redBank = hud.availableSounds[int.Parse(SOstring[1])];
 		yellowBank = hud.availableSounds[int.Parse(SOstring[2])];
 		blueBank = hud.availableSounds[int.Parse(SOstring[3])];
 		greenBank = hud.availableSounds[int.Parse(SOstring[4])];
+		FindObjectOfType<GameManager>().SetSpeedMultiplier(float.Parse(SOstring[5]));
 
 		hud.ResetTextNames();
 	}

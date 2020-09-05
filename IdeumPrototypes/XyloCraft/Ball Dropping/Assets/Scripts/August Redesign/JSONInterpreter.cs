@@ -65,6 +65,8 @@ public class JSONInterpreter : MonoBehaviour
 	public void ParseJSON()
 	{
 		string[] contentsArray = textInput.Split(new[] { "#" }, System.StringSplitOptions.None);
+		EmitterPanel8[] emitterPanels = FindObjectsOfType<EmitterPanel8>();
+		LinePanel8[] linePanels = FindObjectsOfType<LinePanel8>();
 
 		foreach (string item in contentsArray)
 		{
@@ -89,10 +91,25 @@ public class JSONInterpreter : MonoBehaviour
 			}
 			else if (int.Parse(item[0].ToString()) == 3)
 			{
-
+				string[] SOstring = item.Split(new[] { "," }, System.StringSplitOptions.None);
+				foreach (LinePanel8 linePanel in linePanels)
+				{
+					if (SOstring[0] == linePanel.id)
+					{
+						linePanel.LinePanelFromSO(item);
+					}
+				}
 			}
 			else if (int.Parse(item[0].ToString()) == 4)
 			{
+				string[] SOstring = item.Split(new[] { "," }, System.StringSplitOptions.None);
+				foreach (EmitterPanel8 emitterPanel in emitterPanels)
+				{
+					if (SOstring[0] == emitterPanel.id)
+					{
+						emitterPanel.EmitterPanelFromSO(item);
+					}
+				}
 
 			}
 			else if (int.Parse(item[0].ToString()) == 5)
@@ -102,5 +119,32 @@ public class JSONInterpreter : MonoBehaviour
 		}
 
 
+	}
+}
+
+public class RandomString
+{
+	public string CreateRandomString(int stringLength = 10)
+	{
+		int _stringLength = stringLength - 1;
+		string randomString = "";
+		string[] characters = new string[] { "a", "b", "c", "d", "e",
+											 "f", "g", "h", "i", "j",
+											 "k", "l", "m", "n", "o",
+											 "p", "q", "r", "s", "t",
+											 "u", "v", "w", "x", "y",
+											 "z", "A", "B", "C", "D",
+											 "E", "F", "G", "H", "I",
+											 "J", "K", "L", "M", "N",
+											 "O", "P", "Q", "R", "S",
+											 "T", "U", "V", "W", "X",
+											 "Y", "Z", "1", "2", "3",
+											 "4", "5", "6", "7", "8",
+											 "9", "0"};
+		for (int i = 0; i <= _stringLength; i++)
+		{
+			randomString = randomString + characters[Random.Range(0, characters.Length)];
+		}
+		return randomString;
 	}
 }

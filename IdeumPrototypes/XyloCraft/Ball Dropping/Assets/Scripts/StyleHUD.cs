@@ -9,7 +9,7 @@ public class StyleHUD : MonoBehaviour
 	public StyleBank[] availableStyles;
 	public SoundBank[] availableSounds;
 	public GameObject buttonPrefab;
-	private ElemColor currentColor = ElemColor.Red;
+	public ElemColor currentColor = ElemColor.Red;
 
 	//public int styleIndex = 0;
 	//public int redIndex = 0;

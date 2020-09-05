@@ -130,12 +130,18 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public float GetSpeedMultiplier() 
-    {
-        return speed;
-    }
+	public float GetSpeedMultiplier()
+	{
+		return speed;
+	}
 
-    public int GetSoundState() 
+	public void SetSpeedMultiplier(float newSpeed)
+	{
+		speed = newSpeed;
+		speedMultiplier.value = newSpeed;
+	}
+
+	public int GetSoundState() 
     {
         return Sound;
     }
@@ -148,6 +154,7 @@ public class GameManager : MonoBehaviour
         }
         selectionManager.DeleteSelection(selectionManager.selectedObject.gameObject);
     }
+
     public void ResetApplication()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

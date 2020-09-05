@@ -6,6 +6,7 @@ using UnityEngine;
 public class Line8 : MonoBehaviour
 {
 	public SelectedElementType type = SelectedElementType.Line;
+	public string id = "";
 	public ElemColor color;
 
 	public Sprite[] chordSprites; //should always be of length 5
@@ -44,7 +45,12 @@ public class Line8 : MonoBehaviour
 
 		lineSprite.sprite = chordSprites[pitchLevel];
 
-		//Debug.Log(JsonUtility.ToJson(this));
+		if (id == "")
+		{
+			id = "1" + (int)color;
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(8);
+		}
 	}
 
 	private void Update()
@@ -288,9 +294,7 @@ public class Line8 : MonoBehaviour
 
 	public string LineToSO()
 	{
-		string SOstring = "1";
-		SOstring += (int)color;
-		SOstring += "i";
+		string SOstring = id;
 		SOstring += "," + speed;
 		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
 		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;

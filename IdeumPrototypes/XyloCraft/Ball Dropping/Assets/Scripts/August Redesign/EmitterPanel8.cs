@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EmitterPanel8 : MonoBehaviour
 {
+	public string id = "";
 	public EmmiterIf ifType;
 	public SelectedElement birdElement;
 	public int numberToShoot = 1;
@@ -18,6 +19,17 @@ public class EmitterPanel8 : MonoBehaviour
 		foreach (SelectedElement element in elements)
 		{
 			if (element.type == SelectedElementType.Emitter) birdElement = element;
+		}
+
+		if (id == "")
+		{
+			id = "4";
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(1);
+		}
+		else if (!id[0].Equals("4".ToCharArray()[0]))
+		{
+			id = "4" + id;
 		}
 	}
 
@@ -79,8 +91,7 @@ public class EmitterPanel8 : MonoBehaviour
 
 	public string EmitterPanelToSO()
 	{
-		string SOstring = "4";
-		SOstring += "i";
+		string SOstring = id;
 		SOstring += "," + (int)ifType;
 		SOstring += "," + numberToShoot;
 		SOstring += "," + (int)birdElement.color;
@@ -93,8 +104,13 @@ public class EmitterPanel8 : MonoBehaviour
 		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		ifType = (EmmiterIf)int.Parse(SOstring[1]);
+		actionDropdown.value = int.Parse(SOstring[1]);
+
 		numberToShoot = int.Parse(SOstring[2]);
+		numberText.text = "" + int.Parse(SOstring[2]);
+
 		birdElement.color = (ElemColor)int.Parse(SOstring[3]);
+		birdElement.UpdateImage();
 	}
 }
 

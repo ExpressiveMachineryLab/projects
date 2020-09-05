@@ -16,32 +16,14 @@ public class SelectedElement : MonoBehaviour
 	public Sprite Wild;
 	public Sprite None;
 
+	public Image secondImage;
+
+	private Image image;
+
 	private void Start()
 	{
-		if (color == ElemColor.Red)
-		{
-			SetRed();
-		}
-		else if (color == ElemColor.Yellow)
-		{
-			SetYellow();
-		}
-		else if (color == ElemColor.Blue)
-		{
-			SetBlue();
-		}
-		else if (color == ElemColor.Green)
-		{
-			SetGreen();
-		}
-		else if (color == ElemColor.All)
-		{
-			SetWild();
-		}
-		else if (color == ElemColor.None)
-		{
-			SetNone();
-		}
+		image = gameObject.GetComponent<Image>();
+		UpdateImage();
 	}
 
 	public string GetCurrentColor() 
@@ -51,42 +33,48 @@ public class SelectedElement : MonoBehaviour
 
     public void SetRed()
     {
-        this.gameObject.GetComponent<Image>().sprite = Red;
-        currentColor = Red.name;
+        image.sprite = Red;
+		if (secondImage != null) secondImage.sprite = Red;
+		currentColor = Red.name;
 		color = ElemColor.Red;
 	}
 
 	public void SetYellow()
 	{
-		this.gameObject.GetComponent<Image>().sprite = Yellow;
+		image.sprite = Yellow;
+		if (secondImage != null) secondImage.sprite = Yellow;
 		currentColor = Yellow.name;
 		color = ElemColor.Yellow;
 	}
 
 	public void SetBlue()
 	{
-		this.gameObject.GetComponent<Image>().sprite = Blue;
+		image.sprite = Blue;
+		if (secondImage != null) secondImage.sprite = Blue;
 		currentColor = Blue.name;
 		color = ElemColor.Blue;
 	}
 
 	public void SetGreen()
     {
-        this.gameObject.GetComponent<Image>().sprite = Green;
-        currentColor = Green.name;
+		image.sprite = Green;
+		if (secondImage != null) secondImage.sprite = Green;
+		currentColor = Green.name;
 		color = ElemColor.Green;
 	}
 
 	public void SetWild()
 	{
-		this.gameObject.GetComponent<Image>().sprite = Wild;
+		image.sprite = Wild;
+		if (secondImage != null) secondImage.sprite = Wild;
 		currentColor = "All";
 		color = ElemColor.All;
 	}
 
 	public void SetNone()
 	{
-		this.gameObject.GetComponent<Image>().sprite = None;
+		image.sprite = None;
+		if (secondImage != null) secondImage.sprite = None;
 		currentColor = "None";
 		color = ElemColor.None;
 	}
@@ -113,6 +101,35 @@ public class SelectedElement : MonoBehaviour
 		{
 			SetRed();
 		}
+	}
+
+	public void UpdateImage()
+	{
+		if (color == ElemColor.Red)
+		{
+			SetRed();
+		}
+		else if (color == ElemColor.Yellow)
+		{
+			SetYellow();
+		}
+		else if (color == ElemColor.Blue)
+		{
+			SetBlue();
+		}
+		else if (color == ElemColor.Green)
+		{
+			SetGreen();
+		}
+		else if (color == ElemColor.All)
+		{
+			SetWild();
+		}
+		else if (color == ElemColor.None)
+		{
+			SetNone();
+		}
+
 	}
 
 }

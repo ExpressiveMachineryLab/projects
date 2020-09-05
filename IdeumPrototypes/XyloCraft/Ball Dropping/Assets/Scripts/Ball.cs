@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Ball : MonoBehaviour
 {
 	public SelectedElementType type = SelectedElementType.Ball;
+	public string id = "";
 	public ElemColor color;
     public float speed = 20f;
     public Sprite originalSprite;
@@ -21,7 +22,12 @@ public class Ball : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed * gameManager.GetSpeedMultiplier();
 
-		//Debug.Log(JsonUtility.ToJson(this));
+		if (id == "")
+		{
+			id = "0" + (int)color;
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(8);
+		}
 	}
 
     void Update()
@@ -47,9 +53,7 @@ public class Ball : MonoBehaviour
 
 	public string BallToSO()
 	{
-		string SOstring = "0";
-		SOstring += (int)color;
-		SOstring += "i";
+		string SOstring = id;
 		SOstring += "," + speed;
 		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
 		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
