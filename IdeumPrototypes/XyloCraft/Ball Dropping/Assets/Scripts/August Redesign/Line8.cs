@@ -29,6 +29,8 @@ public class Line8 : MonoBehaviour
 	private float startPosY;
 	private bool isBeingHeld = false;
 	private bool isBeingRotated = false;
+
+	private bool soudedThisFrame = false;
 	
 
 	private void Start()
@@ -50,6 +52,10 @@ public class Line8 : MonoBehaviour
 			id = "1" + (int)color;
 			RandomString randomstring = new RandomString();
 			id += randomstring.CreateRandomString(8);
+		}
+		else if (!id[0].Equals("1".ToCharArray()[0]))
+		{
+			id = "1" + id;
 		}
 	}
 
@@ -84,6 +90,8 @@ public class Line8 : MonoBehaviour
 		{
 			isBeingRotated = false;
 		}
+
+		soudedThisFrame = false;
 	}
 
 	private void OnMouseDown()
@@ -231,6 +239,8 @@ public class Line8 : MonoBehaviour
 
 	private void MakeSound()
 	{
+		if (soudedThisFrame) return;
+
 		if (playClip != null)
 		{
 			soundMan.GetAudio(playClip, color, pitchLevel);

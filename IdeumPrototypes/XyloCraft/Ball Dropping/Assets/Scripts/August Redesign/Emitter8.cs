@@ -36,7 +36,16 @@ public class Emitter8 : MonoBehaviour
 			if (fire.gameObject.name == "FirePoint") firePoint = fire;
 		}
 
-		//Debug.Log(JsonUtility.ToJson(this));
+		if (id == "")
+		{
+			id = "2" + (int)color;
+			RandomString randomstring = new RandomString();
+			id += randomstring.CreateRandomString(8);
+		}
+		else if (!id[0].Equals("2".ToCharArray()[0]))
+		{
+			id = "2" + id;
+		}
 	}
 
 	void Update()
@@ -114,13 +123,6 @@ public class Emitter8 : MonoBehaviour
 
 		clickTimer = 0;
 		isBeingHeld = true;
-
-		if (id == "")
-		{
-			id = "2" + (int)color;
-			RandomString randomstring = new RandomString();
-			id += randomstring.CreateRandomString(8);
-		}
 	}
 
 	private void OnMouseUp()

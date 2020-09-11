@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private int mode = 0;
-
 	public SoundBank redBank;
 	public SoundBank yellowBank;
 	public SoundBank blueBank;

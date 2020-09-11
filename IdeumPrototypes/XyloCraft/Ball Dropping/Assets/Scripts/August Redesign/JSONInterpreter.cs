@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 public class JSONInterpreter : MonoBehaviour
 {
+	[DllImport("__Internal")]
+	static extern void JSInitialize(); // in the javascript
+
 	public string textInput;
 	public InputField textField;
 
@@ -12,59 +16,78 @@ public class JSONInterpreter : MonoBehaviour
 	public GameObject[] linePrefabs;
 	public GameObject[] ballPrefabs;
 
+	private void Start()
+	{
+		Debug.Log("scene is ready");
+
+		StartCoroutine(LateStart());
+	}
+
 	public void CopyToField()
 	{
 		textField.text = textInput;
+		textInput.CopyToClipboard();
 	}
 
 	public void CopyFromField()
 	{
 		textInput = textField.text;
+		textInput.CopyToClipboard();
 	}
 
-	public void GenerateJSON()
+	public void SetTextInput(string newInput)
+	{
+		textInput = newInput;
+	}
+
+	public string GetTextInput()
+	{
+		return textInput;
+	}
+
+	public void GenerateSaveDataString()
 	{
 		textInput = "";
 
 		SoundManager soundMan = FindObjectOfType<SoundManager>();
-		textInput += soundMan.SoundManagerToSO() + "#";
+		textInput += soundMan.SoundManagerToSO() + "_";
 
 		EmitterPanel8[] emitterPanels = FindObjectsOfType<EmitterPanel8>();
 		foreach (EmitterPanel8 emitterPanel in emitterPanels)
 		{
-			textInput += emitterPanel.EmitterPanelToSO() + "#";
+			textInput += emitterPanel.EmitterPanelToSO() + "_";
 		}
 		
 		LinePanel8[] linePanels = FindObjectsOfType<LinePanel8>();
 		foreach (LinePanel8 linePanel in linePanels)
 		{
-			textInput += linePanel.LinePanelToSO() + "#";
+			textInput += linePanel.LinePanelToSO() + "_";
 		}
 
 		Emitter8[] emitters = FindObjectsOfType<Emitter8>();
 		foreach (Emitter8 emitter in emitters)
 		{
-			textInput += emitter.BirdToSO() + "#";
+			textInput += emitter.BirdToSO() + "_";
 		}
 		
 		Line8[] lines = FindObjectsOfType<Line8>();
 		foreach (Line8 line in lines)
 		{
-			textInput += line.LineToSO() + "#";
+			textInput += line.LineToSO() + "_";
 		}
 
 		Ball[] balls = FindObjectsOfType<Ball>();
 		foreach (Ball ball in balls)
 		{
-			textInput += ball.BallToSO() + "#";
+			textInput += ball.BallToSO() + "_";
 		}
 
 		textInput = textInput.Substring(0, textInput.Length - 1);
 	}
 
-	public void ParseJSON()
+	public void ParseSaveDataString()
 	{
-		string[] contentsArray = textInput.Split(new[] { "#" }, System.StringSplitOptions.None);
+		string[] contentsArray = textInput.Split(new[] { "_" }, System.StringSplitOptions.None);
 		EmitterPanel8[] emitterPanels = FindObjectsOfType<EmitterPanel8>();
 		LinePanel8[] linePanels = FindObjectsOfType<LinePanel8>();
 
@@ -120,6 +143,24 @@ public class JSONInterpreter : MonoBehaviour
 
 
 	}
+
+	public void GetSharableLink()
+	{
+		GenerateSaveDataString();
+
+		string[] useURL = Application.absoluteURL.Split(new[] { "?" }, System.StringSplitOptions.None);
+
+		textField.text = useURL[0] + "?game=" + textInput;
+		textInput.CopyToClipboard();
+	}
+
+	IEnumerator LateStart()
+	{
+		yield return new WaitForEndOfFrame();
+#if !UNITY_EDITOR && UNITY_WEBGL
+        JSInitialize();
+#endif
+	}
 }
 
 public class RandomString
@@ -146,5 +187,16 @@ public class RandomString
 			randomString = randomString + characters[Random.Range(0, characters.Length)];
 		}
 		return randomString;
+	}
+}
+
+public static class ClipboardExtension
+{
+	/// <summary>
+	/// Puts the string into the Clipboard.
+	/// </summary>
+	public static void CopyToClipboard(this string str)
+	{
+		GUIUtility.systemCopyBuffer = str;
 	}
 }

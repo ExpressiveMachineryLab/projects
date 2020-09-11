@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/FourBox Stable.unity
-    guid: e8bad3df5a60b4c4baf98cc81c079c6d
   - enabled: 1
     path: Assets/Scenes/FourBox Dev.unity
     guid: 83843ef653c304845bf94ab455f807dc

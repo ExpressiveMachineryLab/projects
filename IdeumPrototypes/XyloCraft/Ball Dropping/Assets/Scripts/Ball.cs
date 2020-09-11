@@ -28,6 +28,10 @@ public class Ball : MonoBehaviour
 			RandomString randomstring = new RandomString();
 			id += randomstring.CreateRandomString(8);
 		}
+		else if (!id[0].Equals("0".ToCharArray()[0]))
+		{
+			id = "0" + id;
+		}
 	}
 
     void Update()
