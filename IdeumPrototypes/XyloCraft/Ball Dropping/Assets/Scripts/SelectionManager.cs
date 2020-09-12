@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject selectedObject;
+    public GameObject[] selectedObject = new GameObject[0];
 	
     void Update()
     {
@@ -13,52 +13,45 @@ public class SelectionManager : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null && hit.collider.tag != "Rotator")
+            if (hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball")
             {
-                SetSelection(hit.collider.gameObject);
+                SetSelection(new GameObject[] { hit.collider.gameObject });
             }
         }
     }
 
-    private void SetSelection(GameObject selectedGameObject)
+    private void SetSelection(GameObject[] selectedGameObject)
     {
-        //Debug.Log(selectedGameObject + " selected");
-        if (!selectedGameObject.tag.Contains("Ball"))
+        if (selectedObject.Length >= 1)
         {
-            if (selectedObject != null)
-            {
-                selectedObject.transform.GetChild(0).gameObject.SetActive(false);
-                selectedObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
+			foreach (GameObject item in selectedObject)
+			{
+				item.transform.GetChild(0).gameObject.SetActive(false);
+				item.transform.GetChild(1).gameObject.SetActive(false);
 
-            selectedObject = selectedGameObject;
-            selectedObject.transform.GetChild(0).gameObject.SetActive(true);
-            selectedObject.transform.GetChild(1).gameObject.SetActive(true);
+			}
         }
-        
+
+        selectedObject = selectedGameObject;
+		foreach (GameObject item in selectedObject)
+		{
+			item.transform.GetChild(0).gameObject.SetActive(true);
+			item.transform.GetChild(1).gameObject.SetActive(true);
+
+		}
     }
 
-    public void NewSelection(GameObject selectedGameObject)
+    public void NewSelection(GameObject[] selectedGameObject)
     {
         SetSelection(selectedGameObject);
     }
 
-    public void DeleteSelection(GameObject selectedGameObject)
+    public void DeleteSelection(GameObject[] selectedGameObject)
     {
-        selectedObject = null;
-        Destroy(selectedGameObject.gameObject);
-    }
-
-    public int GetColor() 
-    {
-        //Debug.Log(selectedObject.GetComponent<Emitter>());
-        if (selectedObject.GetComponent<Emitter>() != null)
-        {
-            return selectedObject.GetComponent<Emitter>().GetColor();
-        }
-        else 
-        {
-            return -1;
-        }
+		selectedObject = new GameObject[0];
+		foreach (GameObject item in selectedGameObject)
+		{
+			Destroy(item);
+		}
     }
 }

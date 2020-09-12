@@ -32,7 +32,6 @@ public class Line8 : MonoBehaviour
 
 	private bool soudedThisFrame = false;
 	
-
 	private void Start()
 	{
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
@@ -134,6 +133,10 @@ public class Line8 : MonoBehaviour
 
 	private void PerformCodeBehvaior(Ball ball)
 	{
+		if (soudedThisFrame) return;
+
+		soudedThisFrame = true;
+
 		int repeats = 0;
 
 		foreach (LinePanel8 panel in panels)
@@ -239,8 +242,6 @@ public class Line8 : MonoBehaviour
 
 	private void MakeSound()
 	{
-		if (soudedThisFrame) return;
-
 		if (playClip != null)
 		{
 			soundMan.GetAudio(playClip, color, pitchLevel);
@@ -305,9 +306,8 @@ public class Line8 : MonoBehaviour
 	public string LineToSO()
 	{
 		string SOstring = id;
-		SOstring += "," + speed;
-		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
-		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
+		SOstring += "," + transform.position.x + "," + transform.position.y;
+		SOstring += "," + transform.rotation.eulerAngles.z;
 		SOstring += "," + pitchLevel;
 		SOstring += "," + visualLevel;
 		SOstring += "," + (pitchPositive ? "1" : "0");
@@ -320,25 +320,12 @@ public class Line8 : MonoBehaviour
 	{
 		string[] SOstring = SOline.Split(new[] { "," }, System.StringSplitOptions.None);
 
-		speed = float.Parse(SOstring[1]);
-		Vector3 position = new Vector3
-		{
-			x = float.Parse(SOstring[2]),
-			y = float.Parse(SOstring[3]),
-			z = float.Parse(SOstring[4])
-		};
-		transform.position = position;
-		Quaternion rotation = new Quaternion
-		{
-			w = float.Parse(SOstring[5]),
-			x = float.Parse(SOstring[6]),
-			y = float.Parse(SOstring[7]),
-			z = float.Parse(SOstring[8])
-		};
-		transform.rotation = rotation;
-		pitchLevel = int.Parse(SOstring[9]);
-		visualLevel = int.Parse(SOstring[10]);
-		pitchPositive = int.Parse(SOstring[11]) == 1 ? true: false;
-		visualPositive = int.Parse(SOstring[12]) == 1 ? true : false;
+		id = SOstring[0];
+		transform.position = new Vector3(float.Parse(SOstring[1]), float.Parse(SOstring[2]), 0);
+		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[3]));
+		pitchLevel = int.Parse(SOstring[4]);
+		visualLevel = int.Parse(SOstring[5]);
+		pitchPositive = int.Parse(SOstring[6]) == 1 ? true: false;
+		visualPositive = int.Parse(SOstring[7]) == 1 ? true : false;
 	}
 }

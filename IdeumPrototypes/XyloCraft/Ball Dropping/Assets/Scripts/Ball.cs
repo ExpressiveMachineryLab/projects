@@ -15,6 +15,8 @@ public class Ball : MonoBehaviour
 
 	private Rigidbody2D rb;
 	private GameManager gameManager;
+
+	private bool markForDestruction = false;
 	
     void Start()
     {
@@ -37,12 +39,20 @@ public class Ball : MonoBehaviour
     void Update()
     {
         rb.velocity = (rb.velocity.normalized) * speed * gameManager.GetSpeedMultiplier();
-        if (rb.velocity.Equals(Vector2.zero))
+        if (markForDestruction && rb.velocity.Equals(Vector2.zero))
         {
             rb.velocity = (rb.velocity.normalized) * speed * gameManager.GetSpeedMultiplier();
             Destroy(this.gameObject);
         }
-    }
+		if (rb.velocity.Equals(Vector2.zero))
+		{
+			markForDestruction = true;
+		}
+		else
+		{
+			markForDestruction = false;
+		}
+	}
 
     void OnBecameInvisible()
     {
@@ -59,31 +69,19 @@ public class Ball : MonoBehaviour
 	{
 		string SOstring = id;
 		SOstring += "," + speed;
-		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
-		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
+		SOstring += "," + transform.position.x + "," + transform.position.y;
+		SOstring += "," + transform.rotation.eulerAngles.z;
 
 		return SOstring;
 	}
 
 	public void BallFromSO(string SOball)
 	{
-		string[] SOstring = SOball.Split(new[] { "," }, System.StringSplitOptions.None);
+		string[] SOstring = SOball.Split(new[] { "," }, StringSplitOptions.None);
 
+		id = SOstring[0];
 		speed = float.Parse(SOstring[1]);
-		Vector3 position = new Vector3
-		{
-			x = float.Parse(SOstring[2]),
-			y = float.Parse(SOstring[3]),
-			z = float.Parse(SOstring[4])
-		};
-		transform.position = position;
-		Quaternion rotation = new Quaternion
-		{
-			w = float.Parse(SOstring[5]),
-			x = float.Parse(SOstring[6]),
-			y = float.Parse(SOstring[7]),
-			z = float.Parse(SOstring[8])
-		};
-		transform.rotation = rotation;
+		transform.position = new Vector3(float.Parse(SOstring[2]), float.Parse(SOstring[3]), 0);
+		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[4]));
 	}
 }

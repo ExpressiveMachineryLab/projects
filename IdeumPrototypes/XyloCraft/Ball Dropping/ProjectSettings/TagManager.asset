@@ -13,10 +13,11 @@ TagManager:
   - RedLine
   - GreenLine
   - YellowLine
-  - BlueBall
-  - GreenBall
-  - RedBall
-  - YellowBall
+  - Line1
+  - Line2
+  - Line0
+  - Line3
+  - Ball
   layers:
   - Default
   - TransparentFX

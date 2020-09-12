@@ -18,8 +18,6 @@ public class JSONInterpreter : MonoBehaviour
 
 	private void Start()
 	{
-		Debug.Log("scene is ready");
-
 		StartCoroutine(LateStart());
 	}
 
@@ -90,16 +88,29 @@ public class JSONInterpreter : MonoBehaviour
 		string[] contentsArray = textInput.Split(new[] { "_" }, System.StringSplitOptions.None);
 		EmitterPanel8[] emitterPanels = FindObjectsOfType<EmitterPanel8>();
 		LinePanel8[] linePanels = FindObjectsOfType<LinePanel8>();
+		Emitter8[] emitters = FindObjectsOfType<Emitter8>();
+		Line8[] lines = FindObjectsOfType<Line8>();
+		Ball[] balls = FindObjectsOfType<Ball>();
 
 		foreach (string item in contentsArray)
 		{
 			if (int.Parse(item[0].ToString()) == 0)
 			{
+				string[] SOstring = item.Split(new[] { "," }, System.StringSplitOptions.None);
+				foreach (Ball ball in balls)
+				{
+					if (ball.id == SOstring[0]) Destroy(ball.gameObject);
+				}
 				GameObject newBall = Instantiate(ballPrefabs[int.Parse(item[1].ToString())]);
 				newBall.GetComponent<Ball>().BallFromSO(item);
 			}
 			else if (int.Parse(item[0].ToString()) == 1)
 			{
+				string[] SOstring = item.Split(new[] { "," }, System.StringSplitOptions.None);
+				foreach (Line8 line in lines)
+				{
+					if (line.id == SOstring[0]) Destroy(line.gameObject);
+				}
 				GameObject newLine = Instantiate(linePrefabs[int.Parse(item[1].ToString())]);
 				newLine.GetComponent<Line8>().LineFromSO(item);
 				newLine.transform.GetChild(0).gameObject.SetActive(false);
@@ -107,6 +118,11 @@ public class JSONInterpreter : MonoBehaviour
 			}
 			else if (int.Parse(item[0].ToString()) == 2)
 			{
+				string[] SOstring = item.Split(new[] { "," }, System.StringSplitOptions.None);
+				foreach (Emitter8 emitter in emitters)
+				{
+					if (emitter.id == SOstring[0]) Destroy(emitter.gameObject);
+				}
 				GameObject newBird = Instantiate(emitterPrefabs[int.Parse(item[1].ToString())]);
 				newBird.GetComponent<Emitter8>().BirdFromSO(item);
 				newBird.transform.GetChild(0).gameObject.SetActive(false);

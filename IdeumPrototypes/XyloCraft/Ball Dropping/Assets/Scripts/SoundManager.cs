@@ -12,47 +12,10 @@ public class SoundManager : MonoBehaviour
 	public SoundBank blueBank;
 	public SoundBank greenBank;
 
-	[SerializeField]
-	private SoundBank[] RedSounds = new SoundBank[8];
-	[SerializeField]
-	private SoundBank[] YellowSounds = new SoundBank[8];
-	[SerializeField]
-	private SoundBank[] BlueSounds = new SoundBank[8];
-	[SerializeField]
-	private SoundBank[] GreenSounds = new SoundBank[8];
-
 	public GameObject[] audioSourceArray = new GameObject[16];
 	public int audioSourceIndex = 0;
 
-	private float fadeTime = 0.25f;
-
-	private void Start() {
-		if (redBank == null) redBank = RedSounds[0];
-		if (yellowBank == null) yellowBank = YellowSounds[0];
-		if (blueBank == null) blueBank = BlueSounds[0];
-		if (greenBank == null) greenBank = GreenSounds[0];
-	}
-
-	public void GetAudio(AudioSource playClip, string lineColor, int pitch, int mode)
-	{
-		if (lineColor == "RedLine")
-		{
-			RedSounds[mode].playAudioClip(playClip, pitch);
-		}
-		if (lineColor == "YellowLine")
-		{
-			YellowSounds[mode].playAudioClip(playClip, pitch);
-		}
-		if (lineColor == "BlueLine")
-		{
-			BlueSounds[mode].playAudioClip(playClip, pitch);
-		}
-		if (lineColor == "GreenLine")
-		{
-			GreenSounds[mode].playAudioClip(playClip, pitch);
-		}
-		return;
-	}
+	private float fadeTime = 0.2f;
 
 	public GameObject GetAudio(GameObject source, ElemColor color, int pitch)
 	{

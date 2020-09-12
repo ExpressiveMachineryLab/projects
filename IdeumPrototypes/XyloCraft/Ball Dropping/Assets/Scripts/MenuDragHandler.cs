@@ -6,11 +6,6 @@ using UnityEngine.EventSystems;
 
 public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    public bool limited = true;
-    public int color;
-    private int numberInstantiated = 0;
-    public Sprite emitterImage;
-    public Sprite selectedImage;
     public GameObject cloneObject;
     private GameManager gameManager;
     private SelectionManager SelectionManagerCode;
@@ -22,45 +17,14 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
         SelectionManagerCode = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
     }
 
-    void Update()
-    {
-        if (limited) 
-        {
-            if (gameManager.GetBird(color) < 5)
-            {
-                this.transform.GetChild(0).GetComponent<Image>().sprite = emitterImage;
-            }
-        }
-        
-    }
-
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        if (dragObject == null) {
-            if (limited)
-            {
-                if (gameManager.GetBird(color) < 5)
-                {
-                    dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
-                    SelectionManagerCode.NewSelection(dragObject);
-                    gameManager.InstantiateBird(color);
-                    if (gameManager.GetBird(color) == 5) 
-                    {
-                        this.transform.GetChild(0).GetComponent<Image>().sprite = selectedImage;
-                    } 
-                }
-            }
-            else 
-            {
-                dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation) as GameObject;
-                if (color != -2) 
-                {
-                    SelectionManagerCode.NewSelection(dragObject);
-                }
-            }
-            
+        if (dragObject == null)
+		{
+            dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation);
+			SelectionManagerCode.NewSelection(new GameObject[] { dragObject });
         }
         if (dragObject) 
         {

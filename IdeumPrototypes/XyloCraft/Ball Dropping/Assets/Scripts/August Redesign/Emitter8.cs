@@ -173,7 +173,7 @@ public class Emitter8 : MonoBehaviour
 
 	void ShootBall()
 	{
-		Instantiate(ballPrefab.GetComponent<Ball>().SetSpeed(10), firePoint.position, firePoint.rotation);
+		Instantiate(ballPrefab.GetComponent<Ball>(), firePoint.position, firePoint.rotation);
 		emitterAnimator.SetTrigger("Shoot");
 	}
 
@@ -198,9 +198,8 @@ public class Emitter8 : MonoBehaviour
 	public string BirdToSO()
 	{
 		string SOstring = id;
-		SOstring += "," + speed;
-		SOstring += "," + transform.position.x + "," + transform.position.y + "," + transform.position.z;
-		SOstring += "," + transform.rotation.w + "," + transform.rotation.x + "," + transform.rotation.y + "," + transform.rotation.z;
+		SOstring += "," + transform.position.x + "," + transform.position.y;
+		SOstring += "," + transform.rotation.eulerAngles.z;
 
 		return SOstring;
 	}
@@ -209,21 +208,8 @@ public class Emitter8 : MonoBehaviour
 	{
 		string[] SOstring = SObird.Split(new[] { "," }, System.StringSplitOptions.None);
 
-		speed = float.Parse(SOstring[1]);
-		Vector3 position = new Vector3
-		{
-			x = float.Parse(SOstring[2]),
-			y = float.Parse(SOstring[3]),
-			z = float.Parse(SOstring[4])
-		};
-		transform.position = position;
-		Quaternion rotation = new Quaternion
-		{
-			w = float.Parse(SOstring[5]),
-			x = float.Parse(SOstring[6]),
-			y = float.Parse(SOstring[7]),
-			z = float.Parse(SOstring[8])
-		};
-		transform.rotation = rotation;
+		id = SOstring[0];
+		transform.position = new Vector3(float.Parse(SOstring[1]), float.Parse(SOstring[2]), 0);
+		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[3]));
 	}
 }
