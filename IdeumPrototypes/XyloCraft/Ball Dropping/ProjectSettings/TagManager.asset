@@ -4,20 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pushable
   - Emitter
-  - Line
-  - Ignore
   - Rotator
-  - BlueLine
-  - RedLine
-  - GreenLine
-  - YellowLine
-  - Line1
-  - Line2
-  - Line0
-  - Line3
   - Ball
+  - RedLine
+  - YellowLine
+  - BlueLine
+  - GreenLine
   layers:
   - Default
   - TransparentFX
@@ -54,10 +47,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 2608915875
-    locked: 0
-  - name: Sprites
-    uniqueID: 4019545047
     locked: 0

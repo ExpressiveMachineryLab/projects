@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Blue1
   m_EditorClassIdentifier: 
   bankName: Bass Drum
+  voice: 0
+  fadeTime: 0.25
   volumes:
   - 0.8
   - 0.8
@@ -20,8 +22,8 @@ MonoBehaviour:
   - 0.8
   - 0.8
   clips:
-  - {fileID: 8300000, guid: 41f3d50742feb4618a87ee79a70e5b81, type: 3}
-  - {fileID: 8300000, guid: 26306e50769104daaaa6b6b9dc6bb494, type: 3}
+  - {fileID: 8300000, guid: b75d0777d8ba54a28b568596b1f3876a, type: 3}
+  - {fileID: 8300000, guid: c148df884e1384f10bab157a3cec79a9, type: 3}
   - {fileID: 8300000, guid: c148df884e1384f10bab157a3cec79a9, type: 3}
   - {fileID: 8300000, guid: abffabcf714e343e6b89efc386aa9626, type: 3}
   - {fileID: 8300000, guid: 0a7395f27418f420d99ab114416bdb9a, type: 3}

@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
 	public SelectedElementType type = SelectedElementType.Ball;
 	public string id = "";
 	public ElemColor color;
-    public float speed = 20f;
+    public float speed = 1f;
     public Sprite originalSprite;
     public Sprite hitSprite;
 
@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour
 		{
 			id = "0" + (int)color;
 			RandomString randomstring = new RandomString();
-			id += randomstring.CreateRandomString(8);
+			id += randomstring.CreateRandomString(5);
 		}
 		else if (!id[0].Equals("0".ToCharArray()[0]))
 		{
@@ -39,38 +39,39 @@ public class Ball : MonoBehaviour
     void Update()
     {
         rb.velocity = (rb.velocity.normalized) * speed * gameManager.GetSpeedMultiplier();
-        if (markForDestruction && rb.velocity.Equals(Vector2.zero))
-        {
-            rb.velocity = (rb.velocity.normalized) * speed * gameManager.GetSpeedMultiplier();
-            Destroy(this.gameObject);
-        }
-		if (rb.velocity.Equals(Vector2.zero))
-		{
-			markForDestruction = true;
-		}
-		else
-		{
-			markForDestruction = false;
-		}
+        if (markForDestruction && rb.velocity.Equals(Vector2.zero)) gameObject.SetActive(false);
+		if (rb.velocity.Equals(Vector2.zero)) markForDestruction = true;
+		else markForDestruction = false;
 	}
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+		gameObject.SetActive(false);
     }
 
-    public GameObject SetSpeed(float sliderSpeed)
-    {
-        speed = sliderSpeed;
-        return this.gameObject;
-    }
+	public void ResetVelocity()
+	{
+		GetComponent<Rigidbody2D>().velocity = transform.up * speed * GameObject.Find("GameManager").GetComponent<GameManager>().GetSpeedMultiplier();
+	}
+
+	public void BecomeCloneOf(GameObject ballModel)
+	{
+		color = ballModel.GetComponent<Ball>().color;
+		originalSprite = ballModel.GetComponent<Ball>().originalSprite;
+		hitSprite = ballModel.GetComponent<Ball>().hitSprite;
+		GetComponent<SpriteRenderer>().sprite = ballModel.GetComponent<SpriteRenderer>().sprite;
+
+		transform.position = ballModel.transform.position;
+		transform.rotation = ballModel.transform.rotation;
+
+		GetComponent<Rigidbody2D>().velocity = transform.up * speed * GameObject.Find("GameManager").GetComponent<GameManager>().GetSpeedMultiplier();
+	}
 
 	public string BallToSO()
 	{
 		string SOstring = id;
-		SOstring += "," + speed;
-		SOstring += "," + transform.position.x + "," + transform.position.y;
-		SOstring += "," + transform.rotation.eulerAngles.z;
+		SOstring += "," + transform.position.x.ToString("0.00") + "," + transform.position.y.ToString("0.00");
+		SOstring += "," + transform.rotation.eulerAngles.z.ToString("0.00");
 
 		return SOstring;
 	}
@@ -80,8 +81,7 @@ public class Ball : MonoBehaviour
 		string[] SOstring = SOball.Split(new[] { "," }, StringSplitOptions.None);
 
 		id = SOstring[0];
-		speed = float.Parse(SOstring[1]);
-		transform.position = new Vector3(float.Parse(SOstring[2]), float.Parse(SOstring[3]), 0);
-		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[4]));
+		transform.position = new Vector3(float.Parse(SOstring[1]), float.Parse(SOstring[2]), 0);
+		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[3]));
 	}
 }

@@ -99,6 +99,10 @@ public class SelectedElement : MonoBehaviour
 		}
 		else if (color == ElemColor.All)
 		{
+			SetNone();
+		}
+		else if (color == ElemColor.None)
+		{
 			SetRed();
 		}
 	}

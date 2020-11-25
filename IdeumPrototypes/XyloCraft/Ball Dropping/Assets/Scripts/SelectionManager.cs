@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject[] selectedObject = new GameObject[0];
-	
-    void Update()
+    private GameObject[] selectedObject = new GameObject[0];
+
+	void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -14,16 +14,20 @@ public class SelectionManager : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball")
-            {
-                SetSelection(new GameObject[] { hit.collider.gameObject });
+			{
+				SetSelection(new GameObject[] { hit.collider.gameObject });
             }
+			else if (hit.collider == null)
+			{
+				RemoveSelection();
+			}
         }
     }
 
     private void SetSelection(GameObject[] selectedGameObject)
     {
-        if (selectedObject.Length >= 1)
-        {
+        if (selectedObject.Length > 0)
+		{
 			foreach (GameObject item in selectedObject)
 			{
 				item.transform.GetChild(0).gameObject.SetActive(false);
@@ -39,19 +43,33 @@ public class SelectionManager : MonoBehaviour
 			item.transform.GetChild(1).gameObject.SetActive(true);
 
 		}
-    }
+	}
 
-    public void NewSelection(GameObject[] selectedGameObject)
+	private void RemoveSelection()
+	{
+		if (selectedObject.Length > 0)
+		{
+			foreach (GameObject item in selectedObject)
+			{
+				item.transform.GetChild(0).gameObject.SetActive(false);
+				item.transform.GetChild(1).gameObject.SetActive(false);
+			}
+		}
+		//selectedObject = new GameObject[0];
+	}
+
+	public void NewSelection(GameObject[] selectedGameObject)
     {
         SetSelection(selectedGameObject);
     }
 
-    public void DeleteSelection(GameObject[] selectedGameObject)
+    public void DeleteSelection()
     {
-		selectedObject = new GameObject[0];
-		foreach (GameObject item in selectedGameObject)
+		foreach (GameObject item in selectedObject)
 		{
-			Destroy(item);
+			item.SetActive(false);
 		}
-    }
+
+		selectedObject = new GameObject[0];
+	}
 }

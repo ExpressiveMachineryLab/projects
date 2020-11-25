@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StyleHUD : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class StyleHUD : MonoBehaviour
 		{
 			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 			newButton.transform.SetParent(styleGrid.transform);
-			newButton.gameObject.GetComponentInChildren<Text>().text = availableStyles[i].styleName;
+			newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableStyles[i].styleName;
 			newButton.gameObject.name = availableStyles[i].name + "Button";
 			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Style;
@@ -48,11 +49,12 @@ public class StyleHUD : MonoBehaviour
 			{
 				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 				newButton.transform.SetParent(grid.transform);
-				newButton.gameObject.GetComponentInChildren<Text>().text = availableSounds[i].bankName;
+				newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableSounds[i].bankName;
 				newButton.gameObject.name = availableSounds[i].name + "Button";
 				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 				newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
 				newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
+				newButton.gameObject.GetComponent<ExpandWindow>().Window = grid.gameObject.transform.parent.transform.parent.transform.parent.gameObject; //Fragile, I don't like it
 			}
 		}
 
@@ -142,6 +144,7 @@ public class StyleHUD : MonoBehaviour
 
 	public void ResetTextNames()
 	{
+		//Debug.Log("Resetting names");
 		if (redText != null) redText.text = soundMan.redBank.bankName;
 		if (yellowText != null) yellowText.text = soundMan.yellowBank.bankName;
 		if (blueText != null) blueText.text = soundMan.blueBank.bankName;

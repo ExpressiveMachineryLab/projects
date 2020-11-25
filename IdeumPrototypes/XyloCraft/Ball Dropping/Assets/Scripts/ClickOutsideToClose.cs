@@ -24,6 +24,7 @@ public class ClickOutsideToClose : MonoBehaviour
 			gameObject.SetActive(ClickingSelfOrChild());
 		}
 	}
+
 	private bool ClickingSelfOrChild()
 	{
 		RectTransform[] rectTransforms = gameObject.GetComponentsInChildren<RectTransform>();

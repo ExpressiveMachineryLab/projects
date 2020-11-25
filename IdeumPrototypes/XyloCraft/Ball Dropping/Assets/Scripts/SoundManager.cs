@@ -12,8 +12,8 @@ public class SoundManager : MonoBehaviour
 	public SoundBank blueBank;
 	public SoundBank greenBank;
 
-	public GameObject[] audioSourceArray = new GameObject[16];
-	public int audioSourceIndex = 0;
+	private GameObject[] audioSourceArray = new GameObject[16];
+	private int audioSourceIndex = 0;
 
 	private float fadeTime = 0.2f;
 
@@ -118,11 +118,11 @@ public class SoundManager : MonoBehaviour
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 
 		string SOstring = "5";
-		SOstring += "," + Array.IndexOf(hud.availableSounds, redBank);
-		SOstring += "," + Array.IndexOf(hud.availableSounds, yellowBank);
-		SOstring += "," + Array.IndexOf(hud.availableSounds, blueBank);
-		SOstring += "," + Array.IndexOf(hud.availableSounds, greenBank);
-		SOstring += "," + FindObjectOfType<GameManager>().GetSpeedMultiplier();
+		SOstring += "," + Array.IndexOf(hud.availableSounds, redBank).ToString("00");
+		SOstring += Array.IndexOf(hud.availableSounds, yellowBank).ToString("00");
+		SOstring += Array.IndexOf(hud.availableSounds, blueBank).ToString("00");
+		SOstring += Array.IndexOf(hud.availableSounds, greenBank).ToString("00");
+		SOstring += FindObjectOfType<GameManager>().GetSpeedMultiplier().ToString("00");
 
 
 		return SOstring;
@@ -133,11 +133,11 @@ public class SoundManager : MonoBehaviour
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 		string[] SOstring = SoundManagerSO.Split(new[] { "," }, StringSplitOptions.None);
 
-		redBank = hud.availableSounds[int.Parse(SOstring[1])];
-		yellowBank = hud.availableSounds[int.Parse(SOstring[2])];
-		blueBank = hud.availableSounds[int.Parse(SOstring[3])];
-		greenBank = hud.availableSounds[int.Parse(SOstring[4])];
-		FindObjectOfType<GameManager>().SetSpeedMultiplier(float.Parse(SOstring[5]));
+		redBank = hud.availableSounds[int.Parse(SOstring[1][0].ToString())*10 + int.Parse(SOstring[1][1].ToString())];
+		yellowBank = hud.availableSounds[int.Parse(SOstring[1][2].ToString()) * 10 + int.Parse(SOstring[1][3].ToString())];
+		blueBank = hud.availableSounds[int.Parse(SOstring[1][4].ToString()) * 10 + int.Parse(SOstring[1][5].ToString())];
+		greenBank = hud.availableSounds[int.Parse(SOstring[1][6].ToString()) * 10 + int.Parse(SOstring[1][7].ToString())];
+		FindObjectOfType<GameManager>().SetSpeedMultiplier(int.Parse(SOstring[1][8].ToString()) * 10 + int.Parse(SOstring[1][9].ToString()));
 
 		hud.ResetTextNames();
 	}
