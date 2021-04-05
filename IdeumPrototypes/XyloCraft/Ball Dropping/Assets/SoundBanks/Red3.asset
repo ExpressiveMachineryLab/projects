@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Red3
   m_EditorClassIdentifier: 
-  bankName: Beat Trap
+  bankName: Vital Lead
+  voice: 1
+  fadeTime: 0.15
   volumes:
   - 0.3
   - 0.3
@@ -20,8 +22,8 @@ MonoBehaviour:
   - 0.3
   - 0.3
   clips:
-  - {fileID: 8300000, guid: 6a90cebf7c2e445178086fab2c1444e3, type: 3}
-  - {fileID: 8300000, guid: f9d8cb5f68cd44c158d48cdb7e833084, type: 3}
-  - {fileID: 8300000, guid: ac6ebe5af50d3429aa5d2a2992f90eef, type: 3}
-  - {fileID: 8300000, guid: 076c0e082b86e40f7b1f53c069a68c93, type: 3}
-  - {fileID: 8300000, guid: 27d81da764c6748e6ab1d10080a90cbc, type: 3}
+  - {fileID: 8300000, guid: 755f07693a60f5a42ab1e49148213832, type: 3}
+  - {fileID: 8300000, guid: 8facb0cdb4b399a4c8442d39363f5263, type: 3}
+  - {fileID: 8300000, guid: a6d2f330afb21124f9f0d24e784260a3, type: 3}
+  - {fileID: 8300000, guid: 92726e34ad26ee14595f3813bdec658d, type: 3}
+  - {fileID: 8300000, guid: a60b940c8befc004dafc50700f9a698c, type: 3}

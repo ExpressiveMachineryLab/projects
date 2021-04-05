@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CountLogger : MonoBehaviour
-{
+public class CountLogger : MonoBehaviour {
 	private string version = "v0.1";
 
 	//Clicks
@@ -22,19 +20,16 @@ public class CountLogger : MonoBehaviour
 	public int totalEmittersCreated;
 	public int totalBallsCreated;
 
-	void Start()
-	{
-		string lastLog = Omnipresent.instance.logContinuation;
+	void Start() {
+		string lastLog = Omnipresent.instance?.logContinuation;
 		JsonUtility.FromJsonOverwrite(lastLog, this);
 	}
 
-	void OnDestroy()
-	{
-		Omnipresent.instance.logContinuation = JsonUtility.ToJson(this);
+	void OnDestroy() {
+		if (Omnipresent.instance != null) Omnipresent.instance.logContinuation = JsonUtility.ToJson(this);
 	}
 
-	public string GetLog()
-	{
+	public string GetLog() {
 		string output = version;
 		output += "," + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 		output += "," + Time.time.ToString("0");
@@ -56,38 +51,31 @@ public class CountLogger : MonoBehaviour
 		return output;
 	}
 
-	public void IncEmitterPanelClicks()
-	{
+	public void IncEmitterPanelClicks() {
 		emitterPanelClicks++;
 	}
 
-	public void IncLinePanelClicks()
-	{
+	public void IncLinePanelClicks() {
 		linePanelClicks++;
 	}
 
-	public void IncSoundBankClicks()
-	{
+	public void IncSoundBankClicks() {
 		soundBankClicks++;
 	}
 
-	public void IncShapesButtonClicks()
-	{
+	public void IncShapesButtonClicks() {
 		shapesButtonClicks++;
 	}
 
-	public void IncDeleteButtonClicks()
-	{
+	public void IncDeleteButtonClicks() {
 		deleteButtonClicks++;
 	}
 
-	public void IncHelpButtonClicks()
-	{
+	public void IncHelpButtonClicks() {
 		helpButtonClicks++;
 	}
 
-	public void IncRestartButtonClicks()
-	{
+	public void IncRestartButtonClicks() {
 		restartButtonClicks++;
 	}
 }

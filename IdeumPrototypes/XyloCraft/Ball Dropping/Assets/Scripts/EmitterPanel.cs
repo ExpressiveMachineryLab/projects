@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EmitterPanel : MonoBehaviour
-{
+public class EmitterPanel : MonoBehaviour {
 	public string id = "";
 	public EmmiterIf ifType;
 	public SelectedElement birdElement;
@@ -15,42 +14,36 @@ public class EmitterPanel : MonoBehaviour
 
 	private string copyStartState;
 
-	private void Start()
-	{
+	private CountLogger countLogger;
+
+	private void Start() {
 		SelectedElement[] elements = GetComponentsInChildren<SelectedElement>();
-		foreach (SelectedElement element in elements)
-		{
+		foreach (SelectedElement element in elements) {
 			if (element.type == SelectedElementType.Emitter) birdElement = element;
 		}
 
-		if (id == "")
-		{
+		if (id == "") {
 			id = "4";
 			RandomString randomstring = new RandomString();
 			id += randomstring.CreateRandomString(1);
-		}
-		else if (!id[0].Equals("4".ToCharArray()[0]))
-		{
+		} else if (!id[0].Equals("4".ToCharArray()[0])) {
 			id = "4" + id;
 		}
 
 		copyStartState = EmitterPanelToSO();
+		countLogger = FindObjectOfType<CountLogger>();
 	}
 
-	public void FlashBox()
-	{
+	public void FlashBox() {
 
 	}
 
-	public ElemColor GetBirdColor()
-	{
+	public ElemColor GetBirdColor() {
 		return birdElement.color;
 	}
 
-	public void UpdateFromDropdown()
-	{
-		switch (actionDropdown.value)
-		{
+	public void UpdateFromDropdown() {
+		switch (actionDropdown.value) {
 			case 0:
 				ifType = EmmiterIf.Click;
 				break;
@@ -63,10 +56,8 @@ public class EmitterPanel : MonoBehaviour
 		}
 	}
 
-	public void UpdateFromInt (int value)
-	{
-		switch (value)
-		{
+	public void UpdateFromInt(int value) {
+		switch (value) {
 			case 0:
 				ifType = EmmiterIf.Click;
 				break;
@@ -79,27 +70,31 @@ public class EmitterPanel : MonoBehaviour
 		}
 	}
 
-	public void IncNumberToShoot()
-	{
+	public void IncNumberToShoot() {
 		numberToShoot++;
 		if (numberToShoot > 8) numberToShoot = 8;
 		if (numberText != null) numberText.text = "" + numberToShoot;
 	}
 
-	public void DecNumberToShoot()
-	{
+	public void DecNumberToShoot() {
 		numberToShoot--;
 		if (numberToShoot < 1) numberToShoot = 1;
 		if (numberText != null) numberText.text = "" + numberToShoot;
 	}
 
-	public void ResetPanel()
-	{
+	public void ResetPanel() {
 		EmitterPanelFromSO(copyStartState);
 	}
 
-	public string EmitterPanelToSO()
-	{
+	//Interface CountLogger
+
+	public void IncEmitterPanelClicks() {
+		countLogger?.IncEmitterPanelClicks();
+	}
+
+	//Save and load
+
+	public string EmitterPanelToSO() {
 		string SOstring = id;
 		SOstring += "," + (int)ifType;
 		SOstring += numberToShoot;
@@ -108,8 +103,7 @@ public class EmitterPanel : MonoBehaviour
 		return SOstring;
 	}
 
-	public void EmitterPanelFromSO(string SOlinePanel)
-	{
+	public void EmitterPanelFromSO(string SOlinePanel) {
 		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		ifType = (EmmiterIf)int.Parse(SOstring[1][0].ToString());
@@ -123,8 +117,7 @@ public class EmitterPanel : MonoBehaviour
 	}
 }
 
-public enum EmmiterIf
-{
+public enum EmmiterIf {
 	Click,
 	Space,
 	Key

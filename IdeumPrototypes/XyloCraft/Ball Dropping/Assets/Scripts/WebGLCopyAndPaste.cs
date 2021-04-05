@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 
 // #define WEBGL_COPY_AND_PASTE_SUPPORT_TEXTMESH_PRO
 
-public class WebGLCopyAndPasteAPI
-{
+//Makes it possible to copy and past in a WebGL build
+public class WebGLCopyAndPasteAPI {
 
 #if UNITY_WEBGL
 
@@ -16,8 +16,7 @@ public class WebGLCopyAndPasteAPI
 
 #endif
 
-	static public void Init(string objectName, string cutCopyCallbackFuncName, string pasteCallbackFuncName)
-	{
+	static public void Init(string objectName, string cutCopyCallbackFuncName, string pasteCallbackFuncName) {
 #if UNITY_WEBGL
 
 		initWebGLCopyAndPaste(objectName, cutCopyCallbackFuncName, pasteCallbackFuncName);
@@ -25,8 +24,7 @@ public class WebGLCopyAndPasteAPI
 #endif
 	}
 
-	static public void PassCopyToBrowser(string str)
-	{
+	static public void PassCopyToBrowser(string str) {
 #if UNITY_WEBGL
 
 		passCopyToBrowser(str);
@@ -35,30 +33,24 @@ public class WebGLCopyAndPasteAPI
 	}
 }
 
-public class WebGLCopyAndPaste : MonoBehaviour
-{
-	void Start()
-	{
-		if (!Application.isEditor)
-		{
+public class WebGLCopyAndPaste : MonoBehaviour {
+	void Start() {
+		if (!Application.isEditor) {
 			WebGLCopyAndPasteAPI.Init(this.name, "GetClipboard", "ReceivePaste");
 		}
 	}
 
-	private void SendKey(string baseKey)
-	{
+	private void SendKey(string baseKey) {
 		string appleKey = "%" + baseKey;
 		string naturalKey = "^" + baseKey;
 
 		var currentObj = EventSystem.current.currentSelectedGameObject;
-		if (currentObj == null)
-		{
+		if (currentObj == null) {
 			return;
 		}
 		{
 			var input = currentObj.GetComponent<UnityEngine.UI.InputField>();
-			if (input != null)
-			{
+			if (input != null) {
 				// I don't know what's going on here. The code in InputField
 				// is looking for ctrl-c but that fails on Mac Chrome/Firefox
 				input.ProcessEvent(Event.KeyboardEvent(naturalKey));
@@ -82,14 +74,12 @@ public class WebGLCopyAndPaste : MonoBehaviour
 #endif
 	}
 
-	public void GetClipboard(string key)
-	{
+	public void GetClipboard(string key) {
 		SendKey(key);
 		WebGLCopyAndPasteAPI.PassCopyToBrowser(GUIUtility.systemCopyBuffer);
 	}
 
-	public void ReceivePaste(string str)
-	{
+	public void ReceivePaste(string str) {
 		GUIUtility.systemCopyBuffer = str;
 	}
 }

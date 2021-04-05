@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LinePanel : MonoBehaviour
-{
+public class LinePanel : MonoBehaviour {
 	public string id = "";
 
 	public PanelMode mode = PanelMode.Chord;
@@ -14,105 +13,104 @@ public class LinePanel : MonoBehaviour
 
 	public SelectedPM selectedChord = SelectedPM.Plus;
 	public int selectedRhythm = 1;
-	public SelectedPM selectedVisual = SelectedPM.Off;
 
 	private bool chordPlus = true;
-	private bool chordMinus = false;
-	private bool visualPlus = false;
-	private bool visualMinus = false;
-
-	public Dropdown modeDropdown;
-	public Text rhythmText;
+	
+	public Text[] rhythmText;
 	public GameObject chordItems;
 	public GameObject rhythmItems;
 	public GameObject visualItems;
 
+	public GameObject flashPanel;
+
+	public GameObject[] expandedElements;
+	public GameObject[] retractedElements;
+
 	private string copyStartState;
 
-	private void Start()
-	{
+	private CountLogger countLogger;
+
+	private void Start() {
 		SelectedElement[] elements = GetComponentsInChildren<SelectedElement>();
-		foreach (SelectedElement element in elements)
-		{
+		foreach (SelectedElement element in elements) {
 			if (element.type == SelectedElementType.Ball) ballElement = element;
 			if (element.type == SelectedElementType.Line) lineElement = element;
 		}
 
-		if (id == "")
-		{
+		if (id == "") {
 			id = "3";
 			RandomString randomstring = new RandomString();
 			id += randomstring.CreateRandomString(1);
-		}
-		else if (!id[0].Equals("3".ToCharArray()[0]))
-		{
+		} else if (!id[0].Equals("3".ToCharArray()[0])) {
 			id = "3" + id;
 		}
 
 		copyStartState = LinePanelToSO();
+		countLogger = FindObjectOfType<CountLogger>();
 	}
 
 	//Flash the box
-	public void FlashBox()
-	{
-
+	public void FlashBox() {
+		if (flashPanel != null) StartCoroutine(Flash(flashPanel));
 	}
 
-	public ElemColor GetBallColor()
-	{
+	IEnumerator Flash(GameObject flashObject) {
+		flashObject.SetActive(true);
+		yield return new WaitForSeconds(.1f);
+		flashObject.SetActive(false);
+	}
+
+	public ElemColor GetBallColor() {
 		return ballElement.color;
 	}
 
-	public ElemColor GetLineColor()
-	{
+	public ElemColor GetLineColor() {
 		return lineElement.color;
 	}
 
+	public void CollapseAllLinePanels() {
+		LinePanel[] panels = FindObjectsOfType<LinePanel>();
+		foreach (LinePanel lp in panels) {
+			lp.SetExpand(false);
+		}
+	}
+
+	public void SetExpand(bool toExpand) {
+
+		foreach (GameObject go in expandedElements) {
+			go.SetActive(toExpand);
+		}
+		foreach (GameObject go in retractedElements) {
+			go.SetActive(!toExpand);
+		}
+		RectTransform rect = GetComponent<RectTransform>();
+		rect.sizeDelta = new Vector2(rect.sizeDelta.x, toExpand ? 216f : 108f);
+	}
+
 	//Panel modes
-	public void SetModeToChord()
-	{
+	public void SetModeToChord() {
 		mode = PanelMode.Chord;
 		chordItems.SetActive(true);
 		rhythmItems.SetActive(false);
 		visualItems.SetActive(false);
 	}
 
-	public void SetModeToRhythm()
-	{
+	public void SetModeToRhythm() {
 		mode = PanelMode.Rhythm;
 		chordItems.SetActive(false);
 		rhythmItems.SetActive(true);
 		visualItems.SetActive(false);
 	}
 
-	public void SetModeToVisual()
-	{
+	public void SetModeToVisual() {
 		mode = PanelMode.Visual;
 		chordItems.SetActive(false);
 		rhythmItems.SetActive(false);
 		visualItems.SetActive(true);
 	}
 
-	public void UpdateFromDropdown()
-	{
-		switch (modeDropdown.value)
-		{
-			case 0:
-				SetModeToChord();
-				break;
-			case 1:
-				SetModeToRhythm();
-				break;
-			case 2:
-				SetModeToVisual();
-				break;
-		}
-	}
-
-	public void UpdateFromInt(int value)
-	{
-		switch (value)
-		{
+	public void UpdateFromInt(int value) {
+		switch (value) {
 			case 0:
 				SetModeToChord();
 				break;
@@ -126,139 +124,89 @@ public class LinePanel : MonoBehaviour
 	}
 
 	//Chord options
-	public void ToggleChordPlus()
-	{
-		chordPlus = !chordPlus;
-		SetSelectedChord();
-	}
 
-	public void ToggleChordMinus()
-	{
-		chordMinus = !chordMinus;
-		SetSelectedChord();
-	}
-
-	public void SetChordToPlus()
-	{
+	public void SetChordToPlus() {
 		chordPlus = true;
-		chordMinus = false;
 		SetSelectedChord();
 	}
 
-	public void SetChordToMinus()
-	{
+	public void SetChordToMinus() {
 		chordPlus = false;
-		chordMinus = true;
 		SetSelectedChord();
 	}
 
-	public void ToggleChord()
-	{
+	public void ToggleChord() {
 		chordPlus = !chordPlus;
-		chordMinus = !chordMinus;
 		SetSelectedChord();
 	}
 
-	private void SetSelectedChord()
-	{
-		if (chordPlus && chordMinus)
-		{
-			selectedChord = SelectedPM.PlusMinus;
-		}
-		else if (chordPlus && !chordMinus)
-		{
+	private void SetSelectedChord() {
+		if (chordPlus) {
 			selectedChord = SelectedPM.Plus;
-		}
-		else if (!chordPlus && chordMinus)
-		{
+		} else {
 			selectedChord = SelectedPM.Minus;
-		}
-		else if (!chordPlus && !chordMinus)
-		{
-			selectedChord = SelectedPM.Off;
 		}
 	}
 
 	//Rhythm options
-	public void SetRhythmToNumber(int number)
-	{
+	public void SetRhythmToNumber(int number) {
 		selectedRhythm = number;
 		if (selectedRhythm > 8) selectedRhythm = 8;
 		if (selectedRhythm < 1) selectedRhythm = 1;
-		rhythmText.text = "" + selectedRhythm;
+		if (rhythmText.Length > 0) {
+			for (int i = 0; i < rhythmText.Length; i++) {
+				rhythmText[i].text = "" + selectedRhythm;
+			}
+		}
 	}
 
-	public void IncRhythm()
-	{
+	public void IncRhythm() {
 		selectedRhythm++;
 		if (selectedRhythm > 8) selectedRhythm = 8;
-		if (rhythmText != null) rhythmText.text = "" + selectedRhythm;
+		if (rhythmText.Length > 0) {
+			for (int i = 0; i < rhythmText.Length; i++) {
+				rhythmText[i].text = "" + selectedRhythm;
+			}
+		}
 	}
 
-	public void DecRhyth()
-	{
+	public void DecRhyth() {
 		selectedRhythm--;
 		if (selectedRhythm < 1) selectedRhythm = 1;
-		if (rhythmText != null) rhythmText.text = "" + selectedRhythm;
+		if (rhythmText.Length > 0) {
+			for (int i = 0; i < rhythmText.Length; i++) {
+				rhythmText[i].text = "" + selectedRhythm;
+			}
+		}
 	}
 
-	//Visual options
-	public void ToggleVisualPlus()
-	{
-		visualPlus = !visualPlus;
-		SetSelectedVisual();
-	}
+	//Interface CountLogger
 
-	public void ToggleVisualMinus()
-	{
-		visualMinus = !visualMinus;
-		SetSelectedVisual();
-	}
-
-	private void SetSelectedVisual()
-	{
-		if (visualPlus && visualMinus)
-		{
-			selectedVisual = SelectedPM.PlusMinus;
-		}
-		else if (visualPlus && !visualMinus)
-		{
-			selectedVisual = SelectedPM.Plus;
-		}
-		else if (!visualPlus && visualMinus)
-		{
-			selectedVisual = SelectedPM.Minus;
-		}
-		else if (!visualPlus && !visualMinus)
-		{
-			selectedVisual = SelectedPM.Off;
-		}
+	public void IncLinePanelClicks() {
+		countLogger?.IncLinePanelClicks();
 	}
 
 	//Save and load
 
-	public void ResetPanel()
-	{
+	public void ResetPanel() {
 		LinePanelFromSO(copyStartState);
 	}
 
-	public string LinePanelToSO()
-	{
+	public string LinePanelToSO() {
 		string SOstring = id;
 		SOstring += "," + (int)mode;
 		SOstring += selectedRhythm;
 		SOstring += (chordPlus ? "1" : "0");
-		SOstring += (chordMinus ? "1" : "0");
-		SOstring += (visualPlus ? "1" : "0");
-		SOstring += (visualMinus ? "1" : "0");
+		SOstring += ("0");
+		SOstring += ("0");
+		SOstring += ("0");
 		SOstring += (int)ballElement.color;
 		SOstring += (int)lineElement.color;
 
 		return SOstring;
 	}
 
-	public void LinePanelFromSO(string SOlinePanel)
-	{
+	public void LinePanelFromSO(string SOlinePanel) {
 		chordItems.SetActive(true);
 		rhythmItems.SetActive(true);
 		visualItems.SetActive(true);
@@ -266,25 +214,19 @@ public class LinePanel : MonoBehaviour
 		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		mode = (PanelMode)int.Parse(SOstring[1][0].ToString());
-		modeDropdown.value = (int)mode;
-		UpdateFromDropdown();
+		UpdateFromInt((int)mode);
 
 		selectedRhythm = int.Parse(SOstring[1][1].ToString());
-		rhythmText.text = "" + selectedRhythm;
+		if (rhythmText.Length > 0) {
+			for (int i = 0; i < rhythmText.Length; i++) {
+				rhythmText[i].text = "" + selectedRhythm;
+			}
+		}
 
 		chordPlus = int.Parse(SOstring[1][2].ToString()) == 1 ? true : false;
 		toggles[0].SetToggle(chordPlus);
-
-		chordMinus = int.Parse(SOstring[1][3].ToString()) == 1 ? true : false;
-		toggles[1].SetToggle(chordMinus);
+		toggles[1].SetToggle(!chordPlus);
 		SetSelectedChord();
-
-		visualPlus = int.Parse(SOstring[1][4].ToString()) == 1 ? true : false;
-		//toggles[2].SetToggle(visualPlus);
-
-		visualMinus = int.Parse(SOstring[1][5].ToString()) == 1 ? true : false;
-		//toggles[3].SetToggle(visualMinus);
-		SetSelectedVisual();
 
 		ballElement.color = (ElemColor)int.Parse(SOstring[1][6].ToString());
 		ballElement.UpdateImage();
@@ -294,17 +236,13 @@ public class LinePanel : MonoBehaviour
 	}
 }
 
-public enum PanelMode
-{
+public enum PanelMode {
 	Chord,
 	Rhythm,
 	Visual
 }
 
-public enum SelectedPM
-{
+public enum SelectedPM {
 	Plus,
-	Minus,
-	PlusMinus,
-	Off
+	Minus
 }

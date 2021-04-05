@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Bass C
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.3
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 1173a9a7e579d44cca60f3fca1de44a2, type: 3}
-  - {fileID: 8300000, guid: fbb2ad84610634f59a53d1a664721179, type: 3}
-  - {fileID: 8300000, guid: 2566bed2f55364fcea92eb63b9466f53, type: 3}
-  - {fileID: 8300000, guid: fbb2ad84610634f59a53d1a664721179, type: 3}
-  - {fileID: 8300000, guid: 1173a9a7e579d44cca60f3fca1de44a2, type: 3}
+  - {fileID: 8300000, guid: b3594494d69435d4faa42c11f41780b2, type: 3}
+  - {fileID: 8300000, guid: 97dbeafadd387e34fa24bdcfb8d1d87d, type: 3}
+  - {fileID: 8300000, guid: 3e530663f4c90f94382e553115b5f6e9, type: 3}
+  - {fileID: 8300000, guid: 8e6f662889f32334a88a8ed7e6138d50, type: 3}
+  - {fileID: 8300000, guid: 926bd96f75f730b468f05e8ce42c634a, type: 3}

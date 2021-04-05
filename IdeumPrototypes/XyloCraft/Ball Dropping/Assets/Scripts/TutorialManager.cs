@@ -1,30 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour {
+	public GameObject popup;
+	public GameObject prevButton;
+	public GameObject nextButton;
+	public TMP_Text titleText;
+	public TMP_Text pageText;
+	public TMP_Text pageNumberText;
 
-{
+	public TutSequence[] sequences;
 
-	public GameObject[] popUps;
-	private int popUpIndex = 0;
+	private int tutorialIndex;
+}
 
-    // Update is called once per frame
-    void Update(){
+[System.Serializable]
+public class TutSequence {
+	public string tutTitle;
+	public TutPopup[] sequnce;
+}
 
-    	for	(int i = 0; i < popUps.Length; i++) {
-    		if(i == popUpIndex){
-    			popUps[i].SetActive(true);
-    		} else {
-    			popUps[i].SetActive(false);
-
-    		}
-
-    	}
-
-    	if(popUpIndex == 0){
-
-    	}
-     }  
- }
-
+[System.Serializable]
+public class TutPopup {
+	public Transform mainTransform;
+	public Transform pointerTransform;
+	public bool usePointer;
+	public string cardTitle;
+	public string cardText;
+}

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Blue3
   m_EditorClassIdentifier: 
-  bankName: Beat 3
+  bankName: Vital Pad
+  voice: 0
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 7e203b13a13514208a168051db6e1622, type: 3}
-  - {fileID: 8300000, guid: f4cef8fb4616e4f048b736e72b99260c, type: 3}
-  - {fileID: 8300000, guid: 8758daa7f118c40b09d3a8f30b48e3f7, type: 3}
-  - {fileID: 8300000, guid: 411c7402a933743188f43f0590a99268, type: 3}
-  - {fileID: 8300000, guid: d08f32bd9b01a4887b49378289b78ef4, type: 3}
+  - {fileID: 8300000, guid: 02c96eff71c596d4bbaa2a3cdb3981fe, type: 3}
+  - {fileID: 8300000, guid: c91404021aa3cf549bf0623dec58db89, type: 3}
+  - {fileID: 8300000, guid: 506f7f3af88bd654fb0e7e560e633fec, type: 3}
+  - {fileID: 8300000, guid: d783a1a2f1c3b6d46a0939cd5252bd10, type: 3}
+  - {fileID: 8300000, guid: 0fba88c633e85f444829b8d8d54fe93d, type: 3}

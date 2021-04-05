@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Yellow2
   m_EditorClassIdentifier: 
-  bankName: T Words
+  bankName: Helm Keys
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 80c9c1412d8984ecdaeb3031fb1879df, type: 3}
-  - {fileID: 8300000, guid: 1a029788af99e4a5c992d1f1d4ff4e21, type: 3}
-  - {fileID: 8300000, guid: 684811299c34c4cbaa76c3372a08e75d, type: 3}
-  - {fileID: 8300000, guid: 94244b65e604f470793da4b65e15757d, type: 3}
-  - {fileID: 8300000, guid: d9f8692164574461dbe8b7aea42db876, type: 3}
+  - {fileID: 8300000, guid: 0ca3615c05bddab4c8473ffdccb4bb24, type: 3}
+  - {fileID: 8300000, guid: 2f2d0fe85b64aa541867a677cbb0851f, type: 3}
+  - {fileID: 8300000, guid: b55161c1c0771674c8d51a32df306e56, type: 3}
+  - {fileID: 8300000, guid: a986518a6d782a24097e751a82f57dfd, type: 3}
+  - {fileID: 8300000, guid: 25d36fb679ec90b4084b95d2dac2e91c, type: 3}

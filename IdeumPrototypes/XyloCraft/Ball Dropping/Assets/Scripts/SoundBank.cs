@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//A container to hold all the values needed for an instrument
 [CreateAssetMenu(fileName = "SoundBank", menuName = "SoundBank")]
 public class SoundBank : ScriptableObject {
 	public string bankName = "New Sound Bank";
@@ -10,17 +11,17 @@ public class SoundBank : ScriptableObject {
 
 	public float[] volumes = new float[5];
 	public AudioClip[] clips = new AudioClip[5];
-	
 
-	public void playAudioClip(AudioSource source, int index) 
-	{
-		source.PlayOneShot(clips[index], volumes[index]);
+	protected float lastPlayTime = 0f;
+
+	void OnEnable() {
+		lastPlayTime = 0f;
 	}
 
-	public GameObject playAudioClip(GameObject source, int index)
-	{
+	public virtual GameObject PlayAudioClip(GameObject source, int index) {
 
 		GameObject playClip = new GameObject("SoundSource");
+		playClip.transform.position = source.transform.parent.position;
 		playClip.transform.SetParent(source.transform.parent.transform);
 		AudioSource sound = playClip.AddComponent<AudioSource>();
 		playClip.GetComponent<AudioSource>().spatialBlend = 1;
@@ -29,26 +30,19 @@ public class SoundBank : ScriptableObject {
 
 		sound.clip = clips[index];
 		sound.volume = volumes[index];
-		sound.Play();
+
+		if (Time.time - lastPlayTime > Time.deltaTime) {
+			lastPlayTime = Time.time;
+			sound.Play();
+		}
 
 		Destroy(playClip, sound.clip.length);
 
 		return playClip;
 	}
-
-	public AudioClip getAudioClip(int index) 
-	{
-		return clips[index];
-	}
-
-	public float getVolume(int index) 
-	{
-		return volumes[index];
-	}
 }
 
-public enum Phonic
-{
+public enum Phonic {
 	Poly,
 	Mono
 }

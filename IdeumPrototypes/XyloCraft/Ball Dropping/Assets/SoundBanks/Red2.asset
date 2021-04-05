@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Red2
   m_EditorClassIdentifier: 
-  bankName: S Words
+  bankName: Helm Lead
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
   - 0.3
   - 0.3
@@ -22,8 +22,8 @@ MonoBehaviour:
   - 0.3
   - 0.3
   clips:
-  - {fileID: 8300000, guid: f4b891cade3184197af45a7f3460d57d, type: 3}
-  - {fileID: 8300000, guid: e0b8000f536c24cf5b3d7a02cf4c4835, type: 3}
-  - {fileID: 8300000, guid: 4b97a7b618438408ca36ab0b5e5247ac, type: 3}
-  - {fileID: 8300000, guid: ea9e59975fc714aa881712469187f55a, type: 3}
-  - {fileID: 8300000, guid: fef28027ad2e54e44bd6929bce9d9250, type: 3}
+  - {fileID: 8300000, guid: f70e74491d4b9c74e9c8f209d58239c1, type: 3}
+  - {fileID: 8300000, guid: 71d8454157f8d4c41975feeaa3d7163d, type: 3}
+  - {fileID: 8300000, guid: 9b516450a9b88f546b093d91946dec78, type: 3}
+  - {fileID: 8300000, guid: 49381a662c0802849b565770ed9f053f, type: 3}
+  - {fileID: 8300000, guid: 5d47d0cb05b5fc44790de696fc174a3d, type: 3}

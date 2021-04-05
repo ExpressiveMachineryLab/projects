@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Yellow8
   m_EditorClassIdentifier: 
-  bankName: Creek 4
+  bankName: Alto Sax
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 30a2c2e4534164a7ab3c841548d1a55d, type: 3}
-  - {fileID: 8300000, guid: cd02dd51665e34fa6a9fdb687f8aa6f0, type: 3}
-  - {fileID: 8300000, guid: 9f87056aaa32d4792bab327f1bca6416, type: 3}
-  - {fileID: 8300000, guid: cf663352e33b14185982c49c8ad1e3e1, type: 3}
-  - {fileID: 8300000, guid: 13df7e2889c0e4188b371932ddcbf441, type: 3}
+  - {fileID: 8300000, guid: d8b3a3746eccce24789106a734560aa2, type: 3}
+  - {fileID: 8300000, guid: 6acc553c962554e47b374a7780fb9e16, type: 3}
+  - {fileID: 8300000, guid: 5bbac161ac52e8947834dcfe16a523b2, type: 3}
+  - {fileID: 8300000, guid: bbbd7547759badb419dc26117d46478a, type: 3}
+  - {fileID: 8300000, guid: 8129170f000e27e419f9bf8d567a55f9, type: 3}

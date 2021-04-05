@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadButton : MonoBehaviour
-{
+public class LoadButton : MonoBehaviour {
 	public int slot;
 
 	private Button button;
 
-	void Start()
-	{
+	void Start() {
 		button = GetComponent<Button>();
 
-		if (PlayerPrefs.GetString("SaveSlot" + slot, "") == "")
-		{
+		if (PlayerPrefs.GetString("SaveSlot" + slot, "") == "") {
 			button.interactable = false;
 		}
 	}

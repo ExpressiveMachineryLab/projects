@@ -48,48 +48,6 @@ MonoBehaviour:
   yellowBank: {fileID: 0}
   blueBank: {fileID: 0}
   greenBank: {fileID: 0}
-  RedSounds:
-  - {fileID: 11400000, guid: b21b79321f7040243bb4e202f8cf9f95, type: 2}
-  - {fileID: 11400000, guid: 23e7fcdaa34170a4a98a9ccbb5fe9fb5, type: 2}
-  - {fileID: 11400000, guid: ac8a1691ac984dc49ba4315871204d39, type: 2}
-  - {fileID: 11400000, guid: 366fb1cc1df01214497f46ac62c8bf60, type: 2}
-  - {fileID: 11400000, guid: 018d0b57171014446a6dfd685264b200, type: 2}
-  YellowSounds:
-  - {fileID: 11400000, guid: c6167ece239ef7a4f950e8cb24962d3b, type: 2}
-  - {fileID: 11400000, guid: a33552d17fa6d8d44812ae9c1ebf173f, type: 2}
-  - {fileID: 11400000, guid: 09aa295ca54a7854c944745b1922b735, type: 2}
-  - {fileID: 11400000, guid: 052bd5cb38ec85c4391304de41adeb74, type: 2}
-  - {fileID: 11400000, guid: 2cc749a9c8a01904dab32988bd02cd8a, type: 2}
-  BlueSounds:
-  - {fileID: 11400000, guid: 25c5326a1d6746545a138e2c5246f005, type: 2}
-  - {fileID: 11400000, guid: 91bffa70a1e0f3f4ab9789f46299db70, type: 2}
-  - {fileID: 11400000, guid: 0113d79fb8fc7fb4885bcf69244248c7, type: 2}
-  - {fileID: 11400000, guid: 1aeba67e4242e10408294843e9b56c6f, type: 2}
-  - {fileID: 11400000, guid: ea67d15e67b8b0542a297446ecfdde27, type: 2}
-  GreenSounds:
-  - {fileID: 11400000, guid: cb09449ad7597cc458923e8b718878ed, type: 2}
-  - {fileID: 11400000, guid: d55b0e63a2af96a4890337d8ddcb50a6, type: 2}
-  - {fileID: 11400000, guid: e3fee17766475074cbed6b456130589a, type: 2}
-  - {fileID: 11400000, guid: 1aad245f06150b74d9a9638b523db8c6, type: 2}
-  - {fileID: 11400000, guid: 924a9a0623289ff4db74446ea7bdd7af, type: 2}
-  audioSourceArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  audioSourceIndex: 0
 --- !u!114 &2800430672042037977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,28 +60,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c418c4b3f7ad241b6ea6efaa48cd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChordPanel: {fileID: 1386752542486092543, guid: 224c07513d3689f49876eec0884e5afe,
+  maxLines: 100
+  maxEmitters: 100
+  maxBalls: 100
+  linePrefabs: {fileID: 8700368406722087836, guid: 46cd5abe4447f584091762adb9cda501,
     type: 3}
-  RepeatPanel: {fileID: 7327807358051084825, guid: 9566d1b3ea64a8c4187b9ff80b370e42,
+  emitterPrefabs: {fileID: 3902801120173558221, guid: 8081516eb58eec64db8eaf069ced651f,
     type: 3}
-  GenrePanel: {fileID: 1386752542486092543, guid: a49ee0985468adb4ab40df77b0a4cf17,
+  ballPrefabs: {fileID: 8203803724438204279, guid: a37390ddaeccd2e4884b8a294252e2fd,
     type: 3}
-  EffectsPanel: {fileID: 1386752542486092543, guid: 8b36c4e26de84e7448edb69783aea48e,
-    type: 3}
-  TeamPanel: {fileID: 0}
-  ActionPanel: {fileID: 0}
-  OneBoxPanel: {fileID: 0}
-  CodeButton: {fileID: 0}
-  ScrollView: {fileID: 0}
-  HiddenCodeBoxes: {fileID: 0}
-  CurrentCode: 
-  CodeBox: {fileID: 0}
-  LastSelectedCodeButton: 
-  LastSelectedButton: {fileID: 0}
-  OneBox: 0
-  FourBox: 1
-  ThreeBox: 1
-  Action: {fileID: 0}
-  ChordPanelCount: 0
-  RhythymPanelCount: 0
-  EffectPanelCount: 0

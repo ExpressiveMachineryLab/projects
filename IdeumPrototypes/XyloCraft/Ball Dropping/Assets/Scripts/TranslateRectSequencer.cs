@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TranslateRectSequencer : MonoBehaviour
-{
+//Component to schedual translation with a RectTransform
+public class TranslateRectSequencer : MonoBehaviour {
 	public GameObject mover;
 	public RectTransform pointA;
 	public RectTransform pointB;
@@ -20,8 +20,7 @@ public class TranslateRectSequencer : MonoBehaviour
 	private RectTransform endTransform;
 	private RectTransform moverTransform;
 
-	void OnEnable()
-	{
+	void OnEnable() {
 		startTransform = pointA;
 		endTransform = pointB;
 		moverTransform = mover.GetComponent<RectTransform>();
@@ -29,26 +28,22 @@ public class TranslateRectSequencer : MonoBehaviour
 		if (moveOnAwake) Go();
 	}
 
-	public void Go()
-	{
+	public void Go() {
 		StartCoroutine(Happen());
 	}
 
-	public void SetMoveOnAwake(bool value)
-	{
+	public void SetMoveOnAwake(bool value) {
 		moveOnAwake = value;
 	}
 
-	IEnumerator Happen()
-	{
+	IEnumerator Happen() {
 		yield return new WaitForSeconds(preDelay);
 
 		float startTime = Time.time;
 		float endTime = startTime + duration;
 		float now = Time.time;
 
-		while (Time.time <= endTime)
-		{
+		while (Time.time <= endTime) {
 			now = Time.time;
 
 			moverTransform.position = Vector3.Lerp(startTransform.position, endTransform.position, (now - startTime) / duration);
@@ -56,7 +51,7 @@ public class TranslateRectSequencer : MonoBehaviour
 
 			yield return new WaitForEndOfFrame();
 		}
-		
+
 		yield return new WaitForSeconds(postDelay);
 
 		if (next != null) next.SendMessage("Go");

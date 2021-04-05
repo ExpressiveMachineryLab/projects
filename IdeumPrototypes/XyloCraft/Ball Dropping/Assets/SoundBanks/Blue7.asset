@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Sax Chords
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 7a6d0f1ca2b3a4f7d81d3c99a98565ee, type: 3}
-  - {fileID: 8300000, guid: 027d4a168c4c04e82bc8acaba32934d2, type: 3}
-  - {fileID: 8300000, guid: 8fdd7fd8eb4cc4b5e9a148552d6c776d, type: 3}
-  - {fileID: 8300000, guid: bc71a7b3f6d7649b6ac3ea9544095570, type: 3}
-  - {fileID: 8300000, guid: 027d4a168c4c04e82bc8acaba32934d2, type: 3}
+  - {fileID: 8300000, guid: 2b1340a0f30ea204187c6644f9ca4138, type: 3}
+  - {fileID: 8300000, guid: 24a4c0579d787ca4caed7e5a7129667a, type: 3}
+  - {fileID: 8300000, guid: 71b0b4a02cf174c41b91f4f5b7ef62be, type: 3}
+  - {fileID: 8300000, guid: 41b332952d95df8468ab3e597d377143, type: 3}
+  - {fileID: 8300000, guid: bd180013985579249b0476f39e755c95, type: 3}

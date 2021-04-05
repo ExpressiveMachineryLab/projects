@@ -5,8 +5,7 @@ using UnityEngine;
 
 // Stores all the sounds produced by the lines
 
-public class SoundManager : MonoBehaviour
-{
+public class SoundManager : MonoBehaviour {
 	public SoundBank redBank;
 	public SoundBank yellowBank;
 	public SoundBank blueBank;
@@ -15,17 +14,40 @@ public class SoundManager : MonoBehaviour
 	private GameObject[] audioSourceArray = new GameObject[16];
 	private int audioSourceIndex = 0;
 
+	private List<AudioClip> playedThisFrame = new List<AudioClip>();
+
 	private float fadeTime = 0.2f;
 
-	public GameObject GetAudio(GameObject source, ElemColor color, int pitch)
-	{
+	void Update() {
+		playedThisFrame.Clear();
+	}
 
-		if (color == ElemColor.Red)
-		{
-			GameObject newSource = redBank.playAudioClip(source, pitch);
+	public AudioSource PlaySound(AudioClip clip, GameObject objectToPlayOn) {
+		if (playedThisFrame.Contains(clip)) return null;
 
-			if (redBank.voice == Phonic.Mono)
-			{
+		GameObject playClip = new GameObject("SoundSource");
+		playClip.transform.position = objectToPlayOn.transform.position;
+		playClip.transform.SetParent(objectToPlayOn.transform);
+		AudioSource sound = playClip.AddComponent<AudioSource>();
+		sound.spatialBlend = 1;
+		sound.rolloffMode = AudioRolloffMode.Linear;
+		sound.dopplerLevel = 0;
+		sound.clip = clip;
+
+		sound.Play();
+		playedThisFrame.Add(clip);
+
+		Destroy(playClip, sound.clip.length);
+
+		return sound;
+	}
+
+	public GameObject GetAudio(GameObject source, ElemColor color, int pitch) {
+
+		if (color == ElemColor.Red) {
+			GameObject newSource = redBank.PlayAudioClip(source, pitch);
+
+			if (redBank.voice == Phonic.Mono) {
 				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), redBank.fadeTime));
 			}
 
@@ -37,12 +59,10 @@ public class SoundManager : MonoBehaviour
 			return newSource;
 		}
 
-		if (color == ElemColor.Yellow)
-		{
-			GameObject newSource = yellowBank.playAudioClip(source, pitch);
+		if (color == ElemColor.Yellow) {
+			GameObject newSource = yellowBank.PlayAudioClip(source, pitch);
 
-			if (yellowBank.voice == Phonic.Mono)
-			{
+			if (yellowBank.voice == Phonic.Mono) {
 				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), yellowBank.fadeTime));
 			}
 
@@ -54,12 +74,10 @@ public class SoundManager : MonoBehaviour
 			return newSource;
 		}
 
-		if (color == ElemColor.Blue)
-		{
-			GameObject newSource = blueBank.playAudioClip(source, pitch);
+		if (color == ElemColor.Blue) {
+			GameObject newSource = blueBank.PlayAudioClip(source, pitch);
 
-			if (blueBank.voice == Phonic.Mono)
-			{
+			if (blueBank.voice == Phonic.Mono) {
 				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), blueBank.fadeTime));
 			}
 
@@ -71,12 +89,10 @@ public class SoundManager : MonoBehaviour
 			return newSource;
 		}
 
-		if (color == ElemColor.Green)
-		{
-			GameObject newSource = greenBank.playAudioClip(source, pitch);
+		if (color == ElemColor.Green) {
+			GameObject newSource = greenBank.PlayAudioClip(source, pitch);
 
-			if (greenBank.voice == Phonic.Mono)
-			{
+			if (greenBank.voice == Phonic.Mono) {
 				StartCoroutine(FadeOutAndStop(source.GetComponent<AudioSource>(), greenBank.fadeTime));
 			}
 
@@ -91,14 +107,12 @@ public class SoundManager : MonoBehaviour
 		return null;
 	}
 
-	IEnumerator FadeOutAndStop(AudioSource source, float fadeTime)
-	{
+	IEnumerator FadeOutAndStop(AudioSource source, float fadeTime) {
 		float startTime = Time.time;
 		float currentTime = 0f;
 		float startVolume = source.volume;
 
-		while (startTime + fadeTime > Time.time && source != null)
-		{
+		while (startTime + fadeTime > Time.time && source != null) {
 
 			currentTime = Time.time - startTime;
 
@@ -106,15 +120,13 @@ public class SoundManager : MonoBehaviour
 			yield return null;
 		}
 
-		if (source != null)
-		{
+		if (source != null) {
 			source.Stop();
 			Destroy(source.gameObject);
 		}
 	}
 
-	public string SoundManagerToSO()
-	{
+	public string SoundManagerToSO() {
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 
 		string SOstring = "5";
@@ -128,8 +140,7 @@ public class SoundManager : MonoBehaviour
 		return SOstring;
 	}
 
-	public void SoundManagerFromSO(string SoundManagerSO)
-	{
+	public void SoundManagerFromSO(string SoundManagerSO) {
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 		string[] SOstring = SoundManagerSO.Split(new[] { "," }, StringSplitOptions.None);
 

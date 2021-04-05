@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Blue5
   m_EditorClassIdentifier: 
-  bankName: Violin
+  bankName: Violin II
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 4043791991ee72344bf375e279446cb7, type: 3}
-  - {fileID: 8300000, guid: ddd38641597c94441b17f5cc2ffdb9b7, type: 3}
-  - {fileID: 8300000, guid: ebd7ca0ee5992914288b5e1ea9410bd9, type: 3}
-  - {fileID: 8300000, guid: b588333034253c04faddc5a88748bf5c, type: 3}
-  - {fileID: 8300000, guid: 4b6e871eabad7fb449d61e49a55b603e, type: 3}
+  - {fileID: 8300000, guid: 6f2c3678b434be14c99931bdb617ebfb, type: 3}
+  - {fileID: 8300000, guid: 648b0ac975e542b45ad7452ffbbdfdfa, type: 3}
+  - {fileID: 8300000, guid: 39ce224807e76ce4384d1a25972ea867, type: 3}
+  - {fileID: 8300000, guid: 0c3760ab7d272b14eb4834047667b35a, type: 3}
+  - {fileID: 8300000, guid: a8590bd9e02902b48a68060d833ada99, type: 3}

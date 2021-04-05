@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Green8
   m_EditorClassIdentifier: 
-  bankName: Creek 2
+  bankName: Baritone Sax
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 8ae449097ce9c4705a8de8548528a4d8, type: 3}
-  - {fileID: 8300000, guid: d1547b68d7bb5450aa07bc8bc4ef3d9d, type: 3}
-  - {fileID: 8300000, guid: 8d0052240904148d0b702d20370049cd, type: 3}
-  - {fileID: 8300000, guid: 5ffb33550a061434181d2d9a618bb020, type: 3}
-  - {fileID: 8300000, guid: 2ff1044f2e9e243eabf989a7bcc21aff, type: 3}
+  - {fileID: 8300000, guid: a0926be50f786624496e8c3f35afd727, type: 3}
+  - {fileID: 8300000, guid: d6503f9c315678c47a704cc2f19668ed, type: 3}
+  - {fileID: 8300000, guid: 53d81ae125cedb641954910a6de63afb, type: 3}
+  - {fileID: 8300000, guid: ddd61204f770a9b49991424e51d6c301, type: 3}
+  - {fileID: 8300000, guid: 564333c0893464b4fa0a67abc7d635cb, type: 3}

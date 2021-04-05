@@ -4,36 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StyleHUD : MonoBehaviour
-{
+//Component to build and manage our soundbanks
+public class StyleHUD : MonoBehaviour {
 
 	public StyleBank[] availableStyles;
 	public SoundBank[] availableSounds;
 	public GameObject buttonPrefab;
 	public ElemColor currentColor = ElemColor.Red;
 
-	//public int styleIndex = 0;
-	//public int redIndex = 0;
-	//public int yellowIndex = 0;
-	//public int blueIndex = 0;
-	//public int greenIndex = 0;
-
 	public GridLayoutGroup styleGrid;
 	public GridLayoutGroup[] soundGrids;
 
 	private SoundManager soundMan;
+	private CountLogger countLogger;
 
-	private Text redText;
-	private Text yellowText;
-	private Text blueText;
-	private Text greenText;
+	private TMP_Text redText;
+	private TMP_Text yellowText;
+	private TMP_Text blueText;
+	private TMP_Text greenText;
 
-	private void Start()
-	{
+	private void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 
-		for (var i = 0; i < availableStyles.Length; i++)
-		{
+		for (var i = 0; i < availableStyles.Length; i++) {
 			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 			newButton.transform.SetParent(styleGrid.transform);
 			newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableStyles[i].styleName;
@@ -43,10 +36,8 @@ public class StyleHUD : MonoBehaviour
 			newButton.gameObject.GetComponent<GridButtonComponent>().hud = this;
 		}
 
-		for (var i = 0; i < availableSounds.Length; i++)
-		{
-			foreach (GridLayoutGroup grid in soundGrids)
-			{
+		for (var i = 0; i < availableSounds.Length; i++) {
+			foreach (GridLayoutGroup grid in soundGrids) {
 				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 				newButton.transform.SetParent(grid.transform);
 				newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableSounds[i].bankName;
@@ -58,33 +49,28 @@ public class StyleHUD : MonoBehaviour
 			}
 		}
 
-		Text[] textInChildren = gameObject.GetComponentsInChildren<Text>();
-		foreach (Text text in textInChildren)
-		{
-			if (text.gameObject.name.Contains("Red"))
-			{
+		TMP_Text[] textInChildren = gameObject.GetComponentsInChildren<TMP_Text>();
+		foreach (TMP_Text text in textInChildren) {
+			if (text.gameObject.name.Contains("Red")) {
 				redText = text;
 			}
-			if (text.gameObject.name.Contains("Yellow"))
-			{
+			if (text.gameObject.name.Contains("Yellow")) {
 				yellowText = text;
 			}
-			if (text.gameObject.name.Contains("Blue"))
-			{
+			if (text.gameObject.name.Contains("Blue")) {
 				blueText = text;
 			}
-			if (text.gameObject.name.Contains("Green"))
-			{
+			if (text.gameObject.name.Contains("Green")) {
 				greenText = text;
 			}
 		}
 
 		GetComponentInChildren<RawImage>().gameObject.SetActive(false);
 		ResetTextNames();
+		countLogger = FindObjectOfType<CountLogger>();
 	}
 
-	public void SetStyle(int index)
-	{
+	public void SetStyle(int index) {
 		soundMan.redBank = availableStyles[index].redBank;
 		soundMan.yellowBank = availableStyles[index].yellowBank;
 		soundMan.blueBank = availableStyles[index].blueBank;
@@ -93,10 +79,8 @@ public class StyleHUD : MonoBehaviour
 		ResetTextNames();
 	}
 
-	public void SetSound(int index)
-	{
-		switch (currentColor)
-		{
+	public void SetSound(int index) {
+		switch (currentColor) {
 			case ElemColor.Red:
 				soundMan.redBank = availableSounds[index];
 				break;
@@ -112,38 +96,37 @@ public class StyleHUD : MonoBehaviour
 		}
 	}
 
-	public SoundBank GetSound(int index)
-	{
+	public SoundBank GetSound(int index) {
 		return availableSounds[index];
 	}
 
-	public void SetColor(ElemColor newColor)
-	{
+	public void SetColor(ElemColor newColor) {
 		if (newColor != ElemColor.All) currentColor = newColor;
 	}
 
-	public void SetColorToRed()
-	{
+	public void SetColorToRed() {
 		currentColor = ElemColor.Red;
 	}
 
-	public void SetColorToYellow()
-	{
+	public void SetColorToYellow() {
 		currentColor = ElemColor.Yellow;
 	}
 
-	public void SetColorToBlue()
-	{
+	public void SetColorToBlue() {
 		currentColor = ElemColor.Blue;
 	}
 
-	public void SetColorToGreen()
-	{
+	public void SetColorToGreen() {
 		currentColor = ElemColor.Green;
 	}
 
-	public void ResetTextNames()
-	{
+	//Interface CountLogger
+
+	public void IncSoundBankClicks() {
+		countLogger?.IncSoundBankClicks();
+	}
+
+	public void ResetTextNames() {
 		//Debug.Log("Resetting names");
 		if (redText != null) redText.text = soundMan.redBank.bankName;
 		if (yellowText != null) yellowText.text = soundMan.yellowBank.bankName;

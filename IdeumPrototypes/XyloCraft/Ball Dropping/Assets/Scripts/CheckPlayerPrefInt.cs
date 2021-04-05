@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CheckPlayerPrefInt : MonoBehaviour
-{
+//Triggers a UnityEvent based on the value of a PLayerPref
+public class CheckPlayerPrefInt : MonoBehaviour {
 	public string playerPrefName;
 	public int checkAgainstValue = 1;
 	public int dafaultValue = 0;
@@ -20,29 +20,24 @@ public class CheckPlayerPrefInt : MonoBehaviour
 	public UnityEvent ifTrue = null;
 	public UnityEvent ifFalse = null;
 
-	void OnEnable()
-	{
+	void OnEnable() {
 		if (goOnAwake) Go();
 	}
 
-	public void Go()
-	{
+	public void Go() {
 		StartCoroutine(Happen());
 	}
 
-	public void AssignThisPlayerPrefInt(int value)
-	{
+	public void AssignThisPlayerPrefInt(int value) {
 		PlayerPrefs.SetInt(playerPrefName, value);
 	}
 
-	IEnumerator Happen()
-	{
+	IEnumerator Happen() {
 		yield return new WaitForSeconds(preDelay);
 
 		int theValue = PlayerPrefs.GetInt(playerPrefName, dafaultValue);
 
-		switch (conditional)
-		{
+		switch (conditional) {
 			case Conditianals.Equal:
 				if (theValue == checkAgainstValue) ifTrue?.Invoke();
 				else ifFalse?.Invoke();
@@ -70,8 +65,7 @@ public class CheckPlayerPrefInt : MonoBehaviour
 		if (next != null) next.SendMessage("Go");
 	}
 
-	public enum Conditianals
-	{
+	public enum Conditianals {
 		Equal,
 		GreaterThan,
 		GreaterThanOrEqualTo,

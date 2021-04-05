@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Blue2
   m_EditorClassIdentifier: 
-  bankName: A Words
-  voice: 1
-  fadeTime: 0.25
+  bankName: Helm Chirp
+  voice: 0
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 9b6c143625e3841d1bb5f8eee2a497fc, type: 3}
-  - {fileID: 8300000, guid: 899a2a180abd44a459fa6791dcca9bc1, type: 3}
-  - {fileID: 8300000, guid: 95481618638a348cd984174e6836d2d1, type: 3}
-  - {fileID: 8300000, guid: 721c1a61e416a4068957d55308455f0b, type: 3}
-  - {fileID: 8300000, guid: 49992f9d57cbd44bba1d3c8785260c89, type: 3}
+  - {fileID: 8300000, guid: 505ac70cc54284844a812c1bd470a6c6, type: 3}
+  - {fileID: 8300000, guid: cae88be4575d6194eafae5196f6be4da, type: 3}
+  - {fileID: 8300000, guid: 49067a8902054a04dba67292cbe3ce01, type: 3}
+  - {fileID: 8300000, guid: 88af10baa7450d14580005576a12c273, type: 3}
+  - {fileID: 8300000, guid: d9321d7ff553f6a43a3153ec949f75c3, type: 3}

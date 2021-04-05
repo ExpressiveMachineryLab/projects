@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Red1
   m_EditorClassIdentifier: 
   bankName: Glockenspiel
+  voice: 0
+  fadeTime: 0.15
   volumes:
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.3
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 906d8735ac094486b9e438c326397128, type: 3}
-  - {fileID: 8300000, guid: da2735eada1614913a62cd9f66ce126c, type: 3}
-  - {fileID: 8300000, guid: 0ae710b00159348a1a0a21ef8a0106a7, type: 3}
-  - {fileID: 8300000, guid: d1d106bb0f7e54d14abeadbd5031f456, type: 3}
-  - {fileID: 8300000, guid: 887dcbf333e184fd98fe573c4aa1eea8, type: 3}
+  - {fileID: 8300000, guid: 2e7efdfa558945e4a8aaed53f35863c6, type: 3}
+  - {fileID: 8300000, guid: 101fd2f55edf64244856550b49aacc81, type: 3}
+  - {fileID: 8300000, guid: cf0d9efd5de0d174996dffcec022c6e5, type: 3}
+  - {fileID: 8300000, guid: 6e1cfa0a83a5ceb43bf42c1e889e6cd5, type: 3}
+  - {fileID: 8300000, guid: 77912d5c1a8bb3348bf42ca91f58b8ec, type: 3}

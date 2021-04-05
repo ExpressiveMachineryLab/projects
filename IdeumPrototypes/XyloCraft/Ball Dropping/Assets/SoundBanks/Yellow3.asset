@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Yellow3
   m_EditorClassIdentifier: 
-  bankName: Beat 2
+  bankName: Vital Keys
+  voice: 0
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: bdeef2493dd034d8f9505630973f1874, type: 3}
-  - {fileID: 8300000, guid: 299bc830d84e243efad2ee99d69b5d4a, type: 3}
-  - {fileID: 8300000, guid: e07cce57203ce4cfdbf8bfd63c043652, type: 3}
-  - {fileID: 8300000, guid: 18a0eb0cf8b8d4ab0a59659fb7275e89, type: 3}
-  - {fileID: 8300000, guid: 2b8f015fd259c4727adada12394a32d9, type: 3}
+  - {fileID: 8300000, guid: 393c19a6a3c264b47956f690f33a257c, type: 3}
+  - {fileID: 8300000, guid: ccbe27e1446a0eb4aa624b50293ebdb5, type: 3}
+  - {fileID: 8300000, guid: cd2d3b204ac5c2648b11f1f322099764, type: 3}
+  - {fileID: 8300000, guid: 8840f1e34ea9f9144800fde2da75ed03, type: 3}
+  - {fileID: 8300000, guid: e157f9f4883ff1d46a8971ba075ae652, type: 3}

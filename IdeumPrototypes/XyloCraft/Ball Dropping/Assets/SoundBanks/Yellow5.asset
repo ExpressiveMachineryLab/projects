@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Cello
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 9f31ab7b85a603447b14dbd19cf250a0, type: 3}
-  - {fileID: 8300000, guid: 4caea20cdd847064dafa7f7b2d695e4c, type: 3}
-  - {fileID: 8300000, guid: 6c3e0a1af8c018142b866e3f540033af, type: 3}
-  - {fileID: 8300000, guid: 13622e9a149e74e4684e25f6ef1508f3, type: 3}
-  - {fileID: 8300000, guid: 693a26d78cbe55b4285a40368a69fdcc, type: 3}
+  - {fileID: 8300000, guid: f6da0fb9c62dd64448733dfbf42e9192, type: 3}
+  - {fileID: 8300000, guid: 5d005cfea5af6b84dbfa122d03d0df9d, type: 3}
+  - {fileID: 8300000, guid: 7282a7221c97b5343bc2e0db6b3b674f, type: 3}
+  - {fileID: 8300000, guid: 86859a5118603bf4c9a9302135d5b461, type: 3}
+  - {fileID: 8300000, guid: fd3977f59d3b3104582cea79b7619798, type: 3}

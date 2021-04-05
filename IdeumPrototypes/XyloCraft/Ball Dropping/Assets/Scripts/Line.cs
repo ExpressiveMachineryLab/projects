@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Line : MonoBehaviour
-{
+public class Line : MonoBehaviour {
 	public SelectedElementType type = SelectedElementType.Line;
 	public string id = "";
 	public ElemColor color;
@@ -17,6 +16,8 @@ public class Line : MonoBehaviour
 	public int visualLevel = 0;
 	public bool pitchPositive = true;
 	public bool visualPositive = true;
+
+	public AudioClip enabledSound, placedSound, selectedSound;
 
 	private Animator effects;
 	private SpriteRenderer lineSprite;
@@ -32,38 +33,33 @@ public class Line : MonoBehaviour
 	private bool isBeingRotated = false;
 
 	private bool soudedThisFrame = false;
-	
-	private void Start()
-	{
+
+	private void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 		panels = FindObjectsOfType<LinePanel>();
 		effects = GetComponent<Animator>();
 		logger = FindObjectOfType<CountLogger>();
 		SpriteRenderer[] findLineSprite = GetComponentsInChildren<SpriteRenderer>();
 
-		foreach (SpriteRenderer item in findLineSprite)
-		{
+		foreach (SpriteRenderer item in findLineSprite) {
 			if (item.gameObject.name == "LineSprite") lineSprite = item;
 		}
 
 		lineSprite.sprite = chordSprites[pitchLevel];
 
-		if (id == "")
-		{
+		//Create unique ID
+		if (id == "") {
 			id = "1" + (int)color;
 			RandomString randomstring = new RandomString();
 			id += randomstring.CreateRandomString(5);
-		}
-		else if (!id[0].Equals("1".ToCharArray()[0]))
-		{
+		} else if (!id[0].Equals("1".ToCharArray()[0])) {
 			id = "1" + id;
 		}
 	}
 
-	private void Update()
-	{
-		if (isBeingHeld)
-		{
+	private void Update() {
+		//Draw line with the mouse
+		if (isBeingHeld) {
 			Vector3 mousePos;
 			mousePos = Input.mousePosition;
 			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -71,72 +67,67 @@ public class Line : MonoBehaviour
 				mousePos.y - startPosY, 0);
 		}
 
-		if (isBeingRotated)
-		{
+		if (isBeingRotated) {
 			Rotate();
 		}
 
-		if (Input.GetMouseButtonDown(0))
-		{
+		//Check if the rotator knob is being held by the mouse
+		if (Input.GetMouseButtonDown(0)) {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-			if (hit.collider != null && hit.collider.tag == "Rotator" && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>())
-			{
+			if (hit.collider != null && hit.collider.tag == "Rotator" && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>()) {
 				isBeingRotated = true;
 			}
 		}
 
-		if (Input.GetMouseButtonUp(0))
-		{
+		if (Input.GetMouseButtonUp(0)) {
 			isBeingRotated = false;
 		}
 
 		soudedThisFrame = false;
 	}
 
-	private void OnMouseDown()
-	{
+	void OnEnable() {
+		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
+		soundMan.PlaySound(enabledSound, gameObject);
+	}
+
+	private void OnMouseDown() {
 		isBeingHeld = true;
 
-		if (Input.GetMouseButtonDown(0))
-		{
+		if (Input.GetMouseButtonDown(0)) {
 			if (logger != null) logger.lineClicks++;
 
-			Vector3 mousePos;
-			mousePos = Input.mousePosition;
-			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 			startPosX = mousePos.x - this.transform.localPosition.x;
 			startPosY = mousePos.y - this.transform.localPosition.y;
 
 			isBeingHeld = true;
 		}
-
+		soundMan.PlaySound(selectedSound, gameObject);
 
 	}
 
-	private void OnMouseUp()
-	{
+	private void OnMouseUp() {
 		isBeingHeld = false;
+		soundMan.PlaySound(placedSound, gameObject);
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
+	private void OnCollisionEnter2D(Collision2D collision) {
 		//if the colliding object has a ball component, PerformCodeBehvaior()
-		if (collision.gameObject.GetComponent<Ball>() != null)
-		{
+		if (collision.gameObject.GetComponent<Ball>() != null) {
 			PerformCodeBehvaior(collision.gameObject.GetComponent<Ball>());
 		}
 	}
 
-	private void OnBecameInvisible()
-	{
-		Destroy(this.gameObject);
+	//Can't see it, don't need it
+	private void OnBecameInvisible() {
+		gameObject.SetActive(false);
 	}
 
-	private void PerformCodeBehvaior(Ball ball)
-	{
+	private void PerformCodeBehvaior(Ball ball) {
 		if (soudedThisFrame) return;
 
 		panels = FindObjectsOfType<LinePanel>();
@@ -144,119 +135,61 @@ public class Line : MonoBehaviour
 		soudedThisFrame = true;
 
 		int repeats = 0;
+		bool playEffect = false;
 
-		foreach (LinePanel panel in panels)
-		{
+		foreach (LinePanel panel in panels) {
 			//check if the panel is active and if the colors in panel match colors in the line and ball
 			if (!panel.gameObject.activeInHierarchy ||
 				(panel.GetBallColor() != ball.color && panel.GetBallColor() != ElemColor.All) ||
-				(panel.GetLineColor() != color && panel.GetLineColor() != ElemColor.All))
-			{
+				(panel.GetLineColor() != color && panel.GetLineColor() != ElemColor.All)) {
 				continue;
 			}
 
 			//Chord panel
-			if (panel.mode == PanelMode.Chord)
-			{
-				if (panel.selectedChord == SelectedPM.Plus)
-				{
+			if (panel.mode == PanelMode.Chord) {
+				if (panel.selectedChord == SelectedPM.Plus) {
 					pitchLevel++;
 					pitchLevel = pitchLevel % 5;
-				}
-				else if (panel.selectedChord == SelectedPM.Minus)
-				{
+				} else if (panel.selectedChord == SelectedPM.Minus) {
 					pitchLevel--;
 					if (pitchLevel < 0) pitchLevel = 4;
-				}
-				else if (panel.selectedChord == SelectedPM.PlusMinus)
-				{
-					if (pitchLevel == 4)
-					{
-						pitchPositive = false;
-					}
-					else if (pitchLevel == 0)
-					{
-						pitchPositive = true;
-					}
-
-					if (pitchPositive)
-					{
-						pitchLevel++;
-					}
-					else
-					{
-						pitchLevel--;
-					}
 				}
 			}
 
 			//Rhythm panel
-			if (panel.mode == PanelMode.Rhythm)
-			{
+			if (panel.mode == PanelMode.Rhythm) {
 				repeats += panel.selectedRhythm;
 			}
 
 			//Visual panel
-			if (panel.mode == PanelMode.Visual)
-			{
-				if (panel.selectedVisual == SelectedPM.Plus)
-				{
-					visualLevel = visualLevel++ % 4;
-				}
-				else if (panel.selectedVisual == SelectedPM.Minus)
-				{
-					visualLevel = visualLevel-- % 4;
-				}
-				else if (panel.selectedVisual == SelectedPM.PlusMinus)
-				{
-					if (visualLevel == 3)
-					{
-						visualPositive = false;
-					}
-					else if (visualLevel == 0)
-					{
-						visualPositive = true;
-					}
-
-					if (visualPositive)
-					{
-						visualLevel++;
-					}
-					else
-					{
-						visualLevel--;
-					}
-				}
-
-				effects.SetTrigger("Play" + visualLevel);
+			if (panel.mode == PanelMode.Visual) {
+				playEffect = true;
 			}
-			
+
 			panel.FlashBox();
 		}
 
-		if (repeats > 0)
-		{
+		if (repeats > 0) {
 			StartCoroutine(LoopSound(0.2f, repeats));
-		}
-		else
-		{
+		} else {
 			MakeSound();
 		}
+
+		if (playEffect) effects.SetTrigger("Play" + visualLevel);
 
 		StartCoroutine(ChangeSprite(0.15f, ball));
 	}
 
-	private void MakeSound()
-	{
-		if (playClip != null)
-		{
+	private void MakeSound() {
+		//If we already have an object to play on, assign it to the new sound
+		if (playClip != null) {
 			soundMan.GetAudio(playClip, color, pitchLevel);
 		}
-		else
-		{
+		// if no object exists, create one to send to to sound manager
+		else {
 			playClip = new GameObject("Dummy");
 			playClip.transform.SetParent(transform);
-			AudioSource sound = playClip.AddComponent<AudioSource>();
+			playClip.AddComponent<AudioSource>();
 
 			Destroy(playClip, 0.1f);
 
@@ -264,16 +197,14 @@ public class Line : MonoBehaviour
 		}
 	}
 
-	private void Rotate()
-	{
+	private void Rotate() {
 		Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
 	}
 
-	private IEnumerator ChangeSprite(float seconds, Ball ball)
-	{
+	private IEnumerator ChangeSprite(float seconds, Ball ball) {
 
 		Sprite ballOriginalObject = ball.originalSprite;
 		Sprite ballHitObject = ball.hitSprite;
@@ -284,8 +215,7 @@ public class Line : MonoBehaviour
 		lineSprite.sprite = chordHitSprites[pitchLevel];
 
 		yield return new WaitForSeconds(seconds);
-		if (collidedObject != null)
-		{
+		if (collidedObject != null) {
 			collidedObject.sprite = ballOriginalObject;
 		}
 
@@ -293,24 +223,21 @@ public class Line : MonoBehaviour
 
 	}
 
-	private IEnumerator LoopSound(float seconds, int numLoops)
-	{
-		for (int i = 0; i < numLoops; i++)
-		{
+	private IEnumerator LoopSound(float seconds, int numLoops) {
+		for (int i = 0; i < numLoops; i++) {
 			MakeSound();
 			yield return new WaitForSeconds(seconds);
 		}
 	}
 
-	private IEnumerator DestroyObject(float seconds)
-	{
+	private IEnumerator DestroyObject(float seconds) {
 		MakeSound();
 		yield return new WaitForSeconds(seconds);
 		Destroy(this.gameObject);
 	}
 
-	public void BecomeCloneOf(GameObject lineModel)
-	{
+	//Copy the values of another line, used by the game manager to manage the line object pool
+	public void BecomeCloneOf(GameObject lineModel) {
 		color = lineModel.GetComponent<Line>().color;
 		chordSprites = lineModel.GetComponent<Line>().chordSprites;
 		chordHitSprites = lineModel.GetComponent<Line>().chordHitSprites;
@@ -324,11 +251,10 @@ public class Line : MonoBehaviour
 
 		transform.position = lineModel.transform.position;
 		transform.rotation = lineModel.transform.rotation;
-
 	}
 
-	public string LineToSO()
-	{
+	//Create a string to encapulate the line's properties
+	public string LineToSO() {
 		string SOstring = id;
 		SOstring += "," + transform.position.x.ToString("0.00") + "," + transform.position.y.ToString("0.00");
 		SOstring += "," + transform.rotation.eulerAngles.z.ToString("0.00");
@@ -340,8 +266,8 @@ public class Line : MonoBehaviour
 		return SOstring;
 	}
 
-	public void LineFromSO(string SOline)
-	{
+	//Assign properties from a string
+	public void LineFromSO(string SOline) {
 		string[] SOstring = SOline.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		id = SOstring[0];

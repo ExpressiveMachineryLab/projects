@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Red8
   m_EditorClassIdentifier: 
-  bankName: Creek 3
+  bankName: Soprano Sax
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: cc02fc2094eeb466f9c78e0b23063e28, type: 3}
-  - {fileID: 8300000, guid: b9e7b44cc609644ef9ecb2dc74d35e03, type: 3}
-  - {fileID: 8300000, guid: 8614340e43c0a4246bf88a72a66413a6, type: 3}
-  - {fileID: 8300000, guid: 787383a012f574a19b2ee2653e6b5da1, type: 3}
-  - {fileID: 8300000, guid: 10b43b870007e441facc0b5493284b2d, type: 3}
+  - {fileID: 8300000, guid: 3e5ff78aaaddb2148853754d73ee14d2, type: 3}
+  - {fileID: 8300000, guid: 6511c2279257918459711ab88f803665, type: 3}
+  - {fileID: 8300000, guid: eb7db2e895331454895c4654706eb177, type: 3}
+  - {fileID: 8300000, guid: 5a81d82f4c575c24cb7b06b5e99790c2, type: 3}
+  - {fileID: 8300000, guid: 1d98df653c798264a8564e373874b7b2, type: 3}

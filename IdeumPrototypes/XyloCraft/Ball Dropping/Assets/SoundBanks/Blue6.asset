@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Trance Kick
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 26a99ff09ac07494e8531d6420027ac4, type: 3}
-  - {fileID: 8300000, guid: 4647c4c457a9245ada36a8bf56a30829, type: 3}
-  - {fileID: 8300000, guid: 2cfe253162e23436db0663baabd13c19, type: 3}
-  - {fileID: 8300000, guid: be7f08bfc3ebf4f25a96f058bca6dc08, type: 3}
-  - {fileID: 8300000, guid: a06b3a47bc6194f18ac74ecf7ab8376e, type: 3}
+  - {fileID: 8300000, guid: f886b0289ccb2e94bae5acabcabdfb54, type: 3}
+  - {fileID: 8300000, guid: 4e6c0ff176f35a348930cdfab33699a0, type: 3}
+  - {fileID: 8300000, guid: 0619dead0b39c614e8eb66b326231c7b, type: 3}
+  - {fileID: 8300000, guid: 34acf4e8f2eeae14f9f9383e55a625ac, type: 3}
+  - {fileID: 8300000, guid: f3e81b679eb02c74982be55be5eb749d, type: 3}

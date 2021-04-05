@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Minor Sax
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 3be3a62cf62624f0fa5645d6c3576b71, type: 3}
-  - {fileID: 8300000, guid: 01dc4225196074cd3b3f7ffde6586725, type: 3}
-  - {fileID: 8300000, guid: fe3cdbcf7aaa84aa081f8f7ff469be22, type: 3}
-  - {fileID: 8300000, guid: 3ccb1f976182b4df6ae261c1cbc435f2, type: 3}
-  - {fileID: 8300000, guid: a42e435f815804680956e3625e2d0872, type: 3}
+  - {fileID: 8300000, guid: 880c2507d25214149b5d51686bcbc89a, type: 3}
+  - {fileID: 8300000, guid: 297f13b079b95f4418703bed3c7b239d, type: 3}
+  - {fileID: 8300000, guid: 2973967f6e315744788a9ad0a49a68b1, type: 3}
+  - {fileID: 8300000, guid: 6161179c21358df49b2bda0ef699f8ef, type: 3}
+  - {fileID: 8300000, guid: 891f1734dcfbcda41bbc4bb7612f8580, type: 3}

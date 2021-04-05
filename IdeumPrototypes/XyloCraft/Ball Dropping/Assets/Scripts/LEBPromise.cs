@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LEBPromise : MonoBehaviour
-{
+public class LEBPromise : MonoBehaviour {
 	private GameManager gameManager;
-	void Start()
-	{
+	void Start() {
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
 		if (gameObject.TryGetComponent(out Line line)) gameManager.ReplaceLine(gameObject);

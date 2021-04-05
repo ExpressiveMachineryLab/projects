@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 
-public class SOInterpreter : MonoBehaviour
-{
+public class SOInterpreter : MonoBehaviour {
 	[DllImport("__Internal")]
 	static extern void JSGetGameQuery(); // in the javascript
 
@@ -20,8 +19,7 @@ public class SOInterpreter : MonoBehaviour
 
 	private SessionManager sessionManager;
 
-	private void Start()
-	{
+	private void Start() {
 		sessionManager = FindObjectOfType<SessionManager>();
 
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -29,84 +27,71 @@ public class SOInterpreter : MonoBehaviour
 #endif
 	}
 
-	public void CopyToField()
-	{
+	public void CopyToField() {
 		textField.text = textInput;
 		textInput.CopyToClipboard();
 	}
 
-	public void CopyFromField()
-	{
+	public void CopyFromField() {
 		textInput = textField.text;
 		textInput.CopyToClipboard();
 	}
 
-	public void SetTextInput(string newInput)
-	{
+	public void SetTextInput(string newInput) {
 		textInput = newInput;
 	}
 
-	public string GetTextInput()
-	{
+	public string GetTextInput() {
 		return textInput;
 	}
 
-	public void SaveCanvasToSlot(int slot)
-	{
+	public void SaveCanvasToSlot(int slot) {
 		GenerateSaveDataString();
 		PlayerPrefs.SetString("SaveSlot" + slot, textInput);
 		if (sessionManager != null) sessionManager.LogSession(textInput);
 	}
 
-	public void LoadCanvasFromSlot(int slot)
-	{
+	public void LoadCanvasFromSlot(int slot) {
 		FindObjectOfType<GameManager>().ResetApplication();
 		textInput = PlayerPrefs.GetString("SaveSlot" + slot, "");
 		ParseSaveDataString();
 	}
 
-	public void GenerateSaveDataString()
-	{
+	public void GenerateSaveDataString() {
 		textInput = "";
 
 		SoundManager soundMan = FindObjectOfType<SoundManager>();
 		textInput += soundMan.SoundManagerToSO() + "_";
 
 		EmitterPanel[] emitterPanels = FindObjectsOfType<EmitterPanel>();
-		foreach (EmitterPanel emitterPanel in emitterPanels)
-		{
+		foreach (EmitterPanel emitterPanel in emitterPanels) {
 			textInput += emitterPanel.EmitterPanelToSO() + "_";
 		}
-		
+
 		LinePanel[] linePanels = FindObjectsOfType<LinePanel>();
-		foreach (LinePanel linePanel in linePanels)
-		{
+		foreach (LinePanel linePanel in linePanels) {
 			textInput += linePanel.LinePanelToSO() + "_";
 		}
 
 		Emitter[] emitters = FindObjectsOfType<Emitter>();
-		foreach (Emitter emitter in emitters)
-		{
+		foreach (Emitter emitter in emitters) {
 			textInput += emitter.BirdToSO() + "_";
 		}
-		
+
 		Line[] lines = FindObjectsOfType<Line>();
-		foreach (Line line in lines)
-		{
+		foreach (Line line in lines) {
 			textInput += line.LineToSO() + "_";
 		}
 
 		Ball[] balls = FindObjectsOfType<Ball>();
-		foreach (Ball ball in balls)
-		{
+		foreach (Ball ball in balls) {
 			textInput += ball.BallToSO() + "_";
 		}
 
 		textInput = textInput.Substring(0, textInput.Length - 1);
 	}
 
-	public void ParseSaveDataString()
-	{
+	public void ParseSaveDataString() {
 		if (textInput == "") return;
 
 		string[] contentsArray = textInput.Split(new[] { "_" }, StringSplitOptions.None);
@@ -118,67 +103,48 @@ public class SOInterpreter : MonoBehaviour
 
 		GameManager gameManager = FindObjectOfType<GameManager>();
 
-		foreach (string item in contentsArray)
-		{
-			if (int.Parse(item[0].ToString()) == 0)
-			{
+		foreach (string item in contentsArray) {
+			if (int.Parse(item[0].ToString()) == 0) {
 				string[] SOstring = item.Split(new[] { "," }, StringSplitOptions.None);
-				foreach (Ball ball in balls)
-				{
+				foreach (Ball ball in balls) {
 					if (ball.id == SOstring[0]) Destroy(ball.gameObject);
 				}
 				GameObject newBall = Instantiate(ballPrefabs[int.Parse(item[1].ToString())]);
 				newBall.GetComponent<Ball>().BallFromSO(item);
-			}
-			else if (int.Parse(item[0].ToString()) == 1)
-			{
+			} else if (int.Parse(item[0].ToString()) == 1) {
 				string[] SOstring = item.Split(new[] { "," }, StringSplitOptions.None);
-				foreach (Line line in lines)
-				{
+				foreach (Line line in lines) {
 					if (line.id == SOstring[0]) line.gameObject.SetActive(false);
 				}
 				GameObject newLine = gameManager.AssignLine(linePrefabs[int.Parse(item[1].ToString())]);
 				newLine.GetComponent<Line>().LineFromSO(item);
 				newLine.transform.GetChild(0).gameObject.SetActive(false);
 				newLine.transform.GetChild(1).gameObject.SetActive(false);
-			}
-			else if (int.Parse(item[0].ToString()) == 2)
-			{
+			} else if (int.Parse(item[0].ToString()) == 2) {
 				string[] SOstring = item.Split(new[] { "," }, StringSplitOptions.None);
-				foreach (Emitter emitter in emitters)
-				{
+				foreach (Emitter emitter in emitters) {
 					if (emitter.id == SOstring[0]) Destroy(emitter.gameObject);
 				}
 				GameObject newBird = gameManager.AssignEmitter(emitterPrefabs[int.Parse(item[1].ToString())]);
 				newBird.GetComponent<Emitter>().BirdFromSO(item);
 				newBird.transform.GetChild(0).gameObject.SetActive(false);
 				newBird.transform.GetChild(1).gameObject.SetActive(false);
-			}
-			else if (int.Parse(item[0].ToString()) == 3)
-			{
+			} else if (int.Parse(item[0].ToString()) == 3) {
 				string[] SOstring = item.Split(new[] { "," }, StringSplitOptions.None);
-				foreach (LinePanel linePanel in linePanels)
-				{
-					if (SOstring[0] == linePanel.id)
-					{
+				foreach (LinePanel linePanel in linePanels) {
+					if (SOstring[0] == linePanel.id) {
 						linePanel.LinePanelFromSO(item);
 					}
 				}
-			}
-			else if (int.Parse(item[0].ToString()) == 4)
-			{
+			} else if (int.Parse(item[0].ToString()) == 4) {
 				string[] SOstring = item.Split(new[] { "," }, StringSplitOptions.None);
-				foreach (EmitterPanel emitterPanel in emitterPanels)
-				{
-					if (SOstring[0] == emitterPanel.id)
-					{
+				foreach (EmitterPanel emitterPanel in emitterPanels) {
+					if (SOstring[0] == emitterPanel.id) {
 						emitterPanel.EmitterPanelFromSO(item);
 					}
 				}
 
-			}
-			else if (int.Parse(item[0].ToString()) == 5)
-			{
+			} else if (int.Parse(item[0].ToString()) == 5) {
 				FindObjectOfType<SoundManager>().SoundManagerFromSO(item);
 			}
 		}
@@ -186,8 +152,7 @@ public class SOInterpreter : MonoBehaviour
 
 	}
 
-	public void GetSharableLink()
-	{
+	public void GetSharableLink() {
 		GenerateSaveDataString();
 
 		string[] useURL = Application.absoluteURL.Split(new[] { "?" }, StringSplitOptions.None);
@@ -197,21 +162,17 @@ public class SOInterpreter : MonoBehaviour
 	}
 }
 
-public static class ClipboardExtension
-{
+public static class ClipboardExtension {
 	/// <summary>
 	/// Puts the string into the Clipboard.
 	/// </summary>
-	public static void CopyToClipboard(this string str)
-	{
+	public static void CopyToClipboard(this string str) {
 		GUIUtility.systemCopyBuffer = str;
 	}
 }
 
-public class RandomString
-{
-	public string CreateRandomString(int stringLength = 10)
-	{
+public class RandomString {
+	public string CreateRandomString(int stringLength = 10) {
 		int _stringLength = stringLength - 1;
 		string randomString = "";
 		string[] characters = new string[] { "a", "b", "c", "d", "e",
@@ -227,25 +188,21 @@ public class RandomString
 											 "Y", "Z", "1", "2", "3",
 											 "4", "5", "6", "7", "8",
 											 "9", "0"};
-		for (int i = 0; i <= _stringLength; i++)
-		{
+		for (int i = 0; i <= _stringLength; i++) {
 			randomString = randomString + characters[UnityEngine.Random.Range(0, characters.Length)];
 		}
 		return randomString;
 	}
 }
 
-public class HexConverterTool
-{
-	public string FloatToHex(float value)
-	{
+public class HexConverterTool {
+	public string FloatToHex(float value) {
 		byte[] vals = BitConverter.GetBytes(value);
 		string str = BitConverter.ToString(vals).Replace("-", "");
 		return str;
 	}
 
-	public float HexToFloat(string value)
-	{
+	public float HexToFloat(string value) {
 		uint num = uint.Parse(value, System.Globalization.NumberStyles.AllowHexSpecifier);
 
 		byte[] floatVals = BitConverter.GetBytes(num);

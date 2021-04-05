@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Flute
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 1
-  - 1
-  - 0.15
-  - 1
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 0b7bed4ec74ff864dbfe1e583d7e256b, type: 3}
-  - {fileID: 8300000, guid: d424aa7c94f29854580dc58a90964834, type: 3}
-  - {fileID: 8300000, guid: 3468f3540673b57479d1b3936077fc85, type: 3}
-  - {fileID: 8300000, guid: 61cc7d29890cb6847899810a1034c30e, type: 3}
-  - {fileID: 8300000, guid: 55f118021f8219c45897d491a13b2ebd, type: 3}
+  - {fileID: 8300000, guid: 7f26ac3495c43d74398fa5e97aaad091, type: 3}
+  - {fileID: 8300000, guid: c5929c07b2f3b884787e0ea9e74f3973, type: 3}
+  - {fileID: 8300000, guid: 08d1293742a744744b573511fcea3f85, type: 3}
+  - {fileID: 8300000, guid: 90823d363517bd04ea93ac7bd91359f8, type: 3}
+  - {fileID: 8300000, guid: 8cfcae411443aef4da880a19024d3241, type: 3}

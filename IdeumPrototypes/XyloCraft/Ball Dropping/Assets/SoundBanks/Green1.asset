@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Green1
   m_EditorClassIdentifier: 
   bankName: Pit Percussion
+  voice: 0
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 9f63486b0c12c41418088e3093ea832f, type: 3}
-  - {fileID: 8300000, guid: ca5f9b83ca6894724a52f64b852ef91c, type: 3}
-  - {fileID: 8300000, guid: 8d134a937baee4c6cb3a83232d60ed6a, type: 3}
-  - {fileID: 8300000, guid: dedfebd7cb3be4dafb570144ce1401e2, type: 3}
-  - {fileID: 8300000, guid: 3bf43aa13924343c5907823003d9362b, type: 3}
+  - {fileID: 8300000, guid: 41ad19073f0b5014daa1a9f4d7333b58, type: 3}
+  - {fileID: 8300000, guid: ab271a652c79efe4ca3b7969533b8b51, type: 3}
+  - {fileID: 8300000, guid: c6be7ae34af1837409c9b44d9d01c1fc, type: 3}
+  - {fileID: 8300000, guid: ddc6e1a20d340104f8892c28b55d30a8, type: 3}
+  - {fileID: 8300000, guid: 5d7264869247b064097fcb2854a016bf, type: 3}

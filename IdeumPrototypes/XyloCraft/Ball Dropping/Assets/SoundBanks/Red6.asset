@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bankName: Wave Kick
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
   - 0.5
   - 0.5
@@ -22,8 +22,8 @@ MonoBehaviour:
   - 0.5
   - 0.5
   clips:
-  - {fileID: 8300000, guid: 845f6dcf3ae074bf8bd3af9314cd3533, type: 3}
-  - {fileID: 8300000, guid: 9cc8bac93ee1748f0904ffccc659a413, type: 3}
-  - {fileID: 8300000, guid: 1ec6aa630bb0f4719bb67ed63ce645dc, type: 3}
-  - {fileID: 8300000, guid: 5afe0cdbcdd45491db7db9753d8e903e, type: 3}
-  - {fileID: 8300000, guid: 5c9b14e59a54a45f8a467638183789c5, type: 3}
+  - {fileID: 8300000, guid: 3516d86c2bb6dd14c82a949df88087bd, type: 3}
+  - {fileID: 8300000, guid: a97a2f5125da2e14489432af9638aefd, type: 3}
+  - {fileID: 8300000, guid: a40bf672272e85249a5bdc8e0f0283d8, type: 3}
+  - {fileID: 8300000, guid: c7c2d8532446e454aaa3f4db7522c482, type: 3}
+  - {fileID: 8300000, guid: 8bcfe569a917538459c5d2419e950cce, type: 3}

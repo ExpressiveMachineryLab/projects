@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Red7
   m_EditorClassIdentifier: 
-  bankName: Little Sax
+  bankName: Little Saxs
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.8
-  - 0.8
+  - 0.5
+  - 0.5
   - 0.3
-  - 0.8
-  - 0.8
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 4f4746dd01d544a03bc05364019c150a, type: 3}
-  - {fileID: 8300000, guid: cf204d63f5dfc4d62b92f47c81c95a9f, type: 3}
-  - {fileID: 8300000, guid: 88a851aee66974688a8b47532d1bb339, type: 3}
-  - {fileID: 8300000, guid: a1cc4fbf30efa4e9f96df1e58a97d8f7, type: 3}
-  - {fileID: 8300000, guid: 792b716cf8b6244d08c31ab648f4c52c, type: 3}
+  - {fileID: 8300000, guid: c377fc1f6183d0a4ba7d62255d4e48e5, type: 3}
+  - {fileID: 8300000, guid: e91718fbd8c32994b8cd4dd9fe088f2f, type: 3}
+  - {fileID: 8300000, guid: 97dc47ad89b0df8459ec3885e6269e9e, type: 3}
+  - {fileID: 8300000, guid: dd46c0f54ca429140bb3be7edda591a9, type: 3}
+  - {fileID: 8300000, guid: 726e27be95031ad46bbba24327ee4897, type: 3}

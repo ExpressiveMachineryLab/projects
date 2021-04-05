@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Green5
   m_EditorClassIdentifier: 
-  bankName: Violin Arco
+  bankName: Violin III
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 125fbb28b9f81a84ea303a058ff0d2a1, type: 3}
-  - {fileID: 8300000, guid: 6e3c31da765abb84ba5bba9d663c91c7, type: 3}
-  - {fileID: 8300000, guid: 65f1011ad5ec1ca4f9857511367a83c4, type: 3}
-  - {fileID: 8300000, guid: 23a7d03c26993d2428ec2cf869f1f75f, type: 3}
-  - {fileID: 8300000, guid: 71c87ebe4f2606941869ec428efa052a, type: 3}
+  - {fileID: 8300000, guid: 5b39a56052d7c994aa4a5a6abe625853, type: 3}
+  - {fileID: 8300000, guid: d01b17f7428951741b175b54e1be9548, type: 3}
+  - {fileID: 8300000, guid: 09f792d46f466404a879fb75a981bb88, type: 3}
+  - {fileID: 8300000, guid: 418cbb1366007114e822345fd1f086ef, type: 3}
+  - {fileID: 8300000, guid: e847cb1af6e8d3d498515f4cd48eb54a, type: 3}

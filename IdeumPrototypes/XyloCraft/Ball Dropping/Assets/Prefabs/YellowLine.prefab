@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e76027e11f80ec449969ddbf1dc14351, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93e69ecba0230814e8c29f19a453f106, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,6 +195,9 @@ MonoBehaviour:
   visualLevel: 0
   pitchPositive: 1
   visualPositive: 1
+  enabledSound: {fileID: 8300000, guid: 08506efdf5ceaf24c8d46c72f259ae78, type: 3}
+  placedSound: {fileID: 8300000, guid: 092af64b7b070bb4cad1d21b762efbcb, type: 3}
+  selectedSound: {fileID: 8300000, guid: 4cec419661af0aa45bda90c770784084, type: 3}
 --- !u!1 &3911372716361687784
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Green3
   m_EditorClassIdentifier: 
-  bankName: Trap 4
+  bankName: Vital Bass
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
-  - 0.6
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
   clips:
-  - {fileID: 8300000, guid: dc1da758e2cd144d2a296597e4e213da, type: 3}
-  - {fileID: 8300000, guid: 7a908b03a62e7455fa87656cd2c7dceb, type: 3}
-  - {fileID: 8300000, guid: 2bc98f6d8eeaa49b2a7254966c2dd8aa, type: 3}
-  - {fileID: 8300000, guid: 885cd97a5126b4c9c992642fd021dee1, type: 3}
-  - {fileID: 8300000, guid: 8cbe2feb3d1d24730a80dc8313251fbf, type: 3}
+  - {fileID: 8300000, guid: bc97ddeeb55a08c46a2ef715e3de7600, type: 3}
+  - {fileID: 8300000, guid: af96fb3b10cd3674692c14fba4c8c016, type: 3}
+  - {fileID: 8300000, guid: fe5ac6b43d314ab47934958012851269, type: 3}
+  - {fileID: 8300000, guid: d526d7898c994e341b7fa4248c07da2d, type: 3}
+  - {fileID: 8300000, guid: 72561d09f8f07d8489f7d928a286e503, type: 3}

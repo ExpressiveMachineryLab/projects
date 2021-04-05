@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Green6
   m_EditorClassIdentifier: 
   bankName: Voco Bit
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 0.6
-  - 0.6
-  - 0.3
-  - 0.6
-  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: a959fa118a8814419ab12bb96ac289e5, type: 3}
-  - {fileID: 8300000, guid: 7a2c37284c3e14bd4946f5cfd741e319, type: 3}
-  - {fileID: 8300000, guid: 2c38fe4011b1f40ce90bb23a5da137ce, type: 3}
-  - {fileID: 8300000, guid: 134a09b22f58f467fa0a80c94179b560, type: 3}
-  - {fileID: 8300000, guid: ec6f7cd59f5264363983e0cefc8e1327, type: 3}
+  - {fileID: 8300000, guid: d8391db8a1538d246b5777b46814ffbf, type: 3}
+  - {fileID: 8300000, guid: 45f21ca695463e247896845a83b3b426, type: 3}
+  - {fileID: 8300000, guid: 33a96161cebdfc54fbdb29d29a2ae6fd, type: 3}
+  - {fileID: 8300000, guid: da40a49cecfa59c4c937650fed8c7355, type: 3}
+  - {fileID: 8300000, guid: c36f3602df430b64d9dc375fd7df9313, type: 3}

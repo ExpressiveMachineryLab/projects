@@ -114,6 +114,9 @@ MonoBehaviour:
   visualLevel: 0
   pitchPositive: 1
   visualPositive: 1
+  enabledSound: {fileID: 8300000, guid: 08506efdf5ceaf24c8d46c72f259ae78, type: 3}
+  placedSound: {fileID: 8300000, guid: 092af64b7b070bb4cad1d21b762efbcb, type: 3}
+  selectedSound: {fileID: 8300000, guid: 4cec419661af0aa45bda90c770784084, type: 3}
 --- !u!1 &4527672960345121581
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +457,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f11aa6acadb1337458346c016d1ff1d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3563fc2f66d84bb4ab8924cd6dd28495, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

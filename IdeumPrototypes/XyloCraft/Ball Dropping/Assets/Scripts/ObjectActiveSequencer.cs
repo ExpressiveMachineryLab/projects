@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectActiveSequencer : MonoBehaviour
-{
+public class ObjectActiveSequencer : MonoBehaviour {
 	public GameObject activator;
 	public bool setTo = true;
 
@@ -14,18 +13,15 @@ public class ObjectActiveSequencer : MonoBehaviour
 
 	public GameObject next;
 
-	void OnEnable()
-	{
+	void OnEnable() {
 		if (goOnAwake) Go();
 	}
 
-	public void Go()
-	{
+	public void Go() {
 		StartCoroutine(Happen());
 	}
 
-	IEnumerator Happen()
-	{
+	IEnumerator Happen() {
 		yield return new WaitForSeconds(preDelay);
 
 		activator.SetActive(setTo);

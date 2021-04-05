@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Yellow7
   m_EditorClassIdentifier: 
-  bankName: Sax Axe
+  bankName: Sax Sevenths
   voice: 1
-  fadeTime: 0.25
+  fadeTime: 0.15
   volumes:
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 69cc9576332a345f2aaca927af9c0598, type: 3}
-  - {fileID: 8300000, guid: 73d7f44355be44accafae3270e9a4a97, type: 3}
-  - {fileID: 8300000, guid: 69bff0afff5cc48bc8e74967d16822ac, type: 3}
-  - {fileID: 8300000, guid: 73d7f44355be44accafae3270e9a4a97, type: 3}
-  - {fileID: 8300000, guid: 69cc9576332a345f2aaca927af9c0598, type: 3}
+  - {fileID: 8300000, guid: 8370b8c749b141449bdce10ee7ad6fb2, type: 3}
+  - {fileID: 8300000, guid: ed58dabb5249222449832c47a772886e, type: 3}
+  - {fileID: 8300000, guid: 153c98d751aa3d34eaec5b15da7aa22e, type: 3}
+  - {fileID: 8300000, guid: ef4060a2ca39ba54db6880d68ef3eb51, type: 3}
+  - {fileID: 8300000, guid: 602557ee9c8166543b423d0168ee8e78, type: 3}

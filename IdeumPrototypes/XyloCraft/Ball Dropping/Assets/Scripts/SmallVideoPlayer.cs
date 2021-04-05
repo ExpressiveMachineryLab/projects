@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 
-public class SmallVideoPlayer : MonoBehaviour
-{
+public class SmallVideoPlayer : MonoBehaviour {
 	public string videoFileName;
 	public bool playOnAwake = true;
 	public string loadingText = "Loading...";

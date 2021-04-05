@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c70b647426211f45b77024d7be59f24, type: 3}
   m_Name: Blue8
   m_EditorClassIdentifier: 
-  bankName: Creek
+  bankName: Tenor Sax
+  voice: 1
+  fadeTime: 0.15
   volumes:
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   clips:
-  - {fileID: 8300000, guid: 020586a5f3b43408f8dc40f5c98026a0, type: 3}
-  - {fileID: 8300000, guid: 31cb7b5708b87434ab144a1f79667dc4, type: 3}
-  - {fileID: 8300000, guid: d401d07aa55bc4cf1bc051f8036fffe1, type: 3}
-  - {fileID: 8300000, guid: 743ea2ab5c295443a96b20559897ae78, type: 3}
-  - {fileID: 8300000, guid: 07266ecde7efd41eebd3af8448622789, type: 3}
+  - {fileID: 8300000, guid: 6fc7b16e68dab6b449058a01e397f0e8, type: 3}
+  - {fileID: 8300000, guid: ba16a1c8c69ef2240956c587b6080de3, type: 3}
+  - {fileID: 8300000, guid: c6a39b02489484f4e933967f5d720c09, type: 3}
+  - {fileID: 8300000, guid: 3f29021eca1e9744da5438359d37760b, type: 3}
+  - {fileID: 8300000, guid: fc3dfcaf1e75a354cb2e1f2c98a64b4d, type: 3}
