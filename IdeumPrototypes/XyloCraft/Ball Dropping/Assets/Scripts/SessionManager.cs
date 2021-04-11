@@ -39,6 +39,7 @@ public class SessionManager : MonoBehaviour {
 			soInterpreter = gameObject.AddComponent<SOInterpreter>();
 		}
 
+
 #if !UNITY_EDITOR && UNITY_WEBGL
         JSGetSIDQuery();
 #endif
@@ -80,7 +81,6 @@ public class SessionManager : MonoBehaviour {
 		//Debug.Log(jsonLog);
 
 		GoogleSheetsForUnity.Drive.CreateObject(jsonLog, _tableName, true);
-
 	}
 
 	public void CreateLogTable() {

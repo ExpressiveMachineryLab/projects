@@ -17,6 +17,8 @@
 		if (sidString != null) {
 			unityInstance.SendMessage('Session Manager', 'SetSessionID', sidString + "");
 			console.log("Found SID " + sidString);
+		} else {
+			console.log("No SID found");
 		}
 	},
 
