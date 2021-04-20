@@ -11,8 +11,6 @@ public class Emitter : MonoBehaviour {
 	public float speed = 5f;
 	public string launchKey;
 
-	public AudioClip enabledSound, placedSound, selectedSound, shootSound;
-
 	private Transform firePoint;
 	private Animator emitterAnimator;
 	
@@ -24,7 +22,6 @@ public class Emitter : MonoBehaviour {
 	private bool isBeingHeld = false;
 	private bool isBeingRotated = false;
 	private float clickTimer;
-	private bool playedSelectedSound = false;
 
 	void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
@@ -54,11 +51,6 @@ public class Emitter : MonoBehaviour {
 			transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
 		}
 
-		if (isBeingHeld && clickTimer > 0.15f && !playedSelectedSound) {
-			soundMan.PlaySound(selectedSound, gameObject);
-			playedSelectedSound = true;
-		}
-
 		if (isBeingRotated) Rotate();
 
 		if (Input.GetMouseButtonDown(0)) {
@@ -72,14 +64,12 @@ public class Emitter : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp(0)) {
 			isBeingRotated = false;
-			playedSelectedSound = false;
 		}
 
 	}
 
 	void OnEnable() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
-		soundMan.PlaySound(enabledSound, gameObject);
 	}
 
 	void OnMouseDown() {
@@ -103,21 +93,17 @@ public class Emitter : MonoBehaviour {
 			if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>()) {
 				ShootBall();
 			}
-		} else {
-			soundMan.PlaySound(placedSound, gameObject);
 		}
 		isBeingHeld = false;
-		playedSelectedSound = false;
 	}
 
-	private void ShootBall() {
+	public void ShootBall() {
 		GameObject newBall = FindObjectOfType<GameManager>().AssignBall(ballPrefab);
 		newBall.transform.position = firePoint.position;
 		newBall.transform.rotation = firePoint.rotation;
 		newBall.GetComponent<Ball>().ResetVelocity();
 
 		emitterAnimator.SetTrigger("Shoot");
-		soundMan.PlaySound(shootSound, gameObject);
 	}
 
 	private void Rotate() {

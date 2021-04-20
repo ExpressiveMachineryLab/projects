@@ -16,7 +16,7 @@ public class GridWithExpancion : MonoBehaviour {
 	void Update() {
 		float currentY = -paddingTop;
 		foreach (RectTransform pos in kids) {
-			pos.position = new Vector3(paddingLeft, currentY, 0) + transform.position;
+			pos.anchoredPosition = new Vector3(paddingLeft, currentY, 0);
 			currentY -= pos.rect.height + spacing;
 		}
 	}

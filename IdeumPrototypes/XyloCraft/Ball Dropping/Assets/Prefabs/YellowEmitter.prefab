@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2686127111069810380}
   - component: {fileID: 2785134274832480331}
   m_Layer: 8
-  m_Name: YellowEmitter8
+  m_Name: YellowEmitter 2
   m_TagString: Emitter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -275422249
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4b7d0f55dd016c049be1328df1a11072, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 865dc5472e0b16546b94b04a9a1d4b17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 488419780234742639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bfbae01a4ff9214b809861278c3a7e4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 09e57b6ce932b954ba5f5f9f6a68e581, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.09, y: 5.96}
+    oldSize: {x: 0.64, y: 0.6}
     newSize: {x: 4.09, y: 5.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,6 +151,10 @@ MonoBehaviour:
     type: 3}
   speed: 5
   launchKey: LaunchY
+  enabledSound: {fileID: 8300000, guid: c83188e3dfd85b84cb1fb34e777a4e8b, type: 3}
+  placedSound: {fileID: 8300000, guid: 83cbc6db8fac68b44be392744754598a, type: 3}
+  selectedSound: {fileID: 8300000, guid: 1190ab212fd487141bf023291fc08c30, type: 3}
+  shootSound: {fileID: 8300000, guid: a397c7a261ac4ac4cb804256888bebf1, type: 3}
 --- !u!1 &763618001324837730
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,8 +17,6 @@ public class Line : MonoBehaviour {
 	public bool pitchPositive = true;
 	public bool visualPositive = true;
 
-	public AudioClip enabledSound, placedSound, selectedSound;
-
 	private Animator effects;
 	private SpriteRenderer lineSprite;
 
@@ -90,7 +88,6 @@ public class Line : MonoBehaviour {
 
 	void OnEnable() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
-		soundMan.PlaySound(enabledSound, gameObject);
 	}
 
 	private void OnMouseDown() {
@@ -106,13 +103,11 @@ public class Line : MonoBehaviour {
 
 			isBeingHeld = true;
 		}
-		soundMan.PlaySound(selectedSound, gameObject);
 
 	}
 
 	private void OnMouseUp() {
 		isBeingHeld = false;
-		soundMan.PlaySound(placedSound, gameObject);
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
@@ -140,17 +135,17 @@ public class Line : MonoBehaviour {
 		foreach (LinePanel panel in panels) {
 			//check if the panel is active and if the colors in panel match colors in the line and ball
 			if (!panel.gameObject.activeInHierarchy ||
-				(panel.GetBallColor() != ball.color && panel.GetBallColor() != ElemColor.All) ||
-				(panel.GetLineColor() != color && panel.GetLineColor() != ElemColor.All)) {
+				(panel.GetBallColor() != ball.color && panel.GetBallColor() != ElemColor.any) ||
+				(panel.GetLineColor() != color && panel.GetLineColor() != ElemColor.any)) {
 				continue;
 			}
 
 			//Chord panel
 			if (panel.mode == PanelMode.Chord) {
-				if (panel.selectedChord == SelectedPM.Plus) {
+				if (panel.selectedChord == SelectedPM.next) {
 					pitchLevel++;
 					pitchLevel = pitchLevel % 5;
-				} else if (panel.selectedChord == SelectedPM.Minus) {
+				} else if (panel.selectedChord == SelectedPM.last) {
 					pitchLevel--;
 					if (pitchLevel < 0) pitchLevel = 4;
 				}

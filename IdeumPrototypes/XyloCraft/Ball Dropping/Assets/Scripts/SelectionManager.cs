@@ -16,6 +16,12 @@ public class SelectionManager : MonoBehaviour {
 				RemoveSelection();
 			}
 		}
+
+		if (Input.GetButtonUp("Delete")) {
+			foreach (GameObject selection in selectedObject) {
+				selection.SetActive(false);
+			}
+		}
 	}
 
 	private void SetSelection(GameObject[] selectedGameObject) {
@@ -42,7 +48,7 @@ public class SelectionManager : MonoBehaviour {
 				item.transform.GetChild(1).gameObject.SetActive(false);
 			}
 		}
-		//selectedObject = new GameObject[0];
+		selectedObject = new GameObject[0];
 	}
 
 	public void NewSelection(GameObject[] selectedGameObject) {

@@ -10,10 +10,13 @@ public class StyleHUD : MonoBehaviour {
 	public StyleBank[] availableStyles;
 	public SoundBank[] availableSounds;
 	public GameObject buttonPrefab;
-	public ElemColor currentColor = ElemColor.Red;
+	public ElemColor currentColor = ElemColor.red;
 
 	public GridLayoutGroup styleGrid;
 	public GridLayoutGroup[] soundGrids;
+
+	public Color styleColor;
+	public Color soundColor;
 
 	private SoundManager soundMan;
 	private CountLogger countLogger;
@@ -30,6 +33,7 @@ public class StyleHUD : MonoBehaviour {
 			Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 			newButton.transform.SetParent(styleGrid.transform);
 			newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableStyles[i].styleName;
+			newButton.gameObject.GetComponentInChildren<TMP_Text>().color = styleColor;
 			newButton.gameObject.name = availableStyles[i].name + "Button";
 			newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 			newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Style;
@@ -41,6 +45,7 @@ public class StyleHUD : MonoBehaviour {
 				Button newButton = Instantiate(buttonPrefab).GetComponent<Button>();
 				newButton.transform.SetParent(grid.transform);
 				newButton.gameObject.GetComponentInChildren<TMP_Text>().text = availableSounds[i].bankName;
+				newButton.gameObject.GetComponentInChildren<TMP_Text>().color = soundColor;
 				newButton.gameObject.name = availableSounds[i].name + "Button";
 				newButton.gameObject.GetComponent<GridButtonComponent>().index = i;
 				newButton.gameObject.GetComponent<GridButtonComponent>().type = GridButtonType.Sound;
@@ -81,16 +86,16 @@ public class StyleHUD : MonoBehaviour {
 
 	public void SetSound(int index) {
 		switch (currentColor) {
-			case ElemColor.Red:
+			case ElemColor.red:
 				soundMan.redBank = availableSounds[index];
 				break;
-			case ElemColor.Yellow:
+			case ElemColor.yellow:
 				soundMan.yellowBank = availableSounds[index];
 				break;
-			case ElemColor.Blue:
+			case ElemColor.blue:
 				soundMan.blueBank = availableSounds[index];
 				break;
-			case ElemColor.Green:
+			case ElemColor.green:
 				soundMan.greenBank = availableSounds[index];
 				break;
 		}
@@ -101,23 +106,23 @@ public class StyleHUD : MonoBehaviour {
 	}
 
 	public void SetColor(ElemColor newColor) {
-		if (newColor != ElemColor.All) currentColor = newColor;
+		if (newColor != ElemColor.any) currentColor = newColor;
 	}
 
 	public void SetColorToRed() {
-		currentColor = ElemColor.Red;
+		currentColor = ElemColor.red;
 	}
 
 	public void SetColorToYellow() {
-		currentColor = ElemColor.Yellow;
+		currentColor = ElemColor.yellow;
 	}
 
 	public void SetColorToBlue() {
-		currentColor = ElemColor.Blue;
+		currentColor = ElemColor.blue;
 	}
 
 	public void SetColorToGreen() {
-		currentColor = ElemColor.Green;
+		currentColor = ElemColor.green;
 	}
 
 	//Interface CountLogger

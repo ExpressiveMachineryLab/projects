@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour {
 	private TMP_InputField speedMultiplier;
 
 	public int maxLines, maxEmitters, maxBalls;
-	List<GameObjectAgePair> linePool = new List<GameObjectAgePair>();
-	private List<GameObjectAgePair> emitterPool = new List<GameObjectAgePair>();
-	private List<GameObjectAgePair> ballPool = new List<GameObjectAgePair>();
+	public List<GameObjectAgePair> linePool = new List<GameObjectAgePair>();
+	public List<GameObjectAgePair> emitterPool = new List<GameObjectAgePair>();
+	public List<GameObjectAgePair> ballPool = new List<GameObjectAgePair>();
 
 	public GameObject linePrefabs, emitterPrefabs, ballPrefabs;
 

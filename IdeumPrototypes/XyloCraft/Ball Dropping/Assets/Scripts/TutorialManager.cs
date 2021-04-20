@@ -71,7 +71,7 @@ public class TutorialManager : MonoBehaviour {
 		titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
 		pageText.text = sequences[tutorialIndex].sequnce[popupIndex].cardText;
 		pageNumberText.text = "" + popupIndex + "/" + (sequences[tutorialIndex].sequnce.Length - 1);
-		popup.GetComponent<RectTransform>().transform.position = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
+		popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
 
 		if (sequences[tutorialIndex].sequnce[popupIndex].challenge) titleText.color = challengeColor;
 		else titleText.color = regularColor;
@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour {
 		challengeIcon.SetActive(sequences[tutorialIndex].sequnce[popupIndex].challenge);
 
 		pointer.SetActive(sequences[tutorialIndex].sequnce[popupIndex].usePointer);
-		pointer.transform.position = sequences[tutorialIndex].sequnce[popupIndex].pointerPosition;
+		pointer.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].pointerPosition;
 		pointer.transform.rotation =  Quaternion.Euler(0f, 0f, sequences[tutorialIndex].sequnce[popupIndex].pointerRotation);
 	}
 

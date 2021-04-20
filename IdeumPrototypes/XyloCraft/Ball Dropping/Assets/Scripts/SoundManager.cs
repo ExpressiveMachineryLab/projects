@@ -44,7 +44,7 @@ public class SoundManager : MonoBehaviour {
 
 	public GameObject GetAudio(GameObject source, ElemColor color, int pitch) {
 
-		if (color == ElemColor.Red) {
+		if (color == ElemColor.red) {
 			GameObject newSource = redBank.PlayAudioClip(source, pitch);
 
 			if (redBank.voice == Phonic.Mono) {
@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour {
 			return newSource;
 		}
 
-		if (color == ElemColor.Yellow) {
+		if (color == ElemColor.yellow) {
 			GameObject newSource = yellowBank.PlayAudioClip(source, pitch);
 
 			if (yellowBank.voice == Phonic.Mono) {
@@ -74,7 +74,7 @@ public class SoundManager : MonoBehaviour {
 			return newSource;
 		}
 
-		if (color == ElemColor.Blue) {
+		if (color == ElemColor.blue) {
 			GameObject newSource = blueBank.PlayAudioClip(source, pitch);
 
 			if (blueBank.voice == Phonic.Mono) {
@@ -89,7 +89,7 @@ public class SoundManager : MonoBehaviour {
 			return newSource;
 		}
 
-		if (color == ElemColor.Green) {
+		if (color == ElemColor.green) {
 			GameObject newSource = greenBank.PlayAudioClip(source, pitch);
 
 			if (greenBank.voice == Phonic.Mono) {

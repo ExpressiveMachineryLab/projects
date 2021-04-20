@@ -11,7 +11,7 @@ public class LinePanel : MonoBehaviour {
 	[HideInInspector]
 	public SelectedElement ballElement, lineElement;
 
-	public SelectedPM selectedChord = SelectedPM.Plus;
+	public SelectedPM selectedChord = SelectedPM.next;
 	public int selectedRhythm = 1;
 
 	private bool chordPlus = true;
@@ -142,9 +142,9 @@ public class LinePanel : MonoBehaviour {
 
 	private void SetSelectedChord() {
 		if (chordPlus) {
-			selectedChord = SelectedPM.Plus;
+			selectedChord = SelectedPM.next;
 		} else {
-			selectedChord = SelectedPM.Minus;
+			selectedChord = SelectedPM.last;
 		}
 	}
 
@@ -210,7 +210,6 @@ public class LinePanel : MonoBehaviour {
 		chordItems.SetActive(true);
 		rhythmItems.SetActive(true);
 		visualItems.SetActive(true);
-		ToggleSelected[] toggles = GetComponentsInChildren<ToggleSelected>();
 		string[] SOstring = SOlinePanel.Split(new[] { "," }, System.StringSplitOptions.None);
 
 		mode = (PanelMode)int.Parse(SOstring[1][0].ToString());
@@ -224,8 +223,6 @@ public class LinePanel : MonoBehaviour {
 		}
 
 		chordPlus = int.Parse(SOstring[1][2].ToString()) == 1 ? true : false;
-		toggles[0].SetToggle(chordPlus);
-		toggles[1].SetToggle(!chordPlus);
 		SetSelectedChord();
 
 		ballElement.color = (ElemColor)int.Parse(SOstring[1][6].ToString());
@@ -243,6 +240,6 @@ public enum PanelMode {
 }
 
 public enum SelectedPM {
-	Plus,
-	Minus
+	next,
+	last
 }

@@ -29,31 +29,31 @@ public class SelectedElement : MonoBehaviour {
 	public void SetRed() {
 		image.sprite = Red;
 		currentColor = Red.name;
-		color = ElemColor.Red;
+		color = ElemColor.red;
 	}
 
 	public void SetYellow() {
 		image.sprite = Yellow;
 		currentColor = Yellow.name;
-		color = ElemColor.Yellow;
+		color = ElemColor.yellow;
 	}
 
 	public void SetBlue() {
 		image.sprite = Blue;
 		currentColor = Blue.name;
-		color = ElemColor.Blue;
+		color = ElemColor.blue;
 	}
 
 	public void SetGreen() {
 		image.sprite = Green;
 		currentColor = Green.name;
-		color = ElemColor.Green;
+		color = ElemColor.green;
 	}
 
 	public void SetWild() {
 		image.sprite = Wild;
 		currentColor = "All";
-		color = ElemColor.All;
+		color = ElemColor.any;
 	}
 
 	public void SetNone() {
@@ -63,15 +63,15 @@ public class SelectedElement : MonoBehaviour {
 	}
 
 	public void SetNext() {
-		if (color == ElemColor.Red) {
+		if (color == ElemColor.red) {
 			SetYellow();
-		} else if (color == ElemColor.Yellow) {
+		} else if (color == ElemColor.yellow) {
 			SetBlue();
-		} else if (color == ElemColor.Blue) {
+		} else if (color == ElemColor.blue) {
 			SetGreen();
-		} else if (color == ElemColor.Green) {
+		} else if (color == ElemColor.green) {
 			SetWild();
-		} else if (color == ElemColor.All) {
+		} else if (color == ElemColor.any) {
 			SetNone();
 		} else if (color == ElemColor.None) {
 			SetRed();
@@ -79,15 +79,15 @@ public class SelectedElement : MonoBehaviour {
 	}
 
 	public void UpdateImage() {
-		if (color == ElemColor.Red) {
+		if (color == ElemColor.red) {
 			SetRed();
-		} else if (color == ElemColor.Yellow) {
+		} else if (color == ElemColor.yellow) {
 			SetYellow();
-		} else if (color == ElemColor.Blue) {
+		} else if (color == ElemColor.blue) {
 			SetBlue();
-		} else if (color == ElemColor.Green) {
+		} else if (color == ElemColor.green) {
 			SetGreen();
-		} else if (color == ElemColor.All) {
+		} else if (color == ElemColor.any) {
 			SetWild();
 		} else if (color == ElemColor.None) {
 			SetNone();
@@ -104,10 +104,10 @@ public enum SelectedElementType {
 }
 
 public enum ElemColor {
-	Red,
-	Yellow,
-	Blue,
-	Green,
-	All,
+	red,
+	yellow,
+	blue,
+	green,
+	any,
 	None
 }
