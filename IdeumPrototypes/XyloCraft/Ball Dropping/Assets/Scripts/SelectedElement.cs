@@ -17,7 +17,7 @@ public class SelectedElement : MonoBehaviour {
 
 	private Image image;
 
-	private void Start() {
+	private void OnEnable() {
 		image = gameObject.GetComponent<Image>();
 		UpdateImage();
 	}

@@ -30,6 +30,8 @@ public class LinePanel : MonoBehaviour {
 
 	private CountLogger countLogger;
 
+	public SoundChordIndicator chordIndicator;
+
 	private void Start() {
 		SelectedElement[] elements = GetComponentsInChildren<SelectedElement>();
 		foreach (SelectedElement element in elements) {
@@ -47,6 +49,7 @@ public class LinePanel : MonoBehaviour {
 
 		copyStartState = LinePanelToSO();
 		countLogger = FindObjectOfType<CountLogger>();
+		chordIndicator.SetIndicator(1);
 	}
 
 	//Flash the box
@@ -130,10 +133,25 @@ public class LinePanel : MonoBehaviour {
 		SetSelectedChord();
 	}
 
+	public void SetChordToPlus(Toggle toggle)
+    {
+		if (toggle.isOn)
+        {
+			SetChordToPlus();
+        }
+    }
 	public void SetChordToMinus() {
 		chordPlus = false;
 		SetSelectedChord();
 	}
+
+	public void SetChordToMinus(Toggle toggle)
+    {
+		if (toggle.isOn)
+        {
+			SetChordToMinus();
+        }
+    }
 
 	public void ToggleChord() {
 		chordPlus = !chordPlus;
@@ -143,8 +161,10 @@ public class LinePanel : MonoBehaviour {
 	private void SetSelectedChord() {
 		if (chordPlus) {
 			selectedChord = SelectedPM.next;
+			chordIndicator.SetIndicator(1);
 		} else {
 			selectedChord = SelectedPM.last;
+			chordIndicator.SetIndicator(-1);
 		}
 	}
 
