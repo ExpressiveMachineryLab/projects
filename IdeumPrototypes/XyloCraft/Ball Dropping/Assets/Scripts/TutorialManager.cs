@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour {
 	public GameObject popup;
@@ -13,6 +14,7 @@ public class TutorialManager : MonoBehaviour {
 	public TMP_Text pageNumberText;
 	public GameObject challengeIcon;
 	public GameObject progressText;
+	public GameObject progressItemPrefab;
 	public GameObject tutorialPanel;
 
 	public TutSequence[] sequences;
@@ -38,6 +40,7 @@ public class TutorialManager : MonoBehaviour {
 		popupIndex = sequences[tutorialIndex].progress;
 
 		FillPopup();
+		setupProgressText();
 		FillPorgressText();
 		popup.SetActive(true);
 		progressText.SetActive(true);
@@ -67,6 +70,16 @@ public class TutorialManager : MonoBehaviour {
 		FillPopup();
 	}
 
+	public void navigateToIndex(Button i)
+    {
+		int index = int.Parse(i.GetComponent<TMP_Text>().text.Split('.')[0]);
+		if (index >= sequences[tutorialIndex].sequnce.Length - 1) return;
+		sequences[tutorialIndex].progress = index;
+		popupIndex = index;
+		FillPopup();
+		FillPorgressText();
+	}
+
 	private void FillPopup() {
 		titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
 		pageText.text = sequences[tutorialIndex].sequnce[popupIndex].cardText;
@@ -86,15 +99,55 @@ public class TutorialManager : MonoBehaviour {
 	}
 
 	private void FillPorgressText() {
-		string newText = "<b>" + sequences[tutorialIndex].tutTitle + "\n\n";
-		for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
-			newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
 
-			if (i == sequences[tutorialIndex].progress) newText += "</b>";
-			newText += "\n\n";
+		GameObject[] tableOfContents = new GameObject[progressText.transform.childCount];
+		int index = 0;
+
+		foreach(Transform childObj in progressText.transform)
+        {
+			tableOfContents[index] = childObj.gameObject;
+			index++;
+        }
+
+		TMP_Text toBold = tableOfContents[sequences[tutorialIndex].progress].GetComponent<TMP_Text>();
+		toBold.fontStyle = FontStyles.Bold;
+
+		//string newText = "<b>" + sequences[tutorialIndex].tutTitle + "\n\n";
+		//for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
+		//	newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
+
+		//	if (i == sequences[tutorialIndex].progress) newText += "</b>";
+		//	newText += "\n\n";
+		//}
+
+		//progressText.GetComponent<TMP_Text>().text = newText;
+	}
+
+	private void setupProgressText()
+    {
+		//clear any existing children
+		foreach(Transform t in progressText.transform)
+        {
+			Destroy(t.gameObject);
+        }
+		for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
+			GameObject newChild = Instantiate(progressItemPrefab, progressText.transform);
+			newChild.GetComponent<TMP_Text>().SetText(i.ToString() + ". " + sequences[tutorialIndex].sequnce[i].cardTitle);
+			
+			Button b = newChild.GetComponent<Button>();
+			b.onClick.AddListener(delegate { navigateToIndex(b); });
+
+			if (sequences[tutorialIndex].sequnce[i].cardTitle == "Challenge"){
+				Debug.Log("Challenge");
+				newChild.GetComponent<TMP_Text>().color = challengeColor;
+			}
+			//	newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
+
+			//	if (i == sequences[tutorialIndex].progress) newText += "</b>";
+
 		}
 
-		progressText.GetComponent<TMP_Text>().text = newText;
+
 	}
 }
 
