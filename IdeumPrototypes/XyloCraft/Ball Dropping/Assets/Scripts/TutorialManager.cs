@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour {
 	public void navigateToIndex(Button i)
     {
 		int index = int.Parse(i.GetComponent<TMP_Text>().text.Split('.')[0]);
-		if (index >= sequences[tutorialIndex].sequnce.Length - 1) return;
+		if (index >= sequences[tutorialIndex].sequnce.Length) return;
 		sequences[tutorialIndex].progress = index;
 		popupIndex = index;
 		FillPopup();

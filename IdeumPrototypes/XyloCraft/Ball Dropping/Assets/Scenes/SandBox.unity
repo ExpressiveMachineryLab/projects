@@ -11251,35 +11251,63 @@ MonoBehaviour:
       cardText: "In this tutorial we\u2019ll show you how to create rhythms. A rhythm
         is a musical pattern made up of strong and weak beats."
     - cardTitle: 'Lines and Frogs '
-      popupPosition: {x: 320, y: 88, z: 0}
-      pointerPosition: {x: 360, y: 140, z: 0}
+      popupPosition: {x: 68, y: 315, z: 0}
+      pointerPosition: {x: 437, y: 393, z: 0}
       pointerRotation: 180
       usePointer: 1
       challenge: 0
       cardText: You can create musical rhythms by using the frog emitters and lines.
-        <b>Add lines and at least one frog emitter to the canvas.
-    - cardTitle: 'Conditional Box '
-      popupPosition: {x: 200, y: 340, z: 0}
-      pointerPosition: {x: 175, y: 445, z: 0}
+        <b>Click and drag lines and at least one frog emitter to the canvas. You
+        can also rotate the frogs and lines using their handles.
+    - cardTitle: Emitters
+      popupPosition: {x: 68, y: 330, z: 0}
+      pointerPosition: {x: 68, y: 330, z: 0}
+      pointerRotation: 30
+      usePointer: 0
+      challenge: 0
+      cardText: Frogs can emit colored balls. <b>Click on any of the frogs on the
+        canvas to release a ball.
+    - cardTitle: Conditional Box
+      popupPosition: {x: 250, y: 560, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
       pointerRotation: 30
       usePointer: 1
       challenge: 0
       cardText: 'Use the conditional box at the top left of the canvas to determine
         the rules that you want the balls that your frog emits to follow when interacting
         with lines. '
-    - cardTitle: 'Sound Bank '
+    - cardTitle: If...Then Statements
+      popupPosition: {x: 250, y: 560, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
+      pointerRotation: 30
+      usePointer: 1
+      challenge: 0
+      cardText: "In the conditional box, you pick a ball and line color of your choosing
+        to set rules for them to follow. <b>Choose from the drop down menu to add
+        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
+        in the canvas."
+    - cardTitle: The Inspector
+      popupPosition: {x: 465, y: 605, z: 0}
+      pointerPosition: {x: 755, y: 860, z: 0}
+      pointerRotation: -100
+      usePointer: 1
+      challenge: 0
+      cardText: The <b>Inspector</b> allows you to look at information about objects
+        on the canvas. It also tells you when a TRUE condition is hit.
+    - cardTitle: Sound Bank
       popupPosition: {x: 190, y: 88, z: 0}
       pointerPosition: {x: 255, y: 40, z: 0}
       pointerRotation: 90
       usePointer: 1
       challenge: 0
-      cardText: With the Sound Bank, you can assign a family of sounds to the lines
-        or you can choose an individual sound for each line by clicking the instrument
-        names.
+      cardText: "In the conditional box, you pick a ball and line color of your choosing
+        to set rules for them to follow. <b>Choose from the drop down menu to add
+        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
+        in the canvas."
     - cardTitle: Challenge
       popupPosition: {x: 190, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
-      pointerRotation: 0
+      pointerRotation: 90
       usePointer: 0
       challenge: 1
       cardText: How can you change this rhythm up further? Try moving your lines
@@ -11294,16 +11322,6 @@ MonoBehaviour:
       cardText: 'The speed slider is a global variable that allows us to change the
         speed of the balls that frogs emit. What happens when you move the slider
         to the far right? '
-    - cardTitle: If..Then Statements
-      popupPosition: {x: 195, y: 345, z: 0}
-      pointerPosition: {x: 175, y: 455, z: 0}
-      pointerRotation: 30
-      usePointer: 1
-      challenge: 0
-      cardText: "In the conditional box, you pick a ball and line color of your choosing
-        to set rules for them to follow. <b>Choose from the drop down menu to add
-        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
-        in the canvas."
     - cardTitle: Shapes
       popupPosition: {x: 290, y: 88, z: 0}
       pointerPosition: {x: 650, y: 120, z: 0}
