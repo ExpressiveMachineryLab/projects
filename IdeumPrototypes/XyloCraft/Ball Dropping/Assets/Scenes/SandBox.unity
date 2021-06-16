@@ -3686,7 +3686,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3694,7 +3694,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4292312652
-  m_fontColor: {r: 0.29803923, g: 0.49411768, b: 0.8431373, a: 1}
+  m_fontColor: {r: 0.1764706, g: 0.20392157, b: 0.35686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3711,13 +3711,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3750,7 +3750,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &462750532
@@ -3798,7 +3798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76.77, y: -67.01}
+  m_AnchoredPosition: {x: 65, y: -67.01}
   m_SizeDelta: {x: 87.80176, y: 21.372799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485470695
@@ -7268,7 +7268,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 06218197c91ea1e45a036eb01635f2dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7293,8 +7293,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7332,7 +7332,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &872300384
@@ -8369,7 +8369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.49, y: -67.01}
+  m_AnchoredPosition: {x: -65, y: -67.01}
   m_SizeDelta: {x: 85.017, y: 21.372799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944647702
@@ -10705,14 +10705,14 @@ RectTransform:
   m_GameObject: {fileID: 1285080159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.7255426, y: 0.7255426, z: 0.9673902}
   m_Children: []
   m_Father: {fileID: 529856314}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -131.1, y: 74.2}
+  m_AnchoredPosition: {x: -82, y: 73}
   m_SizeDelta: {x: 16, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1289428075
@@ -10852,7 +10852,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 06218197c91ea1e45a036eb01635f2dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10877,8 +10877,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10916,7 +10916,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1289636269
@@ -11098,7 +11098,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -11106,7 +11106,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4292574794
-  m_fontColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
+  m_fontColor: {r: 0.1764706, g: 0.20392157, b: 0.35686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11162,7 +11162,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1300773044
@@ -11282,10 +11282,9 @@ MonoBehaviour:
       pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: "In the conditional box, you pick a ball and line color of your choosing
-        to set rules for them to follow. <b>Choose from the drop down menu to add
-        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
-        in the canvas."
+      cardText: You can set rules for balls and lines to follow. <b>Choose from the
+        drop down menu to add a new condition.</b> It will be TRUE or FALSE depending
+        on what happens in the canvas.
     - cardTitle: The Inspector
       popupPosition: {x: 465, y: 605, z: 0}
       pointerPosition: {x: 755, y: 860, z: 0}
@@ -11295,15 +11294,14 @@ MonoBehaviour:
       cardText: The <b>Inspector</b> allows you to look at information about objects
         on the canvas. It also tells you when a TRUE condition is hit.
     - cardTitle: Sound Bank
-      popupPosition: {x: 190, y: 88, z: 0}
+      popupPosition: {x: 190, y: 340, z: 0}
       pointerPosition: {x: 255, y: 40, z: 0}
       pointerRotation: 90
       usePointer: 1
       challenge: 0
-      cardText: "In the conditional box, you pick a ball and line color of your choosing
-        to set rules for them to follow. <b>Choose from the drop down menu to add
-        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
-        in the canvas."
+      cardText: With the Sound Bank, you can assign a family of sounds to the lines
+        or you can choose an individual sound for each line by clicking the instrument
+        names.
     - cardTitle: Challenge
       popupPosition: {x: 190, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
@@ -11314,16 +11312,16 @@ MonoBehaviour:
         closer together or further apart, or adding more than one frog to the canvas.
         Can you get all of the emitters to release at the same time?
     - cardTitle: Speed Slider
-      popupPosition: {x: 445, y: 330, z: 0}
-      pointerPosition: {x: 650, y: 490, z: 0}
-      pointerRotation: 0
+      popupPosition: {x: 390, y: 575, z: 0}
+      pointerPosition: {x: 593, y: 813, z: 0}
+      pointerRotation: -78
       usePointer: 1
       challenge: 0
       cardText: 'The speed slider is a global variable that allows us to change the
         speed of the balls that frogs emit. What happens when you move the slider
         to the far right? '
     - cardTitle: Shapes
-      popupPosition: {x: 290, y: 88, z: 0}
+      popupPosition: {x: 290, y: 340, z: 0}
       pointerPosition: {x: 650, y: 120, z: 0}
       pointerRotation: 180
       usePointer: 1
@@ -11332,7 +11330,7 @@ MonoBehaviour:
         then test out releasing a ball from your frog emitter from different angles
         in the shape.</b> Add more lines to your shape if you wish.
     - cardTitle: Challenge
-      popupPosition: {x: 194, y: 88, z: 0}
+      popupPosition: {x: 150, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
       pointerRotation: 0
       usePointer: 0
@@ -12525,7 +12523,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00/00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 06218197c91ea1e45a036eb01635f2dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12533,7 +12531,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4292640586
-  m_fontColor: {r: 0.2901961, g: 0.49803925, b: 0.86274517, a: 1}
+  m_fontColor: {r: 0.29411766, g: 0.49411765, b: 0.86274517, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12550,8 +12548,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12589,7 +12587,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1414237655
@@ -16054,14 +16052,14 @@ RectTransform:
   m_GameObject: {fileID: 1875825746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 485470694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.2, y: 0}
+  m_AnchoredPosition: {x: 21.8, y: 0}
   m_SizeDelta: {x: 8, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875825748
@@ -17931,14 +17929,14 @@ RectTransform:
   m_GameObject: {fileID: 2086560575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 944647701}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36.8, y: 0}
+  m_AnchoredPosition: {x: -21.8, y: 0}
   m_SizeDelta: {x: 8, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086560577
