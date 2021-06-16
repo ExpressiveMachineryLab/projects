@@ -25,7 +25,7 @@ public class SelectionManager : MonoBehaviour {
 	}
 
 	private void SetSelection(GameObject[] selectedGameObject) {
-		if (selectedObject.Length > 0) {
+ 		if (selectedObject.Length > 0) {
 			foreach (GameObject item in selectedObject) {
 				item.transform.GetChild(0).gameObject.SetActive(false);
 				item.transform.GetChild(1).gameObject.SetActive(false);
