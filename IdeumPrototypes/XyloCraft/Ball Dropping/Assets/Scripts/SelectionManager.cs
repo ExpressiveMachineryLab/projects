@@ -10,11 +10,14 @@ public class SelectionManager : MonoBehaviour {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-			if (hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
-				SetSelection(new GameObject[] { hit.collider.gameObject });
-			} else if (hit.collider == null) {
-				RemoveSelection();
-			}
+            if (hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball" && hit.collider.tag != "trash")
+            {
+                SetSelection(new GameObject[] { hit.collider.gameObject });
+            }
+            else if (hit.collider == null)
+            {
+                RemoveSelection();
+            }
 		}
 
 		if (Input.GetButtonUp("Delete")) {
