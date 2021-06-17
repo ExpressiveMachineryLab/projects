@@ -21,16 +21,26 @@ public class TrashCollider : MonoBehaviour
 
     public void checkTrash()
     {
-        Debug.Log("Mouse Up");
         List<Collider2D> overlapping = new List<Collider2D>();
         int isOverlap = thisCollider.OverlapCollider(new ContactFilter2D(), overlapping);
-        Debug.Log(isOverlap.ToString() + " colliders overlapping");
-        if(isOverlap > 0)
+
+        bool mouseOver = false;
+        //get mouse position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+        Debug.Log(hit.collider.gameObject.name);
+        if(hit.collider.tag == "trash")
+        {
+            mouseOver = true;
+        }
+        if (isOverlap > 0 && mouseOver)
         {
             foreach(Collider2D toBeTrashed in overlapping)
             {
                 toBeTrashed.gameObject.SetActive(false);
             }
         }
+        
     }
 }
