@@ -22,6 +22,9 @@ public class TutorialManager : MonoBehaviour {
 	public Color regularColor;
 	public Color challengeColor;
 
+    public Sprite startButton;
+    public Sprite resumeButton;
+
 	private int tutorialIndex = 0;
 	private int popupIndex = 0;
 
@@ -32,12 +35,26 @@ public class TutorialManager : MonoBehaviour {
 		pointer.SetActive(false);
 		progressText.SetActive(false);
 		tutorialPanel.SetActive(true);
-	}
+
+        foreach(TutSequence ts in sequences) {
+            ts.progressBar.updateTutorialProgress(0, ts.sequnce.Length);
+        }
+
+        foreach(Transform tutSelector in tutorialPanel.transform)
+        {
+            tutSelector.GetComponent<Image>().sprite = startButton;
+        }
+
+    }
 
 	public void StartTurotial(int index) {
 		if (tutorialActive) return;
 		tutorialIndex = index;
-		popupIndex = sequences[tutorialIndex].progress;
+        if (sequences[tutorialIndex].progress.Count > 0)
+        {
+            popupIndex = sequences[tutorialIndex].progress[sequences[tutorialIndex].progress.Count - 1];
+        }
+        else popupIndex = 0;
 
 		FillPopup();
 		setupProgressText();
@@ -46,7 +63,8 @@ public class TutorialManager : MonoBehaviour {
 		progressText.SetActive(true);
 		tutorialPanel.SetActive(false);
 		tutorialActive = true;
-	}
+        updateTutButtons();
+    }
 
 	public void StopTutorial() {
 		popup.SetActive(false);
@@ -54,34 +72,56 @@ public class TutorialManager : MonoBehaviour {
 		progressText.SetActive(false);
 		tutorialPanel.SetActive(true);
 		tutorialActive = false;
-	}
+
+        updateTutButtons();
+    }
+
+    void updateTutButtons()
+    {
+        int index = 0;
+        foreach (Transform tutSelector in tutorialPanel.transform)
+        {
+            if (sequences[index].progress.Count > 0)
+            {
+                tutSelector.GetComponent<Image>().sprite = resumeButton;
+            }
+            index++;
+        }
+    }
 
 	public void NextPopup() {
 		if (popupIndex >= sequences[tutorialIndex].sequnce.Length - 1) return;
 		popupIndex++;
-		sequences[tutorialIndex].progress = popupIndex;
 		FillPopup();
 		FillPorgressText();
-	}
+        updateTutButtons();
+    }
 
 	public void PreviousPopup() {
 		if (popupIndex <= 0) return;
 		popupIndex--;
 		FillPopup();
-	}
+        updateTutButtons();
+    }
 
 	public void navigateToIndex(Button i)
     {
 		int index = int.Parse(i.GetComponent<TMP_Text>().text.Split('.')[0]);
 		if (index >= sequences[tutorialIndex].sequnce.Length) return;
-		sequences[tutorialIndex].progress = index;
+        
 		popupIndex = index;
 		FillPopup();
-		FillPorgressText();
+
+        updateTutButtons();
+        FillPorgressText();
 	}
 
 	private void FillPopup() {
-		titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
+        if (!sequences[tutorialIndex].progress.Contains(popupIndex))
+        {
+            sequences[tutorialIndex].progress.Add(popupIndex);
+        }
+        titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
 		pageText.text = sequences[tutorialIndex].sequnce[popupIndex].cardText;
 		pageNumberText.text = "" + popupIndex + "/" + (sequences[tutorialIndex].sequnce.Length - 1);
 		popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
@@ -106,22 +146,25 @@ public class TutorialManager : MonoBehaviour {
 		foreach(Transform childObj in progressText.transform)
         {
 			tableOfContents[index] = childObj.gameObject;
+            if (sequences[tutorialIndex].progress.Contains(index))
+            {
+                TMP_Text toBold = tableOfContents[index].GetComponent<TMP_Text>();
+                toBold.fontStyle = FontStyles.Bold;
+            }
 			index++;
         }
+        sequences[tutorialIndex].progressBar.updateTutorialProgress(sequences[tutorialIndex].progress.Count, sequences[tutorialIndex].sequnce.Length);
 
-		TMP_Text toBold = tableOfContents[sequences[tutorialIndex].progress].GetComponent<TMP_Text>();
-		toBold.fontStyle = FontStyles.Bold;
+        //string newText = "<b>" + sequences[tutorialIndex].tutTitle + "\n\n";
+        //for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
+        //	newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
 
-		//string newText = "<b>" + sequences[tutorialIndex].tutTitle + "\n\n";
-		//for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
-		//	newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
+        //	if (i == sequences[tutorialIndex].progress) newText += "</b>";
+        //	newText += "\n\n";
+        //}
 
-		//	if (i == sequences[tutorialIndex].progress) newText += "</b>";
-		//	newText += "\n\n";
-		//}
-
-		//progressText.GetComponent<TMP_Text>().text = newText;
-	}
+        //progressText.GetComponent<TMP_Text>().text = newText;
+    }
 
 	private void setupProgressText()
     {
@@ -137,8 +180,13 @@ public class TutorialManager : MonoBehaviour {
 			Button b = newChild.GetComponent<Button>();
 			b.onClick.AddListener(delegate { navigateToIndex(b); });
 
-			if (sequences[tutorialIndex].sequnce[i].cardTitle == "Challenge"){
-				Debug.Log("Challenge");
+            if (sequences[tutorialIndex].progress.Contains(i))
+            {
+                TMP_Text toBold = newChild.GetComponent<TMP_Text>();
+                toBold.fontStyle = FontStyles.Bold;
+            }
+
+            if (sequences[tutorialIndex].sequnce[i].cardTitle == "Challenge"){
 				newChild.GetComponent<TMP_Text>().color = challengeColor;
 			}
 			//	newText += i + ". " + sequences[tutorialIndex].sequnce[i].cardTitle;
@@ -148,14 +196,15 @@ public class TutorialManager : MonoBehaviour {
 		}
 
 
-	}
+    }
 }
 
 [System.Serializable]
 public class TutSequence {
 	public string tutTitle;
 	public TutPopup[] sequnce;
-	public int progress = 0;
+	public List<int> progress = new List<int>();
+    public ProgressBar progressBar;
 }
 
 [System.Serializable]
