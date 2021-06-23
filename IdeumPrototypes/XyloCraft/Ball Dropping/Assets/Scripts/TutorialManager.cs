@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour {
 	public GameObject popup;
 	public GameObject pointer;
-	public GameObject prevButton;
-	public GameObject nextButton;
+	public Button prevButton;
+	public Button nextButton;
 	public TMP_Text titleText;
 	public TMP_Text pageText;
 	public TMP_Text pageNumberText;
@@ -21,6 +21,8 @@ public class TutorialManager : MonoBehaviour {
 
 	public Color regularColor;
 	public Color challengeColor;
+    public Color popupButtonColor;
+    public Color popupButtonDisabled;
 
     public Sprite startButton;
     public Sprite resumeButton;
@@ -29,6 +31,12 @@ public class TutorialManager : MonoBehaviour {
 	private int popupIndex = 0;
 
 	private bool tutorialActive = false;
+
+    public TMP_Text popupPrevText;
+    public TMP_Text popupNextText;
+
+    public Image popupPrevButton;
+    public Image popupNextButton;
 
 	void Start() {
 		popup.SetActive(false);
@@ -45,6 +53,33 @@ public class TutorialManager : MonoBehaviour {
             tutSelector.GetComponent<Image>().sprite = startButton;
         }
 
+    }
+    
+    void doPopupButtons()
+    {
+        //do prev button
+        if(popupIndex == 0)
+        {
+            popupPrevButton.color = popupButtonDisabled;
+            popupPrevText.color = popupButtonDisabled;
+        }
+        else
+        {
+            popupPrevButton.color = popupButtonColor;
+            popupPrevText.color = popupButtonColor;
+        }
+
+        //do next button
+        if(popupIndex == sequences[tutorialIndex].sequnce.Length - 1)
+        {
+            popupNextButton.color = popupButtonDisabled;
+            popupNextText.color = popupButtonDisabled;
+        }
+        else
+        {
+            popupNextButton.color = popupButtonColor;
+            popupNextText.color = popupButtonColor;
+        }
     }
 
 	public void StartTurotial(int index) {
@@ -72,7 +107,6 @@ public class TutorialManager : MonoBehaviour {
 		progressText.SetActive(false);
 		tutorialPanel.SetActive(true);
 		tutorialActive = false;
-
         updateTutButtons();
     }
 
@@ -106,7 +140,7 @@ public class TutorialManager : MonoBehaviour {
 
 	public void navigateToIndex(Button i)
     {
-		int index = int.Parse(i.GetComponent<TMP_Text>().text.Split('.')[0]);
+		int index = int.Parse(i.GetComponent<TMP_Text>().text.Split('.')[0]) - 1;
 		if (index >= sequences[tutorialIndex].sequnce.Length) return;
         
 		popupIndex = index;
@@ -121,21 +155,28 @@ public class TutorialManager : MonoBehaviour {
         {
             sequences[tutorialIndex].progress.Add(popupIndex);
         }
+        sequences[tutorialIndex].progressBar.updateTutorialProgress(sequences[tutorialIndex].progress.Count, sequences[tutorialIndex].sequnce.Length);
+
+
         titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
 		pageText.text = sequences[tutorialIndex].sequnce[popupIndex].cardText;
-		pageNumberText.text = "" + popupIndex + "/" + (sequences[tutorialIndex].sequnce.Length - 1);
+		pageNumberText.text = "" + (popupIndex + 1).ToString() + "/" + (sequences[tutorialIndex].sequnce.Length);
 		popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
 
 		if (sequences[tutorialIndex].sequnce[popupIndex].challenge) titleText.color = challengeColor;
 		else titleText.color = regularColor;
 
-		prevButton.SetActive(popupIndex >= 1);
-		nextButton.SetActive(popupIndex < sequences[tutorialIndex].sequnce.Length - 1);
-		challengeIcon.SetActive(sequences[tutorialIndex].sequnce[popupIndex].challenge);
+        prevButton.interactable = popupIndex >= 1;
+        nextButton.interactable = popupIndex < sequences[tutorialIndex].sequnce.Length - 1;
+        //prevButton.SetActive(popupIndex >= 1);
+        //nextButton.SetActive(popupIndex < sequences[tutorialIndex].sequnce.Length - 1);
+        challengeIcon.SetActive(sequences[tutorialIndex].sequnce[popupIndex].challenge);
 
 		pointer.SetActive(sequences[tutorialIndex].sequnce[popupIndex].usePointer);
 		pointer.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].pointerPosition;
 		pointer.transform.rotation =  Quaternion.Euler(0f, 0f, sequences[tutorialIndex].sequnce[popupIndex].pointerRotation);
+        doPopupButtons();
+        FillPorgressText();
 	}
 
 	private void FillPorgressText() {
@@ -146,14 +187,13 @@ public class TutorialManager : MonoBehaviour {
 		foreach(Transform childObj in progressText.transform)
         {
 			tableOfContents[index] = childObj.gameObject;
-            if (sequences[tutorialIndex].progress.Contains(index))
+            if (sequences[tutorialIndex].progress.Contains(index-1))
             {
                 TMP_Text toBold = tableOfContents[index].GetComponent<TMP_Text>();
                 toBold.fontStyle = FontStyles.Bold;
             }
 			index++;
         }
-        sequences[tutorialIndex].progressBar.updateTutorialProgress(sequences[tutorialIndex].progress.Count, sequences[tutorialIndex].sequnce.Length);
 
         //string newText = "<b>" + sequences[tutorialIndex].tutTitle + "\n\n";
         //for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
@@ -173,9 +213,14 @@ public class TutorialManager : MonoBehaviour {
         {
 			Destroy(t.gameObject);
         }
-		for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
+        GameObject firstChild = Instantiate(progressItemPrefab, progressText.transform);
+        Destroy(firstChild.GetComponent<Button>());
+        firstChild.GetComponent<TMP_Text>().SetText(sequences[tutorialIndex].tutTitle);
+        firstChild.GetComponent<TMP_Text>().fontSize = 16;
+
+        for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++) {
 			GameObject newChild = Instantiate(progressItemPrefab, progressText.transform);
-			newChild.GetComponent<TMP_Text>().SetText(i.ToString() + ". " + sequences[tutorialIndex].sequnce[i].cardTitle);
+			newChild.GetComponent<TMP_Text>().SetText((i + 1).ToString() + ". " + sequences[tutorialIndex].sequnce[i].cardTitle);
 			
 			Button b = newChild.GetComponent<Button>();
 			b.onClick.AddListener(delegate { navigateToIndex(b); });

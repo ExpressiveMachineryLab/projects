@@ -1341,7 +1341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85.5}
+  m_AnchoredPosition: {x: 0, y: 109.33998}
   m_SizeDelta: {x: 154, y: 33.762093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113651352
@@ -9653,7 +9653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64.16}
+  m_AnchoredPosition: {x: 0, y: 88}
   m_SizeDelta: {x: 154, y: 33.762093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055938492
@@ -9675,7 +9675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '#1: Rhythm'
+  m_text: In this tutorial, you will learn how to make musical rhythms using Xylocode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -9703,8 +9703,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11830,8 +11830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 529856313}
   pointer: {fileID: 1516377230}
-  prevButton: {fileID: 944647700}
-  nextButton: {fileID: 485470693}
+  prevButton: {fileID: 944647702}
+  nextButton: {fileID: 485470695}
   titleText: {fileID: 462750531}
   pageText: {fileID: 1300773043}
   pageNumberText: {fileID: 1414237654}
@@ -11841,7 +11841,7 @@ MonoBehaviour:
     type: 3}
   tutorialPanel: {fileID: 1244520834}
   sequences:
-  - tutTitle: 'Tutorial 1: Rhythm'
+  - tutTitle: '#1: Rhythm'
     sequnce:
     - cardTitle: Welcome to Xylocode
       popupPosition: {x: 320, y: 400, z: 0}
@@ -11887,7 +11887,7 @@ MonoBehaviour:
         drop down menu to add a new condition.</b> It will be TRUE or FALSE depending
         on what happens in the canvas.
     - cardTitle: The Inspector
-      popupPosition: {x: 465, y: 605, z: 0}
+      popupPosition: {x: 465, y: 594, z: 0}
       pointerPosition: {x: 755, y: 860, z: 0}
       pointerRotation: -100
       usePointer: 1
@@ -11941,10 +11941,10 @@ MonoBehaviour:
         repetition in your music.
     progress: 
     progressBar: {fileID: 666462746}
-  - tutTitle: 'Tutorial 2: Instruments'
+  - tutTitle: '#2: Instruments'
     sequnce:
     - cardTitle: Welcome to Xylocode
-      popupPosition: {x: 320, y: 200, z: 0}
+      popupPosition: {x: 68, y: 320, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
       pointerRotation: 0
       usePointer: 0
@@ -11952,63 +11952,60 @@ MonoBehaviour:
       cardText: "In this tutorial we\u2019ll show you how to work with instruments.
         You can use multiple instrument types to create music in Xylocode.  \n"
     - cardTitle: Lines and Frogs
-      popupPosition: {x: 340, y: 88, z: 0}
-      pointerPosition: {x: 350, y: 145, z: 0}
+      popupPosition: {x: 68, y: 320, z: 0}
+      pointerPosition: {x: 437, y: 393, z: 0}
       pointerRotation: 180
       usePointer: 1
       challenge: 0
       cardText: 'You can create musical rhythms by using the frog emitters and lines.
         <b>Add lines and at least one frog emitter to the canvas. '
     - cardTitle: 'Sound Bank '
-      popupPosition: {x: 194, y: 88, z: 0}
-      pointerPosition: {x: 250, y: 33, z: 0}
-      pointerRotation: 90
+      popupPosition: {x: 230, y: 340, z: 0}
+      pointerPosition: {x: 290, y: 320, z: 0}
+      pointerRotation: 100
       usePointer: 1
       challenge: 0
       cardText: With the Sound Bank, you can assign a family of sounds to the lines
         or you can choose an individual sound for each line by clicking the instrument
         names.
     - cardTitle: Shapes
-      popupPosition: {x: 340, y: 88, z: 0}
-      pointerPosition: {x: 650, y: 125, z: 0}
+      popupPosition: {x: 290, y: 340, z: 0}
+      pointerPosition: {x: 650, y: 400, z: 0}
       pointerRotation: 180
       usePointer: 1
       challenge: 0
-      cardText: 'By making different shapes in Xylocode, you can test out the various
-        instruments in the sound bank at one time. <b>Drag a shape onto the canvas
+      cardText: '<size=95%>By making different shapes in Xylocode, you can test out
+        the instruments in the sound bank at one time. <b>Drag a shape onto the canvas
         and release more than one ball inside the shape to see what happens. '
-    - cardTitle: If/Then Statements
-      popupPosition: {x: 194, y: 330, z: 0}
-      pointerPosition: {x: 189, y: 460, z: 0}
-      pointerRotation: 37
+    - cardTitle: If...Then Statements
+      popupPosition: {x: 250, y: 535, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
+      pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: "In the conditional box, you pick a ball and line color of your choosing
-        to set rules for them to follow. <b>Choose from the drop down menu to add
-        a new condition,</b> it will be TRUE or FALSE depending on what\u2019s happening
-        in the canvas."
+      cardText: In the conditional box, you pick a ball and line color to set rules.
+        <b>Choose from the drop down menu to add a new condition.</b> It will be
+        TRUE or FALSE depending on what happens in the canvas.
     - cardTitle: Booleans
-      popupPosition: {x: 194, y: 330, z: 0}
-      pointerPosition: {x: 189, y: 460, z: 0}
-      pointerRotation: 37
+      popupPosition: {x: 250, y: 535, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
+      pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: <size=95%>A boolean is a value stored in a computer that is either
-        TRUE or FALSE. In the conditional box, boolean expressions help the computer
-        make decisions about what to do in Xylocode. You can see when a condition
-        you set is TRUE in the inspector and on the canvas
-    - cardTitle: <size=80%>Conditionals & Booleans
-      popupPosition: {x: 194, y: 330, z: 0}
-      pointerPosition: {x: 189, y: 460, z: 0}
-      pointerRotation: 37
+      cardText: A boolean is a value that is either TRUE or FALSE. Boolean expressions
+        help the computer make decisions about what to do in Xylocode. You can see
+        when a condition you set is TRUE in the inspector and on the canvas.
+    - cardTitle: Conditionals
+      popupPosition: {x: 250, y: 535, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
+      pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: '<size=95%>Conditionals check to see when something is TRUE or FALSE.
-        The information the computer evaluates to check this is called the boolean
-        expression. Each conditional box you add to the canvas holds a boolean expression
-        that you can make rules for. '
+      cardText: 'Conditionals check to see when an expression is TRUE or FALSE. Each
+        conditional box you add to the canvas holds a boolean expression that you
+        can make rules for. '
     - cardTitle: Challenge
-      popupPosition: {x: 194, y: 330, z: 0}
+      popupPosition: {x: 250, y: 535, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
       pointerRotation: 0
       usePointer: 0
@@ -12020,8 +12017,14 @@ MonoBehaviour:
     progressBar: {fileID: 411964891}
   regularColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
   challengeColor: {r: 0.9333334, g: 0.54901963, b: 0.20392159, a: 1}
+  popupButtonColor: {r: 0.29411766, g: 0.49411765, b: 0.8627451, a: 1}
+  popupButtonDisabled: {r: 0.69411767, g: 0.78431374, b: 0.94509804, a: 1}
   startButton: {fileID: 21300000, guid: a9b24814a75cf924d8374ee6cfa4d6eb, type: 3}
   resumeButton: {fileID: 21300000, guid: 62b7ee4334348a54d8217ec2f43bd1e8, type: 3}
+  popupPrevText: {fileID: 1289636268}
+  popupNextText: {fileID: 872300383}
+  popupPrevButton: {fileID: 2086560577}
+  popupNextButton: {fileID: 1875825748}
 --- !u!222 &1305876350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12668,6 +12671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftSidePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781525561523606508, guid: 0424a6bf9633e8842bf80f3543f6a9b6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8393612683136786969, guid: 0424a6bf9633e8842bf80f3543f6a9b6,
         type: 3}
@@ -13513,7 +13521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64.16}
+  m_AnchoredPosition: {x: 0, y: 105.999985}
   m_SizeDelta: {x: 154, y: 33.762093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1452662576
@@ -13535,7 +13543,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '#2: Instruments'
+  m_text: In this tutorial, you will learn how to use the different instruments in
+    Xylocode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -13563,8 +13572,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14873,7 +14882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 23.5}
+  m_AnchoredPosition: {x: 0, y: -55}
   m_SizeDelta: {x: 154, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559677598
@@ -15468,7 +15477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85.5}
+  m_AnchoredPosition: {x: 0, y: 127.33998}
   m_SizeDelta: {x: 154, y: 33.762093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620494204
@@ -16312,7 +16321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 167}
+  m_AnchoredPosition: {x: 0, y: 142}
   m_SizeDelta: {x: 154, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805816991
@@ -16980,7 +16989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ef9bbafb2b37e8448b3ee1b6839b74cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36c09c6d8bb38544bbf3cd864f4b4aff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19102,7 +19111,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77dd13493fa0cab458d8167965f429fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19bccd7a62d009f458a81322de181db9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
