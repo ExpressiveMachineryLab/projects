@@ -104,11 +104,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6506237543032997700}
   - {fileID: 8012250459427495325}
   - {fileID: 2417178093479248832}
   - {fileID: 4660026354984335824}
   - {fileID: 8955644406149968140}
+  - {fileID: 6506237543032997700}
   m_Father: {fileID: 8651828287354833060}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1432,6 +1432,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2207109732323040130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2164,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7102100590862622274}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3372,6 +3383,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6088035264951277609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,7 +3718,7 @@ RectTransform:
   - {fileID: 5580297398411561671}
   - {fileID: 5432470700697524087}
   m_Father: {fileID: 7102100590862622274}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3760,6 +3782,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &6527835871508204542
 GameObject:
@@ -3793,7 +3826,7 @@ RectTransform:
   - {fileID: 8519523068556811259}
   - {fileID: 5421190348589246162}
   m_Father: {fileID: 7102100590862622274}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4387,7 +4420,7 @@ RectTransform:
   - {fileID: 254281557281109325}
   - {fileID: 5613940865423272878}
   m_Father: {fileID: 7102100590862622274}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4442,6 +4475,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8651828287354833061}
         m_MethodName: SetModeToChord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4558,6 +4602,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &8408902419761848294
 GameObject:
@@ -4656,6 +4711,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3284813884621177128}
         m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5764,6 +5830,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &8651828287002193942
 GameObject:
@@ -5819,6 +5896,7 @@ GameObject:
   - component: {fileID: 8651828287354833061}
   - component: {fileID: 3284813884621177128}
   - component: {fileID: 9201880488778858289}
+  - component: {fileID: 8898600751909709070}
   m_Layer: 5
   m_Name: LinePanel
   m_TagString: Untagged
@@ -5935,6 +6013,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8898600751909709070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651828287354833063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Conditional
+  definition: "Conditionals are the code that checks to see if something is true
+    (like \u201Cis it raining?\u201D) and a decision based on that (like \u201CThen
+    I will bring my umbrella.\u201D)\r"
+  interaction: "- Which ball and line are needed to make a conditional statement
+    true.\n- Method for getting the ball to be emitted ( click_on\u2026.)"
+  code: "if (ball hits a line){\n   Go to the next \nsound in the sound \narray\n}"
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8651828287450259361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6328,6 +6440,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &8651828287603491645
 GameObject:
@@ -6512,7 +6635,7 @@ RectTransform:
   - {fileID: 6628541293158053611}
   - {fileID: 7386358933226320183}
   m_Father: {fileID: 7102100590862622274}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6567,6 +6690,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8651828287354833061}
         m_MethodName: SetModeToVisual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8651828287354833061}
+        m_MethodName: UpdateInspectorData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

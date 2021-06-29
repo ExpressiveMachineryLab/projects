@@ -6,16 +6,75 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 public class InspectorPanel : MonoBehaviour {
+
+	public GameObject fullInspector;
+	public GameObject emptyInspector;
+
+	public TMP_Text nameText;
 	public TMP_Text codeText;
 	public TMP_Text definitionText;
+	public TMP_Text interactionText;
 	
 	EventSystem m_EventSystem;
 	PointerEventData m_PointerEventData;
 
+	public static InspectorPanel inspector;
+
+	public InspectorData current;
+	public bool shouldUpdate;
 	void Start() {
 		m_EventSystem = FindObjectOfType<EventSystem>();
+		inspector = this;
 	}
 
+	public void SetInspectorData(InspectorData data)
+    {
+		current = data;
+		shouldUpdate = true;
+    }
+
+	public void UnsetInspectorData(InspectorData data)
+    {
+		if (current == data)
+        {
+			current = null;
+			shouldUpdate = true;
+        }
+    }
+
+	public void ForceUpdate()
+    {
+		shouldUpdate = true;
+    }
+	void OnGUI()
+    {
+		if (shouldUpdate)
+        {
+			shouldUpdate = false;
+			if (current != null)
+            {
+				fullInspector.SetActive(true);
+				emptyInspector.SetActive(false);
+				nameText.text = current.itemName;
+								
+				codeText.text = current.code;
+				codeText.gameObject.SetActive(current.code != "");
+
+				definitionText.text = current.definition;
+				definitionText.gameObject.SetActive(current.definition != "");
+
+				interactionText.text = current.interaction;
+				interactionText.gameObject.SetActive(current.interaction != "");
+			}
+			else
+            {
+				fullInspector.SetActive(false);
+				emptyInspector.SetActive(true);
+			}
+        }
+    }
+
+	/*
 	void Update() {
 		m_PointerEventData = new PointerEventData(m_EventSystem);
 		m_PointerEventData.position = Input.mousePosition;
@@ -33,7 +92,10 @@ public class InspectorPanel : MonoBehaviour {
 				break;
 			} else if (result.gameObject.GetComponent<LinePanel>() != null) {
 				LinePanel panel = result.gameObject.GetComponent<LinePanel>();
-				if (panel.ballElement.color != ElemColor.None && panel.lineElement.color != ElemColor.None) {
+				
+				definitionText.text = "<b>Definition</b>\n\nIn a conditional block, decisions are made based on whether something is true or false. In computer programming, these true or false terms are data types that are called booleans.";
+				break;
+			} else ifif (panel.ballElement.color != ElemColor.None && panel.lineElement.color != ElemColor.None) {
 					codeText.text = "If (" + panel.GetBallColor() + " ball hits a " + panel.GetLineColor() + " line)\n";
 					if (panel.mode == PanelMode.Chord) {
 						codeText.text += "Then { go to the " + panel.selectedChord + " sound in the soundbank }";
@@ -44,10 +106,7 @@ public class InspectorPanel : MonoBehaviour {
 					if (panel.mode == PanelMode.Visual) {
 						codeText.text += "Then { trigger visual effect }";
 					}
-				}
-				definitionText.text = "<b>Definition</b>\n\nIn a conditional block, decisions are made based on whether something is true or false. In computer programming, these true or false terms are data types that are called booleans.";
-				break;
-			} else if (result.gameObject.name == "Shapes") {
+				} (result.gameObject.name == "Shapes") {
 				codeText.text = "Drag a shape onto the canvas and release a ball inside the shape to hear your musical rhythms in action.";
 				definitionText.text = "<b>Definition</b>\n\nYou can use shapes in Xylocode to create music.\n\nShapes can help you create rhythms and play with different instrument types.";
 				break;
@@ -70,5 +129,5 @@ public class InspectorPanel : MonoBehaviour {
 				definitionText.text = "<b>Definition</b>\n\nFrogs are the “emitter” objects within Xylocode, they are needed to produce sound.";
 			}
 		}
-	}
+	}*/
 }

@@ -371,8 +371,9 @@ GameObject:
   - component: {fileID: 4275388866436379812}
   - component: {fileID: 2176781898664744779}
   - component: {fileID: 4383519438700290412}
+  - component: {fileID: 6425150951914772029}
   m_Layer: 10
-  m_Name: BlueLine 1
+  m_Name: BlueLine
   m_TagString: RedLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,9 +464,6 @@ MonoBehaviour:
   visualLevel: 0
   pitchPositive: 1
   visualPositive: 1
-  enabledSound: {fileID: 8300000, guid: 08506efdf5ceaf24c8d46c72f259ae78, type: 3}
-  placedSound: {fileID: 8300000, guid: 092af64b7b070bb4cad1d21b762efbcb, type: 3}
-  selectedSound: {fileID: 8300000, guid: 4cec419661af0aa45bda90c770784084, type: 3}
 --- !u!212 &4383519438700290412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -516,3 +514,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6425150951914772029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700368406722087836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Line (Array)
+  definition: 'An array is a group of values saved in a certain order. In xylocode,
+    arrays are represented by the lines in the canvas. These lines represent a group
+    of sounds.
+
+
+    Can you make the sounds change using the conditional box?'
+  interaction: 'Drag to move it around, and click the white circle to rotate.
+
+    Can
+    you think of what the white highlighted piece of the lines mean?'
+  code: 
+  isUI: 0
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []

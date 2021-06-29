@@ -25,7 +25,7 @@ public class LinePanel : MonoBehaviour {
 
 	public GameObject[] expandedElements;
 	public GameObject[] retractedElements;
-
+	public bool expanded;
 	private string copyStartState;
 
 	private CountLogger countLogger;
@@ -50,6 +50,8 @@ public class LinePanel : MonoBehaviour {
 		copyStartState = LinePanelToSO();
 		countLogger = FindObjectOfType<CountLogger>();
 		chordIndicator.SetIndicator(1);
+
+		SetExpand(false);
 	}
 
 	//Flash the box
@@ -88,6 +90,7 @@ public class LinePanel : MonoBehaviour {
 		}
 		RectTransform rect = GetComponent<RectTransform>();
 		rect.sizeDelta = new Vector2(rect.sizeDelta.x, toExpand ? 216f : 108f);
+		expanded = toExpand;
 	}
 
 	//Panel modes
@@ -250,6 +253,35 @@ public class LinePanel : MonoBehaviour {
 
 		lineElement.color = (ElemColor)int.Parse(SOstring[1][7].ToString());
 		lineElement.UpdateImage();
+	}
+
+	public void UpdateInspectorData()
+    {
+		InspectorData data = this.GetComponent<InspectorData>();
+		LinePanel panel = this;
+		string code = "";
+		if (panel.ballElement.color != ElemColor.None && panel.lineElement.color != ElemColor.None)
+		{
+			code = "If (" + panel.GetBallColor() + " ball hits a " + panel.GetLineColor() + " line)\n";
+			if (panel.mode == PanelMode.Chord)
+			{
+				code += "Then { go to the " + panel.selectedChord + " sound in the soundbank }";
+			}
+			if (panel.mode == PanelMode.Rhythm)
+			{
+				code += "Then { play sound " + panel.selectedRhythm + " time(s) }";
+			}
+			if (panel.mode == PanelMode.Visual)
+			{
+				code += "Then { trigger visual effect }";
+			}
+		}
+		else
+        {
+			//code = "<i>Select a ball and line color!</i>";
+        }
+		data.code = code;
+		data.ForceUpdate();
 	}
 }
 

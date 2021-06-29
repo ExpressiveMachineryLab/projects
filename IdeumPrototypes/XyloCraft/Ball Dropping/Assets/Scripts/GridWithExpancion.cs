@@ -9,6 +9,8 @@ public class GridWithExpancion : MonoBehaviour {
 
 	private List<RectTransform> kids = new List<RectTransform>();
 
+	public float noExpandOffset = 128;
+	public float expandOffset = 128 + 108;
 
 	private int showing = 1;
 	void Awake() {
@@ -35,9 +37,23 @@ public class GridWithExpancion : MonoBehaviour {
 
     void Update() {
 		float currentY = -paddingTop;
+
+		bool anyExpanded = false;
 		foreach (RectTransform pos in kids) {
 			pos.anchoredPosition = new Vector3(paddingLeft, currentY, 0);
 			currentY -= pos.rect.height + spacing;
+
+			Rect rect = addStatementButton.GetComponent<RectTransform>().rect;
+
+			if (pos.gameObject.activeInHierarchy && pos.gameObject.TryGetComponent<LinePanel>(out LinePanel panel)) {
+				//LinePanel panel = pos.GetComponent<LinePanel>();
+				if (panel.expanded)
+				{
+					anyExpanded = true;
+				}
+				float offset = (anyExpanded) ? expandOffset : noExpandOffset;
+				addStatementButton.transform.position = new Vector3(addStatementButton.transform.position.x, pos.position.y + offset, addStatementButton.transform.position.z);
+			}
 		}
 		//Rect rect = addStatementButton.GetComponent<RectTransform>().rect;
 		//rect.Set(rect.x, rect.y - (rect.height + spacing), rect.width, rect.height);
@@ -56,7 +72,7 @@ public class GridWithExpancion : MonoBehaviour {
                 }
             }
 			Rect rect = addStatementButton.GetComponent<RectTransform>().rect;
-			addStatementButton.GetComponent<RectTransform>().Translate(Vector3.up * -1 * (108 + spacing + 10));
+			//addStatementButton.GetComponent<RectTransform>().Translate(Vector3.up * -1 * (108 + spacing + 10));
 			//Rect rect = addStatementButton.GetComponent<RectTransform>().rect;
 			//rect.Set(rect.x, rect.y - (rect.height + spacing), rect.width, rect.height);
 		}

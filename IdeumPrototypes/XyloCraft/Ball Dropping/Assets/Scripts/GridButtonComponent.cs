@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridButtonComponent : MonoBehaviour {
 	public int index = 0;
@@ -24,6 +25,19 @@ public class GridButtonComponent : MonoBehaviour {
 			hud.ResetTextNames();
 		}
 
+	}
+
+	public void ExecuteIfOn(Toggle toggle)
+    {
+		if (toggle.isOn)
+        {
+			Execute();
+        }
+    }
+
+	void OnGUI()
+    {
+		//this.transform.localScale = new Vector3(1f, 1f, 1f);
 	}
 
 }

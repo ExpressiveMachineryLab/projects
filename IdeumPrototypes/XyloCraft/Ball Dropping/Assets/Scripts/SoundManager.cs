@@ -130,11 +130,14 @@ public class SoundManager : MonoBehaviour {
 		StyleHUD hud = FindObjectOfType<StyleHUD>();
 
 		string SOstring = "5";
-		SOstring += "," + Array.IndexOf(hud.availableSounds, redBank).ToString("00");
-		SOstring += Array.IndexOf(hud.availableSounds, yellowBank).ToString("00");
-		SOstring += Array.IndexOf(hud.availableSounds, blueBank).ToString("00");
-		SOstring += Array.IndexOf(hud.availableSounds, greenBank).ToString("00");
-		SOstring += FindObjectOfType<GameManager>().GetSpeedMultiplier().ToString("00");
+		if (hud != null)
+		{
+			SOstring += "," + Array.IndexOf(hud.availableSounds, redBank).ToString("00");
+			SOstring += Array.IndexOf(hud.availableSounds, yellowBank).ToString("00");
+			SOstring += Array.IndexOf(hud.availableSounds, blueBank).ToString("00");
+			SOstring += Array.IndexOf(hud.availableSounds, greenBank).ToString("00");
+			SOstring += FindObjectOfType<GameManager>().GetSpeedMultiplier().ToString("00");
+		}
 
 
 		return SOstring;

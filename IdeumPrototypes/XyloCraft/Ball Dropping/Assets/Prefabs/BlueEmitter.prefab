@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6771946966317722221}
   - component: {fileID: 1013874241747239177}
   - component: {fileID: 3202803381397786048}
+  - component: {fileID: 8638702283928377864}
   m_Layer: 8
-  m_Name: BlueEmitter 2
+  m_Name: BlueEmitter
   m_TagString: Emitter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +152,28 @@ MonoBehaviour:
     type: 3}
   speed: 5
   launchKey: LaunchB
+--- !u!114 &8638702283928377864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283753133573239978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Frog Emitter
+  definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
+    needed to produce sound."
+  interaction: Click a frog to spit out a bubble! Drag to move it around, and click
+    the white circle to rotate.
+  code: 
+  isUI: 0
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5251626784281662424
 GameObject:
   m_ObjectHideFlags: 0
