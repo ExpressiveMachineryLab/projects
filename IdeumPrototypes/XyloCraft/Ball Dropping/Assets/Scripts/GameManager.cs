@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
 
 	private CountLogger logger;
 
+	public GameObject sceneContainer;
+
 	void Start() {
 		speedMultiplier = GameObject.Find("GlobalSpeedMultiplier").GetComponent<TMP_InputField>();
 		UpdateSpeed();
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour {
 		
 		for (int i = 0; i < 10; i++) {
 			GameObjectAgePair newLine = new GameObjectAgePair();
-			newLine.heldObject = Instantiate(linePrefabs);
+			newLine.heldObject = Instantiate(linePrefabs, sceneContainer.transform);
 			newLine.heldObject.SetActive(false);
 			newLine.heldObject.name = "Line" + i;
 			newLine.age = 0f;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour {
 		}
 		for (int i = 0; i < 10; i++) {
 			GameObjectAgePair newEmitter = new GameObjectAgePair();
-			newEmitter.heldObject = Instantiate(emitterPrefabs);
+			newEmitter.heldObject = Instantiate(emitterPrefabs, sceneContainer.transform);
 			newEmitter.heldObject.SetActive(false);
 			newEmitter.heldObject.name = "Emitter" + i;
 			newEmitter.age = 0f;
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour {
 		}
 		for (int i = 0; i < 10; i++) {
 			GameObjectAgePair newBall = new GameObjectAgePair();
-			newBall.heldObject = Instantiate(ballPrefabs);
+			newBall.heldObject = Instantiate(ballPrefabs, sceneContainer.transform);
 			newBall.heldObject.SetActive(false);
 			newBall.heldObject.name = "Ball" + i;
 			newBall.age = 0f;
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < linePool.Count; i++) {
 			if (linePool[i] == null) {
 				linePool[i] = new GameObjectAgePair();
-				linePool[i].heldObject = Instantiate(linePrefabs);
+				linePool[i].heldObject = Instantiate(linePrefabs, sceneContainer.transform);
 				linePool[i].age = 0f;
 				linePool[i].heldObject.SetActive(false);
 			}
@@ -123,7 +125,7 @@ public class GameManager : MonoBehaviour {
 				index = linePool.Count;
 
 				GameObjectAgePair newLine = new GameObjectAgePair();
-				newLine.heldObject = Instantiate(linePrefabs);
+				newLine.heldObject = Instantiate(linePrefabs, sceneContainer.transform);
 				newLine.age = 0f;
 				newLine.heldObject.SetActive(false);
 				linePool.Add(newLine);
@@ -201,7 +203,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < ballPool.Count; i++) {
 			if (ballPool[i] == null) {
 				ballPool[i] = new GameObjectAgePair();
-				ballPool[i].heldObject = Instantiate(ballPrefabs);
+				ballPool[i].heldObject = Instantiate(ballPrefabs, sceneContainer.transform);
 				ballPool[i].age = Time.time;
 				ballPool[i].heldObject.SetActive(false);
 			}
@@ -221,7 +223,7 @@ public class GameManager : MonoBehaviour {
 				index = ballPool.Count;
 
 				GameObjectAgePair newBall = new GameObjectAgePair();
-				newBall.heldObject = Instantiate(ballPrefabs);
+				newBall.heldObject = Instantiate(ballPrefabs, sceneContainer.transform);
 				newBall.age = 0f;
 				newBall.heldObject.SetActive(false);
 				ballPool.Add(newBall);
@@ -250,7 +252,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < linePool.Count; i++) {
 			if (linePool[i] == null) {
 				linePool[i] = new GameObjectAgePair();
-				linePool[i].heldObject = Instantiate(linePrefabs);
+				linePool[i].heldObject = Instantiate(linePrefabs, sceneContainer.transform);
 				linePool[i].age = 0f;
 				linePool[i].heldObject.SetActive(false);
 			}
@@ -270,7 +272,7 @@ public class GameManager : MonoBehaviour {
 				index = linePool.Count;
 
 				GameObjectAgePair newLine = new GameObjectAgePair();
-				newLine.heldObject = Instantiate(linePrefabs);
+				newLine.heldObject = Instantiate(linePrefabs, sceneContainer.transform);
 				newLine.age = 0f;
 				newLine.heldObject.SetActive(false);
 				linePool.Add(newLine);
@@ -300,7 +302,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < emitterPool.Count; i++) {
 			if (emitterPool[i] == null) {
 				emitterPool[i] = new GameObjectAgePair();
-				emitterPool[i].heldObject = Instantiate(emitterPrefabs);
+				emitterPool[i].heldObject = Instantiate(emitterPrefabs, sceneContainer.transform);
 				emitterPool[i].age = 0f;
 				emitterPool[i].heldObject.SetActive(false);
 			}
@@ -320,7 +322,7 @@ public class GameManager : MonoBehaviour {
 				index = emitterPool.Count;
 
 				GameObjectAgePair newEmitter = new GameObjectAgePair();
-				newEmitter.heldObject = Instantiate(emitterPrefabs);
+				newEmitter.heldObject = Instantiate(emitterPrefabs, sceneContainer.transform);
 				newEmitter.age = 0f;
 				newEmitter.heldObject.SetActive(false);
 				emitterPool.Add(newEmitter);
@@ -350,7 +352,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < ballPool.Count; i++) {
 			if (ballPool[i] == null) {
 				ballPool[i] = new GameObjectAgePair();
-				ballPool[i].heldObject = Instantiate(ballPrefabs);
+				ballPool[i].heldObject = Instantiate(ballPrefabs, sceneContainer.transform);
 				ballPool[i].age = 0f;
 				ballPool[i].heldObject.SetActive(false);
 			}
@@ -370,7 +372,7 @@ public class GameManager : MonoBehaviour {
 				index = ballPool.Count;
 
 				GameObjectAgePair newBall = new GameObjectAgePair();
-				newBall.heldObject = Instantiate(ballPrefabs);
+				newBall.heldObject = Instantiate(ballPrefabs, sceneContainer.transform);
 				newBall.age = 0f;
 				newBall.heldObject.SetActive(false);
 				ballPool.Add(newBall);

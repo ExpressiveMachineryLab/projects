@@ -17,6 +17,8 @@ public class Line : MonoBehaviour {
 	public bool pitchPositive = true;
 	public bool visualPositive = true;
 
+	public bool disableSound = false;
+
 	private Animator effects;
 	private SpriteRenderer lineSprite;
 
@@ -39,11 +41,16 @@ public class Line : MonoBehaviour {
 		logger = FindObjectOfType<CountLogger>();
 		SpriteRenderer[] findLineSprite = GetComponentsInChildren<SpriteRenderer>();
 
+		if (color == ElemColor.None)
+        {
+			disableSound = true;
+        }
+
 		foreach (SpriteRenderer item in findLineSprite) {
 			if (item.gameObject.name == "LineSprite") lineSprite = item;
 		}
 
-		lineSprite.sprite = chordSprites[pitchLevel];
+		//if (!disableSound) lineSprite.sprite = chordSprites[pitchLevel];
 
 		//Create unique ID
 		if (id == "") {
@@ -119,7 +126,7 @@ public class Line : MonoBehaviour {
 
 	//Can't see it, don't need it
 	private void OnBecameInvisible() {
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 	}
 
 	private void PerformCodeBehvaior(Ball ball) {

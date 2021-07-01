@@ -19,7 +19,7 @@ public class MenuDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler {
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePos.z = 0;
 		if (dragObject == null) {
-			dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation);
+			dragObject = Instantiate(cloneObject, mousePos, cloneObject.transform.rotation, DragCam.drag.transform);
 			//SelectionManagerCode.NewSelection(new GameObject[] { dragObject });
 		}
 		if (dragObject) {
