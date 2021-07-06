@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Line : MonoBehaviour {
+public class Line : MonoBehaviour, ISelectableObj {
 	public SelectedElementType type = SelectedElementType.Line;
 	public string id = "";
 	public ElemColor color;
@@ -64,15 +64,24 @@ public class Line : MonoBehaviour {
 
 	private void Update() {
 		//Draw line with the mouse
+		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
 		if (isBeingHeld) {
+			
+
 			Vector3 mousePos;
 			mousePos = Input.mousePosition;
 			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-			this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX,
-				mousePos.y - startPosY, 0);
+			if (!inSquareSelect)
+			{
+				transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+			}
+			else
+			{
+				this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+			}
 		}
 
-		if (isBeingRotated) {
+		if (isBeingRotated && !inSquareSelect) {
 			Rotate();
 		}
 
@@ -105,8 +114,16 @@ public class Line : MonoBehaviour {
 
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-			startPosX = mousePos.x - this.transform.localPosition.x;
-			startPosY = mousePos.y - this.transform.localPosition.y;
+			if (this.transform.parent == null || this.transform.parent.tag != "SelectionParent")
+			{
+				startPosX = mousePos.x - this.transform.localPosition.x;
+				startPosY = mousePos.y - this.transform.localPosition.y;
+			}
+			else
+			{
+				startPosX = mousePos.x - this.transform.parent.localPosition.x;
+				startPosY = mousePos.y - this.transform.parent.localPosition.y;
+			}
 
 			isBeingHeld = true;
 		}
@@ -279,5 +296,17 @@ public class Line : MonoBehaviour {
 		visualLevel = int.Parse(SOstring[4][1].ToString());
 		pitchPositive = int.Parse(SOstring[4][2].ToString()) == 1 ? true : false;
 		visualPositive = int.Parse(SOstring[4][3].ToString()) == 1 ? true : false;
+	}
+
+	public void Select()
+	{
+		this.transform.GetChild(0).gameObject.SetActive(true);
+		this.transform.GetChild(1).gameObject.SetActive(true);
+	}
+
+	public void Deselect()
+	{
+		this.transform.GetChild(0).gameObject.SetActive(false);
+		this.transform.GetChild(1).gameObject.SetActive(false);
 	}
 }

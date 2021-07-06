@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Emitter : MonoBehaviour {
+public class Emitter : MonoBehaviour, ISelectableObj {
 	public SelectedElementType type = SelectedElementType.Emitter;
 	public string id = "";
 	public ElemColor color;
@@ -46,12 +46,20 @@ public class Emitter : MonoBehaviour {
 	void Update() {
 		clickTimer += Time.deltaTime;
 
+		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
 		if (isBeingHeld) {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+			if (!inSquareSelect)
+			{
+				transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+			}
+			else
+            {
+				this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+			}
 		}
 
-		if (isBeingRotated) Rotate();
+		if (isBeingRotated && !inSquareSelect) Rotate();
 
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -78,8 +86,16 @@ public class Emitter : MonoBehaviour {
 		// Drag with left click
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-		startPosX = mousePos.x - this.transform.localPosition.x;
-		startPosY = mousePos.y - this.transform.localPosition.y;
+		if (this.transform.parent == null || this.transform.parent.tag != "SelectionParent")
+		{
+			startPosX = mousePos.x - this.transform.localPosition.x;
+			startPosY = mousePos.y - this.transform.localPosition.y;
+		}
+		else
+        {
+			startPosX = mousePos.x - this.transform.parent.localPosition.x;
+			startPosY = mousePos.y - this.transform.parent.localPosition.y;
+		}
 
 		clickTimer = 0;
 		isBeingHeld = true;
@@ -91,7 +107,15 @@ public class Emitter : MonoBehaviour {
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
 			if (hit.collider != null && hit.collider == gameObject.GetComponent<Collider2D>()) {
-				ShootBall();
+				bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
+				if (!inSquareSelect)
+				{
+					ShootBall();
+				}
+				else
+                {
+					this.transform.parent.GetComponent<SquareSelector>().ShootAll();
+                }
 			}
 		}
 		isBeingHeld = false;
@@ -139,5 +163,17 @@ public class Emitter : MonoBehaviour {
 		id = SOstring[0];
 		transform.position = new Vector3(float.Parse(SOstring[1]), float.Parse(SOstring[2]), 0);
 		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[3]));
+	}
+
+    public void Select()
+    {
+		this.transform.GetChild(0).gameObject.SetActive(true);
+		this.transform.GetChild(1).gameObject.SetActive(true);
+	}
+
+    public void Deselect()
+    {
+		this.transform.GetChild(0).gameObject.SetActive(false);
+		this.transform.GetChild(1).gameObject.SetActive(false);
 	}
 }

@@ -11,12 +11,15 @@ public class MenuDragHandlerLnE : MonoBehaviour, IDragHandler, IEndDragHandler {
 	private SelectionManager SelectionManagerCode;
 	private GameObject dragObject;
 
+	public static bool dragging = false;
+
 	void Start() {
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		SelectionManagerCode = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
 	}
 
 	public void OnDrag(PointerEventData eventData) {
+		dragging = true;
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePos.z = 0;
 		if (dragObject == null) {
@@ -34,6 +37,7 @@ public class MenuDragHandlerLnE : MonoBehaviour, IDragHandler, IEndDragHandler {
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
+		dragging = false;
 		dragObject = null;
 	}
 
