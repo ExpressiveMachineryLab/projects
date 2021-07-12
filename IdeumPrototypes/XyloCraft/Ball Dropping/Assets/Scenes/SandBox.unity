@@ -14018,13 +14018,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 529856313}
   pointer: {fileID: 1516377230}
-  prevButton: {fileID: 944647700}
-  nextButton: {fileID: 485470693}
+  prevButton: {fileID: 0}
+  nextButton: {fileID: 0}
   titleText: {fileID: 462750531}
   pageText: {fileID: 1300773043}
   pageNumberText: {fileID: 1414237654}
   challengeIcon: {fileID: 1285080159}
   progressText: {fileID: 666170117}
+  progressItemPrefab: {fileID: 0}
   tutorialPanel: {fileID: 1305876346}
   sequences:
   - tutTitle: '#1: Rhythm'
@@ -14125,7 +14126,8 @@ MonoBehaviour:
       cardText: Choose or create two different shapes to put on your canvas. Use
         multiple balls in the shapes and multiple conditional statements to create
         repetition in your music.
-    progress: 0
+    progress: 
+    progressBar: {fileID: 0}
   - tutTitle: '#2: Instruments'
     sequnce:
     - cardTitle: Welcome to Xylocode
@@ -14198,9 +14200,18 @@ MonoBehaviour:
       cardText: 'Use three instrument combinations in the canvas. How does the sound
         of your composition change when you change rules in the conditional box (such
         as using the ++ or -- buttons)? '
-    progress: 0
+    progress: 
+    progressBar: {fileID: 0}
   regularColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
   challengeColor: {r: 0.9333334, g: 0.54901963, b: 0.20392159, a: 1}
+  popupButtonColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
+  popupButtonDisabled: {r: 0.69411767, g: 0.78431374, b: 0.94509804, a: 0}
+  startButton: {fileID: 21300000, guid: a9b24814a75cf924d8374ee6cfa4d6eb, type: 3}
+  resumeButton: {fileID: 21300000, guid: 62b7ee4334348a54d8217ec2f43bd1e8, type: 3}
+  popupPrevText: {fileID: 1289636268}
+  popupNextText: {fileID: 872300383}
+  popupPrevButton: {fileID: 2086560577}
+  popupNextButton: {fileID: 1875825748}
 --- !u!222 &1305876350
 CanvasRenderer:
   m_ObjectHideFlags: 0
