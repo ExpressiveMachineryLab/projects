@@ -14018,14 +14018,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 529856313}
   pointer: {fileID: 1516377230}
-  prevButton: {fileID: 0}
-  nextButton: {fileID: 0}
+  prevButton: {fileID: 944647702}
+  nextButton: {fileID: 485470695}
   titleText: {fileID: 462750531}
   pageText: {fileID: 1300773043}
   pageNumberText: {fileID: 1414237654}
   challengeIcon: {fileID: 1285080159}
   progressText: {fileID: 666170117}
-  progressItemPrefab: {fileID: 0}
+  progressItemPrefab: {fileID: 2519725490346282702, guid: 74923b9e9ee3e2a4d84de6d26b91fac2,
+    type: 3}
   tutorialPanel: {fileID: 1305876346}
   sequences:
   - tutTitle: '#1: Rhythm'
@@ -14127,7 +14128,7 @@ MonoBehaviour:
         multiple balls in the shapes and multiple conditional statements to create
         repetition in your music.
     progress: 
-    progressBar: {fileID: 0}
+    progressBar: {fileID: 1842732303}
   - tutTitle: '#2: Instruments'
     sequnce:
     - cardTitle: Welcome to Xylocode
@@ -14201,7 +14202,7 @@ MonoBehaviour:
         of your composition change when you change rules in the conditional box (such
         as using the ++ or -- buttons)? '
     progress: 
-    progressBar: {fileID: 0}
+    progressBar: {fileID: 1433844440}
   regularColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
   challengeColor: {r: 0.9333334, g: 0.54901963, b: 0.20392159, a: 1}
   popupButtonColor: {r: 0.2901961, g: 0.49411768, b: 0.8588236, a: 1}
@@ -16319,9 +16320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a04134dab73a8d45823ad34c315c65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullWidth: 0
-  barTransform: {fileID: 0}
-  progressText: {fileID: 0}
+  fullWidth: 150
+  barTransform: {fileID: 1093375423}
+  progressText: {fileID: 771570464}
 --- !u!114 &1433844441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20234,9 +20235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a04134dab73a8d45823ad34c315c65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullWidth: 0
-  barTransform: {fileID: 0}
-  progressText: {fileID: 0}
+  fullWidth: 150
+  barTransform: {fileID: 222123712}
+  progressText: {fileID: 1574420682}
 --- !u!114 &1842732304
 MonoBehaviour:
   m_ObjectHideFlags: 0
