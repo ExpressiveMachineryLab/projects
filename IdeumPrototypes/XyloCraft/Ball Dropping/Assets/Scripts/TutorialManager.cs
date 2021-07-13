@@ -171,8 +171,16 @@ public class TutorialManager : MonoBehaviour
         pageNumberText.text = "" + (popupIndex + 1).ToString() + "/" + (sequences[tutorialIndex].sequnce.Length);
         popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
 
-        if (sequences[tutorialIndex].sequnce[popupIndex].challenge) titleText.color = challengeColor;
-        else titleText.color = regularColor;
+        if (sequences[tutorialIndex].sequnce[popupIndex].challenge)
+        {
+            titleText.color = challengeColor;
+            titleText.fontSize = 24f;
+        }
+        else
+        {
+            titleText.color = regularColor;
+            titleText.fontSize = 18f;
+        }
 
         prevButton.interactable = popupIndex >= 1;
         nextButton.interactable = popupIndex < sequences[tutorialIndex].sequnce.Length - 1;

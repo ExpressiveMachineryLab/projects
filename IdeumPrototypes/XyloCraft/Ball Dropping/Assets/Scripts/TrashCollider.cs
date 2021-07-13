@@ -1,14 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrashCollider : MonoBehaviour
 {
     Collider2D thisCollider;
+    public RectTransform trashUI;
+    public Camera dragCam;
+    public Canvas uicanv;
+
+    Vector3 savedOffset;
+    Vector3 startScale;
+
+    float camScale;
+    float scaleFactor;
 
     private void Start()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
+        Vector3 iconPos = dragCam.ScreenToWorldPoint(trashUI.transform.position);
+        savedOffset = transform.position - iconPos;
+
+        startScale = transform.localScale;
+        saveCameraScale(dragCam.orthographicSize);
     }
 
     public void Update()
@@ -17,6 +32,24 @@ public class TrashCollider : MonoBehaviour
         {
             checkTrash();
         }
+    }
+
+    //call on start to set default camera scale
+    public void saveCameraScale(float scale)
+    {
+        camScale = scale;
+        scaleFactor = camScale/ startScale.x;
+    }
+
+    public void updateScaleAndPosition(float cameraScale)
+    {
+       // Rect locVec = RectTransformUtility.PixelAdjustRect()
+        Vector3 iconPos = dragCam.ScreenToWorldPoint(trashUI.transform.position);
+        Vector3 newVec = new Vector3(iconPos.x, iconPos.y, -1f) + savedOffset;
+        newVec.z = -1f;
+        transform.position = newVec;
+        float scaleVal = cameraScale / scaleFactor;
+        transform.localScale = new Vector3(scaleVal, scaleVal, 1);
     }
 
     public void checkTrash()

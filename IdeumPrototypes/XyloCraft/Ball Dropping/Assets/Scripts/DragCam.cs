@@ -27,6 +27,7 @@ public class DragCam : MonoBehaviour
     public float zoomPercent = 0f;
     public bool scrollThisFrame;
 
+    public TrashCollider trashCollider;
 
     public void Drag(Vector3 delt)
     {
@@ -53,6 +54,8 @@ public class DragCam : MonoBehaviour
             boundsAdjustment += new Vector3(0,relativePosition.y + maxHeight, 0);
         }
         transform.Translate(-boundsAdjustment);
+
+        trashCollider.updateScaleAndPosition(zoom);
     }
 
     public void ZoomDelta(float percent)
@@ -69,11 +72,13 @@ public class DragCam : MonoBehaviour
         zoom = Mathf.Lerp(minZoom, maxZoom, 1f - zoomPercent);
 
         cam.orthographicSize = zoom;
+        trashCollider.updateScaleAndPosition(zoom);
     }
 
     private void Awake()
     {
         drag = this;
+
     }
     // Start is called before the first frame update
     void Start()
