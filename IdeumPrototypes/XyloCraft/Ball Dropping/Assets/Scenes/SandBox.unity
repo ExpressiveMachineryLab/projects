@@ -739,7 +739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &53167433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -757,10 +757,10 @@ RectTransform:
   m_Father: {fileID: 1195129330}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 410.4638, y: -215.70486}
+  m_SizeDelta: {x: 250, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53167434
 MonoBehaviour:
@@ -834,10 +834,10 @@ RectTransform:
   m_Father: {fileID: 1195129330}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.06381, y: -215.70486}
+  m_SizeDelta: {x: 250, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55573369
 MonoBehaviour:
@@ -2052,7 +2052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.00002, y: 41.799995}
+  m_AnchoredPosition: {x: -55.000046, y: 41.799995}
   m_SizeDelta: {x: 16, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250842715
@@ -2126,7 +2126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 41.79999}
+  m_AnchoredPosition: {x: 10, y: 41.79999}
   m_SizeDelta: {x: 100, y: 11.283203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254007870
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Challenge 3
+  m_text: Multiple Instruments
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -11624,10 +11624,10 @@ RectTransform:
   m_Father: {fileID: 1195129330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.06381, y: -90.704865}
+  m_SizeDelta: {x: 250, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040462495
 MonoBehaviour:
@@ -12032,10 +12032,10 @@ RectTransform:
   m_Father: {fileID: 1195129330}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 410.4638, y: -90.704865}
+  m_SizeDelta: {x: 250, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1095514512
 MonoBehaviour:
@@ -17779,7 +17779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1462566234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22956,7 +22956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 41.79999}
+  m_AnchoredPosition: {x: 9.000011, y: 41.79999}
   m_SizeDelta: {x: 100, y: 11.283203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011279179
@@ -22978,7 +22978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Challenge 2
+  m_text: More Exploration
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -23186,9 +23186,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose or create two different shapes to put on your canvas. Use multiple
-    balls in the shapes and multiple conditional statements to create repetition
-    in your music.
+  m_text: How can you change this rhythm up further? Try moving your lines closer
+    together or further apart, or adding more than one frog to the canvas. Can you
+    get all of the emitters to release at the same time?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -23957,7 +23957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.00002, y: 41.799995}
+  m_AnchoredPosition: {x: -50, y: 41.799995}
   m_SizeDelta: {x: 16, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066486711
