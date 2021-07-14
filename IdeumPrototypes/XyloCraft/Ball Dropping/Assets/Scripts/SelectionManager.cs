@@ -36,6 +36,11 @@ public class SelectionManager : MonoBehaviour {
 		}
 	}
 
+	public int selectionLength()
+    {
+		return selectedObject.Length;
+    }
+
 	private void SetSelection(GameObject[] selectedGameObject) {
 		if (selectedObject.Length > 0) {
 			foreach (GameObject item in selectedObject) {

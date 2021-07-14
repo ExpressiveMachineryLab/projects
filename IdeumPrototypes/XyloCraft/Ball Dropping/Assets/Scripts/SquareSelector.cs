@@ -28,7 +28,7 @@ public class SquareSelector : MonoBehaviour
     public void StartSelecting()
     {
         StopSelecting();
-        box = this.GetComponent<BoxCollider2D>();
+        //box = this.GetComponent<BoxCollider2D>();
         this.gameObject.SetActive(true);
         box.enabled = true;
         selecting = true;

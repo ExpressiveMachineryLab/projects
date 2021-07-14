@@ -19670,6 +19670,7 @@ MonoBehaviour:
   trashUI: {fileID: 1689520191}
   dragCam: {fileID: 519420031}
   uicanv: {fileID: 747518378}
+  sel: {fileID: 1195690998}
 --- !u!58 &1814897739
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -22501,7 +22502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb55ee6e76819494ca413fe2cad1bb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 0}
+  box: {fileID: 2059637059}
   selecting: 0
   selectionManager: {fileID: 1195690998}
   startPoint: {x: 0, y: 0, z: 0}

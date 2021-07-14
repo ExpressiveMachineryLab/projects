@@ -16,6 +16,8 @@ public class TrashCollider : MonoBehaviour
     float camScale;
     float scaleFactor;
 
+    public SelectionManager sel;
+
     private void Start()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
@@ -66,12 +68,18 @@ public class TrashCollider : MonoBehaviour
         {
             mouseOver = true;
         }
-        if (isOverlap > 0 && mouseOver)
+        if (isOverlap > 0 && mouseOver && sel.square.GetSelected().Count == 0)
         {
             foreach(Collider2D toBeTrashed in overlapping)
             {
                 toBeTrashed.gameObject.SetActive(false);
             }
+        }
+        else if (sel.square.GetSelected().Count > 0 && mouseOver)
+        {
+            //then it's a square selected thing.
+            sel.square.Delete();
+            sel.square.StopSelecting();
         }
         
     }

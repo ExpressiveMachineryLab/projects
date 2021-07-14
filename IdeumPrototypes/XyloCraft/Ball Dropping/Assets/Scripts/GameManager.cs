@@ -73,7 +73,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void OnClickDelete() {
-		selectionManager.DeleteSelection();
+		
+		if(selectionManager.square.GetSelected().Count > 0)
+        {
+			selectionManager.square.Delete();
+			selectionManager.square.StopSelecting();
+		}
+		else if (selectionManager.selectionLength() > 0)
+		{
+			selectionManager.DeleteSelection();
+		}
 	}
 
 	public void ResetApplication() {
