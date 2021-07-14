@@ -22,9 +22,13 @@ public class InspectorPanel : MonoBehaviour {
 
 	public InspectorData current;
 	public bool shouldUpdate;
-	void Start() {
-		m_EventSystem = FindObjectOfType<EventSystem>();
+
+    private void Awake()
+    {
 		inspector = this;
+    }
+    void Start() {
+		m_EventSystem = FindObjectOfType<EventSystem>();
 	}
 
 	public void SetInspectorData(InspectorData data)

@@ -417,6 +417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800430672042037977, guid: 619f0755e76bc614cbcf503a6c900942,
         type: 3}
+      propertyPath: inspector
+      value: 
+      objectReference: {fileID: 882165920}
+    - target: {fileID: 2800430672042037977, guid: 619f0755e76bc614cbcf503a6c900942,
+        type: 3}
       propertyPath: ballPrefabs
       value: 
       objectReference: {fileID: 8203803724438204279, guid: a37390ddaeccd2e4884b8a294252e2fd,

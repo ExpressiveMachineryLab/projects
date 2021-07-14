@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour {
 	private CountLogger logger;
 
 	public GameObject sceneContainer;
+	public InspectorPanel inspector;
 
-	void Start() {
+    private void Awake()
+    {
+		InspectorPanel.inspector = inspector;
+    }
+    void Start() {
 		speedMultiplier = GameObject.Find("GlobalSpeedMultiplier").GetComponent<TMP_InputField>();
 		UpdateSpeed();
 
