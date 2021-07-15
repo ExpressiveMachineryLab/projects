@@ -7453,6 +7453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82c63091554af1498e2041371995424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragCam: {fileID: 519420031}
 --- !u!1 &679103607
 GameObject:
   m_ObjectHideFlags: 0
@@ -7684,6 +7685,7 @@ MonoBehaviour:
   zoomPercent: 0
   scrollThisFrame: 0
   trashCollider: {fileID: 1814897738}
+  backgroundObj: {fileID: 676302915}
 --- !u!1 &731665389
 GameObject:
   m_ObjectHideFlags: 0

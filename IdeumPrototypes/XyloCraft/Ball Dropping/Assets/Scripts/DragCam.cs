@@ -28,6 +28,7 @@ public class DragCam : MonoBehaviour
     public bool scrollThisFrame;
 
     public TrashCollider trashCollider;
+    public BackgroundSizer backgroundObj;
 
     public void Drag(Vector3 delt)
     {
@@ -56,6 +57,7 @@ public class DragCam : MonoBehaviour
         transform.Translate(-boundsAdjustment);
 
         trashCollider.updateScaleAndPosition(zoom);
+        backgroundObj.updateScaleAndPosition(zoom);
     }
 
     public void ZoomDelta(float percent)
@@ -73,6 +75,8 @@ public class DragCam : MonoBehaviour
 
         cam.orthographicSize = zoom;
         trashCollider.updateScaleAndPosition(zoom);
+
+        backgroundObj.updateScaleAndPosition(zoom);
     }
 
     private void Awake()
