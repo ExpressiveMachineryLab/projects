@@ -12,6 +12,7 @@ TagManager:
   - BlueLine
   - GreenLine
   - SelectionParent
+  - trash
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Lines
   - IgnoreCollision
   - SquareSelect
-  - 
+  - Trash
   - 
   - 
   - 

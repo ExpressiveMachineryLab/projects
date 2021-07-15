@@ -7232,6 +7232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 676302914}
   - component: {fileID: 676302913}
+  - component: {fileID: 676302915}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -7303,6 +7304,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676302915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676302912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82c63091554af1498e2041371995424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &679103607
 GameObject:
   m_ObjectHideFlags: 0
@@ -14354,6 +14367,15 @@ MonoBehaviour:
       cardText: Shapes also help us create rhythm. <b>Drag a shape onto the canvas,
         then test out releasing a ball from your frog emitter from different angles
         in the shape.</b> Add more lines to your shape if you wish.
+    - cardTitle: Trash and Reset
+      popupPosition: {x: 350, y: 340, z: 0}
+      pointerPosition: {x: 0, y: 0, z: 0}
+      pointerRotation: 0
+      usePointer: 0
+      challenge: 0
+      cardText: You can use the Trash and Reset buttons to get rid of objects on
+        the canvas. Click the trash button or drag objects onto it to delete the
+        object you have selected, or use reset to clear the canvas.
     - cardTitle: Challenge
       popupPosition: {x: 150, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
@@ -20840,7 +20862,7 @@ GameObject:
   - component: {fileID: 1814897740}
   - component: {fileID: 1814897739}
   - component: {fileID: 1814897738}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: TrashCollider
   m_TagString: trash
   m_Icon: {fileID: 0}
