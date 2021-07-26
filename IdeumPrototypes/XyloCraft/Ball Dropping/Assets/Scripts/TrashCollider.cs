@@ -16,6 +16,8 @@ public class TrashCollider : MonoBehaviour
     float camScale;
     float scaleFactor;
 
+    public CallSound cs;
+
     public SelectionManager sel;
 
     private void Start()
@@ -74,12 +76,14 @@ public class TrashCollider : MonoBehaviour
             {
                 toBeTrashed.gameObject.SetActive(false);
             }
+            cs.PlaySound();
         }
         else if (sel.square.GetSelected().Count > 0 && mouseOver)
         {
             //then it's a square selected thing.
             sel.square.Delete();
             sel.square.StopSelecting();
+            cs.PlaySound();
         }
         
     }
