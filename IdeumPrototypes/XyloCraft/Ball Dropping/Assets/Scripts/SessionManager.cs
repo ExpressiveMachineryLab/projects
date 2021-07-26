@@ -78,24 +78,33 @@ public class SessionManager : MonoBehaviour {
 		if (logger != null) _gameLog.trackedStates = logger.GetLog();
 
 		string jsonLog = JsonUtility.ToJson(_gameLog);
-		//Debug.Log(jsonLog);
+		Debug.Log(jsonLog);
 
-		GoogleSheetsForUnity.Drive.CreateObject(jsonLog, _tableName, true);
+		// GoogleSheetsForUnity.Drive.CreateObject(jsonLog, _tableName, true);
+
+		WWW www = new WWW("http://localhost:sqlconnect/register.php", jsonLog);
+		Yield return www;
+		if (www.text == "0") {
+			Debug.Log("Data logged successfully");
+		}
+		else {
+			Debug.Log("Data log failed. Error # " + www.text);
+		}
 	}
 
-	public void CreateLogTable() {
-		Debug.Log("<color=yellow>Creating a table in the cloud for players data.</color>");
+	// public void CreateLogTable() {
+	// 	Debug.Log("<color=yellow>Creating a table in the cloud for players data.</color>");
 
-		// Creating a string array for field names (table headers) .
-		string[] fieldNames = new string[4];
-		fieldNames[0] = "sessionID";
-		fieldNames[1] = "timeStamp";
-		fieldNames[2] = "trackedStates";
-		fieldNames[3] = "gameState";
+	// 	// Creating a string array for field names (table headers) .
+	// 	string[] fieldNames = new string[4];
+	// 	fieldNames[0] = "sessionID";
+	// 	fieldNames[1] = "timeStamp";
+	// 	fieldNames[2] = "trackedStates";
+	// 	fieldNames[3] = "gameState";
 
-		// Request for the table to be created on the cloud.
-		GoogleSheetsForUnity.Drive.CreateTable(fieldNames, _tableName, true);
-	}
+	// 	// Request for the table to be created on the cloud.
+	// 	//GoogleSheetsForUnity.Drive.CreateTable(fieldNames, _tableName, true);
+	// }
 }
 
 [System.Serializable]
