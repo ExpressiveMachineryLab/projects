@@ -1041,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &81870572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6494,7 +6494,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.7699585, y: 10.5}
-  m_SizeDelta: {x: 288.9148, y: 366.18848}
+  m_SizeDelta: {x: 288.9148, y: 400.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625242463
 MonoBehaviour:
@@ -10074,7 +10074,11 @@ MonoBehaviour:
     Erin Truesdell
 
     Sandeep
-    Dasari'
+    Dasari
+
+    Cat Monden
+
+    Duri Long'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -14541,17 +14545,9 @@ MonoBehaviour:
       pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: 'Use the conditional box to set rules that change what happens when
-        balls collide with lines. '
-    - cardTitle: If...Then Statements
-      popupPosition: {x: 250, y: 560, z: 0}
-      pointerPosition: {x: 225, y: 660, z: 0}
-      pointerRotation: 30
-      usePointer: 1
-      challenge: 0
-      cardText: You can set rules for balls and lines to follow. <b>Choose from the
-        drop down menu to add a new condition.</b> It will be TRUE or FALSE depending
-        on what happens in the canvas.
+      cardText: Use the conditional box to set rules about what happens when balls
+        collide with lines. <b>Choose from the drop down menu to add a condition.</b>
+        It will be TRUE or FALSE depending on what happens in the canvas.
     - cardTitle: The Inspector
       popupPosition: {x: 465, y: 594, z: 0}
       pointerPosition: {x: 755, y: 860, z: 0}
@@ -14563,7 +14559,7 @@ MonoBehaviour:
     - cardTitle: Challenge
       popupPosition: {x: 150, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
-      pointerRotation: 90
+      pointerRotation: -100
       usePointer: 0
       challenge: 1
       cardText: Choose or create two different shapes to put on your canvas. Release
@@ -14579,9 +14575,9 @@ MonoBehaviour:
         or you can choose an individual sound for each line by clicking the instrument
         names.
     - cardTitle: Speed Slider
-      popupPosition: {x: 390, y: 575, z: 0}
-      pointerPosition: {x: 593, y: 813, z: 0}
-      pointerRotation: -78
+      popupPosition: {x: 350, y: 565, z: 0}
+      pointerPosition: {x: 525, y: 750, z: 0}
+      pointerRotation: -30
       usePointer: 1
       challenge: 0
       cardText: 'The speed slider is a global variable that allows us to change the
@@ -20916,7 +20912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1698387362
 RectTransform:
   m_ObjectHideFlags: 0
