@@ -10880,7 +10880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &951976817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11555,7 +11555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '#1: Rhythm'
+  m_text: Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -14104,7 +14104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In this tutorial, you will learn how to make musical rhythms using Xylocode.
+  m_text: Learn how to make musical rhythms and use instruments in Xylocode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f493d9510fe1824583fcc0e15cfb65b, type: 2}
   m_sharedMaterial: {fileID: 4256415414280957757, guid: 7f493d9510fe1824583fcc0e15cfb65b,
@@ -14490,7 +14490,7 @@ MonoBehaviour:
     type: 3}
   tutorialPanel: {fileID: 347368742}
   sequences:
-  - tutTitle: '#1: Rhythm'
+  - tutTitle: Tutorial
     sequnce:
     - cardTitle: Welcome to Xylocode
       popupPosition: {x: 320, y: 400, z: 0}
@@ -14499,7 +14499,8 @@ MonoBehaviour:
       usePointer: 0
       challenge: 0
       cardText: "In this tutorial we\u2019ll show you how to create rhythms. A rhythm
-        is a musical pattern made up of strong and weak beats."
+        is a musical pattern made up of strong and weak beats. We'll also show you
+        how to use multiple instrument types to create music in Xylocode.  "
     - cardTitle: 'Lines and Frogs '
       popupPosition: {x: 68, y: 315, z: 0}
       pointerPosition: {x: 437, y: 393, z: 0}
@@ -14508,7 +14509,7 @@ MonoBehaviour:
       challenge: 0
       cardText: You can create musical rhythms by using the frog emitters and lines.
         <b>Click and drag lines and at least one frog emitter to the canvas. You
-        can also rotate the frogs and lines using their handles.
+        can also rotate the frogs and lines using the white circles.
     - cardTitle: Emitters
       popupPosition: {x: 68, y: 330, z: 0}
       pointerPosition: {x: 68, y: 330, z: 0}
@@ -14516,16 +14517,32 @@ MonoBehaviour:
       usePointer: 0
       challenge: 0
       cardText: Frogs can emit colored balls. <b>Click on any of the frogs on the
-        canvas to release a ball.
+        canvas to release a ball. Try to "trap" a ball between two lines.
+    - cardTitle: Challenge
+      popupPosition: {x: 150, y: 340, z: 0}
+      pointerPosition: {x: 250, y: 0, z: 0}
+      pointerRotation: 90
+      usePointer: 0
+      challenge: 1
+      cardText: Try moving your lines closer together or further apart, or adding
+        more than one frog to the canvas.
+    - cardTitle: Shapes
+      popupPosition: {x: 340, y: 340, z: 0}
+      pointerPosition: {x: 700, y: 400, z: 0}
+      pointerRotation: 180
+      usePointer: 1
+      challenge: 0
+      cardText: Shapes help us create rhythm and test many instruments at one time.
+        <b>Drag a shape onto the canvas, then release a ball from your frog emitter
+        from different angles in the shape.</b>
     - cardTitle: Conditional Box
       popupPosition: {x: 250, y: 560, z: 0}
       pointerPosition: {x: 225, y: 660, z: 0}
       pointerRotation: 30
       usePointer: 1
       challenge: 0
-      cardText: 'Use the conditional box at the top left of the canvas to determine
-        the rules that you want the balls that your frog emits to follow when interacting
-        with lines. '
+      cardText: 'Use the conditional box to set rules that change what happens when
+        balls collide with lines. '
     - cardTitle: If...Then Statements
       popupPosition: {x: 250, y: 560, z: 0}
       pointerPosition: {x: 225, y: 660, z: 0}
@@ -14542,7 +14559,16 @@ MonoBehaviour:
       usePointer: 1
       challenge: 0
       cardText: The <b>Inspector</b> allows you to look at information about objects
-        on the canvas. It also tells you when a TRUE condition is hit.
+        on the canvas.
+    - cardTitle: Challenge
+      popupPosition: {x: 150, y: 340, z: 0}
+      pointerPosition: {x: 0, y: 0, z: 0}
+      pointerRotation: 90
+      usePointer: 0
+      challenge: 1
+      cardText: Choose or create two different shapes to put on your canvas. Release
+        multiple balls in the shapes and multiple conditional statements to create
+        repetition in your music.
     - cardTitle: Sound Bank
       popupPosition: {x: 190, y: 340, z: 0}
       pointerPosition: {x: 255, y: 40, z: 0}
@@ -14552,15 +14578,6 @@ MonoBehaviour:
       cardText: With the Sound Bank, you can assign a family of sounds to the lines
         or you can choose an individual sound for each line by clicking the instrument
         names.
-    - cardTitle: Challenge
-      popupPosition: {x: 190, y: 340, z: 0}
-      pointerPosition: {x: 0, y: 0, z: 0}
-      pointerRotation: 90
-      usePointer: 0
-      challenge: 1
-      cardText: Choose or create two different shapes to put on your canvas. Use
-        multiple balls in the shapes and multiple conditional statements to create
-        repetition in your music.
     - cardTitle: Speed Slider
       popupPosition: {x: 390, y: 575, z: 0}
       pointerPosition: {x: 593, y: 813, z: 0}
@@ -14570,15 +14587,6 @@ MonoBehaviour:
       cardText: 'The speed slider is a global variable that allows us to change the
         speed of the balls that frogs emit. What happens when you move the slider
         to the far right? '
-    - cardTitle: Shapes
-      popupPosition: {x: 290, y: 340, z: 0}
-      pointerPosition: {x: 650, y: 120, z: 0}
-      pointerRotation: 180
-      usePointer: 1
-      challenge: 0
-      cardText: Shapes also help us create rhythm. <b>Drag a shape onto the canvas,
-        then test out releasing a ball from your frog emitter from different angles
-        in the shape.</b> Add more lines to your shape if you wish.
     - cardTitle: Trash and Reset
       popupPosition: {x: 350, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
@@ -14594,9 +14602,8 @@ MonoBehaviour:
       pointerRotation: 0
       usePointer: 0
       challenge: 1
-      cardText: Choose or create two different shapes to put on your canvas. Use
-        multiple balls in the shapes and multiple conditional statements to create
-        repetition in your music.
+      cardText: 'Use three instrument combinations in the canvas. How does the sound
+        of your composition change when you change rules in the conditional box? '
     progress: 
     progressBar: {fileID: 1842732303}
   - tutTitle: '#2: Instruments'
@@ -14626,15 +14633,15 @@ MonoBehaviour:
       cardText: With the Sound Bank, you can assign a family of sounds to the lines
         or you can choose an individual sound for each line by clicking the instrument
         names.
-    - cardTitle: Shapes
-      popupPosition: {x: 290, y: 340, z: 0}
-      pointerPosition: {x: 650, y: 400, z: 0}
-      pointerRotation: 180
+    - cardTitle: 'Sound Bank '
+      popupPosition: {x: 230, y: 340, z: 0}
+      pointerPosition: {x: 290, y: 320, z: 0}
+      pointerRotation: 100
       usePointer: 1
       challenge: 0
-      cardText: '<size=95%>By making different shapes in Xylocode, you can test out
-        the instruments in the sound bank at one time. <b>Drag a shape onto the canvas
-        and release more than one ball inside the shape to see what happens. '
+      cardText: With the Sound Bank, you can assign a family of sounds to the lines
+        or you can choose an individual sound for each line by clicking the instrument
+        names.
     - cardTitle: If...Then Statements
       popupPosition: {x: 250, y: 535, z: 0}
       pointerPosition: {x: 225, y: 660, z: 0}
