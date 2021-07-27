@@ -48,7 +48,7 @@ public class SessionManager : MonoBehaviour {
 	void Update() {
 		if (Time.time >= nextLogTime) {
 			soInterpreter.GenerateSaveDataString();
-			LogSession(soInterpreter.GetTextInput());
+			CallLogSession(soInterpreter.GetTextInput());
 
 			nextLogTime = Time.time + logIntervalInSeconds;
 		}
@@ -70,20 +70,27 @@ public class SessionManager : MonoBehaviour {
 		_gameLog.timeStamp = newTime;
 	}
 
-	public void LogSession(string gameState) {
+	public void CallLogSession(string gameState) {
+		StartCoroutine(LogSession(gameState));
+	}
+
+	IEnumerator LogSession(string gameState) {
 		_gameLog.timeStamp = System.DateTime.Now.ToShortDateString() + " " + System.DateTime.Now.ToShortTimeString();
 		_gameLog.gameState = gameState;
 
 		if (logger == null) logger = FindObjectOfType<CountLogger>();
 		if (logger != null) _gameLog.trackedStates = logger.GetLog();
 
-		string jsonLog = JsonUtility.ToJson(_gameLog);
-		Debug.Log(jsonLog);
+		WWWForm form = new WWWForm();
+		form.AddField("timeStamp", _gameLog.timeStamp);
+		form.AddField("sessionID", _gameLog.sessionID);
+		form.AddField("trackedStates", _gameLog.trackedStates);
+		form.AddField("gameState", _gameLog.gameState);
 
-		// GoogleSheetsForUnity.Drive.CreateObject(jsonLog, _tableName, true);
+		Debug.Log(form);
 
-		WWW www = new WWW("http://localhost:sqlconnect/register.php", jsonLog);
-		Yield return www;
+		WWW www = new WWW("http://localhost:sqlconnect/register.php", form);
+		yield return www;
 		if (www.text == "0") {
 			Debug.Log("Data logged successfully");
 		}
@@ -92,19 +99,6 @@ public class SessionManager : MonoBehaviour {
 		}
 	}
 
-	// public void CreateLogTable() {
-	// 	Debug.Log("<color=yellow>Creating a table in the cloud for players data.</color>");
-
-	// 	// Creating a string array for field names (table headers) .
-	// 	string[] fieldNames = new string[4];
-	// 	fieldNames[0] = "sessionID";
-	// 	fieldNames[1] = "timeStamp";
-	// 	fieldNames[2] = "trackedStates";
-	// 	fieldNames[3] = "gameState";
-
-	// 	// Request for the table to be created on the cloud.
-	// 	//GoogleSheetsForUnity.Drive.CreateTable(fieldNames, _tableName, true);
-	// }
 }
 
 [System.Serializable]
