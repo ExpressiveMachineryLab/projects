@@ -48,7 +48,7 @@ public class SOInterpreter : MonoBehaviour {
 	public void SaveCanvasToSlot(int slot) {
 		GenerateSaveDataString();
 		PlayerPrefs.SetString("SaveSlot" + slot, textInput);
-		if (sessionManager != null) sessionManager.LogSession(textInput);
+		if (sessionManager != null) sessionManager.CallLogSession(textInput);
 	}
 
 	public void LoadCanvasFromSlot(int slot) {
