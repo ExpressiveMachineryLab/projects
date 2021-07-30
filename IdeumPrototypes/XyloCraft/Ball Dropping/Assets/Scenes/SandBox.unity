@@ -14685,6 +14685,15 @@ MonoBehaviour:
       cardText: Use the conditional box to set rules about what happens when balls
         collide with lines. <b>Choose from the drop down menu to add a condition.</b>
         It will be TRUE or FALSE depending on what happens in the canvas.
+    - cardTitle: Conditionals
+      popupPosition: {x: 250, y: 560, z: 0}
+      pointerPosition: {x: 225, y: 660, z: 0}
+      pointerRotation: 30
+      usePointer: 1
+      challenge: 0
+      cardText: Conditionals check to see when an expression is TRUE or FALSE. When
+        the conditional in a conditional box is TRUE, the box will flash yellow and
+        your rule will be followed.
     - cardTitle: The Inspector
       popupPosition: {x: 465, y: 594, z: 0}
       pointerPosition: {x: 755, y: 860, z: 0}
