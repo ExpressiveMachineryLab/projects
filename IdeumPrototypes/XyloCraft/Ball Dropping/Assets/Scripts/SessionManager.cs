@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine.Networking;
 
 public class SessionManager : MonoBehaviour {
 	[DllImport("__Internal")]
@@ -11,9 +12,6 @@ public class SessionManager : MonoBehaviour {
 
 	private string sessionID = "_";
 	private GameLog _gameLog = new GameLog();
-
-	// For the table to be created and queried.
-	private string _tableName = "Log";
 
 	private CountLogger logger;
 	private SOInterpreter soInterpreter;
@@ -82,20 +80,22 @@ public class SessionManager : MonoBehaviour {
 		if (logger != null) _gameLog.trackedStates = logger.GetLog();
 
 		WWWForm form = new WWWForm();
-		form.AddField("timeStamp", _gameLog.timeStamp);
+		form.AddField("timeStamp", _gameLog.timeStamp); //this timestamp is not currently being logged in DB, it is logging the SQL generated timestamp instead
 		form.AddField("sessionID", _gameLog.sessionID);
 		form.AddField("trackedStates", _gameLog.trackedStates);
 		form.AddField("gameState", _gameLog.gameState);
 
-		Debug.Log(form);
+		Debug.Log(string.Join(",", form.data));
 
-		WWW www = new WWW("http://localhost:sqlconnect/register.php", form);
-		yield return www;
-		if (www.text == "0") {
-			Debug.Log("Data logged successfully");
+		UnityWebRequest www = UnityWebRequest.Post("https://xylocode.lmc.gatech.edu/sqlconnect/register.php", form);
+		yield return www.SendWebRequest();
+		if (www.isNetworkError || www.isHttpError) {
+			Debug.Log("Data log failed. Error # " + www.error);
 		}
-		else {
-			Debug.Log("Data log failed. Error # " + www.text);
+		else if (www.downloadHandler.text == "0") {
+			Debug.Log("Data logged successfully.");
+		} else {
+			Debug.Log("Server reached successfully but data not logged. Error: " + www.downloadHandler.text);
 		}
 	}
 
