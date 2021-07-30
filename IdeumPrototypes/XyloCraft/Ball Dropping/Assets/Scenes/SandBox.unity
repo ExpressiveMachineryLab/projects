@@ -14729,6 +14729,15 @@ MonoBehaviour:
       cardText: You can use the Trash and Reset buttons to get rid of objects on
         the canvas. Click the trash button or drag objects onto it to delete the
         object you have selected, or use reset to clear the canvas.
+    - cardTitle: Zoom and Scroll
+      popupPosition: {x: 315, y: 460, z: 0}
+      pointerPosition: {x: 280, y: 615, z: 0}
+      pointerRotation: 0
+      usePointer: 1
+      challenge: 0
+      cardText: You can use the Zoom slider or your mouse wheel to zoom in and out
+        on the canvas. You can right click and drag to move around when you are zoomed
+        in.
     - cardTitle: Challenge
       popupPosition: {x: 150, y: 340, z: 0}
       pointerPosition: {x: 0, y: 0, z: 0}
