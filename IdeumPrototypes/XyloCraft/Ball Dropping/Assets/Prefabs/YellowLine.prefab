@@ -464,6 +464,7 @@ MonoBehaviour:
   visualLevel: 0
   pitchPositive: 1
   visualPositive: 1
+  disableSound: 0
 --- !u!212 &4383519438700290412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -526,7 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Line (Array)
+  itemName: Yellow Line (Array)
   definition: 'An array is a group of values saved in a certain order. In xylocode,
     arrays are represented by the lines in the canvas. These lines represent a group
     of sounds.

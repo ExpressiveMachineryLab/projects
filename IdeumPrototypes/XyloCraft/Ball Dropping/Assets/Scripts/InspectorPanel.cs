@@ -23,6 +23,10 @@ public class InspectorPanel : MonoBehaviour {
 	public InspectorData current;
 	public bool shouldUpdate;
 
+	public Color red = Color.red;
+	public Color blue = Color.blue;
+	public Color yellow = Color.yellow;
+	public Color green = Color.green;
     private void Awake()
     {
 		inspector = this;
@@ -59,15 +63,15 @@ public class InspectorPanel : MonoBehaviour {
             {
 				fullInspector.SetActive(true);
 				emptyInspector.SetActive(false);
-				nameText.text = current.itemName;
+				nameText.text = ColorReplace(current.itemName, current.colorReplace);
 								
-				codeText.text = current.code;
+				codeText.text = ColorReplace(current.code, current.colorReplace);
 				codeText.gameObject.SetActive(current.code != "");
 
-				definitionText.text = current.definition;
+				definitionText.text = ColorReplace(current.definition, current.colorReplace);
 				definitionText.gameObject.SetActive(current.definition != "");
 
-				interactionText.text = current.interaction;
+				interactionText.text = ColorReplace(current.interaction, current.colorReplace);
 				interactionText.gameObject.SetActive(current.interaction != "");
 			}
 			else
@@ -78,6 +82,31 @@ public class InspectorPanel : MonoBehaviour {
         }
     }
 
+
+	private string ColorReplace(string s, string replace)
+    {
+		string st = s;
+		if (replace != "")
+		{
+			st = s.Replace("[Color]", char.ToUpper(replace[0]) + replace.Substring(1))
+					.Replace("[color]", char.ToLower(replace[0]) + replace.Substring(1));
+		}
+		return st
+			.Replace("Red", string.Format("<#{0}>Red</color>", GetHex(red)))
+			.Replace("red", string.Format("<#{0}>red</color>", GetHex(red)))
+			.Replace("Blue", string.Format("<#{0}>Blue</color>", GetHex(blue)))
+			.Replace("blue", string.Format("<#{0}>blue</color>", GetHex(blue)))
+			.Replace("Yellow", string.Format("<#{0}>Yellow</color>", GetHex(yellow)))
+			.Replace("yellow", string.Format("<#{0}>yellow</color>", GetHex(yellow)))
+			.Replace("Green", string.Format("<#{0}>Green</color>", GetHex(green)))
+			.Replace("green", string.Format("<#{0}>green</color>", GetHex(green)));
+	}
+
+	private string GetHex(Color c)
+    {
+		string hex = ((int)(255f * c.r)).ToString("X2") + ((int)(255f * c.g)).ToString("X2") + ((int)(255f * c.b)).ToString("X2");
+		return hex;
+	}
 	/*
 	void Update() {
 		m_PointerEventData = new PointerEventData(m_EventSystem);

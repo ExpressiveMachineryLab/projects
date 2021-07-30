@@ -527,17 +527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Line (Array)
-  definition: 'An array is a group of values saved in a certain order. In xylocode,
-    arrays are represented by the lines in the canvas. These lines represent a group
-    of sounds.
-
-
-    Can you make the sounds change using the conditional box?'
-  interaction: 'Drag to move it around, and click the white circle to rotate.
-
-    Can
-    you think of what the white highlighted piece of the lines mean?'
+  itemName: Gray Line
+  definition: A gray line lets you bounce bubbles without making sounds.
+  interaction: Drag to move it around, and click the white circle to rotate.
   code: 
   isUI: 0
   OnHover:

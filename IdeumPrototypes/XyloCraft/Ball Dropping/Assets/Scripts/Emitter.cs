@@ -41,6 +41,9 @@ public class Emitter : MonoBehaviour, ISelectableObj {
 		} else if (!id[0].Equals("2".ToCharArray()[0])) {
 			id = "2" + id;
 		}
+
+		InspectorData idata = this.GetComponent<InspectorData>();
+		idata.colorReplace = color.ToString();
 	}
 
 	void Update() {

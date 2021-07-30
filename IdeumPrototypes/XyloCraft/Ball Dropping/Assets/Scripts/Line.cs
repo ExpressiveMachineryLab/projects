@@ -60,6 +60,16 @@ public class Line : MonoBehaviour, ISelectableObj {
 		} else if (!id[0].Equals("1".ToCharArray()[0])) {
 			id = "1" + id;
 		}
+
+		InspectorData idata = this.GetComponent<InspectorData>();
+		idata.colorReplace = color.ToString();
+
+		if (color == ElemColor.None)
+        {
+			idata.itemName = "Gray Line";
+			idata.definition = "A gray line lets you bounce bubbles without making sounds.";
+			idata.interaction = "Drag to move it around, and click the white circle to rotate.";
+		}
 	}
 
 	private void Update() {

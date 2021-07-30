@@ -12,6 +12,7 @@ public class InspectorData : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public string interaction;
     [TextArea(3, 10)]
     public string code;
+    public string colorReplace;
 
     public bool isUI = true;
     public UnityEvent OnHover;

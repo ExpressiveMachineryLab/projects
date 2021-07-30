@@ -6026,10 +6026,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Conditional
   definition: "Conditionals are the code that checks to see if something is true
-    (like \u201Cis it raining?\u201D) and a decision based on that (like \u201CThen
-    I will bring my umbrella.\u201D)\r"
-  interaction: "- Which ball and line are needed to make a conditional statement
-    true.\n- Method for getting the ball to be emitted ( click_on\u2026.)"
+    (like \u201CIs it raining?\u201D) and then makes a decision based on  the answer
+    (like \u201CThen I will bring my umbrella.\u201D)"
+  interaction: 'The top panel lets you choose which colors of bubbles and lines are
+    needed to make a conditional statement true.
+
+    Click the down arrow to customize
+    what happens when the condition turns true!'
   code: "if (ball hits a line){\n   Go to the next \nsound in the sound \narray\n}"
   isUI: 1
   OnHover:

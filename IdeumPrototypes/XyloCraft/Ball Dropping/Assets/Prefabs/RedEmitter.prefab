@@ -181,12 +181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Frog Emitter
-  definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
+  itemName: '[Color] Frog'
+  definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode. When clicked,
+    they release balls that make sounds when they collide with lines. [Color] frogs
+    release [color] bubbles."
   interaction: Click a frog to spit out a bubble! Drag to move it around, and click
     the white circle to rotate.
   code: 
+  colorReplace: Red
   isUI: 0
   OnHover:
     m_PersistentCalls:

@@ -1116,6 +1116,7 @@ GameObject:
   - component: {fileID: 94913117}
   - component: {fileID: 94913116}
   - component: {fileID: 94913115}
+  - component: {fileID: 94913119}
   m_Layer: 5
   m_Name: ChallengeButton
   m_TagString: Untagged
@@ -1245,6 +1246,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94913113}
   m_CullTransparentMesh: 0
+--- !u!114 &94913119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94913113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Challenge Button
+  definition: 
+  interaction: Click to show the challenges!
+  code: 
+  colorReplace: 
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &103941375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,10 +1905,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Yellow Line
-  definition: insert line description here
-  interaction: Click and drag a line to make a yellow line!
+  itemName: Yellow Line Creator
+  definition: An array is a group of values saved in a certain order. In xylocode,
+    arrays are represented by the lines in the canvas. These lines represent a group
+    of sounds.
+  interaction: Click and drag the line to make a yellow line! Lines can be rotated
+    using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -2521,11 +2547,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Yellow Frog Emitter
+  itemName: Yellow Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
-  interaction: Click and drag a frog to make a yellow frog emitter.
+    needed to produce sound. When clicked, they release balls that make sounds when
+    they collide with lines. Yellow frogs release yellow bubbles."
+  interaction: Click and drag the frog to make a yellow frog. Once placed, click
+    the frog to release a yellow bubble. Frogs can be rotated using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -2723,6 +2752,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284546182}
   m_CullTransparentMesh: 0
+--- !u!1 &297824236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2845373790083707709, guid: 160a058ff24938541968c5819bdf5a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 2470455357123678845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &297824241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297824236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Gray Line Creator
+  definition: A gray line lets you bounce bubbles without making sounds.
+  interaction: Click and drag the line to make a gray line.  Lines can be rotated
+    using their handles.
+  code: 
+  colorReplace: 
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &307843727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,10 +5849,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Blue Line
-  definition: insert line description here
-  interaction: Click and drag a line to make a blue line!
+  itemName: Blue Line Creator
+  definition: An array is a group of values saved in a certain order. In xylocode,
+    arrays are represented by the lines in the canvas. These lines represent a group
+    of sounds.
+  interaction: Click and drag the line to make a blue line! Lines can be rotated
+    using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -6774,7 +6835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 24}
   m_SizeDelta: {x: 22, y: 22}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &634331031
@@ -8233,7 +8294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 13.287, y: -52.4}
+  m_AnchoredPosition: {x: 13.287, y: -42.4}
   m_SizeDelta: {x: 167.42566, y: 132.8352}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &756545542
@@ -8559,11 +8620,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Red Frog Emitter
+  itemName: Red Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
-  interaction: Click and drag a frog to make a red frog emitter.
+    needed to produce sound. When clicked, they release balls that make sounds when
+    they collide with lines. Red frogs release red bubbles."
+  interaction: Click and drag the frog to make a red frog. Once placed, click the
+    frog to release a red bubble. Frogs can be rotated using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -8780,7 +8844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 24}
   m_SizeDelta: {x: 22, y: 22}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &802662740
@@ -9940,7 +10004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &882165919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9983,6 +10047,10 @@ MonoBehaviour:
   interactionText: {fileID: 1404321190}
   current: {fileID: 0}
   shouldUpdate: 0
+  red: {r: 1, g: 0.29803923, b: 0.24313727, a: 1}
+  blue: {r: 0.21960786, g: 0.8078432, b: 1, a: 1}
+  yellow: {r: 0.9725491, g: 0.882353, b: 0, a: 1}
+  green: {r: 0.454902, g: 0.98823535, b: 0.5058824, a: 1}
 --- !u!1 &884776598
 GameObject:
   m_ObjectHideFlags: 0
@@ -12502,27 +12570,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2470455357123678845}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1100828776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100828771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Red Frog Emitter
-  definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
-  interaction: Click and drag a frog to make a red frog emitter.
-  code: 
-  isUI: 1
-  OnHover:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1100828777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12535,10 +12582,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Red Line
-  definition: insert line description here
-  interaction: Click and drag a line to make a red line!
+  itemName: Red Line Creator
+  definition: An array is a group of values saved in a certain order. In xylocode,
+    arrays are represented by the lines in the canvas. These lines represent a group
+    of sounds.
+  interaction: Click and drag the line to make a red line! Lines can be rotated using
+    their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -13099,6 +13150,7 @@ GameObject:
   - component: {fileID: 1200302684}
   - component: {fileID: 1200302683}
   - component: {fileID: 1200302682}
+  - component: {fileID: 1200302687}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -13239,6 +13291,27 @@ RectTransform:
   m_AnchoredPosition: {x: -245.5, y: 261.3}
   m_SizeDelta: {x: 42, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1200302687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200302681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Pause Button
+  definition: 
+  interaction: Click to pause.
+  code: 
+  colorReplace: 
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1206116502
 GameObject:
   m_ObjectHideFlags: 0
@@ -13822,6 +13895,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257973464}
   m_CullTransparentMesh: 0
+--- !u!1 &1260286263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849206076522764646, guid: 99baa6070e5a8274f8f6ea0ad73ccaf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1849206077039703878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1260286269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260286263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Sound Bank
+  definition: Choose the sounds you want your lines and conditionals to play in the
+    sound bank!
+  interaction: Click the Sound Bank button to open the Sound Menu, and click the
+    menu options for the sounds of each color to choose a sound.
+  code: 
+  colorReplace: 
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1261634173
 GameObject:
   m_ObjectHideFlags: 0
@@ -14711,7 +14813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1305876347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15140,10 +15242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Reset
+  itemName: Reset Button
   definition: 
-  interaction: Click to reset!
+  interaction: Click to reset and clear the canvas!
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -17445,7 +17548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 13.287, y: -203.3}
+  m_AnchoredPosition: {x: 13.287, y: -213.3}
   m_SizeDelta: {x: 167.42566, y: 123.6875}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1404321190
@@ -18842,11 +18945,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Green Frog Emitter
+  itemName: Green Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
-  interaction: Click and drag a frog to make a green frog emitter.
+    needed to produce sound. When clicked, they release balls that make sounds when
+    they collide with lines. Green frogs release green bubbles."
+  interaction: Click and drag the frog to make a green frog. Once placed, click the
+    frog to release a green bubble. Frogs can be rotated using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -18869,11 +18975,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Blue Frog Emitter
+  itemName: Blue Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
-    needed to produce sound."
-  interaction: Click and drag a frog to make a blue frog emitter.
+    needed to produce sound. When clicked, they release balls that make sounds when
+    they collide with lines. Blue frogs release blue bubbles."
+  interaction: Click and drag the frog to make a blue frog. Once placed, click the
+    frog to release a blue bubble. Frogs can be rotated using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -20015,8 +20124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 13.287, y: -350.15}
-  m_SizeDelta: {x: 167.42566, y: 117.54996}
+  m_AnchoredPosition: {x: 13.287, y: -360.15}
+  m_SizeDelta: {x: 180.71301, y: 117.54996}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1560218515
 MonoBehaviour:
@@ -21057,6 +21166,7 @@ GameObject:
   - component: {fileID: 1689520194}
   - component: {fileID: 1689520193}
   - component: {fileID: 1689520192}
+  - component: {fileID: 1689520196}
   m_Layer: 5
   m_Name: TrashButton
   m_TagString: trash
@@ -21199,6 +21309,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689520190}
   m_CullTransparentMesh: 0
+--- !u!114 &1689520196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689520190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Trash Can
+  definition: 
+  interaction: Drag a frog or line onto the trash can to delete them from the canvas.
+  code: 
+  colorReplace: 
+  isUI: 1
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1698387361
 GameObject:
   m_ObjectHideFlags: 0
@@ -21293,10 +21424,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f706106d16384985131c536aeee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Green Line
-  definition: insert line description here
-  interaction: Click and drag a line to make a green line!
+  itemName: Green Line Creator
+  definition: An array is a group of values saved in a certain order. In xylocode,
+    arrays are represented by the lines in the canvas. These lines represent a group
+    of sounds.
+  interaction: Click and drag the line to make a green line! Lines can be rotated
+    using their handles.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -23141,12 +23276,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Speed
-  definition: The speed of your balls is stored in a global variable called speed.
+  definition: The speed of your balls is kept in a global variable called speed.
     It holds the number that represents how fast the balls will move across the canvas.
-  interaction: Move the slider right or left to change the number stored in the speed
+  interaction: Move the slider right or left to change the number kept in the speed
     variable
   code: "int speed = 5;\nif (slider is moved to the right) {\n speed += 1;\n} else
     if (slider is moved to the left) {\n speed -= 1;\n}"
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -25600,6 +25736,7 @@ MonoBehaviour:
   interaction: Move the slider or spin the scroll wheel to zoom in and out. You can
     also right-click and drag to move around.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
@@ -25750,7 +25887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 24}
   m_SizeDelta: {x: 22, y: 22}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2122062321
@@ -26699,6 +26836,7 @@ MonoBehaviour:
   interaction: Drag a shape onto the canvas and release a ball inside the shape to
     hear your musical rhythms in action.
   code: 
+  colorReplace: 
   isUI: 1
   OnHover:
     m_PersistentCalls:
