@@ -20,6 +20,8 @@ public class TutorialManager : MonoBehaviour
 
     public TutSequence[] sequences;
 
+    public TMP_Text description;
+
     public Color regularColor;
     public Color challengeColor;
     public Color popupButtonColor;
@@ -41,15 +43,11 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        popup.SetActive(false);
-        pointer.SetActive(false);
-        progressText.SetActive(false);
-        tutorialPanel.SetActive(true);
+       // popup.SetActive(false);
+       // pointer.SetActive(false);
+       // progressText.SetActive(false);
+       // tutorialPanel.SetActive(true);
 
-        foreach (TutSequence ts in sequences)
-        {
-            ts.progressBar.updateTutorialProgress(0, ts.sequnce.Length);
-        }
 
         foreach (Transform tutSelector in tutorialPanel.transform)
         {
@@ -93,26 +91,31 @@ public class TutorialManager : MonoBehaviour
         {
             popupIndex = sequences[tutorialIndex].progress[sequences[tutorialIndex].progress.Count - 1];
         }
-        else popupIndex = 0;
+        else
+        {
+            popupIndex = 0;
+            sequences[tutorialIndex].progress.Add(0);
+        }
 
         FillPopup();
         setupProgressText();
         FillPorgressText();
         popup.SetActive(true);
         progressText.SetActive(true);
-        tutorialPanel.SetActive(false);
+       // tutorialPanel.SetActive(false);
         tutorialActive = true;
-        updateTutButtons();
+        //updateTutButtons();
+        sequences[tutorialIndex].progressBar.updateTutorialProgress(sequences[tutorialIndex].progress.Count, sequences[tutorialIndex].sequnce.Length);
     }
 
     public void StopTutorial()
     {
         popup.SetActive(false);
         pointer.SetActive(false);
-        progressText.SetActive(false);
-        tutorialPanel.SetActive(true);
+       // progressText.SetActive(false);
+       // tutorialPanel.SetActive(true);
         tutorialActive = false;
-        updateTutButtons();
+       // updateTutButtons();
     }
 
     void updateTutButtons()
@@ -159,6 +162,7 @@ public class TutorialManager : MonoBehaviour
 
     private void FillPopup()
     {
+        popup.SetActive(true);
         if (!sequences[tutorialIndex].progress.Contains(popupIndex))
         {
             sequences[tutorialIndex].progress.Add(popupIndex);
@@ -204,7 +208,7 @@ public class TutorialManager : MonoBehaviour
         foreach (Transform childObj in progressText.transform)
         {
             tableOfContents[index] = childObj.gameObject;
-            if (sequences[tutorialIndex].progress.Contains(index - 1))
+            if (sequences[tutorialIndex].progress.Contains(index))
             {
                 TMP_Text toBold = tableOfContents[index].GetComponent<TMP_Text>();
                 toBold.fontStyle = FontStyles.Bold;
@@ -230,10 +234,10 @@ public class TutorialManager : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        GameObject firstChild = Instantiate(progressItemPrefab, progressText.transform);
-        Destroy(firstChild.GetComponent<Button>());
-        firstChild.GetComponent<TMP_Text>().SetText(sequences[tutorialIndex].tutTitle);
-        firstChild.GetComponent<TMP_Text>().fontSize = 16;
+        //GameObject firstChild = Instantiate(progressItemPrefab, progressText.transform);
+        //Destroy(firstChild.GetComponent<Button>());
+       // firstChild.GetComponent<TMP_Text>().SetText(sequences[tutorialIndex].tutTitle);
+       // firstChild.GetComponent<TMP_Text>().fontSize = 16;
 
         for (int i = 0; i < sequences[tutorialIndex].sequnce.Length; i++)
         {
@@ -267,6 +271,7 @@ public class TutorialManager : MonoBehaviour
 public class TutSequence
 {
     public string tutTitle;
+    public string tutDescription;
     public TutPopup[] sequnce;
     public List<int> progress = new List<int>();
     public ProgressBar progressBar;

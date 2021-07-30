@@ -16,6 +16,8 @@ public class RightPanelExpansion : MonoBehaviour
     public GameObject tutorials;
     public GameObject inspector;
 
+    public TutorialManager tutMan;
+
     public Toggle tutorialToggle;
     public Toggle inspectorToggle;
     [Header("Click to expand in inspector")]
@@ -51,9 +53,9 @@ public class RightPanelExpansion : MonoBehaviour
         expandButton.gameObject.SetActive(false);
         collapseButton.gameObject.SetActive(true);
 
-        SwitchToTutorial();
-        tutorialToggle.Select();
-        tutorialToggle.GetComponentInChildren<TMP_Text>().color = Color.white;
+        //SwitchToTutorial();
+        //tutorialToggle.Select();
+       // tutorialToggle.GetComponentInChildren<TMP_Text>().color = Color.white;
     }
 
     public void Collapse()
@@ -89,6 +91,8 @@ public class RightPanelExpansion : MonoBehaviour
     public void SwitchToTutorial()
     {
         inspector.SetActive(false);
+
         tutorials.SetActive(true);
+        tutMan.StartTurotial(0);
     }
 }
