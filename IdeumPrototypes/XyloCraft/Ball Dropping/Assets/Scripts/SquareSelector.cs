@@ -15,7 +15,10 @@ public class SquareSelector : MonoBehaviour
     public Transform sceneContainer;
     public Collider2D rotationKnob;
     List<GameObject> selected;
+    SpriteRenderer sprite;
     bool isRotating;
+
+    public int selectedCount;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class SquareSelector : MonoBehaviour
 
     private void Start()
     {
+        sprite = this.GetComponent<SpriteRenderer>();
     }
     public void StartSelecting()
     {
@@ -69,6 +73,7 @@ public class SquareSelector : MonoBehaviour
             rotationKnob.gameObject.SetActive(false);
             if (Input.GetMouseButton(0))
             {
+                sprite.enabled = true;
                 endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 endPoint.Scale(new Vector3(1f, 1f, 0f));
                 box.transform.position = (startPoint + endPoint) / 2f;
@@ -78,9 +83,9 @@ public class SquareSelector : MonoBehaviour
                 float minScale = 0.01f;
 
                 box.transform.localScale = new Vector3(
-                    Mathf.Abs(scale.x) > minScale ? scale.x : minScale,
-                    Mathf.Abs(scale.y) > minScale ? scale.y : minScale,
-                    Mathf.Abs(scale.z) > minScale ? scale.z : minScale
+                    2 * (Mathf.Abs(scale.x) > minScale ? scale.x : minScale),
+                    2 * (Mathf.Abs(scale.y) > minScale ? scale.y : minScale),
+                    2 * (Mathf.Abs(scale.z) > minScale ? scale.z : minScale)
                     );
 
 
@@ -124,14 +129,21 @@ public class SquareSelector : MonoBehaviour
                 selecting = false;
 
                 box.enabled = false;
-                foreach (GameObject obj in selected)
+                if (selected.Count > 0)
                 {
+                    foreach (GameObject obj in selected)
+                    {
 
-                    obj.transform.SetParent(this.transform, true);
+                        obj.transform.SetParent(this.transform, true);
+                    }
+                }
+                else
+                {
+                    sprite.enabled = false;
                 }
             }
         }
-        else
+        else if (selectedCount > 0)
         {
             rotationKnob.gameObject.SetActive(true);
 
@@ -156,6 +168,7 @@ public class SquareSelector : MonoBehaviour
         {
             Rotate();
         }
+        selectedCount = (selected != null) ? selected.Count : 0;
     }
 
     public List<GameObject> GetSelected()
