@@ -78,7 +78,7 @@ public class TrashCollider : MonoBehaviour
             }
             cs.PlaySound();
         }
-        else if (sel.square.GetSelected().Count > 0 && mouseOver)
+        else if (sel.square.GetSelected() != null && sel.square.GetSelected().Count > 0 && mouseOver)
         {
             //then it's a square selected thing.
             sel.square.Delete();

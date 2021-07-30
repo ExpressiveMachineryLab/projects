@@ -2061,9 +2061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sound
-
-'
+  m_text: 'Chord '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47affb53b3b060842b95a90d7b82bd89, type: 2}
   m_sharedMaterial: {fileID: 2093434953031897599, guid: 47affb53b3b060842b95a90d7b82bd89,
@@ -5969,6 +5967,7 @@ MonoBehaviour:
   - {fileID: 113914140960175486}
   retractedElements:
   - {fileID: 6158308249043753700}
+  expanded: 0
   chordIndicator: {fileID: 897951700174409732}
 --- !u!114 &3284813884621177128
 MonoBehaviour:

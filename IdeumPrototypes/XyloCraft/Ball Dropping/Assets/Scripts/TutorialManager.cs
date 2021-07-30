@@ -41,6 +41,8 @@ public class TutorialManager : MonoBehaviour
     public Image popupPrevButton;
     public Image popupNextButton;
 
+    public Vector3 popupOffset;
+
     void Start()
     {
        // popup.SetActive(false);
@@ -173,7 +175,7 @@ public class TutorialManager : MonoBehaviour
         titleText.text = sequences[tutorialIndex].sequnce[popupIndex].cardTitle;
         pageText.text = sequences[tutorialIndex].sequnce[popupIndex].cardText;
         pageNumberText.text = "" + (popupIndex + 1).ToString() + "/" + (sequences[tutorialIndex].sequnce.Length);
-        popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition;
+        popup.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].popupPosition + popupOffset;
 
         if (sequences[tutorialIndex].sequnce[popupIndex].challenge)
         {
@@ -193,7 +195,7 @@ public class TutorialManager : MonoBehaviour
         challengeIcon.SetActive(sequences[tutorialIndex].sequnce[popupIndex].challenge);
 
         pointer.SetActive(sequences[tutorialIndex].sequnce[popupIndex].usePointer);
-        pointer.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].pointerPosition;
+        pointer.GetComponent<RectTransform>().anchoredPosition = sequences[tutorialIndex].sequnce[popupIndex].pointerPosition + popupOffset;
         pointer.transform.rotation = Quaternion.Euler(0f, 0f, sequences[tutorialIndex].sequnce[popupIndex].pointerRotation);
         doPopupButtons();
         FillPorgressText();

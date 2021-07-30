@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SquareSelector : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SquareSelector : MonoBehaviour
 
     public int selectedCount;
 
+
     private void Awake()
     {
         square = this;
@@ -28,10 +30,14 @@ public class SquareSelector : MonoBehaviour
     private void Start()
     {
         sprite = this.GetComponent<SpriteRenderer>();
+        selected = new List<GameObject>();
     }
     public void StartSelecting()
     {
         StopSelecting();
+
+        // check if there's a ui element under the mouse
+        if (UIElementUnderCursor()) return;
         //box = this.GetComponent<BoxCollider2D>();
         this.gameObject.SetActive(true);
         box.enabled = true;
@@ -41,7 +47,8 @@ public class SquareSelector : MonoBehaviour
         this.transform.rotation = Quaternion.identity;
         //box.transform.position = startPoint;
 
-        selected = new List<GameObject>();
+        //selected = new List<GameObject>();
+        selected.Clear();
     }
 
     public void StopSelecting()
@@ -63,6 +70,7 @@ public class SquareSelector : MonoBehaviour
             selected.Clear();
         }
         //selectParent.gameObject.SetActive(false);
+        rotationKnob.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 
@@ -201,5 +209,30 @@ public class SquareSelector : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
+
+    }
+
+    private bool UIElementUnderCursor()
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            pointerId = -1,
+        };
+
+        pointerData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach(RaycastResult result in results)
+        {
+            int layer = LayerMask.NameToLayer("UI");
+            bool isUI = result.gameObject.layer == layer && result.gameObject.tag != "AllowSquareSelect";
+            if (isUI)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
