@@ -7,13 +7,14 @@ public class GridWithExpancion : MonoBehaviour {
 	public Button addStatementButton;
 	public float paddingLeft, paddingTop, spacing;
 
-	private List<RectTransform> kids = new List<RectTransform>();
+	public List<RectTransform> kids;
 
 	public float noExpandOffset = 128;
 	public float expandOffset = 128 + 108;
 
 	float startingY;
 	private int showing = 1;
+	/*
 	void Awake() {
 		for (int i = 0; i < transform.childCount; i++) {
 			RectTransform child = transform.GetChild(i).GetComponent<RectTransform>();
@@ -24,6 +25,7 @@ public class GridWithExpancion : MonoBehaviour {
             }
 		}
 	}
+	*/
 
     private void Start()
     {
@@ -64,7 +66,7 @@ public class GridWithExpancion : MonoBehaviour {
         {
 			offset += offsetDiff;
         }
-		addStatementButton.transform.position = new Vector3(addStatementButton.transform.position.x, startingY + offset, addStatementButton.transform.position.z);
+		//addStatementButton.transform.position = new Vector3(addStatementButton.transform.position.x, startingY + offset, addStatementButton.transform.position.z);
 
 		//Rect rect = addStatementButton.GetComponent<RectTransform>().rect;
 		//rect.Set(rect.x, rect.y - (rect.height + spacing), rect.width, rect.height);

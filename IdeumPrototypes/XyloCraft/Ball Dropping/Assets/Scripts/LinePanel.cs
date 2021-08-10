@@ -32,6 +32,7 @@ public class LinePanel : MonoBehaviour {
 
 	public SoundChordIndicator chordIndicator;
 
+	bool init = false;
 	private void Start() {
 		SelectedElement[] elements = GetComponentsInChildren<SelectedElement>();
 		foreach (SelectedElement element in elements) {
@@ -52,6 +53,7 @@ public class LinePanel : MonoBehaviour {
 		chordIndicator.SetIndicator(1);
 
 		SetExpand(false);
+		init = true;
 	}
 
 	//Flash the box
@@ -81,7 +83,7 @@ public class LinePanel : MonoBehaviour {
 	}
 
 	public void SetExpand(bool toExpand) {
-
+		if (!this.gameObject.activeInHierarchy) return;
 		foreach (GameObject go in expandedElements) {
 			go.SetActive(toExpand);
 		}
@@ -90,12 +92,19 @@ public class LinePanel : MonoBehaviour {
 		}
 		RectTransform rect = GetComponent<RectTransform>();
 		rect.sizeDelta = new Vector2(rect.sizeDelta.x, toExpand ? 216f : 108f);
+		LayoutElement layoutElement = this.GetComponent<LayoutElement>();
+		if (layoutElement != null)
+        {
+			layoutElement.minHeight = toExpand ? 216f : 108f;
+
+		}
 		expanded = toExpand;
 	}
 
 	//Panel modes
 	public void SetModeToChord() {
 		mode = PanelMode.Chord;
+		if (chordItems == null || rhythmItems == null || visualItems == null || !init) return;
 		chordItems.SetActive(true);
 		rhythmItems.SetActive(false);
 		visualItems.SetActive(false);
@@ -103,6 +112,7 @@ public class LinePanel : MonoBehaviour {
 
 	public void SetModeToRhythm() {
 		mode = PanelMode.Rhythm;
+		if (chordItems == null || rhythmItems == null || visualItems == null || !init) return;
 		chordItems.SetActive(false);
 		rhythmItems.SetActive(true);
 		visualItems.SetActive(false);
@@ -110,6 +120,7 @@ public class LinePanel : MonoBehaviour {
 
 	public void SetModeToVisual() {
 		mode = PanelMode.Visual;
+		if (chordItems == null || rhythmItems == null || visualItems == null || !init) return;
 		chordItems.SetActive(false);
 		rhythmItems.SetActive(false);
 		visualItems.SetActive(true);
@@ -162,6 +173,7 @@ public class LinePanel : MonoBehaviour {
 	}
 
 	private void SetSelectedChord() {
+		if (!init) return;
 		if (chordPlus) {
 			selectedChord = SelectedPM.next;
 			chordIndicator.SetIndicator(1);
@@ -260,7 +272,7 @@ public class LinePanel : MonoBehaviour {
 		InspectorData data = this.GetComponent<InspectorData>();
 		LinePanel panel = this;
 		string code = "";
-		if (panel.ballElement.color != ElemColor.None && panel.lineElement.color != ElemColor.None)
+		if (panel.ballElement != null && panel.lineElement != null && panel.ballElement.color != ElemColor.None && panel.lineElement.color != ElemColor.None)
 		{
 			code = "If (" + panel.GetBallColor() + " ball hits a " + panel.GetLineColor() + " line)\n";
 			if (panel.mode == PanelMode.Chord)

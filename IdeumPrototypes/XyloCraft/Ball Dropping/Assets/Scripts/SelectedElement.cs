@@ -17,7 +17,7 @@ public class SelectedElement : MonoBehaviour {
 
 	private Image image;
 
-	private void OnEnable() {
+	private void Awake() {
 		image = gameObject.GetComponent<Image>();
 		UpdateImage();
 	}
@@ -27,6 +27,7 @@ public class SelectedElement : MonoBehaviour {
 	}
 
 	public void SetRed() {
+		if (image == null) return;
 		image.sprite = Red;
 		currentColor = Red.name;
 		color = ElemColor.red;
