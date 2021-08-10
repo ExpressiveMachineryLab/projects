@@ -10,13 +10,17 @@ public class SelectionManager : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero,Mathf.Infinity,~LayerMask.GetMask("SquareSelect"));
+			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity);//,~LayerMask.GetMask("SquareSelect"));
 			if (hit.collider != null && hit.transform.TryGetComponent(out ISelectableObj selectObj))//hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
 			{
 				if (square.GetSelected().Contains(hit.collider.gameObject))
 				{
 					// um do nothing i guess
 				}
+				else if (hit.collider.gameObject == square.gameObject) // you selected the square
+                {
+					// do nothing!
+                }
 				else
 				{
 					square.StopSelecting();

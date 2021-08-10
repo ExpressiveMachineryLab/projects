@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SquareSelector : MonoBehaviour
+public class SquareSelector : MonoBehaviour, ISelectableObj
 {
     public BoxCollider2D box;
     public bool selecting;
@@ -21,6 +21,8 @@ public class SquareSelector : MonoBehaviour
 
     public int selectedCount;
 
+    private Vector3 selectOffset;
+    private bool isBeingHeld = true;
 
     private void Awake()
     {
@@ -76,11 +78,12 @@ public class SquareSelector : MonoBehaviour
 
     private void Update()
     {
-        if (selecting)
+        if (selecting && !isBeingHeld)
         {
             rotationKnob.gameObject.SetActive(false);
             if (Input.GetMouseButton(0))
             {
+                box.enabled = true;
                 sprite.enabled = true;
                 endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 endPoint.Scale(new Vector3(1f, 1f, 0f));
@@ -136,7 +139,7 @@ public class SquareSelector : MonoBehaviour
             {
                 selecting = false;
 
-                box.enabled = false;
+                //box.enabled = false;
                 if (selected.Count > 0)
                 {
                     foreach (GameObject obj in selected)
@@ -154,7 +157,7 @@ public class SquareSelector : MonoBehaviour
         else if (selectedCount > 0)
         {
             rotationKnob.gameObject.SetActive(true);
-
+            box.enabled = true;
 
             rotationKnob.transform.position = this.transform.position + this.transform.up * ((startPoint.y - endPoint.y) / 2f + 1f);
             if (Input.GetMouseButton(0))
@@ -162,19 +165,38 @@ public class SquareSelector : MonoBehaviour
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null && hit.collider == rotationKnob)
+                if (hit.collider != null && hit.collider == rotationKnob && !isBeingHeld)
                 {
                     isRotating = true;
                 }
+                else if (hit.collider == this.box && !isBeingHeld)
+                {
+                    selectOffset = this.transform.position - mousePos;
+
+                    isBeingHeld = true;
+                }
             }
+        }
+        else if (selectedCount <= 0)
+        {
+            box.enabled = false;
         }
         if (!Input.GetMouseButton(0))
         {
             isRotating = false;
+            isBeingHeld = false;
         }
         if (isRotating)
         {
             Rotate();
+        }
+        if (isBeingHeld)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 diff = mousePos + selectOffset;
+            diff.Scale(new Vector3(1f, 1f, 0f));
+            transform.position = diff;
+            //this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
         }
         selectedCount = (selected != null) ? selected.Count : 0;
     }
@@ -227,12 +249,22 @@ public class SquareSelector : MonoBehaviour
         foreach(RaycastResult result in results)
         {
             int layer = LayerMask.NameToLayer("UI");
-            bool isUI = result.gameObject.layer == layer && result.gameObject.tag != "AllowSquareSelect";
+            bool isUI = result.gameObject.layer == layer && result.gameObject.tag != "AllowSquareSelect" && result.gameObject.tag != "Rotator";
             if (isUI)
             {
                 return true;
             }
         }
         return false;
+    }
+
+    public void Select()
+    {
+        
+    }
+
+    public void Deselect()
+    {
+        
     }
 }
