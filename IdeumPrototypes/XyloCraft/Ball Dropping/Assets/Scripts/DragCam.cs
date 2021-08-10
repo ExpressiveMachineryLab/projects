@@ -29,6 +29,7 @@ public class DragCam : MonoBehaviour
 
     public TrashCollider trashCollider;
     public BackgroundSizer backgroundObj;
+    public GameObject soundBank;
 
     public void Drag(Vector3 delt)
     {
@@ -69,6 +70,7 @@ public class DragCam : MonoBehaviour
 
     public void Zoom(float percent)
     {
+        if (soundBank.activeInHierarchy) return;
         zoomPercent = Mathf.Clamp(percent, 0f, 1f);
 
         zoom = Mathf.Lerp(minZoom, maxZoom, 1f - zoomPercent);

@@ -184,8 +184,8 @@ MonoBehaviour:
   itemName: '[Color] Frog'
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode. When clicked,
     they release balls that make sounds when they collide with lines. [Color] frogs
-    release [color] bubbles."
-  interaction: Click a frog to spit out a bubble! Drag to move it around, and click
+    release [color] balls."
+  interaction: Click a frog to spit out a ball! Drag to move it around, and click
     the white circle to rotate.
   code: 
   colorReplace: Red

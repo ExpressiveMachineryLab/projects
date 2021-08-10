@@ -1887,6 +1887,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175506368}
   m_CullTransparentMesh: 0
+--- !u!1 &203572901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849206077136967137, guid: 99baa6070e5a8274f8f6ea0ad73ccaf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1849206077039703878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220005702 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1927181416542697766, guid: 160a058ff24938541968c5819bdf5a45,
@@ -2550,9 +2556,9 @@ MonoBehaviour:
   itemName: Yellow Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
     needed to produce sound. When clicked, they release balls that make sounds when
-    they collide with lines. Yellow frogs release yellow bubbles."
+    they collide with lines. Yellow frogs release yellow balls."
   interaction: Click and drag the frog to make a yellow frog. Once placed, click
-    the frog to release a yellow bubble. Frogs can be rotated using their handles.
+    the frog to release a yellow ball. Frogs can be rotated using their white circles.
   code: 
   colorReplace: 
   isUI: 1
@@ -7879,6 +7885,7 @@ MonoBehaviour:
   scrollThisFrame: 0
   trashCollider: {fileID: 1814897738}
   backgroundObj: {fileID: 676302915}
+  soundBank: {fileID: 203572901}
 --- !u!1 &731665389
 GameObject:
   m_ObjectHideFlags: 0
@@ -8623,9 +8630,9 @@ MonoBehaviour:
   itemName: Red Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
     needed to produce sound. When clicked, they release balls that make sounds when
-    they collide with lines. Red frogs release red bubbles."
+    they collide with lines. Red frogs release red balls."
   interaction: Click and drag the frog to make a red frog. Once placed, click the
-    frog to release a red bubble. Frogs can be rotated using their handles.
+    frog to release a red ball. Frogs can be rotated using their white circles.
   code: 
   colorReplace: 
   isUI: 1
@@ -18948,9 +18955,9 @@ MonoBehaviour:
   itemName: Green Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
     needed to produce sound. When clicked, they release balls that make sounds when
-    they collide with lines. Green frogs release green bubbles."
+    they collide with lines. Green frogs release green balls."
   interaction: Click and drag the frog to make a green frog. Once placed, click the
-    frog to release a green bubble. Frogs can be rotated using their handles.
+    frog to release a green ball. Frogs can be rotated using their white circles.
   code: 
   colorReplace: 
   isUI: 1
@@ -18978,9 +18985,9 @@ MonoBehaviour:
   itemName: Blue Frog Creator
   definition: "Frogs are the \u201Cemitter\u201D objects within Xylocode, they are
     needed to produce sound. When clicked, they release balls that make sounds when
-    they collide with lines. Blue frogs release blue bubbles."
+    they collide with lines. Blue frogs release blue balls."
   interaction: Click and drag the frog to make a blue frog. Once placed, click the
-    frog to release a blue bubble. Frogs can be rotated using their handles.
+    frog to release a blue ball. Frogs can be rotated using their white circles.
   code: 
   colorReplace: 
   isUI: 1
@@ -25733,8 +25740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Zoom
   definition: 
-  interaction: Move the slider or spin the scroll wheel to zoom in and out. You can
-    also right-click and drag to move around.
+  interaction: Move the slider or spin the scroll wheel on your mouse to zoom in
+    and out. You can also right-click and drag to move around.
   code: 
   colorReplace: 
   isUI: 1
