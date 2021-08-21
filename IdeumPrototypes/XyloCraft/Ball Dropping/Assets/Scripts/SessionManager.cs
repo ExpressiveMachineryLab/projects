@@ -85,17 +85,17 @@ public class SessionManager : MonoBehaviour {
 		form.AddField("trackedStates", _gameLog.trackedStates);
 		form.AddField("gameState", _gameLog.gameState);
 
-		Debug.Log(string.Join(",", form.data));
+		//Debug.Log(string.Join(",", form.data));
 
 		UnityWebRequest www = UnityWebRequest.Post("https://xylocode.lmc.gatech.edu/sqlconnect/register.php", form);
 		yield return www.SendWebRequest();
 		if (www.isNetworkError || www.isHttpError) {
-			Debug.Log("Data log failed. Error # " + www.error);
+			//Debug.Log("Data log failed. Error # " + www.error);
 		}
 		else if (www.downloadHandler.text == "0") {
-			Debug.Log("Data logged successfully.");
+			//Debug.Log("Data logged successfully.");
 		} else {
-			Debug.Log("Server reached successfully but data not logged. Error: " + www.downloadHandler.text);
+			//Debug.Log("Server reached successfully but data not logged. Error: " + www.downloadHandler.text);
 		}
 	}
 
