@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Emitter : MonoBehaviour, ISelectableObj {
+public class Emitter : SelectableObj {
 	public SelectedElementType type = SelectedElementType.Emitter;
 	public string id = "";
 	public ElemColor color;
 	public GameObject ballPrefab;
-	public float speed = 5f;
 	public string launchKey;
 
 	private Transform firePoint;
@@ -17,11 +16,7 @@ public class Emitter : MonoBehaviour, ISelectableObj {
 	private SoundManager soundMan;
 	private CountLogger logger;
 
-	private float startPosX;
-	private float startPosY;
-	private bool isBeingHeld = false;
-	private bool isBeingRotated = false;
-	private float clickTimer;
+	
 
 	void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
@@ -46,59 +41,18 @@ public class Emitter : MonoBehaviour, ISelectableObj {
 		idata.colorReplace = color.ToString();
 	}
 
-	void Update() {
+    private void Update()
+    {
 		clickTimer += Time.deltaTime;
-
-		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
-		if (isBeingHeld) {
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			if (!inSquareSelect)
-			{
-				transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-			}
-			else
-            {
-				this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-			}
-		}
-
-		if (isBeingRotated && !inSquareSelect) Rotate();
-
-		if (Input.GetMouseButtonDown(0)) {
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-			if (hit.collider != null && hit.collider.CompareTag("Rotator") && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>()) {
-				isBeingRotated = true;
-			}
-		}
-
-		if (Input.GetMouseButtonUp(0)) {
-			isBeingRotated = false;
-		}
-
+		SelectUpdate();
 	}
-
-	void OnEnable() {
+    void OnEnable() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 	}
 
 	void OnMouseDown() {
 		if (logger != null) logger.emitterClicks++;
-
-		// Drag with left click
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-		if (this.transform.parent == null || this.transform.parent.tag != "SelectionParent")
-		{
-			startPosX = mousePos.x - this.transform.localPosition.x;
-			startPosY = mousePos.y - this.transform.localPosition.y;
-		}
-		else
-        {
-			startPosX = mousePos.x - this.transform.parent.localPosition.x;
-			startPosY = mousePos.y - this.transform.parent.localPosition.y;
-		}
+		MouseDown();
 
 		clickTimer = 0;
 		isBeingHeld = true;
@@ -121,7 +75,7 @@ public class Emitter : MonoBehaviour, ISelectableObj {
                 }
 			}
 		}
-		isBeingHeld = false;
+		MouseUp();
 	}
 
 	public void ShootBall() {
@@ -132,15 +86,6 @@ public class Emitter : MonoBehaviour, ISelectableObj {
 
 		emitterAnimator.SetTrigger("Shoot");
 	}
-
-	private void Rotate() {
-		Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		rotation *= Quaternion.Euler(0, 0, -90);
-		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
-	}
-
 	public void BecomeCloneOf(GameObject emitterModel) {
 		color = emitterModel.GetComponent<Emitter>().color;
 		ballPrefab = emitterModel.GetComponent<Emitter>().ballPrefab;
@@ -168,13 +113,13 @@ public class Emitter : MonoBehaviour, ISelectableObj {
 		transform.eulerAngles = new Vector3(0, 0, float.Parse(SOstring[3]));
 	}
 
-    public void Select()
+    public override void Select()
     {
 		this.transform.GetChild(0).gameObject.SetActive(true);
 		this.transform.GetChild(1).gameObject.SetActive(true);
 	}
 
-    public void Deselect()
+    public override void Deselect()
     {
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.transform.GetChild(1).gameObject.SetActive(false);

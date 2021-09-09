@@ -11,7 +11,7 @@ public class SelectionManager : MonoBehaviour {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity);//,~LayerMask.GetMask("SquareSelect"));
-			if (hit.collider != null && hit.transform.TryGetComponent(out ISelectableObj selectObj))//hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
+			if (hit.collider != null && hit.transform.TryGetComponent(out SelectableObj selectObj))//hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
 			{
 				if (square.GetSelected().Contains(hit.collider.gameObject))
 				{
@@ -48,7 +48,7 @@ public class SelectionManager : MonoBehaviour {
 	private void SetSelection(GameObject[] selectedGameObject) {
 		if (selectedObject.Length > 0) {
 			foreach (GameObject item in selectedObject) {
-				if (item.TryGetComponent(out ISelectableObj selectItem))
+				if (item.TryGetComponent(out SelectableObj selectItem))
 				{
 					selectItem.Deselect();
 				}
@@ -63,7 +63,7 @@ public class SelectionManager : MonoBehaviour {
 		selectedObject = selectedGameObject;
 		foreach (GameObject item in selectedObject)
 		{
-			if (item.TryGetComponent(out ISelectableObj selectItem))
+			if (item.TryGetComponent(out SelectableObj selectItem))
 			{
 				selectItem.Select();
 			}
@@ -78,7 +78,7 @@ public class SelectionManager : MonoBehaviour {
 	private void RemoveSelection() {
 		if (selectedObject.Length > 0) {
 			foreach (GameObject item in selectedObject) {
-				if (item.TryGetComponent(out ISelectableObj selectItem))
+				if (item.TryGetComponent(out SelectableObj selectItem))
 				{
 					selectItem.Deselect();
 				}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SquareSelector : MonoBehaviour, ISelectableObj
+public class SquareSelector : SelectableObj
 {
     public BoxCollider2D box;
     public bool selecting;
@@ -22,7 +22,6 @@ public class SquareSelector : MonoBehaviour, ISelectableObj
     public int selectedCount;
 
     private Vector3 selectOffset;
-    private bool isBeingHeld = true;
 
     private void Awake()
     {
@@ -66,7 +65,7 @@ public class SquareSelector : MonoBehaviour, ISelectableObj
             
             foreach (GameObject s in selected)
             {
-                s.GetComponent<ISelectableObj>().Deselect();
+                s.GetComponent<SelectableObj>().Deselect();
                 s.transform.SetParent(sceneContainer, true);
             }
             selected.Clear();
@@ -115,7 +114,7 @@ public class SquareSelector : MonoBehaviour, ISelectableObj
                 //selected.Clear();
                 foreach (GameObject g in data)
                 {
-                    if (g.TryGetComponent(out ISelectableObj newObj))
+                    if (g.TryGetComponent(out SelectableObj newObj))
                     {
                         if (!selected.Contains(g.gameObject))
                         {
@@ -129,7 +128,7 @@ public class SquareSelector : MonoBehaviour, ISelectableObj
                 {
                     if (!data.Contains(g))
                     {
-                        g.GetComponent<ISelectableObj>().Deselect();
+                        g.GetComponent<SelectableObj>().Deselect();
                         return true;
                     }
                     return false;
@@ -256,15 +255,5 @@ public class SquareSelector : MonoBehaviour, ISelectableObj
             }
         }
         return false;
-    }
-
-    public void Select()
-    {
-        
-    }
-
-    public void Deselect()
-    {
-        
     }
 }

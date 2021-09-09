@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Line : MonoBehaviour, ISelectableObj {
+public class Line : SelectableObj {
 	public SelectedElementType type = SelectedElementType.Line;
 	public string id = "";
 	public ElemColor color;
 
 	public Sprite[] chordSprites; //should always be of length 5
 	public Sprite[] chordHitSprites;
-	public float speed = 5f;
 
 	public int pitchLevel = 0;
 	public int visualLevel = 0;
@@ -27,10 +26,6 @@ public class Line : MonoBehaviour, ISelectableObj {
 	private GameObject playClip;
 	private CountLogger logger;
 
-	private float startPosX;
-	private float startPosY;
-	private bool isBeingHeld = false;
-	private bool isBeingRotated = false;
 
 	private bool soudedThisFrame = false;
 
@@ -74,40 +69,10 @@ public class Line : MonoBehaviour, ISelectableObj {
 
 	private void Update() {
 		//Draw line with the mouse
-		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
-		if (isBeingHeld) {
-			
 
-			Vector3 mousePos;
-			mousePos = Input.mousePosition;
-			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-			if (!inSquareSelect)
-			{
-				transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-			}
-			else
-			{
-				this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-			}
-		}
 
-		if (isBeingRotated && !inSquareSelect) {
-			Rotate();
-		}
 
-		//Check if the rotator knob is being held by the mouse
-		if (Input.GetMouseButtonDown(0)) {
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-			if (hit.collider != null && hit.collider.tag == "Rotator" && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>()) {
-				isBeingRotated = true;
-			}
-		}
-
-		if (Input.GetMouseButtonUp(0)) {
-			isBeingRotated = false;
-		}
+		SelectUpdate();
 
 		soudedThisFrame = false;
 	}
@@ -117,31 +82,11 @@ public class Line : MonoBehaviour, ISelectableObj {
 	}
 
 	private void OnMouseDown() {
-		isBeingHeld = true;
-
-		if (Input.GetMouseButtonDown(0)) {
-			if (logger != null) logger.lineClicks++;
-
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-			if (this.transform.parent == null || this.transform.parent.tag != "SelectionParent")
-			{
-				startPosX = mousePos.x - this.transform.localPosition.x;
-				startPosY = mousePos.y - this.transform.localPosition.y;
-			}
-			else
-			{
-				startPosX = mousePos.x - this.transform.parent.localPosition.x;
-				startPosY = mousePos.y - this.transform.parent.localPosition.y;
-			}
-
-			isBeingHeld = true;
-		}
-
+		MouseDown();
 	}
 
 	private void OnMouseUp() {
-		isBeingHeld = false;
+		MouseUp();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
@@ -226,13 +171,6 @@ public class Line : MonoBehaviour, ISelectableObj {
 		}
 	}
 
-	private void Rotate() {
-		Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
-	}
-
 	private IEnumerator ChangeSprite(float seconds, Ball ball) {
 
 		Sprite ballOriginalObject = ball.originalSprite;
@@ -308,13 +246,13 @@ public class Line : MonoBehaviour, ISelectableObj {
 		visualPositive = int.Parse(SOstring[4][3].ToString()) == 1 ? true : false;
 	}
 
-	public void Select()
+	public override void Select()
 	{
 		this.transform.GetChild(0).gameObject.SetActive(true);
 		this.transform.GetChild(1).gameObject.SetActive(true);
 	}
 
-	public void Deselect()
+	public override void Deselect()
 	{
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.transform.GetChild(1).gameObject.SetActive(false);
