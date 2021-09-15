@@ -22,18 +22,18 @@ public class GameManager : MonoBehaviour {
 	public GameObject sceneContainer;
 	public InspectorPanel inspector;
 
-    private void Awake()
-    {
+	private void Awake()
+	{
 		InspectorPanel.inspector = inspector;
-    }
-    void Start() {
+	}
+	void Start() {
 		speedMultiplier = GameObject.Find("GlobalSpeedMultiplier").GetComponent<TMP_InputField>();
 		UpdateSpeed();
 
 		selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
 
 		logger = FindObjectOfType<CountLogger>();
-		
+
 		for (int i = 0; i < 10; i++) {
 			GameObjectAgePair newLine = new GameObjectAgePair();
 			newLine.heldObject = Instantiate(linePrefabs, sceneContainer.transform);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	public void UpdateSpeed() {
+    public void UpdateSpeed() {
 		if (speedMultiplier.text == "") return;
 		float checkSpeed = float.Parse(speedMultiplier.text) * 2;
 		if (checkSpeed < 0.2f) checkSpeed = 0.2f;

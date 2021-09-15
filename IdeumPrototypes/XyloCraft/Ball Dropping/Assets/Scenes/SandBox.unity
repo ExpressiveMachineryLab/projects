@@ -8123,6 +8123,7 @@ GameObject:
   - component: {fileID: 747518376}
   - component: {fileID: 747518381}
   - component: {fileID: 747518380}
+  - component: {fileID: 747518382}
   m_Layer: 5
   m_Name: HUD
   m_TagString: AllowSquareSelect
@@ -8266,6 +8267,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747518375}
   m_CullTransparentMesh: 0
+--- !u!114 &747518382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747518375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b3fc988bf9176459fd8479421758b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useTouchTracker: 1
+  touchTrackers:
+  - {fileID: 3492417496566622958, guid: 5b8600707bee6d64b915302a57479243, type: 3}
+  touchTrackerPrefab: {fileID: 1483500903382391013, guid: 5b8600707bee6d64b915302a57479243,
+    type: 3}
 --- !u!1 &756545540
 GameObject:
   m_ObjectHideFlags: 0
@@ -24888,6 +24906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb55ee6e76819494ca413fe2cad1bb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   box: {fileID: 2059637059}
   selecting: 0
   selectionManager: {fileID: 1195690998}

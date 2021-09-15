@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectionManager : MonoBehaviour {
 	private GameObject[] selectedObject = new GameObject[0];
 	public SquareSelector square;
+	public static SelectionManager selectionManager;
 
+	void Awake()
+    {
+		selectionManager = this;
+    }
 	void Update() {
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,6 +44,8 @@ public class SelectionManager : MonoBehaviour {
 		if (Input.GetButtonUp("Delete")) {
 			DeleteSelection();
 		}
+
+
 	}
 
 	public int selectionLength()
@@ -104,4 +112,5 @@ public class SelectionManager : MonoBehaviour {
 
 		selectedObject = new GameObject[0];
 	}
+
 }
