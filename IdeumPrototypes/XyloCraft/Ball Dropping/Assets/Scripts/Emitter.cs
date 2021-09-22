@@ -20,6 +20,8 @@ public class Emitter : SelectableObj {
 
 	void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
+		selectionManager = SelectionManager.selectionManager;
+		touchController = TouchController.touch;
 		emitterAnimator = GetComponent<Animator>();
 		logger = FindObjectOfType<CountLogger>();
 

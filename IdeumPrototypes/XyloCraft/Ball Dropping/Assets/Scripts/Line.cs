@@ -31,6 +31,8 @@ public class Line : SelectableObj {
 
 	private void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
+		selectionManager = SelectionManager.selectionManager;
+		touchController = TouchController.touch;
 		panels = FindObjectsOfType<LinePanel>();
 		effects = GetComponent<Animator>();
 		logger = FindObjectOfType<CountLogger>();

@@ -7,7 +7,6 @@ public class SquareSelector : SelectableObj
 {
     public BoxCollider2D box;
     public bool selecting;
-    public SelectionManager selectionManager;
 
     public Vector3 startPoint;
     public Vector3 endPoint;

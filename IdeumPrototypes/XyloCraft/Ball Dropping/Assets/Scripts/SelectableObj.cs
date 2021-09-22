@@ -14,7 +14,16 @@ public class SelectableObj : MonoBehaviour
 	public float speed = 5f;
 
 	public int pointerID = -1;
-	protected void SelectUpdate()
+
+	protected SelectionManager selectionManager;
+	protected TouchController touchController;
+
+    void Start()
+    {
+		selectionManager = SelectionManager.selectionManager;
+		touchController = TouchController.touch;
+    }
+    protected void SelectUpdate()
     {
 		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TouchController : MonoBehaviour, IPointerDownHandler
@@ -9,6 +10,15 @@ public class TouchController : MonoBehaviour, IPointerDownHandler
     public List<TouchTracker> touchTrackers;
     public GameObject touchTrackerPrefab;
     public int count;
+    public UnityEvent OnTouch;
+    public PointerEventData lastTouchData;
+
+    public static TouchController touch;
+
+    void Awake()
+    {
+        touch = this;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("touch " + eventData.pointerId);
@@ -19,6 +29,8 @@ public class TouchController : MonoBehaviour, IPointerDownHandler
             tracker.SetIndex(eventData.pointerId);
             touchTrackers.Add(tracker);
         }
+        lastTouchData = eventData;
+        OnTouch.Invoke();
     }
 
     // Start is called before the first frame update

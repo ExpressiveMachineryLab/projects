@@ -7,44 +7,62 @@ public class SelectionManager : MonoBehaviour {
 	private GameObject[] selectedObject = new GameObject[0];
 	public SquareSelector square;
 	public static SelectionManager selectionManager;
+	public bool usingTouch;
+	public TouchController touchController;
 
 	void Awake()
     {
 		selectionManager = this;
     }
-	void Update() {
-		if (Input.GetMouseButtonDown(0)) {
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-			RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity);//,~LayerMask.GetMask("SquareSelect"));
-			if (hit.collider != null && hit.transform.TryGetComponent(out SelectableObj selectObj))//hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
+
+    private void Start()
+    {
+		touchController = TouchController.touch;
+    }
+    void Update() {
+		if (!usingTouch)
+		{
+			if (Input.GetMouseButtonDown(0))
 			{
-				if (square.GetSelected().Contains(hit.collider.gameObject))
+				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+				RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity);//,~LayerMask.GetMask("SquareSelect"));
+				if (hit.collider != null && hit.transform.TryGetComponent(out SelectableObj selectObj))//hit.collider != null && hit.collider.tag != "Rotator" && hit.collider.tag != "Ball") {
 				{
-					// um do nothing i guess
+					if (square.GetSelected().Contains(hit.collider.gameObject))
+					{
+						// um do nothing i guess
+					}
+					else if (hit.collider.gameObject == square.gameObject) // you selected the square
+					{
+						// do nothing!
+					}
+					else
+					{
+						square.StopSelecting();
+						SetSelection(new GameObject[] { hit.collider.gameObject });
+					}
 				}
-				else if (hit.collider.gameObject == square.gameObject) // you selected the square
-                {
-					// do nothing!
-                }
-				else
+				else if (hit.collider == null && !MenuDragHandlerLnE.dragging)
 				{
-					square.StopSelecting();
-					SetSelection(new GameObject[] { hit.collider.gameObject });
+					RemoveSelection();
+					square.StartSelecting();
 				}
-			} else if (hit.collider == null && !MenuDragHandlerLnE.dragging) {
-				RemoveSelection();
-				square.StartSelecting();
+			}
+			if (MenuDragHandlerLnE.dragging)
+			{
+				square.StopSelecting();
+			}
+			if (Input.GetButtonUp("Delete"))
+			{
+				DeleteSelection();
 			}
 		}
-		if (MenuDragHandlerLnE.dragging)
+		else // using touch
         {
-			square.StopSelecting();
-        }
-		if (Input.GetButtonUp("Delete")) {
-			DeleteSelection();
-		}
 
+		}
+		
 
 	}
 
