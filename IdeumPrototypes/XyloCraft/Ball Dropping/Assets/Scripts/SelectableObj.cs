@@ -18,6 +18,7 @@ public class SelectableObj : MonoBehaviour
 	protected SelectionManager selectionManager;
 	protected TouchController touchController;
 
+	bool selectionsEnabled;
     void Start()
     {
 		selectionManager = SelectionManager.selectionManager;

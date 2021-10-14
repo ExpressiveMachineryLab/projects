@@ -202,7 +202,14 @@ public class GameManager : MonoBehaviour {
 		myObject.age = Time.time;
 
 		myObject.heldObject.SetActive(true);
-		myObject.heldObject.GetComponent<Emitter>().BecomeCloneOf(emitterModel);
+		if (myObject.heldObject.TryGetComponent<Emitter>(out Emitter e))
+        {
+			e.BecomeCloneOf(emitterModel);
+        }
+		else if (myObject.heldObject.TryGetComponent<EmitterTangible>(out EmitterTangible et))
+        {
+			et.BecomeCloneOf(emitterModel);
+        }
 
 		return myObject.heldObject;
 	}
