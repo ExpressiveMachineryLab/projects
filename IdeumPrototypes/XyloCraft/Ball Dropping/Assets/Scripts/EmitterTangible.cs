@@ -19,6 +19,11 @@ public class EmitterTangible : MonoBehaviour {
 
 	public Tangible tangible;
 	public Vector2 pos;
+	public float angleOffset;
+
+	public float frogRot;
+	public float lastRot;
+	public float tangibleRot;
 
 	void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
@@ -49,12 +54,14 @@ public class EmitterTangible : MonoBehaviour {
 		if (tangible != null)
 		{
 			pos = tangible.Pos;
+			tangibleRot = TangibleManager.GetRotation(tangible);
 		}
 		if (Input.GetButtonDown(launchKey))
         {
 			ShootBall();
         }
-    }
+		frogRot = Vector3.SignedAngle(transform.up, Vector3.up, -Vector3.forward);
+	}
     void OnEnable() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 	}

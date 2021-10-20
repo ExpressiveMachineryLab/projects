@@ -22,7 +22,7 @@ public class TouchController : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("touch " + eventData.pointerId);
-        if (touchTrackers.Count <= eventData.pointerId)
+        if (useTouchTracker && touchTrackers.Count <= eventData.pointerId)
         {
             GameObject trackerObj = GameObject.Instantiate(touchTrackerPrefab, this.transform);
             TouchTracker tracker = trackerObj.GetComponent<TouchTracker>();
