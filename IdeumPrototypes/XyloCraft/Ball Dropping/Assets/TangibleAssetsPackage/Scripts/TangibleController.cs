@@ -32,7 +32,7 @@ public class TangibleController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _startpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //_startpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         dir = shootButton.transform.position - transform.position;
@@ -48,7 +48,7 @@ public class TangibleController : MonoBehaviour
         }
         selectedRule = r;
     }
-    
+    /*
     private void OnMouseDrag()
     {
         
@@ -60,7 +60,7 @@ public class TangibleController : MonoBehaviour
         transform.position = objPosition;
         _startpos = objPosition;
     }
-
+    */
     public void addRule(GameObject Button)
     {
         //placeholder.SetActive(true);
