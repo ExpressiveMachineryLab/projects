@@ -13,6 +13,7 @@ public class EmitterTangible : MonoBehaviour {
 
 	private Transform firePoint;
 	private Animator emitterAnimator;
+	public SpriteRenderer spriteRenderer;
 	
 	private SoundManager soundMan;
 	private CountLogger logger;
@@ -25,11 +26,13 @@ public class EmitterTangible : MonoBehaviour {
 	public float lastRot;
 	public float tangibleRot;
 
+
 	void Start() {
 		soundMan = GameObject.Find("GameManager").GetComponent<SoundManager>();
 		emitterAnimator = GetComponent<Animator>();
 		logger = FindObjectOfType<CountLogger>();
 
+		this.GetComponentInChildren<Canvas>().worldCamera = Camera.main;
 		Transform[] gettingFirePoint = GetComponentsInChildren<Transform>();
 		foreach (Transform fire in gettingFirePoint) {
 			if (fire.gameObject.name == "FirePoint") firePoint = fire;
@@ -75,11 +78,12 @@ public class EmitterTangible : MonoBehaviour {
 		emitterAnimator.SetTrigger("Shoot");
 	}
 	public void BecomeCloneOf(GameObject emitterModel) {
+
 		color = emitterModel.GetComponent<EmitterTangible>().color;
 		ballPrefab = emitterModel.GetComponent<EmitterTangible>().ballPrefab;
 		launchKey = emitterModel.GetComponent<EmitterTangible>().launchKey;
 		GetComponent<Animator>().runtimeAnimatorController = emitterModel.GetComponent<Animator>().runtimeAnimatorController;
-		GetComponent<SpriteRenderer>().sprite = emitterModel.GetComponent<SpriteRenderer>().sprite;
+		this.spriteRenderer.sprite = emitterModel.GetComponent<EmitterTangible>().spriteRenderer.sprite;
 
 		transform.position = emitterModel.transform.position;
 		transform.rotation = emitterModel.transform.rotation;

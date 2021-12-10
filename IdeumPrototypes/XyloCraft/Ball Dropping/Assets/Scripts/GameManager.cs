@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < emitterPool.Count; i++) {
 			if (emitterPool[i] == null) {
 				emitterPool[i] = new GameObjectAgePair();
-				emitterPool[i].heldObject = Instantiate(emitterPrefabs);
+				emitterPool[i].heldObject = Instantiate(emitterModel);
 				emitterPool[i].age = 0f;
 				emitterPool[i].heldObject.SetActive(false);
 			}
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour {
 				index = emitterPool.Count;
 
 				GameObjectAgePair newEmitter = new GameObjectAgePair();
-				newEmitter.heldObject = Instantiate(emitterPrefabs);
+				newEmitter.heldObject = Instantiate(emitterModel);
 				newEmitter.age = 0f;
 				newEmitter.heldObject.SetActive(false);
 				emitterPool.Add(newEmitter);
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour {
 				myObject = emitterPool[index];
 			}
 		}
-
+		
 		myObject.heldObject.name = emitterModel.name + index;
 		myObject.age = Time.time;
 
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour {
         {
 			et.BecomeCloneOf(emitterModel);
         }
-
+		
 		return myObject.heldObject;
 	}
 

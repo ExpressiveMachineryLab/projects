@@ -1,69 +1,100 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TangibleController : MonoBehaviour
 {
-    public bool select;
 
-    private float _ypos;
+    public Guid Guid;
+    private float _yPos;
+    public Vector3 Dir;
 
-    private Vector3 _startpos;
-    public float rotScaler;
-    public Vector3 dir;
+//    public List<Rule> AllRules = new List<Rule>();
+    public List<Rule> ActiveRules =  new List<Rule>();
 
-    public Transform shootButton;
-
-    public bool revealRules = false;
-    public Rule selectedRule;
-    public List<Rule> allRules = new List<Rule>();
-    public List<Rule> activeRules =  new List<Rule>();
-
-    public GameObject placeholder;
+    public Canvas Canvas;
+//    public GameObject PlaceHolder;
     // Start is called before the first frame updates
     void Start()
     {
-        _ypos = transform.position.y;
+        _yPos = transform.position.y;
+        Guid = new Guid();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.Q))
         {
-            //_startpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.Rotate(-Vector3.up * Time.deltaTime * GameController.Singleton.RotationSpeed);
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            transform.Rotate(Vector3.up * Time.deltaTime * GameController.Singleton.RotationSpeed);
         }
 
-        dir = shootButton.transform.position - transform.position;
-        dir = Vector3.Normalize(new Vector3(dir.x, 0, dir.z));
+        Dir = transform.forward;
 
     }
 
-    public void selectRule(Rule r)
-    {
-        if (selectedRule != null)
-        {
-            selectedRule.GetDeselected();
-        }
-        selectedRule = r;
-    }
-    /*
+    
     private void OnMouseDrag()
     {
         
         Vector3 objPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        objPosition = new Vector3(objPosition.x, _ypos, objPosition.z);
-        
-        transform.Rotate(new Vector3(0, Vector3.SignedAngle(_startpos, objPosition, Vector3.up)*rotScaler, 0));
- 
+        objPosition = new Vector3(objPosition.x, _yPos, objPosition.z);
         transform.position = objPosition;
-        _startpos = objPosition;
     }
-    */
-    public void addRule(GameObject Button)
+
+    public void AddRule(GameObject toggle)
     {
-        //placeholder.SetActive(true);
+        GameObject t = Instantiate(toggle, transform.position + new Vector3(1,1,0), Quaternion.identity);
+        Rule r = t.GetComponent<Rule>();
+        ActiveRules.Add(r);
+        r.SetActive(true);
+        r.ToggleBackground.color = GameController.Singleton.ColorBinding[r.TargetColor];
+        r.ToggleIcon.color = Color.white;
+        t.transform.SetParent(Canvas.transform, false);
+        r.ResetColorToggles();
+        Reposition();
+
     }
+    
+    public void RemoveRule(GameObject toggle)
+    {
+        
+        Rule r = toggle.GetComponent<Rule>();
+        ActiveRules.Remove(r);
+        toggle.SetActive(false);
+        Reposition();
+        Destroy(toggle);
+
+    }
+
+    public void Reposition()
+    {
+        var count = ActiveRules.Count;
+        var angle = Mathf.PI / (Mathf.Ceil(count * 0.5f) + 1);
+        for (int i = 0; i < count; i++)
+        {
+            var sideIndex = i % 2;
+            var secIndex = Mathf.Ceil((i+1)*0.5f);
+            var go = ActiveRules[i].gameObject;
+            var composIndex = sideIndex * Mathf.PI + secIndex * angle;
+            go.GetComponent<RectTransform>().localPosition = new Vector3(4 * Mathf.Sin(composIndex),4 * Mathf.Cos(composIndex),0);
+            ActiveRules[i].CheckSide(sideIndex==1);
+        }
+    }    
+
+    public void Shoot()
+    {
+        var bullet = Instantiate(GameController.Singleton.BulletPrefab, transform.position + Vector3.up*0.02f, Quaternion.identity);
+        var b = bullet.GetComponent<Bullet>();
+        b.SetDir(Dir);
+        b.SetParent(this);
+    }  
     
 }

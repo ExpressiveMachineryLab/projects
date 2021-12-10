@@ -1025,8 +1025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3daff0cd960eb4fd0a5ee4d3d5584eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 5
-  magnitute: 0.03
+  Frequency: 0
+  Magnitude: 0
 --- !u!1 &2994733086176589448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,12 +4348,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ddf30bdef6b444a9e8a8c6d49abe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 0}
-  selected: 0
-  mat: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultSize: {x: 0.4, y: 0.4, z: 1}
-  selectSize: {x: 0.5, y: 0.5, z: 1}
+  RuleType: 0
+  TargetColor: 0
+  Active: 0
+  Invert: 0
+  BgColor: {r: 0, g: 0, b: 0, a: 0}
+  IcColor: {r: 0, g: 0, b: 0, a: 0}
+  ColorToggles: []
+  ToggleBackground: {fileID: 0}
+  ToggleIcon: {fileID: 0}
+  RuleBlockVertical: {fileID: 0}
+  RuleBlockHorizontal: {fileID: 0}
+  HorBackground: {fileID: 0}
+  DeleteButton: {fileID: 0}
+  QuestionButton: {fileID: 0}
+  TutorialBlock: {fileID: 0}
 --- !u!1 &2994733086491024225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6607,7 +6616,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2994733086770227045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 0.6, y: 0.05, z: 0.6}
   m_Children:
@@ -6621,7 +6630,7 @@ Transform:
   - {fileID: 2994733087907639270}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2994733086770227041
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6697,18 +6706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49a0f685728449eda1fc1836b65ec7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  select: 0
-  rotScaler: 0.2
-  dir: {x: 0, y: 0, z: 0}
-  shootButton: {fileID: 2994733086164537934}
-  revealRules: 0
-  selectedRule: {fileID: 0}
-  allRules:
-  - {fileID: 2994733086481314183}
-  - {fileID: 2994733087047757841}
-  - {fileID: 2994733087907639271}
-  activeRules: []
-  placeholder: {fileID: 0}
+  Dir: {x: 0, y: 0, z: 0}
+  ActiveRules: []
+  Canvas: {fileID: 0}
 --- !u!1 &2994733086773405065
 GameObject:
   m_ObjectHideFlags: 0
@@ -8574,12 +8574,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ddf30bdef6b444a9e8a8c6d49abe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 0}
-  selected: 0
-  mat: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultSize: {x: 0.4, y: 0.4, z: 1}
-  selectSize: {x: 0.5, y: 0.5, z: 1}
+  RuleType: 0
+  TargetColor: 0
+  Active: 0
+  Invert: 0
+  BgColor: {r: 0, g: 0, b: 0, a: 0}
+  IcColor: {r: 0, g: 0, b: 0, a: 0}
+  ColorToggles: []
+  ToggleBackground: {fileID: 0}
+  ToggleIcon: {fileID: 0}
+  RuleBlockVertical: {fileID: 0}
+  RuleBlockHorizontal: {fileID: 0}
+  HorBackground: {fileID: 0}
+  DeleteButton: {fileID: 0}
+  QuestionButton: {fileID: 0}
+  TutorialBlock: {fileID: 0}
 --- !u!1 &2994733087048389008
 GameObject:
   m_ObjectHideFlags: 0
@@ -13406,12 +13415,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ddf30bdef6b444a9e8a8c6d49abe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 0}
-  selected: 0
-  mat: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultSize: {x: 0.4, y: 0.4, z: 1}
-  selectSize: {x: 0.5, y: 0.5, z: 1}
+  RuleType: 0
+  TargetColor: 0
+  Active: 0
+  Invert: 0
+  BgColor: {r: 0, g: 0, b: 0, a: 0}
+  IcColor: {r: 0, g: 0, b: 0, a: 0}
+  ColorToggles: []
+  ToggleBackground: {fileID: 0}
+  ToggleIcon: {fileID: 0}
+  RuleBlockVertical: {fileID: 0}
+  RuleBlockHorizontal: {fileID: 0}
+  HorBackground: {fileID: 0}
+  DeleteButton: {fileID: 0}
+  QuestionButton: {fileID: 0}
+  TutorialBlock: {fileID: 0}
 --- !u!1 &2994733087682197778
 GameObject:
   m_ObjectHideFlags: 0
@@ -15087,12 +15105,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ddf30bdef6b444a9e8a8c6d49abe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 0}
-  selected: 0
-  mat: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultSize: {x: 0.4, y: 0.4, z: 1}
-  selectSize: {x: 0.5, y: 0.5, z: 1}
+  RuleType: 0
+  TargetColor: 0
+  Active: 0
+  Invert: 0
+  BgColor: {r: 0, g: 0, b: 0, a: 0}
+  IcColor: {r: 0, g: 0, b: 0, a: 0}
+  ColorToggles: []
+  ToggleBackground: {fileID: 0}
+  ToggleIcon: {fileID: 0}
+  RuleBlockVertical: {fileID: 0}
+  RuleBlockHorizontal: {fileID: 0}
+  HorBackground: {fileID: 0}
+  DeleteButton: {fileID: 0}
+  QuestionButton: {fileID: 0}
+  TutorialBlock: {fileID: 0}
 --- !u!1 &2994733087910760396
 GameObject:
   m_ObjectHideFlags: 0

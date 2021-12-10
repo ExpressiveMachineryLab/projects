@@ -7,15 +7,29 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
 {
     private GameManager gameManager;
     static int count;
-    public GameObject emitterPrefab;
+    public GameObject emitterPrefabRed;
+    public GameObject emitterPrefabBlue;
+    public GameObject emitterPrefabYellow;
+    public GameObject emitterPrefabGreen;
     Dictionary<int, GameObject> tangibleObjectLookup;
 
+    Dictionary<int, ElemColor> tangibleIDtoColorLookup = new Dictionary<int, ElemColor>
+    {
+        {0,ElemColor.yellow},
+        {1,ElemColor.red},
+        {2,ElemColor.blue},
+        {3,ElemColor.blue},
+        {4,ElemColor.green},
+        {5,ElemColor.green},
+        {6,ElemColor.yellow}
+    };
     void Start()
     {
         TangibleEngine.Subscribe(this);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         tangibleObjectLookup = new Dictionary<int, GameObject>();
         count++;
+        TangibleEngine refTE = GameObject.FindGameObjectWithTag("TangibleEngine").GetComponent<TangibleEngine>();
         Debug.Log(count + "tangible manager in scene");
     }
 
@@ -28,14 +42,31 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
 
         if (!tangibleObjectLookup.TryGetValue(t.Id, out GameObject obj) || obj == null)
         {
-            GameObject emitter = gameManager.AssignEmitter(emitterPrefab);
+            Debug.Log("added tangible with id: " + t.Id);
+            ElemColor color = tangibleIDtoColorLookup[t.Id];
+            GameObject emitter;
+            switch (color) {
+                default:
+                case ElemColor.red:
+                    emitter = gameManager.AssignEmitter(emitterPrefabRed);
+                    break;
+                case ElemColor.blue:
+                    emitter = gameManager.AssignEmitter(emitterPrefabBlue);
+                    break;
+                case ElemColor.green:
+                    emitter = gameManager.AssignEmitter(emitterPrefabGreen);
+                    break;
+                case ElemColor.yellow:
+                    emitter = gameManager.AssignEmitter(emitterPrefabYellow);
+                    break;
+            }
             EmitterTangible et = emitter.GetComponent<EmitterTangible>();
             et.tangible = t;
             tangibleObjectLookup[t.Id] = emitter;
             //float frogRot = Vector3.SignedAngle(emitter.transform.up, Vector3.up, Vector3.forward);
             //et.origFrogRot = frogRot;
-            et.angleOffset = TangibleManager.GetRotation(t) - et.lastRot;
-            Debug.Log(et.angleOffset);
+            //et.angleOffset = TangibleManager.GetRotation(t) - et.lastRot;
+            et.color = color;
         }
     }
 

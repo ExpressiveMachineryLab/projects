@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 dir;
+    private Vector3 _dir;
 
-    public float speed;
+    public float Speed;
 
-    public float life;
+    public float Life;
 
-    private bool init;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //dir = Vector3.forward;
-    }
+    private bool _init;
+
+    private TangibleController _parent;
 
     // Update is called once per frame
     void Update()
     {
-        if (!init) return;
-        if (life > 0)
+        if (!_init) return;
+        if (Life > 0)
         {
-            transform.position += dir * speed * Time.deltaTime;
-            life--;
+            transform.position += _dir * Speed * Time.deltaTime;
+            Life--;
         }
         else
         {
@@ -34,10 +32,20 @@ public class Bullet : MonoBehaviour
         
     }
 
-    public void setDir(Vector3 d)
+    public void SetDir(Vector3 d)
     {
-        dir = d;
+        _dir = d;
         Debug.Log("SET DIRECTION TO: " + d);
-        init = true;
+        _init = true;
+    }
+
+    public void SetParent(TangibleController p)
+    {
+        _parent = p;
+    }
+
+    public TangibleController GetParent()
+    {
+        return _parent;
     }
 }
