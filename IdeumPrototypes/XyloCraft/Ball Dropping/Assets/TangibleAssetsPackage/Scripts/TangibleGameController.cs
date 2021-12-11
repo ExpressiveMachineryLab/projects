@@ -6,9 +6,9 @@ using System.Net.Sockets;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class GameController : MonoBehaviour
+public class TangibleGameController : MonoBehaviour
 {
-    public static GameController Singleton;
+    public static TangibleGameController Singleton;
     public List<TangibleController> Tangibles = new List<TangibleController>();
 
     public enum TargetColors
@@ -75,8 +75,14 @@ public class GameController : MonoBehaviour
             Debug.Log("CAUTION: Attempt to remove non-existing tangible");
         }
     }
-    
-    
+
+    public static Dictionary<TargetColors, ElemColor> ColorConvertDict = new Dictionary<TargetColors, ElemColor>
+    {
+        {TargetColors.Red, ElemColor.red},
+        {TargetColors.Blue, ElemColor.blue},
+        {TargetColors.Yellow, ElemColor.yellow},
+        {TargetColors.Green, ElemColor.green}
+    };
 
    
 

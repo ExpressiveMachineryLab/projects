@@ -9,8 +9,8 @@ public class Rule : MonoBehaviour
 {
 
     [Header("Rule Setting")]
-    public GameController.RuleType RuleType;
-    public GameController.TargetColors TargetColor;
+    public TangibleGameController.RuleType RuleType;
+    public TangibleGameController.TargetColors TargetColor;
     public bool Active = false;
     public bool Invert = false;
     
@@ -49,7 +49,7 @@ public class Rule : MonoBehaviour
             {
                 var t = co.gameObject.GetComponent<Toggle>();
                 var img = t.GetComponentInChildren<Image>();
-                img.color = GameController.Singleton.ColorBinding[co.MyColor];
+                img.color = TangibleGameController.Singleton.ColorBinding[co.MyColor];
                 ColorToggles.Add(t);
                 if (co.GetColor() == TargetColor)
                 {
@@ -86,7 +86,7 @@ public class Rule : MonoBehaviour
     {
         if (Active)
         {
-            ToggleBackground.color = GameController.Singleton.ColorBinding[TargetColor];
+            ToggleBackground.color = TangibleGameController.Singleton.ColorBinding[TargetColor];
             ToggleIcon.color = Color.white;
         }
         else

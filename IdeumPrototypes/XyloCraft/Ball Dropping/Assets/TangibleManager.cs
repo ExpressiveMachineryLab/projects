@@ -15,7 +15,7 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
 
     Dictionary<int, ElemColor> tangibleIDtoColorLookup = new Dictionary<int, ElemColor>
     {
-        {0,ElemColor.yellow},
+        {0,ElemColor.red},
         {1,ElemColor.red},
         {2,ElemColor.blue},
         {3,ElemColor.blue},
@@ -43,7 +43,16 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
         if (!tangibleObjectLookup.TryGetValue(t.Id, out GameObject obj) || obj == null)
         {
             Debug.Log("added tangible with id: " + t.Id);
-            ElemColor color = tangibleIDtoColorLookup[t.Id];
+            ElemColor color;
+            if (tangibleIDtoColorLookup.TryGetValue(t.Id, out ElemColor c))
+            {
+                color = c;
+            }
+            else
+            {
+                color = ElemColor.red;
+            }
+            //ElemColor color = tangibleIDtoColorLookup[t.Id];
             GameObject emitter;
             switch (color) {
                 default:

@@ -27,15 +27,17 @@ public class TangibleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.Rotate(-Vector3.up * Time.deltaTime * GameController.Singleton.RotationSpeed);
+            transform.Rotate(-Vector3.up * Time.deltaTime * TangibleGameController.Singleton.RotationSpeed);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * GameController.Singleton.RotationSpeed);
-        }
-
+            transform.Rotate(Vector3.up * Time.deltaTime * TangibleGameController.Singleton.RotationSpeed);
+        }*/
+        this.transform.localPosition = Vector3.zero;
+        this.transform.localRotation = Quaternion.identity;
         Dir = transform.forward;
 
     }
@@ -55,7 +57,7 @@ public class TangibleController : MonoBehaviour
         Rule r = t.GetComponent<Rule>();
         ActiveRules.Add(r);
         r.SetActive(true);
-        r.ToggleBackground.color = GameController.Singleton.ColorBinding[r.TargetColor];
+        r.ToggleBackground.color = TangibleGameController.Singleton.ColorBinding[r.TargetColor];
         r.ToggleIcon.color = Color.white;
         t.transform.SetParent(Canvas.transform, false);
         r.ResetColorToggles();
@@ -91,7 +93,7 @@ public class TangibleController : MonoBehaviour
 
     public void Shoot()
     {
-        var bullet = Instantiate(GameController.Singleton.BulletPrefab, transform.position + Vector3.up*0.02f, Quaternion.identity);
+        var bullet = Instantiate(TangibleGameController.Singleton.BulletPrefab, transform.position + Vector3.up*0.02f, Quaternion.identity);
         var b = bullet.GetComponent<Bullet>();
         b.SetDir(Dir);
         b.SetParent(this);

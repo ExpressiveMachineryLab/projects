@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +145,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -225,6 +227,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -307,6 +310,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -444,6 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9626dec065a78c04d868b300f1c40233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  pointerID: -1
   type: 1
   id: 
   color: 2
@@ -459,7 +465,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dc526904abf0c6440a5d258297d73a56, type: 3}
   - {fileID: 21300000, guid: 4b8d9a6e86da32248b1dae42cc34561f, type: 3}
   - {fileID: 21300000, guid: 1030a610ebbc77544a7fc8bd69dbaa1c, type: 3}
-  speed: 5
   pitchLevel: 0
   visualLevel: 0
   pitchPositive: 1
@@ -480,6 +485,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

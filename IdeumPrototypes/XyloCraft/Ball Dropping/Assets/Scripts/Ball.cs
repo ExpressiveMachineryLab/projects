@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour {
 	public float speed = 1f;
 	public Sprite originalSprite;
 	public Sprite hitSprite;
+	public EmitterTangible sourceTangible;
 
 	private Rigidbody2D rb;
 	private GameManager gameManager;

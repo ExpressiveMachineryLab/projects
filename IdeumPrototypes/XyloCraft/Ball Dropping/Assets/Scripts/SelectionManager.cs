@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class SelectionManager : MonoBehaviour {
 	private GameObject[] selectedObject = new GameObject[0];
 	public SquareSelector square;
+	public bool allowSquare = true;
 	public static SelectionManager selectionManager;
 	public bool usingTouch;
 	public TouchController touchController;
@@ -46,7 +47,7 @@ public class SelectionManager : MonoBehaviour {
 				else if (hit.collider == null && !MenuDragHandlerLnE.dragging)
 				{
 					RemoveSelection();
-					square.StartSelecting();
+					if (allowSquare) square.StartSelecting();
 				}
 			}
 			if (MenuDragHandlerLnE.dragging)

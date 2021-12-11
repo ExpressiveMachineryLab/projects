@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +145,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -225,6 +227,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -307,6 +310,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -444,6 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9626dec065a78c04d868b300f1c40233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  pointerID: -1
   type: 1
   id: 
   color: 1
@@ -459,7 +465,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 617a86d709af59640876011b8dc9cec1, type: 3}
   - {fileID: 21300000, guid: 124d34ec022e8834093d907db070d86e, type: 3}
   - {fileID: 21300000, guid: 08dcfc4e568e06a4ebc6ba4cca08fc2c, type: 3}
-  speed: 5
   pitchLevel: 0
   visualLevel: 0
   pitchPositive: 1
@@ -480,6 +485,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -539,6 +545,7 @@ MonoBehaviour:
     Can
     you think of what the white highlighted piece of the lines mean?'
   code: 
+  colorReplace: 
   isUI: 0
   OnHover:
     m_PersistentCalls:

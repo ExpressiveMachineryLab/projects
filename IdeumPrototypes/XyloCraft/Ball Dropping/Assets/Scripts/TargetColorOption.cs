@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TargetColorOption : MonoBehaviour
 {
-    public GameController.TargetColors MyColor;
+    public TangibleGameController.TargetColors MyColor;
 
-    public GameController.TargetColors GetColor()
+    public TangibleGameController.TargetColors GetColor()
     {
         return MyColor;
     }

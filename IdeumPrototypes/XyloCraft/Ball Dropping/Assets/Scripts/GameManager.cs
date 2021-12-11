@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour {
 		InspectorPanel.inspector = inspector;
 	}
 	void Start() {
-		speedMultiplier = GameObject.Find("GlobalSpeedMultiplier").GetComponent<TMP_InputField>();
-		UpdateSpeed();
+		//speedMultiplier = GameObject.Find("GlobalSpeedMultiplier").GetComponent<TMP_InputField>();
+		//UpdateSpeed();
 
 		selectionManager = GameObject.Find("SelectedObject").GetComponent<SelectionManager>();
 
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public float GetSpeedMultiplier() {
+		return 10f;
 		return speed;
 	}
 

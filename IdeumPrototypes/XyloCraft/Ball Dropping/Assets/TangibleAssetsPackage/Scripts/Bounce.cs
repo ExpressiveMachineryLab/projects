@@ -8,13 +8,13 @@ public class Bounce : MonoBehaviour
 {
     public float Frequency;
     public float Magnitude;
-    private Transform _rt;
+    private RectTransform _rt;
     private Vector3 _startPos;
     
     // Start is called before the first frame update
     void Start()
     {
-        _rt = GetComponent<Transform>();
+        _rt = GetComponent<RectTransform>();
         _startPos = _rt.localPosition;
     }
 

@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +145,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -225,6 +227,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -307,6 +310,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -444,6 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9626dec065a78c04d868b300f1c40233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  pointerID: -1
   type: 1
   id: 
   color: 5
@@ -459,7 +465,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9cac73a5c8aa9174ea7fa0dd0f42f3fb, type: 3}
   - {fileID: 21300000, guid: 9cac73a5c8aa9174ea7fa0dd0f42f3fb, type: 3}
   - {fileID: 21300000, guid: 9cac73a5c8aa9174ea7fa0dd0f42f3fb, type: 3}
-  speed: 5
   pitchLevel: 0
   visualLevel: 0
   pitchPositive: 1
@@ -480,6 +485,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -531,6 +537,7 @@ MonoBehaviour:
   definition: A gray line lets you bounce bubbles without making sounds.
   interaction: Drag to move it around, and click the white circle to rotate.
   code: 
+  colorReplace: 
   isUI: 0
   OnHover:
     m_PersistentCalls:

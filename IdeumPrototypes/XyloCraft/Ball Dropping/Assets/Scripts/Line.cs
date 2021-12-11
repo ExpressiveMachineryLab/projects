@@ -145,6 +145,37 @@ public class Line : SelectableObj {
 			panel.FlashBox();
 		}
 
+		
+		if (ball.sourceTangible != null)
+        {
+			TangibleController tc = ball.sourceTangible.GetComponentInChildren<TangibleController>();
+			foreach (Rule rule in tc.ActiveRules)
+            {
+				if (!rule.gameObject.activeInHierarchy ||
+				//(panel.GetBallColor() != ball.color && panel.GetBallColor() != ElemColor.any) ||
+				(TangibleGameController.ColorConvertDict[rule.TargetColor] != color))
+				{
+					continue;
+				}
+				if (rule.RuleType == TangibleGameController.RuleType.Next)
+				{
+					pitchLevel++;
+					pitchLevel = pitchLevel % 5;
+				}
+				else if (rule.RuleType == TangibleGameController.RuleType.Previous)
+				{
+					pitchLevel--;
+					if (pitchLevel < 0) pitchLevel = 4;
+				}
+				else if (rule.RuleType == TangibleGameController.RuleType.Repeat)
+                {
+					repeats += 1;
+				}
+			}
+
+		}
+		
+		
 		if (repeats > 0) {
 			StartCoroutine(LoopSound(0.2f, repeats));
 		} else {

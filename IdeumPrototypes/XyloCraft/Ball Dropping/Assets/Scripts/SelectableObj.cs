@@ -24,28 +24,77 @@ public class SelectableObj : MonoBehaviour
 		selectionManager = SelectionManager.selectionManager;
 		touchController = TouchController.touch;
     }
-    protected void SelectUpdate()
-    {
+	protected void SelectUpdate()
+	{
+		return;
 		bool inSquareSelect = !(this.transform.parent == null || this.transform.parent.tag != "SelectionParent");
-
-		if (isBeingHeld && pointerID != -1 && Input.touchCount > pointerID)
+	
+		if (Input.touchCount > 0)
 		{
-			Touch touch = Input.GetTouch(pointerID);
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
-			if (!inSquareSelect)
+			
+			if (isBeingHeld && pointerID != -1 && TryGetTouchFromID(out Touch touch1))
 			{
-				//transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-				transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
+				Touch touch = touch1;
+				Vector3 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
+				if (touch.phase == TouchPhase.Moved)
+				{
+					transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
+				}
+				else if (touch.phase == TouchPhase.Ended)
+				{
+					isBeingHeld = false;
+				}
+			}
+			else if (isBeingRotated && pointerID != -1 && TryGetTouchFromID(out Touch touch2))
+			{
+				Touch touch = touch2;
+				if (touch.phase == TouchPhase.Moved)
+				{
+					Rotate();
+				}
+				else if (touch.phase == TouchPhase.Ended)
+				{
+					isBeingRotated = false;
+				}
 			}
 			else
-			{
-				//this.transform.parent.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+            {
+				isBeingHeld = false;
+				isBeingRotated = false;
+				if (Input.touchCount > 0)
+				{
+					for (int i = 0; i < Input.touchCount; i++)
+					{
+						Touch touch = Input.GetTouch(i);
+						if (touch.phase == TouchPhase.Began)
+						{
+							Debug.Log(" a touch has begun");
+							RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
+							Debug.Log(hit.collider);
+							if (hit.collider == this.GetComponent<Collider>())
+							{
+								Debug.Log(" it hit me!");
+								pointerID = touch.fingerId;
+								MouseDown();
+							}
+							else if (hit.collider != null && hit.collider.CompareTag("Rotator") && hit.collider == gameObject.transform.GetChild(1).GetComponent<Collider2D>())
+							{
+								isBeingRotated = true;
+								pointerID = touch.fingerId;
+							}
+						}
+					}
+				}
 			}
 		}
+		else if (Input.touchCount <= 0)
+        {
+			isBeingHeld = false;
+			isBeingRotated = false;	
+        }
 
-
-		if (isBeingRotated && !inSquareSelect) Rotate();
-
+			//if (isBeingRotated && !inSquareSelect) Rotate();
+		/*
 		if (Input.GetMouseButtonDown(0))
 		{
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -60,18 +109,56 @@ public class SelectableObj : MonoBehaviour
 		if (Input.GetMouseButtonUp(0))
 		{
 			isBeingRotated = false;
-		}
+		}*/
 	}
+
 	void Update()
 	{
 		SelectUpdate();
 	}
 
+	private int GetTouchID()
+	{
+		if (Input.touchCount > 0)
+		{
+			for (int i = 0; i < Input.touchCount; i++)
+			{
+				if (Input.GetTouch(i).phase == TouchPhase.Began)
+				{
+					return Input.GetTouch(i).fingerId;
+				}
+			}
+		}
+		return -1;
+	}
+
+	private bool TryGetTouchFromID(out Touch touch)
+    {
+		touch = new Touch();
+		if (Input.touchCount > 0)
+		{
+			for (int i = 0; i < Input.touchCount; i++)
+			{
+				if (Input.GetTouch(i).fingerId == pointerID)
+				{
+					touch = Input.GetTouch(i);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	protected void MouseDown()
     {
-		pointerID = Input.touchCount - 1;
-		Touch touch = Input.GetTouch(pointerID);
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
+		if (Input.touchCount <= 0) return;
+		if (!TryGetTouchFromID(out Touch touch)) return;
+		//pointerID = Input.touchCount - 1;
+		//Touch touch = Input.GetTouch(pointerID);
+
+		//pointerID = GetTouchID();
+		
+		Vector3 mousePos = Camera.main.ScreenToWorldPoint((pointerID == -1) ? (Vector2)Input.mousePosition : touch.position);
+
 		/*
 		for (int i = 0; i < Input.touchCount; i++) {
 			Touch touch = Input.GetTouch(i);
@@ -103,7 +190,7 @@ public class SelectableObj : MonoBehaviour
 	}
 	void OnMouseDown()
 	{
-		MouseDown();
+		//MouseDown();
 	}
 
     protected void MouseUp()
@@ -117,7 +204,7 @@ public class SelectableObj : MonoBehaviour
 
 	private void Rotate()
 	{
-		Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		Vector2 direction = Camera.main.ScreenToWorldPoint(Input.GetTouch(pointerID).position) - transform.position;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		rotation *= Quaternion.Euler(0, 0, -90);
