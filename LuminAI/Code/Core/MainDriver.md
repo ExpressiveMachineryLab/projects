@@ -12,30 +12,17 @@
 - **promptText** = the prompt text that is being displayed to the user, changes when the agent's response mode changes. Deprecated.
 - **showTextPrompts** = toggle for showing narrative text prompts (promptText). Can be toggled with a "T" keypress
 - **hasBodyFrameUpdatedSinceLastRead** = boolean that tracks whether or not the user's body frame has changed since it was last read 
+- **currentDisabledJoints** = list of joints that are disabled from updating.
 
 ### Memory Variables
 - **playingGestureFromMemory** = boolean that tracks whether or not VAI is performing a gesture from memory (as opposed to mimicking the user or transforming a gesture)
-- **memoryEmpty** = boolean that tracks whether or not the database is empty to prevent read errors
 - **writingToFile** = boolean that tracks whether or not we want to write the performed body frames to file
 - **fileWriter** = holds a writer that writes performed body frames to a file
 - **learning** = boolean that determines whether or not the agent saves ("learns") new gestures. Can be toggled with a "L" keypress
+- **recordOnly** = boolean determines if the agent records without responding.
+- **startedNewGesture** = marks if a new gesture has been started this frame.
+- **adminUI** = reference ui for controlling LuminAI. 
 
-### Administrative UI Variables
-- **adminUIVisible** = boolean that determines if the administrative panel is visible
-- **adminUIParent** = GameObject parent of the administrative panel
-- **adminUIInputField** = InputField for loading new databases
-- **adminUIButton** = Submit Button for loading new databases
-- **adminUIDropdown** = Dropdown holding databases in the databases/ directory.
-- **adminUIClearDB** = Button to clear the current database.
-- **adminUILearning** = Toggle to turn off the agent's learning.
-- **adminUIPrompts** = Toggle to turn off text prompts.
-- **adminUIQueueContents** = Text field with amount of gestures in the Queue. Deprecated.
-- **adminUIEnergy** = Slider to determine probability of using Energy when finding a random Viewpoints Gesture.
-- **adminUIEnergyText** = Displays the Energy probability from the slider.
-- **adminUITempo** = Slider to determine probability of using Tempo when finding a random Viewpoints Gesture.
-- **adminUITempoText** = Displays the Tempo probability from the slider.
-- **adminUISize** = Slider to determine probability of using Size when finding a random Viewpoints Gesture.
-- **adminUISizeText** = Displays the Size probability from the slider.
 
 ### Segmentation Variables
 - **segmentationManager** = reference to the segmentation module
@@ -46,8 +33,9 @@
 - **decisionManager** = reference to the decision making module
 - **gestureStream** = reference to the gesture stream.
 - **usingStream** = boolean if the gesture stream is active.
-- **gestureQueueLength** = maximum number of gestures to be found by the gesture stream. Deprecated.
 - **awaitingResponses** = true while the gesture stream is finding response gestures.
+- **gestureSequencer** = reference to the gesture sequencer.
+- **specifiedID** = the ObjectID of the current gesture being played.
 
 ### Movement Theory Variables
 - **currentTransformation** = the current transformation that is being applied by the agent. This is None by default and is updated when transformation is chosen as a response mode
@@ -59,7 +47,7 @@
 
 ```Awake```
 - **Parameters:** none
-- **Notes:** called once on startup (before Start()), sets the viz-perception variables by finding game objects and their components
+- **Notes:** called once on startup (before Start()), sets references to components.
 - **Returns:** none
 
 ```Start```
@@ -72,7 +60,7 @@
 - **Notes:** Called once per frame, unused. We use LateUpdate instead.
 - **Returns:** none
 
-```Update```
+```LateUpdate```
 - **Parameters:** none
 - **Notes:** Called once per frame. We use LateUpdate to ensure that all calculation is done after we collect input from the input device (e.g. Kinect). This is the main chunk of code that enables VAI to reason and dance - see code for detailed comments.
 - **Returns:** none
@@ -83,27 +71,37 @@
 - **Returns:** none
 
 ```LearningToggle```
-- **Parameters:** none
+- **Parameters:** bool
 - **Notes:** Toggles if agent is learning.
 - **Returns:** none
 
 ```PromptToggle```
-- **Parameters:** none
+- **Parameters:** bool
 - **Notes:** Toggles text prompts.
 - **Returns:** none
 
 ```StreamToggle```
-- **Parameters:** none
+- **Parameters:** bool
 - **Notes:** Toggles use of the gesture stream.
 - **Returns:** none
 
+```RecordingToggle```
+- **Parameters:** bool
+- **Notes:** Toggles use of the gesture stream.
+- **Returns:** none
+
+```StopCurrentPlayback```
+- **Paramaters:** none
+- **Notes:** Stops playback of the currently played gesture.
+- **Returns:** none
+
 ```OnGUI```
-- **Parameters:** none
+- **Parameters:** bool
 - **Notes:** Called once per frame. Used for GUI functions.
 - **Returns:** none
 
 ```OnApplicationQuit```
-- **Parameters:** none
+- **Parameters:** bool
 - **Notes:** Called on application quit. Terminates the gesture stream thread.
 - **Returns:** none
 
@@ -112,6 +110,11 @@
 - **Parameters:** String
 - **Notes:** Translates a string of quaternion values to a bodyFrame. Used for file reading.
 - **Returns:** BodyFrame
+
+```PlayGesture```
+- **Parameters:** Gesture
+- **Notes:** Sets the agent to play a gesture.
+- **Returns:** none
 
 ```LearnNewGesture```
 - **Parameters:** Gesture
@@ -155,7 +158,17 @@
 
 ```UIDropdownPopulate```
 - **Parameters:** none
-- **Notes:** Repopulates the database list.l
+- **Notes:** Repopulates the database list.
+- **Returns:** none
+
+```UILoadDB```
+- **Parameters:** string
+- **Notes:** Loads a database on a given ui event.
+- **Returns:** none
+
+```UICreateDB```
+- **Parameters:** string
+- **Notes:** Creates a database on a given ui event.
 - **Returns:** none
 
 ```Transform```
@@ -186,4 +199,24 @@
 ```logThis```
 - **Parameters:** String
 - **Notes:** Logs the string of text. Allows classes that do not inherit MonoBehavior (i.e. GestureStream) to output to console.
+- **Returns:** none
+
+```NewDatabaseAction```
+- **Parameters:** none
+- **Notes:** Chooses the agent's next action based on database contents.
+- **Returns:** none
+
+```SetDisabledJoints```
+- **Parameters:** params JointType[]
+- **Notes:** Disables the given joints.
+- **Returns:** Gesture
+
+```EnableAllJoints```
+- **Parameters:** none
+- **Notes:** Enables all joints.
+- **Returns:** none
+
+```SetDancingWithoutKinect```
+- **Parameters:** none
+- **Notes:** Sets the avatar to dance without kinect input.
 - **Returns:** none
