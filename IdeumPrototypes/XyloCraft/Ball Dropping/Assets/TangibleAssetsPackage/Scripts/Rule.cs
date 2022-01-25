@@ -35,7 +35,7 @@ public class Rule : MonoBehaviour
     void Start()
     {
         RuleBlockVertical.SetActive(false);
-        RuleBlockHorizontal.SetActive(false);
+        RuleBlockHorizontal.SetActive(true);
     }
     
 
@@ -123,6 +123,15 @@ public class Rule : MonoBehaviour
         }       
     }
 
+    public void SetRuleType(TangibleGameController.RuleType type)
+    {
+        RuleType = type;
+    }
+
+    public void SetRuleType(int type)
+    {
+        RuleType = (TangibleGameController.RuleType)type;
+    }
     private Vector3 HorInvert(RectTransform rt)
     {
         var p = rt.localPosition;

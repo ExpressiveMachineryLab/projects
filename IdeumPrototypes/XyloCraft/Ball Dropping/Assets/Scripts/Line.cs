@@ -110,7 +110,7 @@ public class Line : SelectableObj {
 
 		soudedThisFrame = true;
 
-		int repeats = 0;
+		int repeats = 1;
 		bool playEffect = false;
 
 		foreach (LinePanel panel in panels) {
@@ -176,7 +176,7 @@ public class Line : SelectableObj {
 		}
 		
 		
-		if (repeats > 0) {
+		if (repeats > 1) {
 			StartCoroutine(LoopSound(0.2f, repeats));
 		} else {
 			MakeSound();
