@@ -74,6 +74,7 @@ public class EmitterTangible : MonoBehaviour {
 		newBall.transform.position = firePoint.position;
 		newBall.transform.rotation = firePoint.rotation;
 		newBall.GetComponent<Ball>().ResetVelocity();
+		newBall.GetComponent<Ball>().color = this.color;
 		newBall.GetComponent<Ball>().sourceTangible = this;
 
 		emitterAnimator.SetTrigger("Shoot");

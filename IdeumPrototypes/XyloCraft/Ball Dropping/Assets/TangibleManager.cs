@@ -26,6 +26,7 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
     void Start()
     {
         TangibleEngine.Subscribe(this);
+        //TangibleEngine.Instance.p
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         tangibleObjectLookup = new Dictionary<int, GameObject>();
         count++;
