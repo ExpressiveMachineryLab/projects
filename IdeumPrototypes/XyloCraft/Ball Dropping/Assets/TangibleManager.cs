@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TE;
 using UnityEngine;
 
@@ -7,22 +10,24 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
 {
     private GameManager gameManager;
     static int count;
+    public static string ProfilePath = "C:/Users/MT-User/AppData/Roaming/Ideum/TangibleEngine/Profiles/XyloPROFILE.json";
     public GameObject emitterPrefabRed;
     public GameObject emitterPrefabBlue;
     public GameObject emitterPrefabYellow;
     public GameObject emitterPrefabGreen;
     Dictionary<int, GameObject> tangibleObjectLookup;
 
-    Dictionary<int, ElemColor> tangibleIDtoColorLookup = new Dictionary<int, ElemColor>
+    Dictionary<string, ElemColor> tangibleIDtoColorLookup = new Dictionary<string, ElemColor>
     {
-        {0,ElemColor.red},
-        {1,ElemColor.red},
-        {2,ElemColor.blue},
-        {3,ElemColor.blue},
-        {4,ElemColor.green},
-        {5,ElemColor.green},
-        {6,ElemColor.yellow}
+        {"tangible_1C",ElemColor.red}, // 2 of these
+        {"tangible_B",ElemColor.red},
+        {"tangible_2A",ElemColor.blue}, // 2 of these
+        {"tangible_D",ElemColor.yellow},
+        {"tangible_E",ElemColor.yellow},
+        {"tangible_G",ElemColor.green},
+        {"tangible_I",ElemColor.yellow},
     };
+
     void Start()
     {
         TangibleEngine.Subscribe(this);
@@ -31,7 +36,7 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
         tangibleObjectLookup = new Dictionary<int, GameObject>();
         count++;
         TangibleEngine refTE = GameObject.FindGameObjectWithTag("TangibleEngine").GetComponent<TangibleEngine>();
-        Debug.Log(count + "tangible manager in scene");
+        
     }
 
     void OnDestroy()
@@ -43,9 +48,9 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
 
         if (!tangibleObjectLookup.TryGetValue(t.Id, out GameObject obj) || obj == null)
         {
-            Debug.Log("added tangible with id: " + t.Id);
+            Debug.Log("added tangible with id: " + t.Id + " and pattern " + t.Pattern.Name);
             ElemColor color;
-            if (tangibleIDtoColorLookup.TryGetValue(t.Id, out ElemColor c))
+            if (tangibleIDtoColorLookup.TryGetValue(t.PatternName, out ElemColor c))
             {
                 color = c;
             }
@@ -105,5 +110,23 @@ public class TangibleManager : MonoBehaviour, IOnTangibleAdded, IOnTangibleUpdat
     public static float GetRotation(Tangible t)
     {
         return (t.R * Mathf.Rad2Deg);
+    }
+
+    public static List<Pattern> ForcePatternsFromJSON()
+    {
+        try
+        {
+            string json = System.IO.File.ReadAllText(ProfilePath);
+            List<Pattern> patterns = new List<Pattern>();
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            JsonPatterns jsonData = jsonSerializer.Deserialize<JsonPatterns>(new JsonTextReader(new StringReader(json)));
+            patterns.AddRange(jsonData.Patterns);
+            return patterns;
+        } catch (Exception ex)
+        {
+            Debug.LogError(ex);
+            return null;
+        }
+        
     }
 }

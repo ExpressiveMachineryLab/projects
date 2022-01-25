@@ -403,7 +403,12 @@ namespace TE {
       }
     }
 
-    private void HandleEnginePatternsUpdated(ICollection<Pattern> patterns) {
+    private void HandleEnginePatternsUpdated(ICollection<Pattern> patternss) {
+      List<Pattern> patterns = TangibleManager.ForcePatternsFromJSON();
+      if (patterns == null)
+        {
+        patterns = (List<Pattern>)patternss;
+        }
       _dispatch.Dispatch(() => {
         _patterns.Clear();
         _patterns.AddRange(patterns);
