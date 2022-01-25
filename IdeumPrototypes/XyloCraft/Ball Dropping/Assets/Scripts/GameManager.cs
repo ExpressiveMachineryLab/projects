@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < emitterPool.Count; i++) {
 			if (emitterPool[i] == null) {
 				emitterPool[i] = new GameObjectAgePair();
-				emitterPool[i].heldObject = Instantiate(emitterModel);
+				emitterPool[i].heldObject = Instantiate(emitterModel, sceneContainer.transform);
 				emitterPool[i].age = 0f;
 				emitterPool[i].heldObject.SetActive(false);
 			}
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour {
 				index = emitterPool.Count;
 
 				GameObjectAgePair newEmitter = new GameObjectAgePair();
-				newEmitter.heldObject = Instantiate(emitterModel);
+				newEmitter.heldObject = Instantiate(emitterModel, sceneContainer.transform);
 				newEmitter.age = 0f;
 				newEmitter.heldObject.SetActive(false);
 				emitterPool.Add(newEmitter);

@@ -11,7 +11,7 @@ public class TangibleController : MonoBehaviour
     public Guid Guid;
     private float _yPos;
     public Vector3 Dir;
-
+    public int RULES_LIMIT = 6;
 //    public List<Rule> AllRules = new List<Rule>();
     public List<Rule> ActiveRules =  new List<Rule>();
 
@@ -53,6 +53,7 @@ public class TangibleController : MonoBehaviour
 
     public void AddRule(GameObject toggle)
     {
+        if (ActiveRules.Count >= RULES_LIMIT) return;
         GameObject t = Instantiate(toggle, transform.position + new Vector3(1,1,0), Quaternion.identity);
         Rule r = t.GetComponent<Rule>();
         ActiveRules.Add(r);

@@ -78,6 +78,12 @@ public class SOInterpreter : MonoBehaviour {
 			textInput += emitter.BirdToSO() + "_";
 		}
 
+		EmitterTangible[] emitterTangibles = FindObjectsOfType<EmitterTangible>();
+		foreach (EmitterTangible emitterT in emitterTangibles)
+		{
+			textInput += emitterT.BirdToSO() + "_";
+		}
+
 		Line[] lines = FindObjectsOfType<Line>();
 		foreach (Line line in lines) {
 			textInput += line.LineToSO() + "_";
